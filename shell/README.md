@@ -47,8 +47,10 @@ ZSH_THEME="mytheme"
 
 plugins=(git git-flow mercurial svn python pip virtualenv virtualenvwrapper sublime vim autojump colored-man)
 
-export PATH=/usr/local/bin:${PATH}
+export PATH=$(brew --prefix)/bin:$(brew --prefix)/share/python:$(brew --prefix)/share/python3:${PATH}
 export EDITOR='subl -w'
+
+if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
 
 export WORKON_HOME=$HOME/.virtualenvs
 export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python
