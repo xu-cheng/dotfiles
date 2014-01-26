@@ -68,9 +68,9 @@ function prompt_virtualenv(){
 # Prompt info.
 function prompt_status(){
     if [[ $EUID -ne 0 ]]; then
-        echo "%{$terminfo[bold]$fg[red]%}# %{$reset_color%}"
-    else
         echo "%{$terminfo[bold]$fg[red]%}$ %{$reset_color%}"
+    else
+        echo "%{$terminfo[bold]$fg[red]%}# %{$reset_color%}"
     fi
 }
 
