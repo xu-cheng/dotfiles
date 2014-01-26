@@ -47,7 +47,7 @@ ZSH_THEME="mytheme"
 
 plugins=(git git-flow mercurial svn python pip virtualenv virtualenvwrapper sublime vim autojump)
 
-ource /usr/bin/virtualenvwrapper.sh
+source /usr/bin/virtualenvwrapper.sh
 
 [[ -s `brew --prefix`/etc/autojump.sh ]] && . `brew --prefix`/etc/autojump.sh
 
