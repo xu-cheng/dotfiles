@@ -15,7 +15,9 @@ pip install virtualenvwrapper
 ```bash
 brew tap homebrew/python
 brew tap homebrew/science
-brew install numpy --with-python3
-brew install scipy --with-python3
+brew install gfortran pyqt pyside ghostscript freetype zmq
+brew install numpy --env=std
+brew install scipy --env=std
 brew install matplotlib --with-ghostscript --with-pyqt --with-pyside --with-tcl-tk --with-tex
+pip install pygments pyzmq requests pandas sympy nose cython ipython
 ```

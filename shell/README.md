@@ -23,6 +23,7 @@ brew tap homebrew/dupes; brew install grep
 brew install wget readline
 brew install git git-flow hg svn
 brew install autojump
+brew install macvim
 ```
 
 ## zsh
