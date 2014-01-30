@@ -16,8 +16,9 @@ pip install virtualenvwrapper
 brew tap homebrew/python
 brew tap homebrew/science
 brew install gfortran pyqt pyside ghostscript freetype zmq
+pip install nose python-dateutil pyparsing
 brew install numpy --env=std
-brew install scipy --env=std
+pip install scipy
 brew install matplotlib --with-ghostscript --with-pyqt --with-pyside --with-tcl-tk --with-tex
-pip install pygments pyzmq requests pandas sympy nose cython ipython
+pip install pygments pyzmq requests pandas sympy cython ipython jinja2 tornado
 ```
