@@ -7,7 +7,7 @@ Tor Settings
 
 ```bash
 brew install tor --with-brewed-openssl
-pip install obfsproxy
+pip install obfsproxy stem
 ```
 
 * Copy `torrc` to `/usr/local/Cellar/tor/<version>/etc/tor`.
