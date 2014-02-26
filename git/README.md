@@ -25,6 +25,7 @@ Run below commands:
 ```bash
 git config --global user.name "Your Name"
 git config --global user.email "your_email@yourmail.com"
+git config --global core.excludesfile '~/.gitignore'
 git config --global core.autocrlf input
 git config --global core.editor "subl -w"
 git config --global color.status auto
@@ -34,4 +35,5 @@ git config --global color.diff auto
 git config --global color.grep auto
 git config --global color.showbranch auto
 git config --global color.ui auto
+git config --global alias.lg "log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%C(bold blue)<%an>%Creset' --abbrev-commit"
 ```

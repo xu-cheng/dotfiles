@@ -19,7 +19,6 @@ brew doctor
 
 ```bash
 brew install coreutils findutils gnu-tar gnu-sed gawk gnutls gnu-indent gnu-getopt
-brew tap homebrew/dupes; brew install grep
 brew install wget readline
 brew install git git-flow hg svn
 brew install autojump
@@ -48,7 +47,7 @@ ZSH_THEME="mytheme"
 
 plugins=(git git-flow mercurial svn python pip virtualenv virtualenvwrapper sublime vim autojump colored-man)
 
-export PATH=$(brew --prefix)/bin:$(brew --prefix)/share/python:$(brew --prefix)/share/python3:${PATH}
+export PATH=$(brew --prefix)/bin:${PATH}
 export EDITOR='subl -w'
 
 if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi

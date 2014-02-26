@@ -17,8 +17,8 @@ brew tap homebrew/python
 brew tap homebrew/science
 brew install gfortran pyqt pyside ghostscript freetype zmq
 pip install nose python-dateutil pyparsing
-brew install numpy --env=std
-pip install scipy
+brew install numpy --with-python3
+brew install scipy --with-python3
 brew install matplotlib --with-ghostscript --with-pyqt --with-pyside --with-tcl-tk --with-tex
 pip install pygments pyzmq requests pandas sympy cython ipython jinja2 tornado
 ```
