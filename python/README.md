@@ -6,8 +6,9 @@ Python Settings
 ```bash
 brew install python
 brew install python3
+brew install pyenv
 brew install pyenv-virtualenv
-pip install virtualenvwrapper
+brew install pyenv-virtualenvwrapper
 ```
 
 ## Install Scientific Python Environment
@@ -15,10 +16,13 @@ pip install virtualenvwrapper
 ```bash
 brew tap homebrew/python
 brew tap homebrew/science
-brew install gfortran pyqt pyside ghostscript freetype zmq
+brew install sip --with-python3
+brew install pyqt --with-python3
+brew install pyqt5 --with-python
+brew install gfortran pyside ghostscript freetype zmq
 pip install nose python-dateutil pyparsing
 brew install numpy --with-python3
 brew install scipy --with-python3
-brew install matplotlib --with-ghostscript --with-pyqt --with-pyside --with-tcl-tk --with-tex
+brew install matplotlib --with-python3 --with-ghostscript --with-pyqt --with-pyside --with-tex
 pip install pygments pyzmq requests pandas sympy cython ipython jinja2 tornado
 ```

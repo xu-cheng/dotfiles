@@ -45,17 +45,12 @@ curl -L https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh | 
 ```bash
 ZSH_THEME="mytheme"
 
-plugins=(git git-flow mercurial svn python pip virtualenv virtualenvwrapper sublime vim autojump colored-man)
+plugins=(git git-flow mercurial svn python pip pyenv virtualenv virtualenvwrapper sublime vim autojump colored-man brew osx)
 
 export PATH=$(brew --prefix)/bin:${PATH}
 export EDITOR='subl -w'
 
 if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
-
-export WORKON_HOME=$HOME/.virtualenvs
-export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python
-export PIP_VIRTUALENV_BASE=$WORKON_HOME
-[[ -s /usr/local/bin/virtualenvwrapper.sh ]] && . /usr/local/bin/virtualenvwrapper.sh
 
 [[ -s `brew --prefix`/etc/autojump.sh ]] && . `brew --prefix`/etc/autojump.sh
 

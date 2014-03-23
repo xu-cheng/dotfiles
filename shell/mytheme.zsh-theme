@@ -58,10 +58,11 @@ function prompt_svn(){
     fi
 }
 
-# Virtualenv info.
-function prompt_virtualenv(){
-    if [[ -n $VIRTUAL_ENV ]]; then
-        echo "%{$fg[white]%}in%{$reset_color%} $(virtualenv_prompt_info)%{$reset_color%}"
+# Pyenv info.
+export VIRTUAL_ENV_DISABLE_PROMPT=1
+function prompt_pyenv(){
+    if [[ $FOUND_PYENV -eq 1 ]] && [[ "$(pyenv_prompt_info)" != "system" ]]; then
+        echo "%{$fg[white]%}on%{$reset_color%} %{${fg[yellow]}%}$(pyenv_prompt_info)%{$reset_color%}"
     fi
 }
 
@@ -75,7 +76,7 @@ function prompt_status(){
 }
 
 # Main prompt
-# Format: \n # USER at MACHINE in DIRECTORY on [git/hg/svn] [virtualenv] [TIME] \n $ 
+# Format: \n # USER at MACHINE in DIRECTORY on [git/hg/svn] [pyenv] [TIME] \n $ 
 PROMPT='
 %{$terminfo[bold]$fg[blue]%}#%{$reset_color%} \
 $(prompt_user) \
@@ -83,6 +84,6 @@ $(prompt_user) \
 $(prompt_machine) \
 %{$fg[white]%}in \
 $(prompt_dir) \
-$(git_prompt_info)$(hg_prompt_info)$(prompt_svn)$(prompt_virtualenv)\
+$(git_prompt_info)$(hg_prompt_info)$(prompt_svn)$(prompt_pyenv)\
 %{$fg[white]%}[%*]
 $(prompt_status)'
