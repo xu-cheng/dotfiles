@@ -21,8 +21,10 @@ brew install pyqt --with-python3
 brew install pyqt5 --with-python
 brew install gfortran pyside ghostscript freetype zmq
 pip install nose python-dateutil pyparsing
+pip3 install nose python-dateutil pyparsing
 brew install numpy --with-python3
 brew install scipy --with-python3
 brew install matplotlib --with-python3 --with-ghostscript --with-pyqt --with-pyside --with-tex
-pip install pygments pyzmq requests pandas sympy cython ipython jinja2 tornado
+pip install ipython[all] pandas requests sympy cython six beautifulsoup4
+pip3 install ipython[all] pandas requests sympy cython six beautifulsoup4
 ```
