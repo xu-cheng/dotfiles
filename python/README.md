@@ -19,7 +19,8 @@ brew tap homebrew/science
 brew install sip --with-python3
 brew install pyqt --with-python3
 brew install pyqt5 --with-python
-brew install gfortran pyside ghostscript freetype zmq
+brew install pyside --with-python3
+brew install gfortran ghostscript freetype zmq
 pip install nose python-dateutil pyparsing
 pip3 install nose python-dateutil pyparsing
 brew install numpy --with-python3
