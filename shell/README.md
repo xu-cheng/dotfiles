@@ -45,7 +45,7 @@ curl -L https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh | 
 ```bash
 ZSH_THEME="mytheme"
 
-plugins=(git git-flow mercurial svn python pip pyenv virtualenv virtualenvwrapper sublime vim autojump colored-man brew osx)
+plugins=(git git-flow mercurial svn python pip pyenv sublime vim autojump colored-man brew osx)
 
 export PATH=$(brew --prefix)/bin:${PATH}
 export EDITOR='subl -w'
