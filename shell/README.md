@@ -19,10 +19,11 @@ brew doctor
 
 ```bash
 brew install coreutils findutils gnu-tar gnu-sed gawk gnutls gnu-indent gnu-getopt
-brew install wget readline
-brew install git git-flow hg svn
-brew install autojump
-brew install vim macvim polarssl
+brew install wget readline tree polarssl htop
+brew install git git-flow hg svn autojump vim macvim
+brew install graphicsmagick ghostscript graphviz
+brew tap phinze/cask; brew install brew-cask
+brew cask install pandoc
 ```
 
 ## zsh
