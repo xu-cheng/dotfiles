@@ -9,6 +9,7 @@ brew install python3
 brew install pyenv
 brew install pyenv-virtualenv
 brew install pyenv-virtualenvwrapper
+brew install pyenv-pip-rehash
 ```
 
 ## Install Scientific Python Environment
