@@ -18,7 +18,7 @@ brew doctor
 * Install essential formulas:
 
 ```bash
-brew install coreutils findutils gnu-tar gnu-sed gawk gnutls gnu-indent gnu-getopt
+brew install coreutils findutils binutils gnu-tar gnu-sed gawk gnutls gnu-indent gnu-getopt
 brew install wget readline tree polarssl htop
 brew install git git-flow hg svn autojump vim macvim
 brew install graphicsmagick ghostscript graphviz
