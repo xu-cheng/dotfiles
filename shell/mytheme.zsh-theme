@@ -18,24 +18,30 @@ function prompt_dir(){
     echo "%{$terminfo[bold]$fg[yellow]%}$current_dir%{$reset_color%}"
 }
 
-# Git info.
-ZSH_THEME_GIT_PROMPT_PREFIX="%{$fg[white]%}on%{$reset_color%} git:%{$fg[cyan]%}"
-ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%} "
-ZSH_THEME_GIT_PROMPT_DIRTY=" %{$fg[red]%}$x_mark"
-ZSH_THEME_GIT_PROMPT_CLEAN=" %{$fg[green]%}$check_mark"
+# Git info
+function prompt_git(){
+    ZSH_THEME_GIT_PROMPT_PREFIX="git:%{$fg[cyan]%}"
+    ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%}"
+    ZSH_THEME_GIT_PROMPT_DIRTY=" %{$fg[red]%}$x_mark"
+    ZSH_THEME_GIT_PROMPT_CLEAN=" %{$fg[green]%}$check_mark"
+    git_prompt_info
+}
 
-# Mercurial info.
-ZSH_THEME_HG_PROMPT_PREFIX="%{$fg[white]%}on%{$reset_color%} hg:%{$fg[cyan]%}"
-ZSH_THEME_HG_PROMPT_SUFFIX="%{$reset_color%} "
-ZSH_THEME_HG_PROMPT_DIRTY=" %{$fg[red]%}$x_mark"
-ZSH_THEME_HG_PROMPT_CLEAN=" %{$fg[green]%}$check_mark"
+# Mercurial info
+function prompt_hg(){
+    ZSH_THEME_HG_PROMPT_PREFIX="hg:%{$fg[cyan]%}"
+    ZSH_THEME_HG_PROMPT_SUFFIX="%{$reset_color%}"
+    ZSH_THEME_HG_PROMPT_DIRTY=" %{$fg[red]%}$x_mark"
+    ZSH_THEME_HG_PROMPT_CLEAN=" %{$fg[green]%}$check_mark"
+    hg_prompt_info
+}
 
-# SVN info.
-ZSH_THEME_SVN_PROMPT_PREFIX="%{$fg[white]%}on%{$reset_color%} svn:%{$fg[cyan]%}"
-ZSH_THEME_SVN_PROMPT_SUFFIX="%{$reset_color%} "
-ZSH_THEME_SVN_PROMPT_DIRTY=" %{$fg[red]%}$x_mark"
-ZSH_THEME_SVN_PROMPT_CLEAN=" %{$fg[green]%}$check_mark"
+# SVN info
 function prompt_svn(){
+    ZSH_THEME_SVN_PROMPT_PREFIX="svn:%{$fg[cyan]%}"
+    ZSH_THEME_SVN_PROMPT_SUFFIX="%{$reset_color%}"
+    ZSH_THEME_SVN_PROMPT_DIRTY=" %{$fg[red]%}$x_mark"
+    ZSH_THEME_SVN_PROMPT_CLEAN=" %{$fg[green]%}$check_mark"
     if in_svn; then
         _DISPLAY=$(
             svn info 2> /dev/null | \
@@ -58,12 +64,23 @@ function prompt_svn(){
     fi
 }
 
-# Pyenv info.
+# Pyenv info
 export VIRTUAL_ENV_DISABLE_PROMPT=1
 function prompt_pyenv(){
     if [[ $FOUND_PYENV -eq 1 ]] && [[ "$(pyenv_prompt_info)" != "system" ]]; then
-        echo "%{$fg[white]%}on%{$reset_color%} %{${fg[yellow]}%}$(pyenv_prompt_info)%{$reset_color%}"
+        echo "pyenv:%{${fg[yellow]}%}$(pyenv_prompt_info)%{$reset_color%}"
     fi
+}
+
+# Assemble additional info
+function prompt_additional(){
+    python3 -c 'import sys;ret=", ".join(x for x in sys.argv[2:] if x); \
+                ret and print(sys.argv[1]+ret+" ")' \
+              "%{$fg[white]%}on%{$reset_color%} " \
+              "$(prompt_git)" \
+              "$(prompt_hg)" \
+              "$(prompt_svn)" \
+              "$(prompt_pyenv)"
 }
 
 # Prompt info.
@@ -84,6 +101,6 @@ $(prompt_user) \
 $(prompt_machine) \
 %{$fg[white]%}in \
 $(prompt_dir) \
-$(git_prompt_info)$(hg_prompt_info)$(prompt_svn)$(prompt_pyenv)\
+$(prompt_additional)\
 %{$fg[white]%}[%*]
 $(prompt_status)'
