@@ -49,7 +49,8 @@ ZSH_THEME="mytheme"
 plugins=(git git-flow mercurial svn python pip pyenv sublime vim autojump colored-man brew osx)
 
 export PATH=$(brew --prefix)/bin:${PATH}
-export EDITOR='subl -w'
+export EDITOR="subl -w"
+export PYENV_ROOT="$HOME/.pyenv"
 
 if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
 
