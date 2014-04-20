@@ -74,7 +74,7 @@ function prompt_pyenv(){
 
 # Assemble additional info
 function prompt_additional(){
-    python3 -c 'import sys;ret=", ".join(x for x in sys.argv[2:] if x); \
+    /usr/local/bin/python3 -c 'import sys;ret=", ".join(x for x in sys.argv[2:] if x); \
                 ret and print(sys.argv[1]+ret+" ")' \
               "%{$fg[white]%}on%{$reset_color%} " \
               "$(prompt_git)" \
