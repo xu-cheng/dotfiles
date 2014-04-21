@@ -10,6 +10,8 @@ brew install pyenv
 brew install pyenv-virtualenv
 brew install pyenv-virtualenvwrapper
 brew install pyenv-pip-rehash
+brew install pyenv-ccache
+brew install pyenv-which-ext
 ```
 
 ## Install Scientific Python Environment
