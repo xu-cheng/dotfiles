@@ -1,0 +1,1 @@
+let g:LatexBox_viewer = "open -a Preview"

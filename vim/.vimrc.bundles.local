@@ -1,0 +1,4 @@
+" Bundle 'rizzatti/funcoo.vim'
+" Bundle 'rizzatti/dash.vim'
+Bundle 'LaTeX-Box-Team/LaTeX-Box'
+Bundle 'auctex.vim'
