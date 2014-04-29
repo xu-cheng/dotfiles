@@ -1,1 +1,1 @@
-let g:LatexBox_viewer = "open -a Preview"
+let g:LatexBox_viewer = 'open -a Preview'
