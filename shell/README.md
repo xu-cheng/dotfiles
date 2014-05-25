@@ -20,7 +20,7 @@ brew doctor
 ```bash
 brew install coreutils findutils binutils gnu-tar gnu-sed gawk gnutls gnu-indent gnu-getopt
 brew install wget readline tree polarssl htop
-brew install git git-flow hg svn autojump vim macvim
+brew install git git-flow hg svn autojump vim macvim zsh-syntax-highlighting
 brew install graphicsmagick ghostscript graphviz
 brew tap phinze/cask; brew install brew-cask
 brew cask install pandoc
@@ -55,6 +55,7 @@ export PYENV_ROOT="$HOME/.pyenv"
 if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
 if which hub > /dev/null; then eval "$(hub alias -s)"; fi
 [[ -s `brew --prefix`/etc/autojump.sh ]] && . `brew --prefix`/etc/autojump.sh
+[[ -s /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]] && . /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 autoload -U zutil
 autoload -U compinit
