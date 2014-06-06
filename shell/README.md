@@ -19,11 +19,10 @@ brew doctor
 
 ```bash
 brew install coreutils findutils binutils gnu-tar gnu-sed gawk gnutls gnu-indent gnu-getopt
-brew install wget readline tree polarssl htop
+brew install wget readline tree polarssl htop cheat pandoc
 brew install git git-flow hg svn autojump vim macvim zsh-syntax-highlighting
 brew install graphicsmagick ghostscript graphviz
 brew tap phinze/cask; brew install brew-cask
-brew cask install pandoc
 ```
 
 ## zsh
@@ -40,7 +39,7 @@ chsh -s /bin/zsh
 curl -L https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh | sh
 ```
 
-* Copy `mytheme.zsh-theme` to `~/.oh-my-zsh/themes`
+* Copy `mytheme.zsh-theme` to `~/.oh-my-zsh/custom`
 * Add below code into `~/.zshrc`:
 
 ```bash
