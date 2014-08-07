@@ -45,7 +45,7 @@ curl -L https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh | 
 ```bash
 ZSH_THEME="mytheme"
 
-plugins=(git git-flow mercurial svn python pip pyenv sublime vim autojump dirhistory colored-man brew osx)
+plugins=(git git-flow mercurial svn pip pyenv autojump dirhistory colored-man brew brew-cask osx)
 
 export PATH=$(brew --prefix)/bin:$(brew --prefix)/sbin:${PATH}
 export EDITOR="subl -w"
@@ -56,9 +56,4 @@ if which pyenv-virtualenv-init > /dev/null; then eval "$(pyenv virtualenv-init -
 if which hub > /dev/null; then eval "$(hub alias -s)"; fi
 [[ -s `brew --prefix`/etc/autojump.sh ]] && . `brew --prefix`/etc/autojump.sh
 [[ -s /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]] && . /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-
-autoload -U zutil
-autoload -U compinit
-autoload -U complist
-compinit
 ```
