@@ -50,10 +50,17 @@ plugins=(git git-flow mercurial svn pip pyenv autojump dirhistory colored-man br
 export PATH=$(brew --prefix)/bin:$(brew --prefix)/sbin:${PATH}
 export EDITOR="subl -w"
 export PYENV_ROOT="$HOME/.pyenv"
+export CHEATCOLORS=true
 
 if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
 if which pyenv-virtualenv-init > /dev/null; then eval "$(pyenv virtualenv-init -)"; fi
 if which hub > /dev/null; then eval "$(hub alias -s)"; fi
 [[ -s `brew --prefix`/etc/autojump.sh ]] && . `brew --prefix`/etc/autojump.sh
 [[ -s /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]] && . /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+compinit
+
+clean_hist(){
+    rm -f "$HOME/.zsh_history"
+}
 ```
