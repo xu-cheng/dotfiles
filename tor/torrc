@@ -3,7 +3,9 @@ ExcludeExitNodes {cn},{hk},{mo},{sg},{th},{pk},{by},{ru},{ir},{vn},{ph},{my},{cu
 
 SocksPort 9050
 ControlPort 9051
-ClientTransportPlugin obfs2,obfs3 exec /usr/local/bin/obfsproxy --managed
+ClientTransportPlugin obfs2,obfs3 exec /usr/local/bin/obfsproxy managed
+ClientTransportPlugin scramblesuit exec /usr/local/bin/obfsproxy managed
+ClientTransportPlugin fte exec /usr/local/bin/fteproxy --managed
 
 UseBridges 1
 # Get Tor Bridges from https://bridges.torproject.org/bridges and append them below
