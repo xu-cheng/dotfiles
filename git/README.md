@@ -16,7 +16,23 @@ Host github.com
     IdentityFile ~/.ssh/github_rsa
 ```
 
+* Add key to ssh-agent
+
+```bash
+$ ssh-add -K ~/.ssh/github_rsa
+```
+
 * Upload public key to Github.
+
+```bash
+$ pbcopy < ~/.ssh/github_rsa.pub
+```
+
+* Test key
+
+```bash
+$ ssh -T git@github.com
+```
 
 ## Set Git Config
 
