@@ -19,7 +19,7 @@ brew doctor
 
 ```bash
 brew install coreutils findutils binutils gnu-tar gnu-sed gawk gnutls gnu-indent gnu-getopt
-brew install wget readline tree polarssl htop cheat pandoc
+brew install wget readline tree htop cheat pandoc
 brew install git git-flow hg svn autojump vim macvim zsh-syntax-highlighting
 brew install graphicsmagick ghostscript graphviz
 brew tap phinze/cask; brew install brew-cask
@@ -45,7 +45,7 @@ curl -L https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh | 
 ```bash
 ZSH_THEME="mytheme"
 
-plugins=(git git-flow mercurial svn pip pyenv autojump dirhistory colored-man brew brew-cask osx)
+plugins=(git git-flow git-hubflow mercurial svn pip pyenv autojump dirhistory colored-man brew brew-cask osx)
 
 export PATH=$(brew --prefix)/bin:$(brew --prefix)/sbin:${PATH}
 export EDITOR="subl -w"
