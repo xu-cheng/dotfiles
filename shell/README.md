@@ -60,6 +60,8 @@ if which hub > /dev/null; then eval "$(hub alias -s)"; fi
 
 compinit
 
+alias rake='noglob rake'
+
 clean_hist(){
     rm -f "$HOME/.zsh_history"
 }
