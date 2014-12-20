@@ -1,0 +1,10 @@
+" Load plugins
+source ~/.nvim/nvimrc.plugins
+" Load basic settings
+source ~/.nvim/nvimrc.basic
+" Load key mapping
+source ~/.nvim/nvimrc.keymap
+" Load plugins settings
+for f in split(glob('~/.nvim/pluginrc.d/*.vim'), '\n')
+  exe 'source' f
+endfor
