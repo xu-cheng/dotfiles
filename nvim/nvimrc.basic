@@ -132,7 +132,7 @@
     set pastetoggle=<F12>           " pastetoggle (sane indentation on pastes)
     autocmd FileType c,cpp,java,go,php,javascript,puppet,python,rust,twig,xml,yml,perl,sql autocmd BufWritePre <buffer> call StripTrailingWhitespace()
     autocmd BufNewFile,BufRead *.html.twig set filetype=html.twig
-    autocmd FileType haskell,puppet,ruby,yml setlocal expandtab shiftwidth=2 softtabstop=2
+    autocmd FileType haskell,puppet,ruby,yml setlocal expandtab shiftwidth=2 softtabstop=2 tabstop=2
     " preceding line best in a plugin but here for now.
     autocmd BufNewFile,BufRead *.coffee set filetype=coffee
     " Workaround vim-commentary for Haskell
