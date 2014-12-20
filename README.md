@@ -1,4 +1,4 @@
-config-notes
-============
+dotfiles
+========
 
-My configuration notes on OS X.
+My configuration on OS X.
