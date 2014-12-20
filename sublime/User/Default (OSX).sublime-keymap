@@ -1,0 +1,37 @@
+[   
+    { "keys": ["alt+/"], "command": "auto_complete" },
+    { "keys": ["cmd+0"], "command": "reset_font_size" },
+    { "keys": ["f2"], "command": "next_bookmark" },
+    { "keys": ["shift+f2"], "command": "prev_bookmark" },
+    { "keys": ["ctrl+f2"], "command": "toggle_bookmark" },
+    { "keys": ["ctrl+shift+f2"], "command": "clear_bookmarks" },
+    { "keys": ["alt+f2"], "command": "select_all_bookmarks" },
+    { 
+        "keys": ["ctrl+alt+f"], "command": "anaconda_auto_format",
+        "context": [{ "key": "selector", "operator": "equal", "operand": "source.python" }]
+    },
+    {
+        "keys": ["ctrl+alt+u"], "command": "anaconda_find_usages",
+        "context": [{ "key": "selector", "operator": "equal", "operand": "source.python" }]
+    },
+    {
+        "keys": ["ctrl+alt+d"], "command": "anaconda_doc",
+        "context": [{ "key": "selector", "operator": "equal", "operand": "source.python" }]
+    },
+    {
+        "keys": ["ctrl+alt+g"], "command": "anaconda_goto",
+        "context": [{ "key": "selector", "operator": "equal", "operand": "source.python" }]
+    },
+    { 
+        "keys": ["ctrl+alt+f"], "command": "prettyjson",
+        "context": [{ "key": "selector", "operator": "equal", "operand": "source.json" }]
+    },
+    { 
+        "keys": ["ctrl+alt+f"], "command": "beautify_ruby",
+        "context": [{ "key": "selector", "operator": "equal", "operand": "source.ruby" }]
+    },
+    {
+        "keys": ["alt+m"], "command": "markdown_preview", "args": {"target": "browser"},
+        "context": [{ "key": "selector", "operator": "equal", "operand": "text.html.markdown" }]
+    }
+]

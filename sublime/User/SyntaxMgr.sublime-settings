@@ -1,0 +1,81 @@
+{
+  "syntaxmgr_settings": [
+    {
+      "scopes": [
+        "source.c",
+        "source.c++",
+        "source.python"
+      ],
+      "settings": {
+        "ensure_newline_at_eof_on_save": true,
+        "trim_trailing_white_space_on_save": true,
+        "indent_to_bracket": true,
+        "folder_exclude_patterns": [
+          ".svn",
+          ".git",
+          ".hg",
+          "CVS",
+          "__pycache__"
+        ],
+        "auto_complete_triggers": [
+          {
+            "characters": "."
+          }
+        ]
+      }
+    },
+    {
+      "extensions": [
+        "cmake"
+      ],
+      "settings": {
+        "syntax": "Packages/CMakeEditor/CMakeEditor.tmLanguage"
+      }
+    },
+    {
+      "extensions": [
+        "m"
+      ],
+      "settings": {
+        "syntax": "Packages/Matlab/Matlab.tmLanguage"
+      }
+    },
+    {
+      "extensions": [
+        "dtx",
+        "ins"
+      ],
+      "settings": {
+        "syntax": "Packages/LaTeX/LaTeX.tmLanguage"
+      }
+    },
+    {
+      "scopes": [
+        "source.ruby"
+      ],
+      "settings": {
+        "syntax": "Packages/Homebrew-formula-syntax/Syntaxes/Homebrew Formula.tmLanguage"
+      }
+    },
+    {
+      "scopes": [
+        "text.html.markdown"
+      ],
+      "settings": {
+        "color_scheme": "Packages/Predawn/predawn-markdown.tmTheme",
+        "syntax": "Packages/Markdown Extended/Syntaxes/Markdown Extended.tmLanguage",
+        "word_wrap": true,
+        "wrap_width": 80,
+        "spell_check": true
+      }
+    },
+    {
+      "scopes": [
+        "text"
+      ],
+      "settings": {
+        "spell_check": true
+      }
+    }
+  ]
+}

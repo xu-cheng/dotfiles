@@ -1,0 +1,25 @@
+User/Package Control.last-run
+User/Package Control.ca-list
+User/Package Control.ca-bundle
+User/Package Control.system-ca-bundle
+User/Package Control.cache/
+User/Package Control.ca-certs/
+User/c2u_tmp/
+User/Side Bar.sublime-settings
+User/Gist.sublime-settings
+User/*.cache
+
+###OSX###
+
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon
+
+
+# Thumbnails
+._*
+
+# Files that might appear on external disk
+.Spotlight-V100
+.Trashes

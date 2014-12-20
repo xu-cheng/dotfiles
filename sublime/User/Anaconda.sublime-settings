@@ -1,0 +1,7 @@
+{
+  "python_interpreter": "python",
+  "complete_parameters": true,
+  "complete_all_parameters": false,
+  "anaconda_gutter_marks": true,
+  "anaconda_gutter_theme": "alpha"
+}

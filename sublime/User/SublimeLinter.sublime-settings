@@ -1,0 +1,10 @@
+{
+  "user": {
+    "gutter_theme": "Packages/SublimeLinter/gutter-themes/Blueberry/cross/Blueberry - cross.gutter-theme",
+    "linters": {
+      "flake8": {
+        "@disable": false
+      }
+    }
+  }
+}

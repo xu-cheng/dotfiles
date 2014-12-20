@@ -1,0 +1,10 @@
+{
+  "python3": {
+    "syntax": "Packages/Python/Python.tmLanguage"
+  },
+  "attr": {
+    "author": "Xu Cheng",
+    "email": "xucheng@me.com"
+  },
+  "date_format": "%Y"
+}
