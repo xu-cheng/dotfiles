@@ -1,0 +1,3 @@
+[submodule "sublime"]
+	path = sublime
+	url = git@github.com:xu-cheng/sublime-settings.git
