@@ -66,7 +66,7 @@
 " Vim UI {
 
     " Color Scheme
-    let g:seoul256_background = 234
+    let g:seoul256_background = 233
     colo seoul256
 
     set tabpagemax=15               " Only show 15 tabs
