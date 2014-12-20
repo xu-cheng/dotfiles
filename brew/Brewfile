@@ -1,0 +1,550 @@
+{
+  "taps": [
+    "caskroom/cask",
+    "homebrew/python",
+    "homebrew/science",
+    "neovim/neovim",
+    "telemachus/desc",
+    "xu-cheng/mine",
+    "youtux/livecheck"
+  ],
+  "formulae": [
+    {
+      "name": "archey",
+      "options": null
+    },
+    {
+      "name": "autoconf",
+      "options": null
+    },
+    {
+      "name": "autojump",
+      "options": null
+    },
+    {
+      "name": "automake",
+      "options": null
+    },
+    {
+      "name": "binutils",
+      "options": null
+    },
+    {
+      "name": "bison",
+      "options": null
+    },
+    {
+      "name": "boost",
+      "options": null
+    },
+    {
+      "name": "boot2docker",
+      "options": null
+    },
+    {
+      "name": "brew-cask",
+      "options": null
+    },
+    {
+      "name": "cheat",
+      "options": null
+    },
+    {
+      "name": "ckan",
+      "options": null
+    },
+    {
+      "name": "cloog",
+      "options": null
+    },
+    {
+      "name": "cmake",
+      "options": null
+    },
+    {
+      "name": "coreutils",
+      "options": null
+    },
+    {
+      "name": "cscope",
+      "options": null
+    },
+    {
+      "name": "ctags",
+      "options": null
+    },
+    {
+      "name": "dnscrypt-proxy",
+      "options": null
+    },
+    {
+      "name": "docker",
+      "options": null
+    },
+    {
+      "name": "doxygen",
+      "options": null
+    },
+    {
+      "name": "faac",
+      "options": null
+    },
+    {
+      "name": "ffmpeg",
+      "options": null
+    },
+    {
+      "name": "findutils",
+      "options": null
+    },
+    {
+      "name": "flex",
+      "options": null
+    },
+    {
+      "name": "flint",
+      "options": null
+    },
+    {
+      "name": "fontconfig",
+      "options": null
+    },
+    {
+      "name": "freetype",
+      "options": null
+    },
+    {
+      "name": "gawk",
+      "options": null
+    },
+    {
+      "name": "gcc",
+      "options": null
+    },
+    {
+      "name": "gdbm",
+      "options": null
+    },
+    {
+      "name": "geoip",
+      "options": null
+    },
+    {
+      "name": "geos",
+      "options": null
+    },
+    {
+      "name": "gettext",
+      "options": null
+    },
+    {
+      "name": "ghostscript",
+      "options": null
+    },
+    {
+      "name": "gistit",
+      "options": null
+    },
+    {
+      "name": "git",
+      "options": null
+    },
+    {
+      "name": "git-flow",
+      "options": null
+    },
+    {
+      "name": "gmp",
+      "options": null
+    },
+    {
+      "name": "gnu-getopt",
+      "options": null
+    },
+    {
+      "name": "gnu-indent",
+      "options": null
+    },
+    {
+      "name": "gnu-sed",
+      "options": null
+    },
+    {
+      "name": "gnu-tar",
+      "options": null
+    },
+    {
+      "name": "gnutls",
+      "options": null
+    },
+    {
+      "name": "graphicsmagick",
+      "options": null
+    },
+    {
+      "name": "graphviz",
+      "options": null
+    },
+    {
+      "name": "htop-osx",
+      "options": null
+    },
+    {
+      "name": "hub",
+      "options": null
+    },
+    {
+      "name": "isl",
+      "options": null
+    },
+    {
+      "name": "jansson",
+      "options": null
+    },
+    {
+      "name": "jbig2dec",
+      "options": null
+    },
+    {
+      "name": "jpeg",
+      "options": null
+    },
+    {
+      "name": "keybase",
+      "options": null
+    },
+    {
+      "name": "lame",
+      "options": null
+    },
+    {
+      "name": "libevent",
+      "options": null
+    },
+    {
+      "name": "libffi",
+      "options": null
+    },
+    {
+      "name": "libmpc",
+      "options": null
+    },
+    {
+      "name": "libpng",
+      "options": null
+    },
+    {
+      "name": "libsodium",
+      "options": null
+    },
+    {
+      "name": "libtasn1",
+      "options": null
+    },
+    {
+      "name": "libtiff",
+      "options": null
+    },
+    {
+      "name": "libtool",
+      "options": null
+    },
+    {
+      "name": "libuv",
+      "options": null
+    },
+    {
+      "name": "libvo-aacenc",
+      "options": null
+    },
+    {
+      "name": "libyaml",
+      "options": null
+    },
+    {
+      "name": "little-cms",
+      "options": null
+    },
+    {
+      "name": "little-cms2",
+      "options": null
+    },
+    {
+      "name": "lua",
+      "options": null
+    },
+    {
+      "name": "luajit",
+      "options": null
+    },
+    {
+      "name": "makedepend",
+      "options": null
+    },
+    {
+      "name": "matplotlib",
+      "options": [
+        "--with-python3",
+        "--with-pyqt",
+        "--with-tex",
+        "--with-ghostscript",
+        "--with-pyside"
+      ]
+    },
+    {
+      "name": "matplotlib-basemap",
+      "options": [
+        "--with-python3"
+      ]
+    },
+    {
+      "name": "mercurial",
+      "options": null
+    },
+    {
+      "name": "mpfr",
+      "options": null
+    },
+    {
+      "name": "mupdf",
+      "options": null
+    },
+    {
+      "name": "neovim",
+      "options": null
+    },
+    {
+      "name": "nettle",
+      "options": null
+    },
+    {
+      "name": "node",
+      "options": null
+    },
+    {
+      "name": "numpy",
+      "options": [
+        "--with-python3"
+      ]
+    },
+    {
+      "name": "openssl",
+      "options": null
+    },
+    {
+      "name": "p11-kit",
+      "options": null
+    },
+    {
+      "name": "pandoc",
+      "options": null
+    },
+    {
+      "name": "pandoc-citeproc",
+      "options": null
+    },
+    {
+      "name": "pbc",
+      "options": null
+    },
+    {
+      "name": "pcre",
+      "options": null
+    },
+    {
+      "name": "pillow",
+      "options": [
+        "--with-python3"
+      ]
+    },
+    {
+      "name": "pkg-config",
+      "options": null
+    },
+    {
+      "name": "pyenv",
+      "options": null
+    },
+    {
+      "name": "pyenv-pip-rehash",
+      "options": null
+    },
+    {
+      "name": "pyenv-virtualenv",
+      "options": null
+    },
+    {
+      "name": "pyenv-virtualenvwrapper",
+      "options": null
+    },
+    {
+      "name": "pyenv-which-ext",
+      "options": null
+    },
+    {
+      "name": "pyqt",
+      "options": [
+        "--with-python3"
+      ]
+    },
+    {
+      "name": "pyside",
+      "options": [
+        "--with-python3"
+      ]
+    },
+    {
+      "name": "python",
+      "options": null
+    },
+    {
+      "name": "python3",
+      "options": null
+    },
+    {
+      "name": "qt",
+      "options": null
+    },
+    {
+      "name": "quilt",
+      "options": null
+    },
+    {
+      "name": "readline",
+      "options": null
+    },
+    {
+      "name": "rethinkdb",
+      "options": null
+    },
+    {
+      "name": "rtmpdump",
+      "options": null
+    },
+    {
+      "name": "ruby",
+      "options": null
+    },
+    {
+      "name": "scipy",
+      "options": [
+        "--with-python3"
+      ]
+    },
+    {
+      "name": "shellcheck",
+      "options": null
+    },
+    {
+      "name": "shiboken",
+      "options": [
+        "--with-python3"
+      ]
+    },
+    {
+      "name": "sip",
+      "options": [
+        "--with-python3"
+      ]
+    },
+    {
+      "name": "sqlite",
+      "options": null
+    },
+    {
+      "name": "ssh-copy-id",
+      "options": null
+    },
+    {
+      "name": "subversion",
+      "options": null
+    },
+    {
+      "name": "suite-sparse",
+      "options": null
+    },
+    {
+      "name": "swig",
+      "options": null
+    },
+    {
+      "name": "tbb",
+      "options": null
+    },
+    {
+      "name": "tcping",
+      "options": null
+    },
+    {
+      "name": "terminal-notifier",
+      "options": null
+    },
+    {
+      "name": "texi2html",
+      "options": null
+    },
+    {
+      "name": "texinfo",
+      "options": null
+    },
+    {
+      "name": "tor",
+      "options": null
+    },
+    {
+      "name": "tree",
+      "options": null
+    },
+    {
+      "name": "unrar",
+      "options": null
+    },
+    {
+      "name": "vim",
+      "options": [
+        "--with-lua",
+        "--with-python3"
+      ]
+    },
+    {
+      "name": "webp",
+      "options": null
+    },
+    {
+      "name": "wget",
+      "options": null
+    },
+    {
+      "name": "with-readline",
+      "options": null
+    },
+    {
+      "name": "x264",
+      "options": null
+    },
+    {
+      "name": "xvid",
+      "options": null
+    },
+    {
+      "name": "xz",
+      "options": null
+    },
+    {
+      "name": "yasm",
+      "options": null
+    },
+    {
+      "name": "youtube-dl",
+      "options": null
+    },
+    {
+      "name": "zeromq",
+      "options": null
+    },
+    {
+      "name": "zsh-syntax-highlighting",
+      "options": null
+    }
+  ]
+}
