@@ -1,30 +1,6 @@
 Shell Settings
 ==============
 
-## iTerm 2
-
-* Install iTerm 2 from [here](http://www.iterm2.com/).
-* Install Color Scheme from [here](https://github.com/mbadolato/iTerm2-Color-Schemes). Use scheme `Monokai Soda`.
-
-## homebrew
-
-* Install homebrew:
-
-```bash
-ruby -e "$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)"
-brew doctor
-```
-
-* Install essential formulas:
-
-```bash
-brew install coreutils findutils binutils gnu-tar gnu-sed gawk gnutls gnu-indent gnu-getopt
-brew install wget readline tree htop cheat pandoc
-brew install git git-flow hg svn autojump vim macvim zsh-syntax-highlighting
-brew install graphicsmagick ghostscript graphviz
-brew tap phinze/cask; brew install brew-cask
-```
-
 ## zsh
 
 * Set zsh as default shell:
@@ -61,6 +37,8 @@ if which hub > /dev/null; then eval "$(hub alias -s)"; fi
 compinit
 
 alias rake='noglob rake'
+alias vim='nvim'
+alias subl='subl && sleep 0.1 && subl'
 
 clean_hist(){
     rm -f "$HOME/.zsh_history"
