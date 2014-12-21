@@ -41,9 +41,9 @@ Run below commands:
 ```bash
 git config --global user.name "Your Name"
 git config --global user.email "your_email@yourmail.com"
-git config --global core.excludesfile '~/.gitignore'
+git config --global core.excludesfile "~/.gitignore"
 git config --global core.autocrlf input
-git config --global core.editor "subl -w"
+git config --global core.editor "nvim"
 git config --global color.status auto
 git config --global color.branch auto
 git config --global color.interactive auto

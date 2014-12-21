@@ -24,7 +24,7 @@ ZSH_THEME="mytheme"
 plugins=(git git-flow git-hubflow mercurial svn pip pyenv autojump dirhistory colored-man brew brew-cask osx)
 
 export PATH=$(brew --prefix)/bin:$(brew --prefix)/sbin:${PATH}
-export EDITOR="subl -w"
+export EDITOR="nvim"
 export PYENV_ROOT="$HOME/.pyenv"
 export CHEATCOLORS=true
 
