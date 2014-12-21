@@ -1,9 +1,9 @@
 " Load plugins
-source ~/.nvim/nvimrc.plugins
+source ~/.nvim/plugins.vim
 " Load basic settings
-source ~/.nvim/nvimrc.basic
+source ~/.nvim/basic.vim
 " Load key mapping
-source ~/.nvim/nvimrc.keymap
+source ~/.nvim/keymap.vim
 " Load plugins settings
 for f in split(glob('~/.nvim/pluginrc.d/*.vim'), '\n')
   exe 'source' f
