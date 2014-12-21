@@ -52,4 +52,7 @@ git config --global color.grep auto
 git config --global color.showbranch auto
 git config --global color.ui auto
 git config --global alias.lg "log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%C(bold blue)<%an>%Creset' --abbrev-commit"
+git config --global pager.log "$(brew --prefix git)/share/git-core/contrib/diff-highlight/diff-highlight | less"
+git config --global pager.show "$(brew --prefix git)/share/git-core/contrib/diff-highlight/diff-highlight | less"
+git config --global pager.diff "$(brew --prefix git)/share/git-core/contrib/diff-highlight/diff-highlight | less"
 ```
