@@ -18,6 +18,7 @@ Plug 'myusuf3/numbers.vim'
 
 " General Programming
 Plug 'tpope/vim-fugitive'
+Plug 'airblade/vim-gitgutter'
 Plug 'godlygeek/tabular'
 Plug 'majutsushi/tagbar'
 Plug 'Raimondi/delimitMate'
@@ -35,5 +36,6 @@ Plug 'rizzatti/dash.vim'
 
 " Misc
 Plug 'tpope/vim-markdown'
+Plug 'henrik/vim-reveal-in-finder'
 
 call plug#end()
