@@ -20,6 +20,7 @@ Plug 'myusuf3/numbers.vim'
 Plug 'tpope/vim-fugitive'
 Plug 'godlygeek/tabular'
 Plug 'majutsushi/tagbar'
+Plug 'Raimondi/delimitMate'
 
 " Color Scheme
 Plug 'junegunn/seoul256.vim'
