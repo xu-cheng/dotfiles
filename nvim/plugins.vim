@@ -14,6 +14,7 @@ Plug 'bling/vim-airline'
 Plug 'bling/vim-bufferline'
 Plug 'Lokaltog/vim-easymotion'
 Plug 'nathanaelkane/vim-indent-guides'
+Plug 'myusuf3/numbers.vim'
 
 " General Programming
 Plug 'tpope/vim-fugitive'
