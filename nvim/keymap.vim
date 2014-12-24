@@ -57,3 +57,6 @@ nmap <Leader>ff [I:let nr = input("Which one: ")<Bar>exe "normal " . nr ."[\t"<C
 " Easier horizontal scrolling
 map zl zL
 map zh zH
+
+" Delete without overwriting last yank.
+nnoremap <leader>d "_d
