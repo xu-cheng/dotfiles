@@ -21,7 +21,7 @@ curl -L https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh | 
 ```bash
 ZSH_THEME="mytheme"
 
-plugins=(git git-flow git-hubflow mercurial svn pip pyenv autojump dirhistory colored-man brew brew-cask osx)
+plugins=(git git-flow git-hubflow ssh-agent mercurial svn pip pyenv autojump dirhistory colored-man brew brew-cask osx)
 
 export PATH=$(brew --prefix)/bin:$(brew --prefix)/sbin:${PATH}
 export EDITOR="nvim"
