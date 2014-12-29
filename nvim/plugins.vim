@@ -46,7 +46,7 @@ Plug 'Raimondi/delimitMate'
 Plug 'junegunn/seoul256.vim'
 
 " LaTeX
-Plug 'LaTeX-Box-Team/LaTeX-Box'
+Plug 'lervag/vim-latex'
 Plug 'auctex.vim'
 
 " Dash
