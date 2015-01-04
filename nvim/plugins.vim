@@ -41,6 +41,11 @@ Plug 'godlygeek/tabular'
 Plug 'majutsushi/tagbar'
 Plug 'Raimondi/delimitMate'
 
+" Snippets & AutoComplete
+Plug 'Valloric/YouCompleteMe'
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
+
 " Color Scheme
 Plug 'junegunn/seoul256.vim'
 
