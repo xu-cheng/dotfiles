@@ -45,6 +45,7 @@ Plug 'Raimondi/delimitMate'
 Plug 'Valloric/YouCompleteMe'
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
+Plug 'ervandew/supertab'
 
 " Color Scheme
 Plug 'junegunn/seoul256.vim'
