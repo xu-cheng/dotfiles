@@ -197,3 +197,12 @@
     endfunction
 
 " }
+
+" Remove Cache {
+    function! RemoveCache()
+        let l:cache = $HOME . '/.nvim/cache/'
+        :call system('rm -rf ' . '"' . l:cache . '"')
+    endfunction
+
+    command RemoveCache call RemoveCache()
+" }
