@@ -6,7 +6,6 @@ function! MyNumbersToggle()
         exec ':NumbersEnable'
         let g:never_enable_numbers = 0
     else
-        let a = 1
         exec ':NumbersToggle'
     endif
 endfunction
