@@ -204,5 +204,5 @@
         :call system('rm -rf ' . '"' . l:cache . '"')
     endfunction
 
-    command RemoveCache call RemoveCache()
+    command! RemoveCache -nargs=0 call RemoveCache()
 " }
