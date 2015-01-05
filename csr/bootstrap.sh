@@ -120,6 +120,8 @@ Please add below codes into your .bashrc
     export PATH="\$HOME/usr/bin:\$PATH"
     export MANPATH="\$HOME/usr/share/man:\$MANPATH"
     export INFOPATH="\$HOME/usr/share/info:\$INFOPATH"
+    export HOMEBREW_CACHE=/tmp/Homebrew/Cache
+    export HOMEBREW_LOGS=/tmp/Homeberw/Logs
     [[ -s $(brew --prefix)/etc/autojump.sh ]] && . $(brew --prefix)/etc/autojump.sh
 
 EOS
