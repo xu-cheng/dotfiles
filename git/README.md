@@ -55,6 +55,7 @@ git config --global alias.lg "log --color --graph --pretty=format:'%Cred%h%Crese
 git config --global alias.co checkout
 git config --global alias.st status
 git config --global alias.rpo "remote prune origin"
+git config --global alias.pum "pull upstream master"
 git config --global pager.log "/usr/local/share/git-core/contrib/diff-highlight/diff-highlight | less"
 git config --global pager.show "/usr/local/share/git-core/contrib/diff-highlight/diff-highlight | less"
 git config --global pager.diff "/usr/local/share/git-core/contrib/diff-highlight/diff-highlight | less"
