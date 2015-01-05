@@ -129,5 +129,7 @@ Please add below codes into your .bashrc
     export HOMEBREW_CACHE=/tmp/$(whoami)/Homebrew/Cache
     export HOMEBREW_LOGS=/tmp/$(whoami)/Homeberw/Logs
     [[ -s $(brew --prefix)/etc/autojump.sh ]] && . $(brew --prefix)/etc/autojump.sh
+    [[ -d "$HOMEBREW_LOGS" ]] || mkdir -p "$HOMEBREW_LOGS"
+    [[ -d "$HOMEBREW_CACHE" ]] || mkdir -p "$HOMEBREW_CACHE"
 
 EOS
