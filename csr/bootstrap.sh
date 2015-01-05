@@ -1,9 +1,10 @@
 #!/bin/bash
 
 PREFIX="${HOME}/usr"
+BOOTSTRAP_TMP="/tmp/$(whoami)/bootstrap"
 export PATH="${PREFIX}/bin:${PATH}"
-export HOMEBREW_CACHE=/tmp/Homebrew/Cache
-export HOMEBREW_LOGS=/tmp/Homeberw/Logs
+export HOMEBREW_CACHE="/tmp/$(whoami)/Homebrew/Cache"
+export HOMEBREW_LOGS="/tmp/$(whoami)/Homeberw/Logs"
 
 ohai()
 {
@@ -37,8 +38,11 @@ if ! /usr/bin/curl --connect-timeout 3 "https://www.google.com" >/dev/null 2>&1;
     odie "SSL connection not available."
 fi
 
-[[ -d /tmp/bootstrap ]] || mkdir -p /tmp/bootstrap
-cd /tmp/bootstrap
+[[ -d "$BOOTSTRAP_TMP" ]] || mkdir -p "$BOOTSTRAP_TMP"
+[[ -d "$HOMEBREW_LOGS" ]] || mkdir -p "$HOMEBREW_LOGS"
+[[ -d "$HOMEBREW_CACHE" ]] || mkdir -p "$HOMEBREW_CACHE"
+
+cd "$BOOTSTRAP_TMP"
 
 if [[ -f "${PREFIX}/lib/libyaml.a" ]] || [[ -f /usr/local/lib/libyaml.a ]] || [[ -f /usr/lib/libyaml.a ]]; then
     oh1 "Found libyaml, skip install."
@@ -122,8 +126,8 @@ Please add below codes into your .bashrc
     export PATH="\$HOME/usr/bin:\$PATH"
     export MANPATH="\$HOME/usr/share/man:\$MANPATH"
     export INFOPATH="\$HOME/usr/share/info:\$INFOPATH"
-    export HOMEBREW_CACHE=/tmp/Homebrew/Cache
-    export HOMEBREW_LOGS=/tmp/Homeberw/Logs
+    export HOMEBREW_CACHE=/tmp/$(whoami)/Homebrew/Cache
+    export HOMEBREW_LOGS=/tmp/$(whoami)/Homeberw/Logs
     [[ -s $(brew --prefix)/etc/autojump.sh ]] && . $(brew --prefix)/etc/autojump.sh
 
 EOS
