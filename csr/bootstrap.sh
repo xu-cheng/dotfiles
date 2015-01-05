@@ -2,6 +2,8 @@
 
 PREFIX="${HOME}/usr"
 export PATH="${PREFIX}/bin:${PATH}"
+export HOMEBREW_CACHE=/tmp/Homebrew/Cache
+export HOMEBREW_LOGS=/tmp/Homeberw/Logs
 
 ohai()
 {
