@@ -968,9 +968,9 @@
 	<key>NSWindow Frame SUStatusFrame</key>
 	<string>528 578 384 129 0 0 1440 877 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>325 175 725 621 0 0 1440 877 </string>
+	<string>338 220 725 621 0 0 1440 900 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
-	<string>701 110 710 621 0 0 1440 877 </string>
+	<string>346 162 725 621 0 0 1440 877 </string>
 	<key>NSWindow Frame iTerm Window 2</key>
 	<string>267 256 710 621 0 0 1440 877 </string>
 	<key>NSWindow Frame iTerm Window 3</key>
@@ -2536,7 +2536,7 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2014-12-20T14:07:58Z</date>
+	<date>2015-01-04T13:28:17Z</date>
 	<key>SavePasteHistory</key>
 	<false/>
 	<key>Secure Input</key>
@@ -2545,6 +2545,8 @@
 	<false/>
 	<key>ShowBookmarkName</key>
 	<false/>
+	<key>ShowFullScreenTabBar</key>
+	<true/>
 	<key>ShowPaneTitles</key>
 	<true/>
 	<key>SmartPlacement</key>
