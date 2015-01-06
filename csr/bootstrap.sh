@@ -200,6 +200,7 @@ EOS
     cat > "$HOME/usr/bin/sh" <<EOS
 #!/bin/sh
 if [[ -x \$HOME/usr/bin/zsh ]] && [[ \$(uname -m) == 'x86_64' ]]; then
+    export SHELL="\$HOME/usr/bin/zsh"
     \$HOME/usr/bin/zsh \$*
 else
     /bin/bash \$*
