@@ -33,7 +33,9 @@ if which pyenv-virtualenv-init > /dev/null; then eval "$(pyenv virtualenv-init -
 if which hub > /dev/null; then eval "$(hub alias -s)"; fi
 [[ -s `brew --prefix`/etc/autojump.sh ]] && . `brew --prefix`/etc/autojump.sh
 ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets)
-[[ -s /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]] && . /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+ZSH_HIGHLIGHT_PATH="$(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
+[[ -s "$ZSH_HIGHLIGHT_PATH" ]] && . $ZSH_HIGHLIGHT_PATH
+
 
 compinit
 
