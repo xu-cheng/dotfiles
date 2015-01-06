@@ -19,7 +19,7 @@ ZSH_HIGHLIGHT_PATH="$(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-hi
 [[ -f $HOME/.travis/travis.sh ]] && source $HOME/.travis/travis.sh
 
 source $ZSH/oh-my-zsh.sh
-compinit
+#compinit
 
 alias rake='noglob rake'
 alias vim='nvim'
