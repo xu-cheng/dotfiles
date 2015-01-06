@@ -111,7 +111,7 @@ else
     popd
 fi
 
-if oargv_include "--no-gcc"; then
+if ! oargv_include "--with-gcc"; then
     if ! [[ -f "${PREFIX}/bin/gcc-$(gcc -dumpversion |cut -d. -f1,2)" ]];then
         ohai "Link gcc to linuxbrew"
         ln -s "$(which gcc)" "${PREFIX}/bin/gcc-$(gcc -dumpversion |cut -d. -f1,2)"
