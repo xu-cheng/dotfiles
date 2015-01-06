@@ -39,7 +39,7 @@ $ ssh -T git@github.com
 Run below commands:
 
 ```bash
-curl -L -s https://www.gitignore.io/api/osx > $HOME/.gitignore
+curl -L -s https://www.gitignore.io/api/osx,linux,windows > $HOME/.gitignore
 git config --global core.excludesfile "$HOME/.gitignore"
 git config --global user.name "Your Name"
 git config --global user.email "your_email@yourmail.com"
