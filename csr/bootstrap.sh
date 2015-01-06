@@ -197,11 +197,20 @@ clean_hist(){
     rm -f "\$HOME/.zsh_history"
 }
 EOS
+    cat > "$HOME/usr/bin/sh" <<EOS
+#!/bin/sh
+if [[ -x \$HOME/usr/bin/zsh ]] && [[ \$(uname -m) == 'x86_64' ]]; then
+    \$HOME/usr/bin/zsh \$*
+else
+    /bin/bash \$*
+fi
+EOS
+    chmod a+x "$HOME/usr/bin/sh"
 cat <<EOS
 In order to use zsh as default shell, add \`command="\$HOME/usr/bin/zsh"\`
 into file ~/.ssh/authorized_keys. It should look like this:
 
-    command="\$HOME/usr/bin/zsh"  ssh-rsa AAA<rest of your public key> <your email>
+    command="\$HOME/usr/bin/sh"  ssh-rsa AAA<rest of your public key> <your email>
 EOS
     popd
 fi
