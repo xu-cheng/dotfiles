@@ -139,24 +139,74 @@ fi
 
 ohai "Install Packages"
 brew update
-brew install autojump openssl curl
+if ! oargv_include "--no-zsh"; then
+    brew install zsh zsh-syntax-highlighting
+fi
+brew install openssl curl autojump hub
 if ! oargv_include "--no-python"; then
     brew install python
 fi
 brew upgrade
 brew cleanup
 
-cd "$HOME"
-ohai "Done!"
-cat << EOS
+if [[ -d "$HOME/.oh-my-zsh" ]] || oargv_include "--no-zsh"; then
+    if oargv_include "--no-zsh"; then
+        cat <<EOS
 Please add below codes into your .bashrc
     export PATH="\$HOME/usr/bin:\$PATH"
     export MANPATH="\$HOME/usr/share/man:\$MANPATH"
     export INFOPATH="\$HOME/usr/share/info:\$INFOPATH"
     export HOMEBREW_CACHE=/tmp/$(whoami)/Homebrew/Cache
     export HOMEBREW_LOGS=/tmp/$(whoami)/Homeberw/Logs
+    if which hub > /dev/null; then eval "\$(hub alias -s)"; fi
     [[ -s \$(brew --prefix)/etc/autojump.sh ]] && . \$(brew --prefix)/etc/autojump.sh
     [[ -d "\$HOMEBREW_LOGS" ]] || mkdir -p "\$HOMEBREW_LOGS"
     [[ -d "\$HOMEBREW_CACHE" ]] || mkdir -p "\$HOMEBREW_CACHE"
-
 EOS
+    else
+        oh1 "Found oh-my-zsh, skip install."
+    fi
+else
+    ohai "Install oh-my-zsh"
+    pushd "$HOME"
+    git clone https://github.com/robbyrussell/oh-my-zsh.git "$HOME/.oh-my-zsh"
+    cat > "$HOME/.zshrc" << EOS
+export ZSH=\$HOME/.oh-my-zsh
+ZSH_THEME="avit"
+
+PATH="/usr/kerberos/bin:/usr/local/bin:/bin:/usr/bin:$PATH"
+export PATH="\$HOME/usr/bin:\$PATH"
+export MANPATH="\$HOME/usr/share/man:$MANPATH"
+export INFOPATH="\$HOME/usr/share/info:$INFOPATH"
+export HOMEBREW_CACHE=/tmp/$(whoami)/Homebrew/Cache
+export HOMEBREW_LOGS=/tmp/$(whoami)/Homeberw/Logs
+
+plugins=(git git-hubflow autojump dirhistory colored-man)
+
+source \$ZSH/oh-my-zsh.sh
+
+if which hub > /dev/null; then eval "\$(hub alias -s)"; fi
+[[ -s \$(brew --prefix)/etc/autojump.sh ]] && . \$(brew --prefix)/etc/autojump.sh
+ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets)
+ZSH_HIGHLIGHT_PATH="\$(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
+[[ -s "\$ZSH_HIGHLIGHT_PATH" ]] && . \$ZSH_HIGHLIGHT_PATH
+[[ -d "\$HOMEBREW_LOGS" ]] || mkdir -p "\$HOMEBREW_LOGS"
+[[ -d "\$HOMEBREW_CACHE" ]] || mkdir -p "\$HOMEBREW_CACHE"
+
+compinit
+
+clean_hist(){
+    rm -f "\$HOME/.zsh_history"
+}
+EOS
+cat <<EOS
+In order to use zsh as default shell, add \`command="\$HOME/usr/bin/zsh"\`
+into file ~/.ssh/authorized_keys. It should look like this:
+
+    command="\$HOME/usr/bin/zsh"  ssh-rsa AAA<rest of your public key> <your email>
+EOS
+    popd
+fi
+
+cd "$HOME"
+ohai "Done!"
