@@ -30,11 +30,23 @@ odie()
 ocurl() # $1 - url $2 - name $3 - hash $4 - hash_program
 {
     ohai "Download ${2}"
-    [[ -f ${2} ]] || /usr/bin/curl -#L "${1}" -o "${2}"
+    [[ -f ${2} ]] || curl -#L "${1}" -o "${2}"
     (echo -e "${3}  ${2}\n" | ${4} -c -) || odie "wrong hash for ${2}"
 }
 
-if ! /usr/bin/curl --connect-timeout 3 "https://www.google.com" >/dev/null 2>&1; then
+ARGV=$*
+oargv_include()
+{
+    for var in $ARGV
+    do
+        if [[ "$var" == "$1" ]]; then
+            return 0
+        fi
+    done
+    return 1
+}
+
+if ! curl --connect-timeout 3 "https://www.google.com" >/dev/null 2>&1; then
     odie "SSL connection not available."
 fi
 
@@ -99,23 +111,38 @@ else
     popd
 fi
 
-if ! [[ -f "${PREFIX}/bin/gcc-$(gcc -dumpversion |cut -d. -f1,2)" ]];then
-    ohai "Link gcc to linuxbrew"
-    ln -s "$(which gcc)" "${PREFIX}/bin/gcc-$(gcc -dumpversion |cut -d. -f1,2)"
-    ln -s "$(which g++)" "${PREFIX}/bin/g++-$(g++ -dumpversion |cut -d. -f1,2)"
-    ln -s "$(which gfortran)" "${PREFIX}/bin/gfortran-$(gcc -dumpversion |cut -d. -f1,2)"
-    ohai "Test gcc in linuxbrew"
-    if brew install wget >/dev/null 2>&1 && brew test wget >/dev/null 2>&1; then
-        oh1 "OK"
-    else
-        oopo "gcc is not working for linuxbrew"
+if oargv_include "--no-gcc"; then
+    if ! [[ -f "${PREFIX}/bin/gcc-$(gcc -dumpversion |cut -d. -f1,2)" ]];then
+        ohai "Link gcc to linuxbrew"
+        ln -s "$(which gcc)" "${PREFIX}/bin/gcc-$(gcc -dumpversion |cut -d. -f1,2)"
+        ln -s "$(which g++)" "${PREFIX}/bin/g++-$(g++ -dumpversion |cut -d. -f1,2)"
+        ln -s "$(which gfortran)" "${PREFIX}/bin/gfortran-$(gcc -dumpversion |cut -d. -f1,2)"
     fi
-    brew remove wget >/dev/null 2>&1
+else
+    if brew ls gcc >/dev/null 2>&1; then
+        oh1 "Found linuxbrew gcc, skip install."
+    else
+        ohai "Install linuxbrew gcc"
+        OLD_PATH="$PATH"
+        TMP_BIN="$BOOTSTRAP_TMP/bin"
+        GCC_VERSION=$(gcc -dumpversion | cut -d. -f1,2)
+        [[ -d $TMP_BIN ]] || mkdir -p "$TMP_BIN"
+        ln -s "$(which gcc)" "$TMP_BIN/gcc-$GCC_VERSION"
+        ln -s "$(which g++)" "$TMP_BIN/g++-$GCC_VERSION"
+        ln -s "$(which gfortran)" "$TMP_BIN/gfortran-$GCC_VERSION"
+        export PATH="$TMP_BIN:$PATH"
+        brew install gcc
+        rm -rf "$TMP_BIN"
+        export PATH="$OLD_PATH"
+    fi
 fi
 
 ohai "Install Packages"
 brew update
-brew install python autojump
+brew install autojump openssl curl
+if ! oargv_include "--no-python"; then
+    brew install python
+fi
 brew upgrade
 brew cleanup
 
