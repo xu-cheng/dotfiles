@@ -28,3 +28,6 @@ alias subl='subl && sleep 0.1 && subl'
 clean_hist(){
     rm -f "$HOME/.zsh_history"
 }
+
+# Load confidential information
+[[ -s $HOME/.config/tokens ]] && . $HOME/.config/tokens

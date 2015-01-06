@@ -15,5 +15,8 @@ chsh -s /bin/zsh
 curl -L http://install.ohmyz.sh | sh
 ```
 
-* Copy `mytheme.zsh-theme` to `~/.oh-my-zsh/custom`
-* Copy `.zshrc` to `~/.zshrc`
+* Link file:
+```bash
+ln -s $(pwd)/mytheme.zsh-theme $HOME/.oh-my-zsh/custom
+ln -s $(pwd)/.zshrc $HOME
+```
