@@ -39,9 +39,11 @@ $ ssh -T git@github.com
 Run below commands:
 
 ```bash
+curl -L -s https://www.gitignore.io/api/osx > $HOME/.gitignore
+git config --global core.excludesfile "$HOME/.gitignore"
 git config --global user.name "Your Name"
 git config --global user.email "your_email@yourmail.com"
-git config --global core.excludesfile "~/.gitignore"
+git config --global user.signingkey "your gpg key id"
 git config --global core.autocrlf input
 git config --global core.editor "nvim"
 git config --global color.status auto
