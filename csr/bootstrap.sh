@@ -181,9 +181,7 @@ export INFOPATH="\$HOME/usr/share/info:$INFOPATH"
 export HOMEBREW_CACHE=/tmp/$(whoami)/Homebrew/Cache
 export HOMEBREW_LOGS=/tmp/$(whoami)/Homeberw/Logs
 
-plugins=(git git-hubflow autojump dirhistory colored-man)
-
-source \$ZSH/oh-my-zsh.sh
+plugins=(git git-hubflow dirhistory colored-man)
 
 if which hub > /dev/null; then eval "\$(hub alias -s)"; fi
 [[ -s \$(brew --prefix)/etc/autojump.sh ]] && . \$(brew --prefix)/etc/autojump.sh
@@ -193,7 +191,7 @@ ZSH_HIGHLIGHT_PATH="\$(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-h
 [[ -d "\$HOMEBREW_LOGS" ]] || mkdir -p "\$HOMEBREW_LOGS"
 [[ -d "\$HOMEBREW_CACHE" ]] || mkdir -p "\$HOMEBREW_CACHE"
 
-compinit
+source \$ZSH/oh-my-zsh.sh
 
 clean_hist(){
     rm -f "\$HOME/.zsh_history"
