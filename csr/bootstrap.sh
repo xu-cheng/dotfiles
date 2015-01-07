@@ -202,7 +202,7 @@ EOS
 
 ZSH="\$HOME/usr/bin/zsh"
 
-if [[ -x \$ZSH ]] && \$ZSH -c "exit" ; then
+if [[ -x \$ZSH ]] && \$ZSH -c "exit" >/dev/null 2>&1; then
     export SHELL="\$ZSH"
     \$ZSH \$*
 else
