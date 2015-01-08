@@ -27,8 +27,6 @@ Plug 'gcmt/wildfire.vim'
 
 " Writing
 Plug 'reedes/vim-litecorrect'
-Plug 'reedes/vim-textobj-sentence'
-Plug 'reedes/vim-textobj-quote'
 Plug 'reedes/vim-wordy'
 
 " General Programming
