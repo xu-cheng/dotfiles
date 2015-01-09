@@ -52,15 +52,15 @@ Plug 'ervandew/supertab'
 Plug 'junegunn/seoul256.vim'
 
 " LaTeX
-Plug 'lervag/vim-latex'
-Plug 'auctex.vim'
+Plug 'lervag/vim-latex', { 'for': 'latex' }
+Plug 'auctex.vim', { 'for': 'latex' }
 
 " Dash
 Plug 'rizzatti/funcoo.vim'
 Plug 'rizzatti/dash.vim'
 
 " Misc
-Plug 'tpope/vim-markdown'
+Plug 'tpope/vim-markdown', { 'for': 'markdown' }
 Plug 'henrik/vim-reveal-in-finder'
 
 call plug#end()
