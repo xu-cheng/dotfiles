@@ -74,6 +74,7 @@ nnoremap <leader>v V`]
 nnoremap tt :tabnew<Space>
 nnoremap tw :tabclose<CR>
 nnoremap tm :tabmove<Space>
+nnoremap tn :tabnext<Space>
 nnoremap th :tabfirst<CR>
 nnoremap tj :tabnext<CR>
 nnoremap tk :tabprev<CR>
