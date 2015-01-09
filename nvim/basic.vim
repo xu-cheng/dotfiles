@@ -22,6 +22,7 @@
     " https://github.com/neovim/neovim/issues/1551
     "set spell                           " Spell checking on
     set hidden                          " Allow buffer switching without saving
+    set switchbuf=usetab,newtab         " Switching to the existing tab or creating new one
     set iskeyword-=.                    " '.' is an end of word designator
     set iskeyword-=#                    " '#' is an end of word designator
     set iskeyword-=-                    " '-' is an end of word designator
