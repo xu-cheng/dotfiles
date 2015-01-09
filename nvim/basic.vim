@@ -146,7 +146,7 @@
 
     " Initialize directories
     function! InitializeDirectories()
-        let parent = $HOME . '/.nvim/cache/'
+        let parent = g:vim_home . 'cache/'
         if exists("*mkdir")
             if !isdirectory(parent)
                 call mkdir(parent)
@@ -200,7 +200,7 @@
 
 " Remove Cache {
     function! RemoveCache()
-        let l:cache = $HOME . '/.nvim/cache/'
+        let l:cache = g:vim_home . 'cache/'
         :call system('rm -rf ' . '"' . l:cache . '"')
     endfunction
 

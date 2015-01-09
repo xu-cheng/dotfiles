@@ -1,10 +1,12 @@
+" Set vim-home
+let g:vim_home = $HOME . '/.nvim/'
 " Load plugins
-source ~/.nvim/plugins.vim
+execute 'source' g:vim_home . 'plugins.vim'
 " Load basic settings
-source ~/.nvim/basic.vim
+execute 'source' g:vim_home . 'basic.vim'
 " Load key mapping
-source ~/.nvim/keymap.vim
+execute 'source' g:vim_home . 'keymap.vim'
 " Load plugins settings
-for f in split(glob('~/.nvim/pluginrc.d/*.vim'), '\n')
-  exe 'source' f
+for f in split(glob(g:vim_home . 'pluginrc.d/*.vim'), '\n')
+  execute 'source' f
 endfor

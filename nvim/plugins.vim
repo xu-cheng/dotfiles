@@ -1,12 +1,12 @@
 " Load vim-plug
-if empty(glob('~/.nvim/autoload/plug.vim'))
-  silent !mkdir -p ~/.nvim/autoload
-  silent !curl -fLo ~/.nvim/autoload/plug.vim
-    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+if empty(glob(g:vim_home . 'autoload/plug.vim'))
+  silent !mkdir -p g:vim_home . 'autoload'
+  silent !curl -fLo g:vim_home . 'autoload/plug.vim'
+    \ 'https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
   autocmd VimEnter * PlugInstall
 endif
 
-call plug#begin('~/.nvim/plugged')
+call plug#begin(g:vim_home . 'plugged')
 
 " General
 Plug 'scrooloose/nerdtree'
