@@ -69,3 +69,12 @@ noremap <leader>P :set paste<CR>gp<CR>:set nopaste<CR>
 
 " Selects text you just pasted
 nnoremap <leader>v V`]
+
+" Tab management
+nnoremap tt :tabnew<Space>
+nnoremap tw :tabclose<CR>
+nnoremap tm :tabmove<Space>
+nnoremap th :tabfirst<CR>
+nnoremap tj :tabnext<CR>
+nnoremap tk :tabprev<CR>
+nnoremap tl :tablast<CR>
