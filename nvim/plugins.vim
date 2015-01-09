@@ -45,7 +45,12 @@ Plug 'majutsushi/tagbar'
 Plug 'Raimondi/delimitMate'
 
 " Snippets & AutoComplete
-Plug 'Valloric/YouCompleteMe'
+function! BuildYCM(info)
+  if a:info.status == 'installed' || a:info.force
+    !./install.sh --clang-completer
+  endif
+endfunction
+Plug 'Valloric/YouCompleteMe', { 'do': function('BuildYCM') }
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'ervandew/supertab'
