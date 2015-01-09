@@ -59,8 +59,8 @@ Plug 'ervandew/supertab'
 Plug 'junegunn/seoul256.vim'
 
 " LaTeX
-Plug 'lervag/vim-latex', { 'for': 'latex' }
-Plug 'auctex.vim', { 'for': 'latex' }
+Plug 'lervag/vim-latex', { 'for': ['tex', 'latex'] }
+Plug 'auctex.vim', { 'for': ['tex', 'latex'] }
 
 " Dash
 Plug 'rizzatti/funcoo.vim'
