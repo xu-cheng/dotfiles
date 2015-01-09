@@ -1,8 +1,10 @@
 " Load vim-plug
-if empty(glob("~/.nvim/autoload/plug.vim"))
-   execute '!curl -fLo ~/.nvim/autoload/plug.vim https://raw.github.com/junegunn/vim-plug/master/plug.vim'
+if empty(glob('~/.nvim/autoload/plug.vim'))
+  silent !mkdir -p ~/.nvim/autoload
+  silent !curl -fLo ~/.nvim/autoload/plug.vim
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall
 endif
-
 
 call plug#begin('~/.nvim/plugged')
 
