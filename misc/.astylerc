@@ -1,0 +1,16 @@
+style=linux
+indent=spaces=4
+indent-switches
+indent-namespaces
+indent-preprocessor
+indent-col1-comments
+break-blocks
+pad-oper
+pad-paren-out
+pad-header
+unpad-paren
+delete-empty-lines
+keep-one-line-statements
+convert-tabs
+align-pointer=type
+align-reference=type
