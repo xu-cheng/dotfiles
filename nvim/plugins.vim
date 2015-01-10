@@ -67,7 +67,7 @@ Plug 'rizzatti/funcoo.vim'
 Plug 'rizzatti/dash.vim'
 
 " Misc
-Plug 'tpope/vim-markdown', { 'for': 'markdown' }
+Plug 'plasticboy/vim-markdown'
 Plug 'henrik/vim-reveal-in-finder'
 
 call plug#end()
