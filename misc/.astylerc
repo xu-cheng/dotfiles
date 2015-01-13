@@ -6,7 +6,6 @@ indent-preprocessor
 indent-col1-comments
 break-blocks
 pad-oper
-pad-paren-out
 pad-header
 unpad-paren
 delete-empty-lines
