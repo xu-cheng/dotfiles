@@ -1,5 +1,8 @@
 let g:acp_enableAtStartup = 0
 
+" Don't ask about .ycm_extra_conf.py file
+let g:ycm_confirm_extra_conf = 0
+
 " enable completion from tags
 let g:ycm_collect_identifiers_from_tags_files = 1
 
