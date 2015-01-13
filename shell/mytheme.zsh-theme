@@ -67,8 +67,9 @@ function prompt_svn(){
 # Pyenv info
 export VIRTUAL_ENV_DISABLE_PROMPT=1
 function prompt_pyenv(){
-    if [[ $FOUND_PYENV -eq 1 ]] && [[ "$(pyenv_prompt_info)" != "system" ]]; then
-        echo "pyenv:%{${fg[yellow]}%}$(pyenv_prompt_info)%{$reset_color%}"
+    local pyenv_version="$(pyenv version-name)"
+    if [[ $FOUND_PYENV -eq 1 ]] && [[ "$pyenv_version" != "system" ]]; then
+        echo "pyenv:%{${fg[yellow]}%}$pyenv_version%{$reset_color%}"
     fi
 }
 

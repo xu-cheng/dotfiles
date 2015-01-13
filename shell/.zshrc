@@ -1,11 +1,11 @@
 ZSH=$HOME/.oh-my-zsh
 
 ZSH_THEME="mytheme"
-plugins=(git git-flow git-hubflow ssh-agent mercurial svn pip pyenv dirhistory colored-man brew brew-cask osx)
+plugins=(git git-flow git-hubflow ssh-agent mercurial svn pip dirhistory colored-man brew brew-cask osx)
 
 export PATH="/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/MacGPG2/bin:/usr/texbin"
 export EDITOR="nvim"
-export PYENV_ROOT="$HOME/.pyenv"
+export PYENV_ROOT="/usr/local/var/pyenv"
 export PYENV_VIRTUALENVWRAPPER_PREFER_PYVENV=true
 export CHEATCOLORS=true
 
