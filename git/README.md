@@ -58,6 +58,10 @@ git config --global alias.co checkout
 git config --global alias.st status
 git config --global alias.rpo "remote prune origin"
 git config --global alias.pum "pull upstream master"
+git config --global alias.current-branch "symbolic-ref --short HEAD"
+git config --global alias.unstage "reset HEAD --"
+git config --global alias.staged "diff --staged"
+git config --global alias.upstream-current-branch "push --set-upstream origin \$(git current-branch)"
 git config --global pager.log "/usr/local/share/git-core/contrib/diff-highlight/diff-highlight | less"
 git config --global pager.show "/usr/local/share/git-core/contrib/diff-highlight/diff-highlight | less"
 git config --global pager.diff "/usr/local/share/git-core/contrib/diff-highlight/diff-highlight | less"
