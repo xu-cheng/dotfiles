@@ -14,6 +14,10 @@
       "options": null
     },
     {
+      "name": "astyle",
+      "options": null
+    },
+    {
       "name": "autoconf",
       "options": null
     },
@@ -194,6 +198,10 @@
       "options": null
     },
     {
+      "name": "imagemagick",
+      "options": null
+    },
+    {
       "name": "isl",
       "options": null
     },
@@ -207,6 +215,10 @@
     },
     {
       "name": "jpeg",
+      "options": null
+    },
+    {
+      "name": "jq",
       "options": null
     },
     {
@@ -247,10 +259,6 @@
     },
     {
       "name": "libtool",
-      "options": null
-    },
-    {
-      "name": "libuv",
       "options": null
     },
     {
@@ -303,10 +311,6 @@
     },
     {
       "name": "mpfr",
-      "options": null
-    },
-    {
-      "name": "mupdf",
       "options": null
     },
     {
@@ -456,6 +460,10 @@
       "options": null
     },
     {
+      "name": "ssldump",
+      "options": null
+    },
+    {
       "name": "subversion",
       "options": null
     },
@@ -488,6 +496,10 @@
       "options": null
     },
     {
+      "name": "tmux",
+      "options": null
+    },
+    {
       "name": "tor",
       "options": null
     },
@@ -498,13 +510,6 @@
     {
       "name": "unrar",
       "options": null
-    },
-    {
-      "name": "vim",
-      "options": [
-        "--with-lua",
-        "--with-python3"
-      ]
     },
     {
       "name": "webp",
@@ -536,6 +541,10 @@
     },
     {
       "name": "youtube-dl",
+      "options": null
+    },
+    {
+      "name": "yuicompressor",
       "options": null
     },
     {
