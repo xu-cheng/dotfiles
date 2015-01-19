@@ -43,6 +43,7 @@ Plug 'airblade/vim-gitgutter'
 Plug 'godlygeek/tabular'
 Plug 'majutsushi/tagbar'
 Plug 'Raimondi/delimitMate'
+Plug 'Chiel92/vim-autoformat'
 
 " Snippets & AutoComplete
 function! BuildYCM(info)
