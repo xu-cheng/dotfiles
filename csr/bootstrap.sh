@@ -4,7 +4,7 @@ PREFIX="${HOME}/usr"
 BOOTSTRAP_TMP="/tmp/$(whoami)/bootstrap"
 export PATH="${PREFIX}/bin:${PATH}"
 export HOMEBREW_CACHE="/tmp/$(whoami)/Homebrew/Cache"
-export HOMEBREW_LOGS="/tmp/$(whoami)/Homeberw/Logs"
+export HOMEBREW_LOGS="/tmp/$(whoami)/Homebrew/Logs"
 
 ohai()
 {
@@ -157,7 +157,7 @@ Please add below codes into your .bashrc
     export MANPATH="\$HOME/usr/share/man:\$MANPATH"
     export INFOPATH="\$HOME/usr/share/info:\$INFOPATH"
     export HOMEBREW_CACHE=/tmp/$(whoami)/Homebrew/Cache
-    export HOMEBREW_LOGS=/tmp/$(whoami)/Homeberw/Logs
+    export HOMEBREW_LOGS=/tmp/$(whoami)/Homebrew/Logs
     if which hub > /dev/null; then eval "\$(hub alias -s)"; fi
     [[ -s \$(brew --prefix)/etc/autojump.sh ]] && . \$(brew --prefix)/etc/autojump.sh
     [[ -d "\$HOMEBREW_LOGS" ]] || mkdir -p "\$HOMEBREW_LOGS"
@@ -179,7 +179,7 @@ export PATH="\$HOME/usr/bin:\$PATH"
 export MANPATH="\$HOME/usr/share/man:$MANPATH"
 export INFOPATH="\$HOME/usr/share/info:$INFOPATH"
 export HOMEBREW_CACHE=/tmp/$(whoami)/Homebrew/Cache
-export HOMEBREW_LOGS=/tmp/$(whoami)/Homeberw/Logs
+export HOMEBREW_LOGS=/tmp/$(whoami)/Homebrew/Logs
 
 plugins=(git git-hubflow dirhistory colored-man)
 
