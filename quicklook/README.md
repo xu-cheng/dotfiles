@@ -13,7 +13,7 @@ brew cask install qlstephen
 brew cask install quicklook-csv
 brew cask install quicklook-json
 brew cask install suspicious-package
-brew cask install webp-quicklook
+brew cask install webpquicklook
 qlmanage -r
 ```
 
