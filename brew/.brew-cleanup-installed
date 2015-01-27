@@ -65,6 +65,7 @@ libvo-aacenc
 libyaml
 little-cms
 little-cms2
+llvm
 lua
 luajit
 makedepend

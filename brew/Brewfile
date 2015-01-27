@@ -278,6 +278,14 @@
       "options": null
     },
     {
+      "name": "llvm",
+      "options": [
+        "--with-python",
+        "--with-lldb",
+        "--with-clang"
+      ]
+    },
+    {
       "name": "lua",
       "options": null
     },
