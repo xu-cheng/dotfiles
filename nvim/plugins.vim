@@ -62,6 +62,9 @@ Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'ervandew/supertab'
 
+" Debug
+Plug 'gilligan/vim-lldb'
+
 " Color Scheme
 Plug 'junegunn/seoul256.vim'
 
