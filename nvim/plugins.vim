@@ -63,7 +63,7 @@ Plug 'honza/vim-snippets'
 Plug 'ervandew/supertab'
 
 " Debug
-Plug 'gilligan/vim-lldb'
+Plug 'gilligan/vim-lldb', { 'on': ['Lattach', 'Ltarget']}
 
 " Color Scheme
 Plug 'junegunn/seoul256.vim'
