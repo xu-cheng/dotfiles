@@ -12,11 +12,11 @@ export CHEATCOLORS=true
 if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
 if which pyenv-virtualenv-init > /dev/null; then eval "$(pyenv virtualenv-init -)"; fi
 if which hub > /dev/null; then eval "$(hub alias -s)"; fi
-[[ -s `brew --prefix`/etc/autojump.sh ]] && . `brew --prefix`/etc/autojump.sh
+[[ -s $(brew --prefix)/etc/profile.d/autojump.sh ]] && . $(brew --prefix)/etc/profile.d/autojump.sh
 ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets)
-ZSH_HIGHLIGHT_PATH="$(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
+ZSH_HIGHLIGHT_PATH=$(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 [[ -s $ZSH_HIGHLIGHT_PATH ]] && . $ZSH_HIGHLIGHT_PATH
-[[ -f $HOME/.travis/travis.sh ]] && source $HOME/.travis/travis.sh
+[[ -s $HOME/.travis/travis.sh ]] && . $HOME/.travis/travis.sh
 
 source $ZSH/oh-my-zsh.sh
 #compinit
