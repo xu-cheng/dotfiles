@@ -62,6 +62,7 @@ libtasn1
 libtiff
 libtool
 libvo-aacenc
+libxml2
 libyaml
 little-cms
 little-cms2
@@ -96,10 +97,13 @@ python
 python3
 qt
 quilt
+rbenv
+rbenv-gem-rehash
 readline
 rethinkdb
 rtmpdump
 ruby
+ruby-build
 scipy
 shellcheck
 shiboken

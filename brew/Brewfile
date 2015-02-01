@@ -1,6 +1,7 @@
 {
   "taps": [
     "caskroom/cask",
+    "homebrew/brewdler",
     "homebrew/python",
     "homebrew/science",
     "neovim/neovim",
@@ -266,6 +267,10 @@
       "options": null
     },
     {
+      "name": "libxml2",
+      "options": null
+    },
+    {
       "name": "libyaml",
       "options": null
     },
@@ -422,6 +427,14 @@
       "options": null
     },
     {
+      "name": "rbenv",
+      "options": null
+    },
+    {
+      "name": "rbenv-gem-rehash",
+      "options": null
+    },
+    {
       "name": "readline",
       "options": null
     },
@@ -435,6 +448,10 @@
     },
     {
       "name": "ruby",
+      "options": null
+    },
+    {
+      "name": "ruby-build",
       "options": null
     },
     {
