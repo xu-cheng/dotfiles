@@ -66,9 +66,21 @@ function prompt_svn(){
 
 # Pyenv info
 function prompt_pyenv(){
-    local pyenv_version="$(pyenv version-name)"
-    if which pyenv >/dev/null 2>&1 && [[ "$pyenv_version" != "system" ]]; then
-        echo "pyenv:%{${fg[yellow]}%}$pyenv_version%{$reset_color%}"
+    if which pyenv &>/dev/null; then
+        local pyenv_version="$(pyenv version-name)"
+        if [[ "$pyenv_version" != "system" ]]; then
+            echo "pyenv:%{${fg[yellow]}%}$pyenv_version%{$reset_color%}"
+        fi
+    fi
+}
+
+# Rbenv info
+function prompt_rbenv(){
+    if which rbenv &>/dev/null; then
+        local rbenv_version="$(rbenv version-name)"
+        if [[ "$rbenv_version" != "system" ]]; then
+            echo "rbenv:%{${fg[yellow]}%}$rbenv_version%{$reset_color%}"
+        fi
     fi
 }
 
@@ -80,7 +92,8 @@ function prompt_additional(){
               "$(prompt_git)" \
               "$(prompt_hg)" \
               "$(prompt_svn)" \
-              "$(prompt_pyenv)"
+              "$(prompt_pyenv)" \
+              "$(prompt_rbenv)"
 }
 
 # Prompt info.

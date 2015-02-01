@@ -7,10 +7,12 @@ export PATH="/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/l
 export EDITOR="nvim"
 export PYENV_ROOT="/usr/local/var/pyenv"
 export PYENV_VIRTUALENVWRAPPER_PREFER_PYVENV=true
+export RBENV_ROOT="/usr/local/var/rbenv"
 export CHEATCOLORS=true
 
 if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
 if which pyenv-virtualenv-init > /dev/null; then eval "$(pyenv virtualenv-init -)"; fi
+if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 if which hub > /dev/null; then eval "$(hub alias -s)"; fi
 [[ -s $(brew --prefix)/etc/profile.d/autojump.sh ]] && . $(brew --prefix)/etc/profile.d/autojump.sh
 ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets)
