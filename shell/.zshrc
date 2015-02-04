@@ -25,6 +25,7 @@ source $ZSH/oh-my-zsh.sh
 
 alias rake='noglob rake'
 alias vim='nvim'
+alias vimdiff='nvim -d'
 alias subl='subl && sleep 0.1 && subl'
 
 clean_hist(){
