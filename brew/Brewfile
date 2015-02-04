@@ -383,10 +383,6 @@
       "options": null
     },
     {
-      "name": "pyenv-pip-rehash",
-      "options": null
-    },
-    {
       "name": "pyenv-virtualenv",
       "options": null
     },

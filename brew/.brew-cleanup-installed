@@ -87,7 +87,6 @@ pcre
 pillow
 pkg-config
 pyenv
-pyenv-pip-rehash
 pyenv-virtualenv
 pyenv-virtualenvwrapper
 pyenv-which-ext
