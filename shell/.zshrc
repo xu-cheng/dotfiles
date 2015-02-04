@@ -28,8 +28,12 @@ alias vim='nvim'
 alias vimdiff='nvim -d'
 alias subl='subl && sleep 0.1 && subl'
 
-clean_hist(){
+hist(){
+if [[ "$1" == "-c" ]]; then
     rm -f "$HOME/.zsh_history"
+else
+    history
+fi
 }
 
 # Load confidential information
