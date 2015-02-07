@@ -1,4 +1,5 @@
 archey
+arpack
 astyle
 autoconf
 autojump
@@ -18,8 +19,10 @@ ctags
 dnscrypt-proxy
 docker
 doxygen
+epstool
 faac
 ffmpeg
+fftw
 findutils
 flex
 flint
@@ -27,6 +30,7 @@ fontconfig
 freetype
 gawk
 gcc
+gd
 gdbm
 geoip
 geos
@@ -35,14 +39,18 @@ ghostscript
 gistit
 git
 git-flow
+gl2ps
+glpk
 gmp
 gnu-getopt
 gnu-indent
 gnu-sed
 gnu-tar
+gnuplot
 gnutls
 graphicsmagick
 graphviz
+hdf5
 htop-osx
 hub
 imagemagick
@@ -78,6 +86,7 @@ neovim
 nettle
 node
 numpy
+octave
 openssl
 p11-kit
 pandoc
@@ -86,6 +95,8 @@ pbc
 pcre
 pillow
 pkg-config
+plotutils
+pstoedit
 pyenv
 pyenv-virtualenv
 pyenv-virtualenvwrapper
@@ -94,6 +105,9 @@ pyqt
 pyside
 python
 python3
+qhull
+qrupdate
+qscintilla2
 qt
 quilt
 rbenv
@@ -113,6 +127,7 @@ ssldump
 subversion
 suite-sparse
 swig
+szip
 tbb
 tcping
 terminal-notifier
@@ -122,6 +137,7 @@ tmux
 tor
 tree
 unrar
+veclibfort
 webp
 wget
 with-readline
