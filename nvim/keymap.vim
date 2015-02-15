@@ -79,3 +79,9 @@ nnoremap th :tabfirst<CR>
 nnoremap tj :tabnext<CR>
 nnoremap tk :tabprev<CR>
 nnoremap tl :tablast<CR>
+
+" Disable Ex-mode
+nnoremap Q <nop>
+
+" clear normal/visual mode highlighting
+noremap <Space> :<c-u>noh<CR>:echo<CR>
