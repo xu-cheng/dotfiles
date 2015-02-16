@@ -86,14 +86,26 @@ function prompt_rbenv(){
 
 # Assemble additional info
 function prompt_additional(){
-    python3 -c 'import sys;ret=", ".join(x for x in sys.argv[2:] if x); \
-                ret and print(sys.argv[1]+ret+" ")' \
-              "%{$fg[white]%}on%{$reset_color%} " \
-              "$(prompt_git)" \
-              "$(prompt_hg)" \
-              "$(prompt_svn)" \
-              "$(prompt_pyenv)" \
-              "$(prompt_rbenv)"
+    local -a array1
+    local -a array2
+
+    array1=( \
+        "$(prompt_git)" \
+        "$(prompt_hg)" \
+        "$(prompt_svn)" \
+        "$(prompt_pyenv)" \
+        "$(prompt_rbenv)" \
+    )
+
+    for (( i=1 ; i<=$#array1 ; i++ )) do
+        if [[ -n $array1[i] ]]; then
+            array2+=("$array1[i]")
+        fi
+    done
+
+    if [[ $#array2 != 0 ]]; then
+        echo "%{$fg[white]%}on%{$reset_color%} ${(pj:, :)array2} "
+    fi
 }
 
 # Prompt info.
@@ -106,7 +118,7 @@ function prompt_status(){
 }
 
 # Main prompt
-# Format: \n # USER at MACHINE in DIRECTORY on [git/hg/svn] [pyenv] [TIME] \n $ 
+# Format: \n # USER at MACHINE in DIRECTORY on [git/hg/svn] [pyenv] [rbenv] [TIME] \n $
 PROMPT='
 %{$terminfo[bold]$fg[blue]%}#%{$reset_color%} \
 $(prompt_user) \
