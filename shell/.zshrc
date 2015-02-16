@@ -24,6 +24,7 @@ source $ZSH/oh-my-zsh.sh
 #compinit
 
 alias rake='noglob rake'
+alias rm='safe-rm'
 alias vim='nvim'
 alias vimdiff='nvim -d'
 alias subl='subl && sleep 0.1 && subl'

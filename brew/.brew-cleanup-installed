@@ -118,6 +118,7 @@ rethinkdb
 rtmpdump
 ruby
 ruby-build
+safe-rm
 scipy
 shellcheck
 shiboken

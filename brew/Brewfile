@@ -126,6 +126,7 @@ brew 'rethinkdb'
 brew 'rtmpdump'
 brew 'ruby'
 brew 'ruby-build'
+brew 'safe-rm'
 brew 'scipy', args: ['with-python3']
 brew 'shellcheck'
 brew 'shiboken', args: ['with-python3']
