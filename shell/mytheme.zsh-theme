@@ -14,8 +14,7 @@ function prompt_machine(){
 
 # Directory info.
 function prompt_dir(){
-    local current_dir="${PWD/#$HOME/~}"
-    echo "%{$terminfo[bold]$fg[yellow]%}$current_dir%{$reset_color%}"
+    echo "%{$terminfo[bold]$fg[yellow]%}${PWD/#$HOME/~}%{$reset_color%}"
 }
 
 # Git info
@@ -86,25 +85,17 @@ function prompt_rbenv(){
 
 # Assemble additional info
 function prompt_additional(){
-    local -a array1
-    local -a array2
-
-    array1=( \
+    local -a array
+    array=( \
         "$(prompt_git)" \
         "$(prompt_hg)" \
         "$(prompt_svn)" \
         "$(prompt_pyenv)" \
         "$(prompt_rbenv)" \
     )
-
-    for (( i=1 ; i<=$#array1 ; i++ )) do
-        if [[ -n $array1[i] ]]; then
-            array2+=("$array1[i]")
-        fi
-    done
-
-    if [[ $#array2 != 0 ]]; then
-        echo "%{$fg[white]%}on%{$reset_color%} ${(pj:, :)array2} "
+    array=(${array[@]})
+    if [[ $#array != 0 ]]; then
+        echo "%{$fg[white]%}on%{$reset_color%} ${(pj:, :)array} "
     fi
 }
 
