@@ -1,0 +1,6 @@
+#command
+h left-scroll
+l right-scroll
+i toggle-option i
+#env
+LESS= -i -R
