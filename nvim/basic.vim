@@ -19,8 +19,8 @@
     set viewoptions=folds,options,cursor,unix,slash " Better Unix / Windows compatibility
     set virtualedit=onemore             " Allow for cursor beyond last character
     set history=1000                    " Store a ton of history (default is 20)
-    set spell                           " Spell checking on
-    set spelllang=en_us
+    set nospell                         " Spell checking off be default
+    set spelllang=en_us                 " Spell checking language
     set hidden                          " Allow buffer switching without saving
     set switchbuf=usetab,newtab         " Switching to the existing tab or creating new one
     set iskeyword-=.                    " '.' is an end of word designator
