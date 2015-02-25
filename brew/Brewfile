@@ -94,6 +94,7 @@ brew 'matplotlib', args: ['with-python3', 'with-pyqt', 'with-tex', 'with-ghostsc
 brew 'matplotlib-basemap', args: ['with-python3']
 brew 'mercurial'
 brew 'mpfr'
+brew 'mupdf-tools'
 brew 'neovim', args: ['HEAD']
 brew 'nettle'
 brew 'node'
