@@ -11,7 +11,8 @@ $ ssh-keygen -t rsa -f ~/.ssh/github_rsa -C "your_email@youremail.com"
 * Add below content to `~/.ssh/config`:
 
 ```
-Host github.com
+Host github
+    User git
     HostName github.com
     IdentityFile ~/.ssh/github_rsa
 ```
@@ -31,7 +32,7 @@ $ pbcopy < ~/.ssh/github_rsa.pub
 * Test key
 
 ```bash
-$ ssh -T git@github.com
+$ ssh -T github
 ```
 
 ## Set Git Config
