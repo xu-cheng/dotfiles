@@ -26,6 +26,7 @@ source $ZSH/oh-my-zsh.sh
 
 alias rake='noglob rake'
 alias rm='safe-rm'
+alias ccat='pygmentize -g'
 alias sysbrew='/usr/local/bin/brew'
 if ! which sha1sum > /dev/null; then alias sha1sum='gsha1sum'; fi
 if ! which sha256sum > /dev/null; then alias sha256sum='gsha256sum'; fi
