@@ -87,7 +87,7 @@ brew 'mupdf-tools'
 brew 'neovim', args: ['HEAD']
 brew 'node'
 brew 'numpy', args: ['with-python3']
-brew 'octave'
+brew 'octave', args: ['with-docs']
 brew 'openssl'
 brew 'p11-kit'
 brew 'pandoc'
