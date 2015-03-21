@@ -9,11 +9,7 @@ export PYENV_ROOT="/usr/local/var/pyenv"
 export PYENV_VIRTUALENVWRAPPER_PREFER_PYVENV=true
 export RBENV_ROOT="/usr/local/var/rbenv"
 export CHEATCOLORS=true
-if [ -z $TMUX ]; then
-    export TERM="xterm-256color"
-else
-    export TERM="screen-256color"
-fi
+export TMUX_HOME="$(dirname $(readlink $HOME/.tmux.conf))"
 
 if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
 if which pyenv-virtualenv-init > /dev/null; then eval "$(pyenv virtualenv-init -)"; fi
