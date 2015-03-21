@@ -80,4 +80,7 @@ Plug 'rizzatti/dash.vim'
 Plug 'plasticboy/vim-markdown'
 Plug 'henrik/vim-reveal-in-finder'
 
+" Other
+Plug 'edkolev/tmuxline.vim'
+
 call plug#end()
