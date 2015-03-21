@@ -87,7 +87,7 @@
 
     if has('statusline')
         set laststatus=2
-   endif
+    endif
 
     set backspace=indent,eol,start  " Backspace for dummies
     set linespace=0                 " No extra spaces between rows
