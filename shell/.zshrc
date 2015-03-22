@@ -35,6 +35,11 @@ if ! which md5sum > /dev/null; then alias md5sum='gmd5sum'; fi
 alias vim='nvim'
 alias vimdiff='nvim -d'
 alias subl='subl && sleep 0.1 && subl'
+alias ta='tmux attach -t'
+alias ts='tmux new-session -s'
+alias tl='tmux list-sessions'
+alias tksv='tmux kill-server'
+alias tkss='tmux kill-session -t'
 
 hist(){
 if [[ "$1" == "-c" ]]; then
