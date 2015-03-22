@@ -9,7 +9,7 @@ let g:latex_fold_envs = 0
 
 " Forward Search
 function! SyncTexForward()
-    let l:pdf_file = g:latex#data[b:latex.id].out()
+    let l:pdf_file = g:vimtex#data[b:vimtex.id].out()
     let l:tex_file = expand('%:p')
     let l:tex_line = line(".")
     :call system('~/Applications/Skim.app/Contents/SharedSupport/displayline'
