@@ -1,8 +1,8 @@
 " Load vim-plug
 if empty(glob(g:vim_home . 'autoload/plug.vim'))
-  silent !mkdir -p g:vim_home . 'autoload'
-  silent !curl -fLo g:vim_home . 'autoload/plug.vim'
-    \ 'https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+  execute '!mkdir -p "' . g:vim_home . 'autoload"'
+  execute '!curl -fLo "' . g:vim_home . 'autoload/plug.vim" '
+    \ . 'https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
   autocmd VimEnter * PlugInstall
 endif
 
