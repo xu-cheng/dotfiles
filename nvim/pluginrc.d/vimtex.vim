@@ -1,6 +1,6 @@
-let g:latex_view_general_viewer='open'
-let g:latex_view_general_options='-a Skim'
-let g:latex_fold_envs = 0
+let g:vimtex_view_method='general'
+let g:vimtex_view_general_viewer='open'
+let g:vimtex_view_general_options='-a Skim'
 
 " Backward Search
 " set up a `Custom` sync profile in Skim
