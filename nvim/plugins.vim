@@ -70,8 +70,8 @@ Plug 'gilligan/vim-lldb', { 'on': ['Lattach', 'Ltarget']}
 Plug 'junegunn/seoul256.vim'
 
 " LaTeX
-Plug 'lervag/vimtex', { 'for': ['tex', 'latex', 'plaintex'] }
-Plug 'auctex.vim', { 'for': ['tex', 'latex', 'plaintex'] }
+Plug 'lervag/vimtex', { 'for': ['tex'] }
+Plug 'auctex.vim', { 'for': ['tex'] }
 
 " Dash
 Plug 'rizzatti/funcoo.vim'
