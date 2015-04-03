@@ -50,6 +50,7 @@ Plug 'godlygeek/tabular'
 Plug 'majutsushi/tagbar'
 Plug 'Raimondi/delimitMate'
 Plug 'Chiel92/vim-autoformat'
+Plug 'MattesGroeger/vim-bookmarks'
 
 " Snippets & AutoComplete
 function! BuildYCM(info)
