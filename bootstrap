@@ -10,18 +10,16 @@ HOME_DIR = Pathname.new(Dir.home)
 ## Install oh-my-zsh
 unless (HOME_DIR/".oh-my-zsh").exist?
   system "curl -L http://install.ohmyz.sh | sh"
-  rm HOME_DIR/".zshrc"
 end
 
 # Link file
-ln_sf ROOT_DIR/"shell/mytheme.zsh-theme", HOME_DIR/".oh-my-zsh/custom/"
-ln_sf ROOT_DIR/"shell/.zshrc", HOME_DIR
-ln_sf ROOT_DIR/"tmux/.tmux.conf", HOME_DIR
-rm_f  HOME_DIR/".nvim"
-ln_sf ROOT_DIR/"nvim", HOME_DIR/".nvim"
-ln_sf ROOT_DIR/"misc/astylerc", HOME_DIR
-ln_sf ROOT_DIR/"misc/.latexmkrc", HOME_DIR
-ln_sf ROOT_DIR/"misc/.lesskey", HOME_DIR
+ln_sf ROOT_DIR/"home/mytheme.zsh-theme", HOME_DIR/".oh-my-zsh/custom/"
+ln_sf ROOT_DIR/"home/.zshrc", HOME_DIR
+ln_sf ROOT_DIR/"home/.tmux.conf", HOME_DIR
+ln_sf ROOT_DIR/"home/.nvim", HOME_DIR
+ln_sf ROOT_DIR/"home/.astylerc", HOME_DIR
+ln_sf ROOT_DIR/"home/.latexmkrc", HOME_DIR
+ln_sf ROOT_DIR/"home/.lesskey", HOME_DIR
 system "lesskey"
-ln_sf ROOT_DIR/"misc/matplotlibrc", HOME_DIR/".matplotlib/"
-ln_sf ROOT_DIR/"misc/safe-rm", HOME_DIR/".config/"
+ln_sf ROOT_DIR/"home/matplotlibrc", HOME_DIR/".matplotlib/"
+ln_sf ROOT_DIR/"home/safe-rm", HOME_DIR/".config/"
