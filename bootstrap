@@ -1,0 +1,27 @@
+#!/usr/bin/env ruby
+
+require "fileutils"
+require "pathname"
+include FileUtils
+
+ROOT_DIR = Pathname.new(__FILE__).parent.expand_path
+HOME_DIR = Pathname.new(Dir.home)
+
+## Install oh-my-zsh
+unless (HOME_DIR/".oh-my-zsh").exist?
+  system "curl -L http://install.ohmyz.sh | sh"
+  rm HOME_DIR/".zshrc"
+end
+
+# Link file
+ln_sf ROOT_DIR/"shell/mytheme.zsh-theme", HOME_DIR/".oh-my-zsh/custom/"
+ln_sf ROOT_DIR/"shell/.zshrc", HOME_DIR
+ln_sf ROOT_DIR/"tmux/.tmux.conf", HOME_DIR
+(HOME_DIR/".nvim").unlink
+ln_sf ROOT_DIR/"nvim", HOME_DIR/".nvim"
+ln_sf ROOT_DIR/"misc/astylerc", HOME_DIR
+ln_sf ROOT_DIR/"misc/.latexmkrc", HOME_DIR
+ln_sf ROOT_DIR/"misc/.lesskey", HOME_DIR
+system "lesskey"
+ln_sf ROOT_DIR/"misc/matplotlibrc", HOME_DIR/".matplotlib/"
+ln_sf ROOT_DIR/"misc/safe-rm", HOME_DIR/".config/"
