@@ -17,7 +17,7 @@ end
 ln_sf ROOT_DIR/"shell/mytheme.zsh-theme", HOME_DIR/".oh-my-zsh/custom/"
 ln_sf ROOT_DIR/"shell/.zshrc", HOME_DIR
 ln_sf ROOT_DIR/"tmux/.tmux.conf", HOME_DIR
-(HOME_DIR/".nvim").unlink
+rm_f  HOME_DIR/".nvim"
 ln_sf ROOT_DIR/"nvim", HOME_DIR/".nvim"
 ln_sf ROOT_DIR/"misc/astylerc", HOME_DIR
 ln_sf ROOT_DIR/"misc/.latexmkrc", HOME_DIR
