@@ -1,0 +1,37 @@
+#!/usr/bin/env ruby
+
+# Load Homebrew library
+$:.unshift ENV["HOMEBREW_LIBRARY_PATH"]
+require "global"
+require "version"
+
+require "unirest"
+require "tmpdir"
+
+def get_pypi_url pkg
+  uri = "https://pypi.python.org/pypi/#{pkg}/json"
+  Unirest.get(uri).body["releases"]
+         .sort_by { |k, v| Version.new(k) }.last[1]
+         .detect { |a| a["packagetype"] == "sdist" }["url"]
+end
+
+def get_checksum url
+  Dir.mktmpdir do |tmp|
+    out = Pathname.new(tmp)/"tmp.out"
+    ohai "Downloading #{url}"
+    curl url, "-o", "#{out}"
+    out.sha1
+  end
+end
+
+ARGV.named.each do |res|
+  url = get_pypi_url(res)
+  sha1 = get_checksum(url)
+  puts <<-EOS.undent
+  resource "#{res}" do
+    url "#{url}"
+    sha1 "#{sha1}"
+  end
+  EOS
+end
+

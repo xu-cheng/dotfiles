@@ -3,13 +3,14 @@ ZSH=$HOME/.oh-my-zsh
 ZSH_THEME="mytheme"
 plugins=(brew brew-cask colored-man extract git git-flow git-hubflow mercurial osx pip ssh-agent svn)
 
-export PATH="/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/MacGPG2/bin:/usr/texbin"
+export SHELL_HOME="$(dirname $(readlink $HOME/.zshrc))"
+export TMUX_HOME="$(dirname $(readlink $HOME/.tmux.conf))"
+export PATH="$SHELL_HOME/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/MacGPG2/bin:/usr/texbin"
 export EDITOR="nvim"
 export PYENV_ROOT="/usr/local/var/pyenv"
 export PYENV_VIRTUALENVWRAPPER_PREFER_PYVENV=true
 export RBENV_ROOT="/usr/local/var/rbenv"
 export CHEATCOLORS=true
-export TMUX_HOME="$(dirname $(readlink $HOME/.tmux.conf))"
 
 if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
 if which pyenv-virtualenv-init > /dev/null; then eval "$(pyenv virtualenv-init -)"; fi
