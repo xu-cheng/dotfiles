@@ -4,7 +4,6 @@ ZSH_THEME="mytheme"
 plugins=(brew brew-cask colored-man extract git git-flow git-hubflow mercurial osx pip ssh-agent svn)
 
 export SHELL_HOME="$(dirname $(readlink $HOME/.zshrc))"
-export TMUX_HOME="$(dirname $(readlink $HOME/.tmux.conf))"
 export PATH="$SHELL_HOME/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/MacGPG2/bin:/usr/texbin"
 export EDITOR="nvim"
 export PYENV_ROOT="/usr/local/var/pyenv"
