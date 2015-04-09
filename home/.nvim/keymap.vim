@@ -60,8 +60,10 @@ map zh zH
 
 " Delete without overwriting last yank.
 nnoremap <leader>d "_d
+nnoremap <leader>D "_D
 nnoremap <leader>x "_x
 vnoremap <leader>d "_d
+vnoremap <leader>D "_D
 vnoremap <leader>x "_x
 
 " Switch to paste mode, paste text, unset paste mode
