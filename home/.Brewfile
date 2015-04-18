@@ -1,5 +1,5 @@
 tap 'caskroom/cask'
-tap 'homebrew/brewdler'
+tap 'homebrew/bundle'
 tap 'homebrew/dupes'
 tap 'homebrew/games'
 tap 'homebrew/python'
