@@ -24,3 +24,4 @@ ln_sf ROOT_DIR/"home/.lesskey", HOME_DIR
 system "lesskey"
 ln_sf ROOT_DIR/"home/matplotlibrc", HOME_DIR/".matplotlib/"
 ln_sf ROOT_DIR/"home/safe-rm", HOME_DIR/".config/"
+ln_sf HOME_DIR/".nviminfo", HOME_DIR/".viminfo"
