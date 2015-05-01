@@ -6,7 +6,7 @@ Git Settings
 * Run Command below to generate the key:
 
 ```bash
-$ ssh-keygen -t rsa -f ~/.ssh/github_rsa -C "your_email@youremail.com"
+$ ssh-keygen -t rsa -b 4096 -f ~/.ssh/github_rsa -C "your_email@youremail.com"
 ```
 * Add below content to `~/.ssh/config`:
 
