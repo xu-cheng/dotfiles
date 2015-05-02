@@ -11,7 +11,7 @@ $ ssh-keygen -t rsa -b 4096 -f ~/.ssh/github_rsa -C "your_email@youremail.com"
 * Add below content to `~/.ssh/config`:
 
 ```
-Host github
+Host github github.com
     User git
     HostName github.com
     IdentityFile ~/.ssh/github_rsa
