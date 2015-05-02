@@ -1,6 +1,8 @@
 #!/usr/bin/env ruby
 
-$:.unshift ENV["HOMEBREW_LIBRARY_PATH"]
+require "pathname"
+HOMEBREW_LIBRARY_PATH = Pathname.new(ENV["HOMEBREW_LIBRARY_PATH"])
+$:.unshift HOMEBREW_LIBRARY_PATH
 require "global"
 require "formula"
 require "keg"
