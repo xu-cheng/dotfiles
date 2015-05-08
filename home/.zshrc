@@ -49,5 +49,11 @@ else
 fi
 }
 
+# Change iterm2 profile. Usage it2prof ProfileName (case sensitive)
+# https://coderwall.com/p/s-2_nw/change-iterm2-color-profile-from-the-cli
+it2prof()  { echo -e "\033]50;SetProfile=$1\a" }
+it2dark()  { it2prof "Tomorrow Night" }
+it2light() { it2prof "Solarized Light" }
+
 # Load confidential information
 [[ -s $HOME/.config/tokens ]] && . $HOME/.config/tokens
