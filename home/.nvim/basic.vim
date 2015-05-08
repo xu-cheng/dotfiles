@@ -67,8 +67,13 @@
 " Vim UI {
 
     " Color Scheme
-    let g:seoul256_background = 233
-    colo seoul256
+    set background=dark " TODO: auto determine based on shell colorscheme
+    if &background == "dark"
+        let g:seoul256_background = 233
+        color seoul256
+    else
+        color solarized
+    endif
 
     set tabpagemax=15               " Only show 15 tabs
     set showmode                    " Display the current mode

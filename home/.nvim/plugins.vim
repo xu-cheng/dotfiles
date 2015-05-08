@@ -68,6 +68,7 @@ Plug 'gilligan/vim-lldb', { 'on': ['Lattach', 'Ltarget']}
 
 " Color Scheme
 Plug 'junegunn/seoul256.vim'
+Plug 'altercation/vim-colors-solarized'
 
 " LaTeX
 Plug 'lervag/vimtex', { 'for': ['tex'] }
