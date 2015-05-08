@@ -85,5 +85,9 @@ nnoremap tl :tablast<CR>
 " Disable Ex-mode
 nnoremap Q <nop>
 
-" clear normal/visual mode highlighting
+" Clear normal/visual mode highlighting
 noremap <Space> :<c-u>noh<CR>:echo<CR>
+
+" Windows management
+nnoremap <C-w>\| :vsplit<CR>
+nnoremap <C-w>- :split<CR>
