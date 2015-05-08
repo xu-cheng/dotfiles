@@ -95,7 +95,7 @@ function prompt_additional(){
     )
     array=(${array[@]})
     if [[ $#array != 0 ]]; then
-        echo "%{$fg[white]%}on%{$reset_color%} ${(pj:, :)array} "
+        echo "%{$reset_color%}on ${(pj:, :)array} "
     fi
 }
 
@@ -113,10 +113,10 @@ function prompt_status(){
 PROMPT='
 %{$terminfo[bold]$fg[blue]%}#%{$reset_color%} \
 $(prompt_user) \
-%{$fg[white]%}at \
+%{$reset_color%}at \
 $(prompt_machine) \
-%{$fg[white]%}in \
+%{$reset_color%}in \
 $(prompt_dir) \
 $(prompt_additional)\
-%{$fg[white]%}[%*]
+%{$reset_color%}[%*]
 $(prompt_status)'
