@@ -1,3 +1,4 @@
+tap 'bfontaine/aliases'
 tap 'caskroom/cask'
 tap 'homebrew/bundle'
 tap 'homebrew/dupes'
