@@ -14,8 +14,8 @@ end
 if ARGV.include?("--installed")
   formulae = Formula.installed
 else
-  formulae = Formula.names.map(&Formulary.method(:factory))
+  formulae = Formula
 end
 
-formulae.reject!(&:test_defined?)
+formulae = formulae.reject(&:test_defined?)
 puts_columns formulae.map(&:to_s), formulae.reject(&:core_formula?).map(&:to_s)
