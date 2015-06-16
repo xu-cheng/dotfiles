@@ -10,19 +10,17 @@ let g:vimtex_view_general_options = '-a Skim'
 
 " Forward Search
 function! SyncTexForward()
-    let l:pdf_file = g:vimtex#data[b:vimtex.id].out()
+    let l:pdf_file = b:vimtex.out()
     let l:tex_file = expand('%:p')
     let l:tex_line = line(".")
-    :call system('~/Applications/Skim.app/Contents/SharedSupport/displayline'
-          \ . ' -r ' . l:tex_line . ' "' . l:pdf_file . '" "' . l:tex_file . '"')
+    :call system('displayline' . ' -r ' . l:tex_line . ' "' . l:pdf_file . '" "' . l:tex_file . '"')
 endfunction
 nmap <localleader>ls :call SyncTexForward()<cr>
 
 " TeX Word Count
 function! TeXWordCount()
-    let l:data = g:vimtex#data[b:vimtex.id]
-    let l:main_tex_dir = l:data.root
-    let l:main_tex_file = l:data.base
+    let l:main_tex_dir = b:vimtex.root
+    let l:main_tex_file = b:vimtex.base
     :echo system('cd "' . l:main_tex_dir . '"; texcount "' . l:main_tex_file . '"')
 endfunction
 nmap <localleader>lw :call TeXWordCount()<cr>
