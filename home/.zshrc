@@ -11,7 +11,7 @@ export PYENV_VIRTUALENVWRAPPER_PREFER_PYVENV=true
 export RBENV_ROOT="/usr/local/var/rbenv"
 export CHEATCOLORS=true
 
-eval "$(brew command-not-found-init)"
+if brew which command-not-found-init > /dev/null; then eval "$(brew command-not-found-init)"; fi
 if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
 if which pyenv-virtualenv-init > /dev/null; then eval "$(pyenv virtualenv-init -)"; fi
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
