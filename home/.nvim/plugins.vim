@@ -82,6 +82,7 @@ Plug 'rizzatti/dash.vim'
 Plug 'plasticboy/vim-markdown'
 Plug 'henrik/vim-reveal-in-finder'
 Plug 'xu-cheng/brew.vim'
+Plug 'bfontaine/Brewfile.vim'
 
 " Other
 Plug 'edkolev/tmuxline.vim'
