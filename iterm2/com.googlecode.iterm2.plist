@@ -1175,14 +1175,19 @@
 		<key>TB Size Mode</key>
 		<integer>1</integer>
 	</dict>
+	<key>NSToolbar Configuration com.apple.NSColorPanel</key>
+	<dict>
+		<key>TB Is Shown</key>
+		<integer>1</integer>
+	</dict>
 	<key>NSWindow Frame Preferences</key>
-	<string>347 180 924 485 0 0 1440 877 </string>
+	<string>209 134 924 485 0 0 1440 877 </string>
 	<key>NSWindow Frame SUStatusFrame</key>
 	<string>528 578 384 129 0 0 1440 877 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>656 140 710 643 0 0 1440 877 </string>
+	<string>730 122 710 621 0 0 1440 877 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
-	<string>589 253 710 621 0 0 1440 900 </string>
+	<string>662 229 710 621 0 0 1440 877 </string>
 	<key>NSWindow Frame iTerm Window 2</key>
 	<string>482 201 710 621 0 0 1440 877 </string>
 	<key>NSWindow Frame iTerm Window 3</key>
@@ -1361,11 +1366,11 @@
 			<key>Background Color</key>
 			<dict>
 				<key>Blue Component</key>
-				<real>0.0</real>
+				<real>0.22745098173618317</real>
 				<key>Green Component</key>
-				<real>0.0</real>
+				<real>0.22745098173618317</real>
 				<key>Red Component</key>
-				<real>0.0</real>
+				<real>0.22745098173618317</real>
 			</dict>
 			<key>Background Image Is Tiled</key>
 			<false/>
@@ -1380,7 +1385,7 @@
 			<key>Blur</key>
 			<true/>
 			<key>Blur Radius</key>
-			<real>10.008651733398438</real>
+			<real>9.5764331817626953</real>
 			<key>Bold Color</key>
 			<dict>
 				<key>Blue Component</key>
@@ -1913,7 +1918,7 @@
 			<key>Terminal Type</key>
 			<string>xterm-256color</string>
 			<key>Transparency</key>
-			<real>0.23194803297519684</real>
+			<real>0.063863717019557953</real>
 			<key>Triggers</key>
 			<array/>
 			<key>Unlimited Scrollback</key>
@@ -3426,6 +3431,10 @@
 	</array>
 	<key>NoSyncNeverRemindPrefsChangesCopy</key>
 	<true/>
+	<key>NoSyncTimeOfLastPromo</key>
+	<real>453191025.474585</real>
+	<key>NoSyncTimeOfLastPromoDownload</key>
+	<real>457335618.912256</real>
 	<key>OnlyWhenMoreTabs</key>
 	<true/>
 	<key>OpenArrangementAtStartup</key>
@@ -3494,7 +3503,7 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2015-05-07T15:15:33Z</date>
+	<date>2015-06-30T05:40:14Z</date>
 	<key>SavePasteHistory</key>
 	<false/>
 	<key>Secure Input</key>
@@ -3551,6 +3560,6 @@
 	<key>findRegex_iTerm</key>
 	<false/>
 	<key>iTerm Version</key>
-	<string>2.1</string>
+	<string>2.1.1</string>
 </dict>
 </plist>
