@@ -4,4 +4,4 @@ abort "Please install fpp with `brew instal fpp`." unless fpp
 logd = ARGV.resolved_formulae.first.logs
 abort "#{logd} doesn't exist." unless logd.directory?
 
-system "find #{logd} | #{fpp}"
+exec "find #{logd} | #{fpp}"
