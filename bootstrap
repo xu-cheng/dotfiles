@@ -12,6 +12,10 @@ unless (HOME_DIR/".oh-my-zsh").exist?
   system "curl -L http://install.ohmyz.sh | sh"
 end
 
+unless (HOME_DIR/".tmux/plugins/tpm").exist?
+  system "git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm"
+end
+
 # Link file
 ln_sf ROOT_DIR/"home/mytheme.zsh-theme", HOME_DIR/".oh-my-zsh/custom/"
 ln_sf ROOT_DIR/"home/.zshrc", HOME_DIR

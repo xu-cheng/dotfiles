@@ -83,8 +83,10 @@ Plug 'plasticboy/vim-markdown'
 Plug 'henrik/vim-reveal-in-finder'
 Plug 'xu-cheng/brew.vim'
 Plug 'bfontaine/Brewfile.vim'
+Plug 'tmux-plugins/vim-tmux'
 
 " Other
 Plug 'edkolev/tmuxline.vim'
+Plug 'tmux-plugins/vim-tmux-focus-events'
 
 call plug#end()
