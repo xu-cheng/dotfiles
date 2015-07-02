@@ -18,7 +18,7 @@ if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 if which hub > /dev/null; then eval "$(hub alias -s)"; fi
 if which direnv > /dev/null; then
     eval "$(direnv hook zsh)";
-    [[ -n $TMUX ]] && direnv reload
+    [[ -n $TMUX && -f $PWD/.envrc ]] && direnv reload
 fi
 [[ -s $(brew --prefix)/etc/profile.d/autojump.sh ]] && . $(brew --prefix)/etc/profile.d/autojump.sh
 ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets)
