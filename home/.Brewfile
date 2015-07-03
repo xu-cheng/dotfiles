@@ -139,6 +139,7 @@ brew 'homebrew/python/scipy', args: ['with-python3']
 brew 'homebrew/science/flint'
 brew 'neovim/neovim/neovim', args: ['HEAD']
 cask 'betterzipql'
+cask 'flashlight'
 cask 'font-fontawesome'
 cask 'gpgtools'
 cask 'mpv'
