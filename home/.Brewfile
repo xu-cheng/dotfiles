@@ -1,7 +1,7 @@
-tap 'bfontaine/aliases'
 tap 'bfontaine/command-not-found'
 tap 'caskroom/cask'
 tap 'caskroom/fonts'
+tap 'homebrew/aliases'
 tap 'homebrew/bundle'
 tap 'homebrew/dupes'
 tap 'homebrew/games'
