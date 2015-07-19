@@ -1,0 +1,3 @@
+#! /bin/bash
+# alias: brew bundle-dump
+brew bundle dump --global --force $*
