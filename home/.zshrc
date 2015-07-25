@@ -6,17 +6,19 @@ plugins=(brew brew-cask colored-man extract git git-flow git-hubflow mercurial o
 export DOTFILES_HOME="$(dirname $(readlink $HOME/.zshrc))"
 
 if [[ `uname` == "Darwin" ]]; then # OS X
+    export HOMEBREW_PREFIX="/usr/local"
     export PATH="$DOTFILES_HOME/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/MacGPG2/bin:/usr/texbin"
 else # Linux
-    export PATH="$DOTFILES_HOME/bin:$(brew --prefix)/bin:$(brew --prefix sbin):$PATH"
-    export MANPATH="$(brew --prefix)/share/man:$MANPATH"
-    export INFOPATH="$(brew --prefix)/share/info:$INFOPATH"
+    export HOMEBREW_PREFIX="$(brew --prefix)"
+    export PATH="$DOTFILES_HOME/bin:$HOMEBREW_PREFIX/bin:$HOMEBREW_PREFIX/sbin:$PATH"
+    export MANPATH="$HOMEBREW_PREFIX/share/man:$MANPATH"
+    export INFOPATH="$HOMEBREW_PREFIX/share/info:$INFOPATH"
 fi
 
 export EDITOR="nvim"
-export PYENV_ROOT="/usr/local/var/pyenv"
+export PYENV_ROOT="$HOMEBREW_PREFIX/var/pyenv"
 export PYENV_VIRTUALENVWRAPPER_PREFER_PYVENV=true
-export RBENV_ROOT="/usr/local/var/rbenv"
+export RBENV_ROOT="$HOMEBREW_PREFIX/var/rbenv"
 export CHEATCOLORS=true
 export HOMEBREW_SANDBOX=true
 
@@ -29,9 +31,9 @@ if which direnv > /dev/null; then
     eval "$(direnv hook zsh)";
     [[ -n $TMUX && -f $PWD/.envrc ]] && direnv reload
 fi
-[[ -s $(brew --prefix)/etc/profile.d/autojump.sh ]] && . $(brew --prefix)/etc/profile.d/autojump.sh
+[[ -s $HOMEBREW_PREFIX/etc/profile.d/autojump.sh ]] && . $HOMEBREW_PREFIX/etc/profile.d/autojump.sh
 ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets)
-ZSH_HIGHLIGHT_PATH=$(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+ZSH_HIGHLIGHT_PATH=$HOMEBREW_PREFIX/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 [[ -s $ZSH_HIGHLIGHT_PATH ]] && . $ZSH_HIGHLIGHT_PATH
 [[ -s $HOME/.travis/travis.sh ]] && . $HOME/.travis/travis.sh
 
