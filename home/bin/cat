@@ -1,0 +1,12 @@
+#!/usr/bin/env ruby
+
+orig_cat = `which -a cat`.split("\n")[1]
+
+if !`command -v pygmentize`.empty? &&
+  $stdout.tty? &&
+  ARGV.none? { |arg| arg.start_with? "-" }
+  exec "pygmentize", "-g", *ARGV
+else
+  exec orig_cat, *ARGV
+end
+

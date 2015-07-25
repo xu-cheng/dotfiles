@@ -31,7 +31,6 @@ source $ZSH/oh-my-zsh.sh
 
 alias rake='noglob rake'
 alias rm='safe-rm'
-alias ccat='pygmentize -g'
 if ! which sha1sum > /dev/null; then alias sha1sum='gsha1sum'; fi
 if ! which sha256sum > /dev/null; then alias sha256sum='gsha256sum'; fi
 if ! which md5sum > /dev/null; then alias md5sum='gmd5sum'; fi
