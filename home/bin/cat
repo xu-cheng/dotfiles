@@ -1,6 +1,6 @@
 #!/usr/bin/env ruby
 
-orig_cat = `which -a cat`.split("\n")[1]
+orig_cat = (`which -a cat`.split("\n") - [__FILE__]).first
 
 if !`command -v pygmentize`.empty? &&
   $stdout.tty? &&
