@@ -13,6 +13,7 @@ else # Linux
     export PATH="$DOTFILES_HOME/bin:$HOMEBREW_PREFIX/bin:$HOMEBREW_PREFIX/sbin:$PATH"
     export MANPATH="$HOMEBREW_PREFIX/share/man:$MANPATH"
     export INFOPATH="$HOMEBREW_PREFIX/share/info:$INFOPATH"
+    export CMAKE_PREFIX_PATH=$HOMEBREW_PREFIX
 fi
 
 export EDITOR="nvim"
