@@ -2,7 +2,7 @@
 
 orig_cat = (`which -a cat`.split("\n") - [__FILE__]).first
 
-if !`command -v pygmentize`.empty? &&
+if !`which pygmentize`.empty? &&
   $stdout.tty? &&
   ARGV.none? { |arg| arg.start_with? "-" }
   exec "pygmentize", "-g", *ARGV

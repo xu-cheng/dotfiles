@@ -1,7 +1,7 @@
 #!/usr/bin/env ruby
 
 sysbrew = "/usr/local/bin/brew"
-localbrew = `command -v brew`.chomp
+localbrew = `which brew`.chomp
 
 if sysbrew == localbrew
   exec sysbrew, *ARGV
