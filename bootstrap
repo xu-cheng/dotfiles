@@ -17,6 +17,7 @@ unless (HOME_DIR/".tmux/plugins/tpm").exist?
 end
 
 # Link file
+mkdir_p HOME_DIR/".oh-my-zsh/custom"
 ln_sf ROOT_DIR/"home/mytheme.zsh-theme", HOME_DIR/".oh-my-zsh/custom/"
 ln_sf ROOT_DIR/"home/.zshrc", HOME_DIR
 ln_sf ROOT_DIR/"home/.tmux.conf", HOME_DIR
@@ -27,6 +28,8 @@ ln_sf ROOT_DIR/"home/.astylerc", HOME_DIR
 ln_sf ROOT_DIR/"home/.latexmkrc", HOME_DIR
 ln_sf ROOT_DIR/"home/.lesskey", HOME_DIR
 system "lesskey"
+mkdir HOME_DIR/".matplotlib"
 ln_sf ROOT_DIR/"home/matplotlibrc", HOME_DIR/".matplotlib/"
+mkdir HOME_DIR/".config"
 ln_sf ROOT_DIR/"home/safe-rm", HOME_DIR/".config/"
 ln_sf HOME_DIR/".nviminfo", HOME_DIR/".viminfo"
