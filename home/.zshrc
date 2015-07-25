@@ -4,7 +4,15 @@ ZSH_THEME="mytheme"
 plugins=(brew brew-cask colored-man extract git git-flow git-hubflow mercurial osx pip ssh-agent svn)
 
 export DOTFILES_HOME="$(dirname $(readlink $HOME/.zshrc))"
-export PATH="$DOTFILES_HOME/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/MacGPG2/bin:/usr/texbin"
+
+if [[ `uname` == "Darwin" ]]; then # OS X
+    export PATH="$DOTFILES_HOME/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/MacGPG2/bin:/usr/texbin"
+else # Linux
+    export PATH="$DOTFILES_HOME/bin:$(brew --prefix)/bin:$(brew --prefix sbin):$PATH"
+    export MANPATH="$(brew --prefix)/share/man:$MANPATH"
+    export INFOPATH="$(brew --prefix)/share/info:$INFOPATH"
+fi
+
 export EDITOR="nvim"
 export PYENV_ROOT="/usr/local/var/pyenv"
 export PYENV_VIRTUALENVWRAPPER_PREFER_PYVENV=true
