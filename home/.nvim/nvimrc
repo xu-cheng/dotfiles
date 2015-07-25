@@ -1,5 +1,9 @@
 " Set python interpreter path before every other thing
-let g:python_host_prog = '/usr/local/bin/python'
+if has('mac')
+    let g:python_host_prog = '/usr/local/bin/python'
+else
+    let g:python_host_prog = system('echo -n $(brew --prefix)') . '/bin/python'
+endif
 " Set vim-home
 let g:vim_home = $HOME . '/.nvim/'
 " Load plugins
