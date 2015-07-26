@@ -1,0 +1,30 @@
+#!/usr/bin/env ruby
+
+require "ipaddr"
+require "optparse"
+require "socket"
+
+OptionParser.new do |opts|
+  opts.banner = "Usage: ssh-proxy-helper [options]"
+  opts.on("-h", "--host HOST","Host name to connect") do |host|
+    $host = host
+  end
+  opts.on("-p", "--port Port", "Port number to connect") do |port|
+    $port = port
+  end
+  opts.on("--proxy PROXY", "Proxy host used as `ssh proxy -W %h:%p`") do |proxy|
+    $proxy = proxy
+  end
+  opts.on("--internal-ip IP", "CIDR IP range to indicate when to disable the proxy") do |net|
+    $net = IPAddr.new net
+  end
+end.parse!
+
+$localip = IPAddr.new IPSocket.getaddress(Socket.gethostname)
+
+if $net.include? $localip
+  exec "nc", $host, $port
+else
+  STDERR.puts "Connect to #{$host} over #{$proxy}."
+  exec "ssh", $proxy, "-W", "#{$host}:#{$port}"
+end
