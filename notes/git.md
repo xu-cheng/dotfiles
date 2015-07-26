@@ -74,5 +74,8 @@ git config --global alias.fix-previous "\!git commit --amend --no-edit --date=\"
 git config --global pager.log "/usr/local/share/git-core/contrib/diff-highlight/diff-highlight | less"
 git config --global pager.show "/usr/local/share/git-core/contrib/diff-highlight/diff-highlight | less"
 git config --global pager.diff "/usr/local/share/git-core/contrib/diff-highlight/diff-highlight | less"
+
 git config --global url.git@github.com:.insteadOf https://github.com/
+# OR
+git config --global alias.ssh-instead-of-https "\!git config url.git@github.com:.insteadOf https://github.com"
 ```
