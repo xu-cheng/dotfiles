@@ -1,12 +1,12 @@
 #!/usr/bin/env ruby
 
-orig_cat = (`which -a cat`.split("\n") - [__FILE__]).first
-
-if !`which pygmentize`.empty? &&
-  $stdout.tty? &&
-  ARGV.none? { |arg| arg.start_with? "-" }
+if $stdout.tty? &&
+   ARGV.none? { |arg| arg.start_with? "-" } &&
+   !`which pygmentize`.empty?
   exec "pygmentize", "-g", *ARGV
 else
+  orig_cat = "/bin/cat" if File.executable?("/bin/cat")
+  orig_cat ||= (`which -a cat`.split("\n") - [__FILE__]).first
   exec orig_cat, *ARGV
 end
 
