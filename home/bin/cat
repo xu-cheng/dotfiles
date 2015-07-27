@@ -2,7 +2,7 @@
 
 if $stdout.tty? &&
    ARGV.none? { |arg| arg.start_with? "-" } &&
-   !`which pygmentize`.empty?
+   (`which pygmentize &>/dev/null`; $?.success?)
   exec "pygmentize", "-g", *ARGV
 else
   orig_cat = "/bin/cat" if File.executable?("/bin/cat")
