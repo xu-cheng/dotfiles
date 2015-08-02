@@ -1,3 +1,0 @@
-#! /bin/bash
-# alias: brew fix
-brew style --fix $*
