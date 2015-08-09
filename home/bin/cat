@@ -3,7 +3,7 @@
 if $stdout.tty? &&
    ARGV.none? { |arg| arg.start_with? "-" } &&
    (`which pygmentize &>/dev/null`; $?.success?)
-  exec "pygmentize", "-g", *ARGV
+  ARGV.each { |arg| system "pygmentize", "-g", arg }
 else
   orig_cat = "/bin/cat" if File.executable?("/bin/cat")
   orig_cat ||= (`which -a cat`.split("\n") - [__FILE__]).first
