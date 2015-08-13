@@ -7,7 +7,7 @@ export DOTFILES_HOME="$(dirname $(readlink $HOME/.zshrc))"
 
 if [[ `uname` == "Darwin" ]]; then # OS X
     export HOMEBREW_PREFIX="/usr/local"
-    export PATH="$DOTFILES_HOME/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/MacGPG2/bin:/usr/texbin"
+    export PATH="$DOTFILES_HOME/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/MacGPG2/bin:/Library/TeX/texbin"
 else # Linux
     export HOMEBREW_PREFIX="$(brew --prefix)"
     export PATH="$DOTFILES_HOME/bin:$HOMEBREW_PREFIX/bin:$HOMEBREW_PREFIX/sbin:$PATH"
