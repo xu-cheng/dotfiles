@@ -1,7 +1,7 @@
 ZSH=$HOME/.oh-my-zsh
 
 ZSH_THEME="mytheme"
-plugins=(brew brew-cask colored-man extract git git-flow git-hubflow mercurial osx pip ssh-agent svn)
+plugins=(brew-cask colored-man extract git git-flow git-hubflow mercurial osx pip ssh-agent svn)
 
 export DOTFILES_HOME="$(dirname $(readlink $HOME/.zshrc))"
 
@@ -54,6 +54,7 @@ alias ts='tmux new-session -s'
 alias tl='tmux list-sessions'
 alias tksv='tmux kill-server'
 alias tkss='tmux kill-session -t'
+alias bubu='brew update && brew upgrade && brew cleanup -s'
 
 hist(){
 if [[ "$1" == "-c" ]]; then
