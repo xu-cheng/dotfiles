@@ -22,7 +22,7 @@ ln_sf ROOT_DIR/"home/mytheme.zsh-theme", HOME_DIR/".oh-my-zsh/custom/"
 ln_sf ROOT_DIR/"home/.zshrc", HOME_DIR
 ln_sf ROOT_DIR/"home/.tmux.conf", HOME_DIR
 ln_sf ROOT_DIR/"home/.nvim", HOME_DIR
-ln_sf ROOT_DIR/"home/.Brewfile", HOME_DIR
+ln_sf ROOT_DIR/"home/Brewfile", HOME_DIR/".Brewfile"
 ln_sf ROOT_DIR/"home/.brew-aliases", HOME_DIR
 ln_sf ROOT_DIR/"home/.astylerc", HOME_DIR
 ln_sf ROOT_DIR/"home/.latexmkrc", HOME_DIR
