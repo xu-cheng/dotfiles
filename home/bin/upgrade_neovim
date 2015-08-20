@@ -1,0 +1,3 @@
+#!/bin/sh
+
+brew reinstall neovim/neovim/neovim --HEAD && nvim -c PlugUpgrade +q && nvim -c PlugUpdate!
