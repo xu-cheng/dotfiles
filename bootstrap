@@ -26,6 +26,7 @@ ln_sf ROOT_DIR/"home/.nvim", HOME_DIR
 ln_sf ROOT_DIR/"home/Brewfile", HOME_DIR/".Brewfile"
 ln_sf ROOT_DIR/"home/.brew-aliases", HOME_DIR
 ln_sf ROOT_DIR/"home/.astylerc", HOME_DIR
+ln_sf ROOT_DIR/"home/.pryrc", HOME_DIR
 ln_sf ROOT_DIR/"home/.latexmkrc", HOME_DIR
 ln_sf ROOT_DIR/"home/.lesskey", HOME_DIR
 system "lesskey"
