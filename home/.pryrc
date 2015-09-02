@@ -14,8 +14,6 @@
     unless system "gem", "install", g
       puts "WARNING: fail to install #{g}."
     end
-  else
-    next
   end
 end
 
