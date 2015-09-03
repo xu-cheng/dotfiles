@@ -8,7 +8,7 @@ if sysbrew == localbrew
 end
 
 new_argv = [ARGV[0]] + ARGV[1..-1].map do |arg|
-  if arg.start_with?("-") || arg.include?("/") || File.exist?(arg)
+  if arg.start_with?("-") || arg.include?("/") || arg.include?(" ") || File.exist?(arg)
     arg
   else
     path = `#{localbrew} path #{arg} 2>/dev/null`.chomp
