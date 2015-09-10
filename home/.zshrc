@@ -22,6 +22,7 @@ export PYENV_VIRTUALENVWRAPPER_PREFER_PYVENV=true
 export RBENV_ROOT="$HOMEBREW_PREFIX/var/rbenv"
 export CHEATCOLORS=true
 export HOMEBREW_SANDBOX=true
+export HOMEBREW_DEVELOPER=true
 
 if brew command command-not-found-init > /dev/null; then eval "$(brew command-not-found-init)"; fi
 if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
