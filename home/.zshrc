@@ -39,6 +39,8 @@ ZSH_HIGHLIGHT_PATH=$HOMEBREW_PREFIX/share/zsh-syntax-highlighting/zsh-syntax-hig
 [[ -s $ZSH_HIGHLIGHT_PATH ]] && . $ZSH_HIGHLIGHT_PATH
 [[ -s $HOME/.travis/travis.sh ]] && . $HOME/.travis/travis.sh
 
+zstyle :omz:plugins:ssh-agent agent-forwarding on
+
 source $ZSH/oh-my-zsh.sh
 #compinit
 
