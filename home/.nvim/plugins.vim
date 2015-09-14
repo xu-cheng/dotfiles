@@ -71,8 +71,8 @@ Plug 'junegunn/seoul256.vim'
 Plug 'altercation/vim-colors-solarized'
 
 " LaTeX
-Plug 'lervag/vimtex', { 'for': ['tex'] }
-Plug 'auctex.vim', { 'for': ['tex'] }
+Plug 'lervag/vimtex'
+Plug 'auctex.vim'
 
 " Dash
 Plug 'rizzatti/funcoo.vim'
