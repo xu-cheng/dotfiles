@@ -91,3 +91,14 @@ noremap <Space> :<c-u>noh<CR>:echo<CR>
 " Windows management
 nnoremap <C-w>\| :vsplit<CR>
 nnoremap <C-w>- :split<CR>
+
+" Navigating in command mode
+" http://stackoverflow.com/a/6923282
+cnoremap <C-a> <Home>
+cnoremap <C-e> <End>
+cnoremap <C-p> <Up>
+cnoremap <C-n> <Down>
+cnoremap <C-b> <Left>
+cnoremap <C-f> <Right>
+cnoremap <M-b> <S-Left>
+cnoremap <M-f> <S-Right>
