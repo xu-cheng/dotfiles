@@ -8,3 +8,6 @@ if &background == "dark"
 else
     let g:airline_theme = 'solarized'
 endif
+
+" tmuxline settings
+let g:airline#extensions#tmuxline#enabled = 0
