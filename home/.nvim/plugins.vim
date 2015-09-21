@@ -81,6 +81,8 @@ Plug 'rizzatti/dash.vim'
 
 " Misc
 Plug 'plasticboy/vim-markdown'
+Plug 'kannokanno/previm'
+Plug 'tyru/open-browser.vim'
 Plug 'henrik/vim-reveal-in-finder'
 Plug 'xu-cheng/brew.vim'
 Plug 'bfontaine/Brewfile.vim'
