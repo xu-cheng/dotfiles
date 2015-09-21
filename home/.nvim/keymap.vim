@@ -102,3 +102,6 @@ cnoremap <C-b> <Left>
 cnoremap <C-f> <Right>
 cnoremap <M-b> <S-Left>
 cnoremap <M-f> <S-Right>
+
+" Ctrl-S to quick save
+noremap <C-s> :update<CR>
