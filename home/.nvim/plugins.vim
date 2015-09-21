@@ -63,7 +63,8 @@ Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'ervandew/supertab'
 
-" Debug
+" Build & Debug
+Plug 'tpope/vim-dispatch'
 Plug 'gilligan/vim-lldb', { 'on': ['Lattach', 'Ltarget']}
 
 " Color Scheme
