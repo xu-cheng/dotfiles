@@ -69,6 +69,7 @@
     " Color Scheme
     set background=dark " TODO: auto determine based on shell colorscheme
     if &background == "dark"
+        let g:seoul256_background = 236
         color seoul256
     else
         color solarized

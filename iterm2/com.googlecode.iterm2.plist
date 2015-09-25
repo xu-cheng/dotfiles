@@ -84,6 +84,8 @@
 	<true/>
 	<key>MaxVertically</key>
 	<false/>
+	<key>NSColorPanelMode</key>
+	<string>0</string>
 	<key>NSFontPanelAttributes</key>
 	<string>1, 0</string>
 	<key>NSNavLastRootDirectory</key>
@@ -129,12 +131,16 @@
 		<key>TB Is Shown</key>
 		<integer>1</integer>
 	</dict>
+	<key>NSWindow Frame NSColorPanel</key>
+	<string>688 219 231 329 0 0 1440 877 </string>
+	<key>NSWindow Frame NSFontPanel</key>
+	<string>662 177 550 227 0 0 1440 900 </string>
 	<key>NSWindow Frame Preferences</key>
-	<string>209 142 924 485 0 0 1440 900 </string>
+	<string>516 206 924 485 0 0 1440 900 </string>
 	<key>NSWindow Frame SUStatusFrame</key>
-	<string>528 578 384 129 0 0 1440 877 </string>
+	<string>528 577 384 129 0 0 1440 877 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>690 137 710 621 0 0 1440 877 </string>
+	<string>264 135 710 621 0 0 1440 877 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
 	<string>463 186 710 621 0 0 1440 877 </string>
 	<key>NSWindow Frame iTerm Window 2</key>
@@ -315,11 +321,11 @@
 			<key>Background Color</key>
 			<dict>
 				<key>Blue Component</key>
-				<real>0.22745098173618317</real>
+				<real>0.18823529779911041</real>
 				<key>Green Component</key>
-				<real>0.22745098173618317</real>
+				<real>0.18823529779911041</real>
 				<key>Red Component</key>
-				<real>0.22745098173618317</real>
+				<real>0.18823529779911041</real>
 			</dict>
 			<key>Background Image Is Tiled</key>
 			<false/>
@@ -1639,7 +1645,7 @@
 	<key>NoSyncTimeOfLastPromo</key>
 	<real>453191025.474585</real>
 	<key>NoSyncTimeOfLastPromoDownload</key>
-	<real>464095706.941423</real>
+	<real>464857886.36010098</real>
 	<key>OnlyWhenMoreTabs</key>
 	<true/>
 	<key>OpenArrangementAtStartup</key>
@@ -1708,7 +1714,7 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2015-09-16T11:26:58Z</date>
+	<date>2015-09-25T07:10:36Z</date>
 	<key>SavePasteHistory</key>
 	<false/>
 	<key>Secure Input</key>
