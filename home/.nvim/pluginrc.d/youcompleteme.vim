@@ -18,6 +18,11 @@ let g:UltiSnipsJumpForwardTrigger = '<Tab>'
 let g:UltiSnipsJumpBackwardTrigger = '<S-Tab>'
 let g:SuperTabCrMapping = 0
 
+" UltiSnips has to use the same python interpreter as YCM
+" so let's force them both using python 2
+" https://github.com/SirVer/ultisnips/issues/560
+let g:UltiSnipsUsePythonVersion = 2
+
 " Enable omni completion.
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
 autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
