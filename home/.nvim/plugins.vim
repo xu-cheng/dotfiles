@@ -11,7 +11,6 @@ call plug#begin(g:vim_home . 'plugged')
 " Deps
 Plug 'MarcWeber/vim-addon-mw-utils'
 Plug 'tomtom/tlib_vim'
-Plug 'garbas/vim-snipmate'
 Plug 'mileszs/ack.vim'
 
 " General
