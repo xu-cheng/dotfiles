@@ -20,7 +20,7 @@ OptionParser.new do |opts|
   end
 end.parse!
 
-$localip = IPAddr.new IPSocket.getaddress(Socket.gethostname)
+$localip = IPAddr.new Socket.ip_address_list.detect { |addr| addr.ipv4? && !addr.ipv4_loopback? }.ip_address
 
 if $net.include? $localip
   exec "nc", $host, $port
