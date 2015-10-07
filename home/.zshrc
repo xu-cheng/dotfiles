@@ -57,7 +57,7 @@ alias ts='tmux new-session -s'
 alias tl='tmux list-sessions'
 alias tksv='tmux kill-server'
 alias tkss='tmux kill-session -t'
-alias bubu='brew update && brew upgrade && brew cleanup -s'
+alias bubu='brew update && brew upgrade --cleanup'
 
 hist(){
 if [[ "$1" == "-c" ]]; then
