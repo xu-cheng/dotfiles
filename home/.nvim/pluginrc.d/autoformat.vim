@@ -1,7 +1,5 @@
 noremap <LocalLeader>F :Autoformat<CR><CR>
 
-let g:formatprg_c = "astyle"
-let g:formatprg_args_c= "--mode=c"
-let g:formatprg_cpp = "astyle"
-let g:formatprg_args_cpp = "--mode=c"
-
+let g:formatdef_astyle_c= '"astyle --mode=c"'
+let g:formatters_c=['astyle_c']
+let g:formatters_cpp=['astyle_c']
