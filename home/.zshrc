@@ -44,6 +44,8 @@ zstyle :omz:plugins:ssh-agent agent-forwarding on
 source $ZSH/oh-my-zsh.sh
 #compinit
 
+[[ -f $HOME/.fzf.zsh ]] && . $HOME/.fzf.zsh
+
 alias rake='noglob rake'
 alias rm='safe-rm'
 if ! which sha1sum > /dev/null; then alias sha1sum='gsha1sum'; fi
