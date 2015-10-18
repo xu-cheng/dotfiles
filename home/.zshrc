@@ -44,7 +44,10 @@ zstyle :omz:plugins:ssh-agent agent-forwarding on
 source $ZSH/oh-my-zsh.sh
 #compinit
 
-[[ -f $HOME/.fzf.zsh ]] && . $HOME/.fzf.zsh
+if which fzf > /dev/null; then
+    [[ $- =~ i ]] && . "$HOMEBREW_PREFIX/opt/fzf/shell/completion.zsh" 2> /dev/null
+    . "$HOMEBREW_PREFIX/opt/fzf/shell/key-bindings.zsh"
+fi
 
 alias rake='noglob rake'
 alias rm='safe-rm'
