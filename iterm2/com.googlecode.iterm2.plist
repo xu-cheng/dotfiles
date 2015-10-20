@@ -6,8 +6,6 @@
 	<true/>
 	<key>AllowClipboardAccess</key>
 	<false/>
-	<key>AlternateMouseScroll</key>
-	<true/>
 	<key>AnimateDimming</key>
 	<false/>
 	<key>AppleAntiAliasingThreshold</key>
@@ -100,8 +98,6 @@
 	<string></string>
 	<key>NSScrollAnimationEnabled</key>
 	<false/>
-	<key>NSScrollViewShouldScrollUnderTitlebar</key>
-	<false/>
 	<key>NSTableView Columns KeyBingingTable</key>
 	<array>
 		<data>
@@ -113,7 +109,7 @@
 		BAtzdHJlYW10eXBlZIHoA4QBQISEhAhOU1N0cmluZwGEhAhOU09iamVjdACF
 		hAErATGG
 		</data>
-		<string>322</string>
+		<string>302</string>
 	</array>
 	<key>NSTableView Hidden Columns KeyBingingTable</key>
 	<array/>
@@ -140,13 +136,13 @@
 	<key>NSWindow Frame NSFontPanel</key>
 	<string>662 177 550 227 0 0 1440 900 </string>
 	<key>NSWindow Frame Preferences</key>
-	<string>369 274 606 456 0 0 1440 877 </string>
+	<string>516 206 924 485 0 0 1440 900 </string>
 	<key>NSWindow Frame SUStatusFrame</key>
-	<string>528 576 384 129 0 0 1440 877 </string>
+	<string>528 577 384 129 0 0 1440 877 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>484 182 710 622 0 0 1440 877 </string>
+	<string>264 135 710 621 0 0 1440 877 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
-	<string>0 69 717 808 0 0 1440 900 </string>
+	<string>463 186 710 621 0 0 1440 877 </string>
 	<key>NSWindow Frame iTerm Window 2</key>
 	<string>482 201 710 621 0 0 1440 877 </string>
 	<key>NSWindow Frame iTerm Window 3</key>
@@ -1646,12 +1642,10 @@
 	</array>
 	<key>NoSyncNeverRemindPrefsChangesCopy</key>
 	<true/>
-	<key>NoSyncTimeOfFirstLaunchOfVersionWithTip</key>
-	<real>467050032.29694498</real>
 	<key>NoSyncTimeOfLastPromo</key>
 	<real>453191025.474585</real>
 	<key>NoSyncTimeOfLastPromoDownload</key>
-	<real>467048103.83534002</real>
+	<real>464857886.36010098</real>
 	<key>OnlyWhenMoreTabs</key>
 	<true/>
 	<key>OpenArrangementAtStartup</key>
@@ -1715,14 +1709,12 @@
 	<true/>
 	<key>SUEnableAutomaticChecks</key>
 	<true/>
-	<key>SUFeedAlternateAppNameKey</key>
-	<string>iTerm</string>
 	<key>SUFeedURL</key>
-	<string>http://iterm2.com/appcasts/testing3.xml</string>
+	<string>http://iterm2.com/appcasts/testing.xml</string>
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2015-10-20T15:41:04Z</date>
+	<date>2015-09-25T07:10:36Z</date>
 	<key>SavePasteHistory</key>
 	<false/>
 	<key>Secure Input</key>
@@ -1779,6 +1771,6 @@
 	<key>findRegex_iTerm</key>
 	<false/>
 	<key>iTerm Version</key>
-	<string>2.9.20151001</string>
+	<string>2.1.1</string>
 </dict>
 </plist>
