@@ -85,7 +85,7 @@
 	<key>MaxVertically</key>
 	<false/>
 	<key>NSColorPanelMode</key>
-	<string>0</string>
+	<string>6</string>
 	<key>NSFontPanelAttributes</key>
 	<string>1, 0</string>
 	<key>NSNavLastRootDirectory</key>
@@ -98,6 +98,8 @@
 	<string></string>
 	<key>NSScrollAnimationEnabled</key>
 	<false/>
+	<key>NSScrollViewShouldScrollUnderTitlebar</key>
+	<false/>
 	<key>NSTableView Columns KeyBingingTable</key>
 	<array>
 		<data>
@@ -109,7 +111,7 @@
 		BAtzdHJlYW10eXBlZIHoA4QBQISEhAhOU1N0cmluZwGEhAhOU09iamVjdACF
 		hAErATGG
 		</data>
-		<string>302</string>
+		<string>322</string>
 	</array>
 	<key>NSTableView Hidden Columns KeyBingingTable</key>
 	<array/>
@@ -136,15 +138,19 @@
 	<key>NSWindow Frame NSFontPanel</key>
 	<string>662 177 550 227 0 0 1440 900 </string>
 	<key>NSWindow Frame Preferences</key>
-	<string>516 206 924 485 0 0 1440 900 </string>
+	<string>369 419 606 456 0 0 1440 877 </string>
 	<key>NSWindow Frame SUStatusFrame</key>
-	<string>528 577 384 129 0 0 1440 877 </string>
+	<string>520 577 400 129 0 0 1440 877 </string>
+	<key>NSWindow Frame SUUpdateAlert</key>
+	<string>410 380 620 392 0 0 1440 877 </string>
+	<key>NSWindow Frame UKCrashReporter</key>
+	<string>99 293 592 584 0 0 1440 877 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>264 135 710 621 0 0 1440 877 </string>
+	<string>530 125 710 622 0 0 1440 877 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
-	<string>463 186 710 621 0 0 1440 877 </string>
+	<string>0 264 710 622 0 0 1440 900 </string>
 	<key>NSWindow Frame iTerm Window 2</key>
-	<string>482 201 710 621 0 0 1440 877 </string>
+	<string>482 201 710 622 0 0 1440 900 </string>
 	<key>NSWindow Frame iTerm Window 3</key>
 	<string>225 279 710 621 0 0 1440 900 </string>
 	<key>NSWindow Frame iTerm Window 4</key>
@@ -320,12 +326,16 @@
 			<true/>
 			<key>Background Color</key>
 			<dict>
+				<key>Alpha Component</key>
+				<real>1</real>
 				<key>Blue Component</key>
-				<real>0.18823529779911041</real>
+				<real>0.1413714736700058</real>
+				<key>Color Space</key>
+				<string>Calibrated</string>
 				<key>Green Component</key>
-				<real>0.18823529779911041</real>
+				<real>0.1413690447807312</real>
 				<key>Red Component</key>
-				<real>0.18823529779911041</real>
+				<real>0.14137327671051025</real>
 			</dict>
 			<key>Background Image Is Tiled</key>
 			<false/>
@@ -1640,12 +1650,22 @@
 			<string>/Users/xucheng</string>
 		</dict>
 	</array>
+	<key>NoSyncDoNotWarnBeforeMultilinePaste</key>
+	<true/>
+	<key>NoSyncDoNotWarnBeforeMultilinePaste_selection</key>
+	<integer>0</integer>
 	<key>NoSyncNeverRemindPrefsChangesCopy</key>
 	<true/>
+	<key>NoSyncNeverRemindPrefsChangesLostForFile</key>
+	<true/>
+	<key>NoSyncNeverRemindPrefsChangesLostForFile_selection</key>
+	<integer>0</integer>
+	<key>NoSyncTimeOfFirstLaunchOfVersionWithTip</key>
+	<real>467050032.29694498</real>
 	<key>NoSyncTimeOfLastPromo</key>
 	<real>453191025.474585</real>
 	<key>NoSyncTimeOfLastPromoDownload</key>
-	<real>464857886.36010098</real>
+	<real>467048103.83534002</real>
 	<key>OnlyWhenMoreTabs</key>
 	<true/>
 	<key>OpenArrangementAtStartup</key>
@@ -1709,12 +1729,14 @@
 	<true/>
 	<key>SUEnableAutomaticChecks</key>
 	<true/>
+	<key>SUFeedAlternateAppNameKey</key>
+	<string>iTerm</string>
 	<key>SUFeedURL</key>
-	<string>http://iterm2.com/appcasts/testing.xml</string>
+	<string>https://iterm2.com/appcasts/nightly.xml</string>
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2015-09-25T07:10:36Z</date>
+	<date>2015-10-22T07:33:18Z</date>
 	<key>SavePasteHistory</key>
 	<false/>
 	<key>Secure Input</key>
@@ -1748,6 +1770,8 @@
 	</array>
 	<key>TripleClickSelectsFullWrappedLines</key>
 	<false/>
+	<key>UKCrashReporterLastCrashReportDate</key>
+	<real>1445500160</real>
 	<key>URLHandlersByGuid</key>
 	<dict/>
 	<key>UseBorder</key>
@@ -1771,6 +1795,10 @@
 	<key>findRegex_iTerm</key>
 	<false/>
 	<key>iTerm Version</key>
-	<string>2.1.1</string>
+	<string>2.9.20151022-nightly</string>
+	<key>kCPKSelectionViewPreferredModeKey</key>
+	<integer>0</integer>
+	<key>kCPKSelectionViewShowHSBTextFieldsKey</key>
+	<false/>
 </dict>
 </plist>
