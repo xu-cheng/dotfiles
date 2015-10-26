@@ -34,11 +34,12 @@ unless (HOME/".tmux/plugins/tpm").exist?
   system "git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm"
 end
 
-# Link file
+# Link files
 link_files(DOTFILES_HOME, HOME)
 link_files(DOTFILES_HOME/".config", HOME/".config", skip_directory: false)
 link_files(DOTFILES_HOME/".matplotlib", HOME/".matplotlib")
 link_files(DOTFILES_HOME/".oh-my-zsh/custom", HOME/".oh-my-zsh/custom")
 link_files(DOTFILES_HOME/".ssh", HOME/".ssh") if OS == :osx
 system "lesskey"
+ln_sf DOTFILES_HOME/".brew-aliases", HOME
 ln_sf BREW_PREFIX/"Library/Contributions/brew_zsh_completion.zsh", BREW_PREFIX/"share/zsh/site-functions/_brew"
