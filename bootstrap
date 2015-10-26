@@ -15,10 +15,10 @@ def system(*args)
   super
 end
 
-def link_files(src_dir, dst_dir)
+def link_files(src_dir, dst_dir, options = {})
   mkdir_p dst_dir unless dst_dir.directory?
   src_dir.children.each do |file|
-    next if file.directory?
+    next if options.fetch(:skip_directory, true) && file.directory?
     ln_sf file, dst_dir
   end
 end
@@ -35,7 +35,7 @@ end
 
 # Link file
 link_files(DOTFILES_HOME, HOME)
-link_files(DOTFILES_HOME/".config", HOME/".config")
+link_files(DOTFILES_HOME/".config", HOME/".config", skip_directory: false)
 link_files(DOTFILES_HOME/".matplotlib", HOME/".matplotlib")
 link_files(DOTFILES_HOME/".oh-my-zsh/custom", HOME/".oh-my-zsh/custom")
 link_files(DOTFILES_HOME/".ssh", HOME/".ssh") if OS == :osx
