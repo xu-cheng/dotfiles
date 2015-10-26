@@ -19,8 +19,7 @@ def link_files(src_dir, dst_dir)
   mkdir_p dst_dir unless dst_dir.directory?
   src_dir.children.each do |file|
     next if file.directory?
-    puts "#{file}->#{dst_dir}"
-    #ln_sf file, dst_dir
+    ln_sf file, dst_dir
   end
 end
 
