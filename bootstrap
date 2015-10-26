@@ -2,6 +2,7 @@
 
 require "fileutils"
 require "pathname"
+require "shellwords"
 include FileUtils::Verbose
 
 OS = RUBY_PLATFORM =~ /darwin/ ? :osx : :linux
@@ -11,7 +12,7 @@ HOME = Pathname.new(Dir.home)
 BREW_PREFIX = Pathname.new(`brew --prefix`.chomp)
 
 def system(*args)
-  puts args
+  puts args.shelljoin
   super
 end
 
