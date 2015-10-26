@@ -2,42 +2,43 @@
 
 require "fileutils"
 require "pathname"
-include FileUtils
+include FileUtils::Verbose
 
 OS = RUBY_PLATFORM =~ /darwin/ ? :osx : :linux
-ROOT_DIR = Pathname.new(__FILE__).parent.expand_path
-HOME_DIR = Pathname.new(Dir.home)
+ROOT = Pathname.new(__FILE__).parent.expand_path
+DOTFILES_HOME = ROOT/"home"
+HOME = Pathname.new(Dir.home)
 BREW_PREFIX = Pathname.new(`brew --prefix`.chomp)
 
+def system(*args)
+  puts args
+  super
+end
+
+def link_files(src_dir, dst_dir)
+  mkdir_p dst_dir unless dst_dir.directory?
+  src_dir.children.each do |file|
+    next if file.directory?
+    puts "#{file}->#{dst_dir}"
+    #ln_sf file, dst_dir
+  end
+end
+
 ## Install oh-my-zsh
-unless (HOME_DIR/".oh-my-zsh").exist?
+unless (HOME/".oh-my-zsh").exist?
   system "curl -L http://install.ohmyz.sh | sh"
 end
 
-unless (HOME_DIR/".tmux/plugins/tpm").exist?
+## Install tmux-plugins
+unless (HOME/".tmux/plugins/tpm").exist?
   system "git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm"
 end
 
 # Link file
-mkdir_p HOME_DIR/".oh-my-zsh/custom"
-ln_sf ROOT_DIR/"home/mytheme.zsh-theme", HOME_DIR/".oh-my-zsh/custom/"
-ln_sf ROOT_DIR/"home/.zshrc", HOME_DIR
-ln_sf ROOT_DIR/"home/.tmux.conf", HOME_DIR
-ln_sf ROOT_DIR/"home/.nvim", HOME_DIR
-ln_sf ROOT_DIR/"home/Brewfile", HOME_DIR/".Brewfile"
-ln_sf ROOT_DIR/"home/.brew-aliases", HOME_DIR
-ln_sf ROOT_DIR/"home/.astylerc", HOME_DIR
-ln_sf ROOT_DIR/"home/.pryrc", HOME_DIR
-ln_sf ROOT_DIR/"home/.latexmkrc", HOME_DIR
-ln_sf ROOT_DIR/"home/.lesskey", HOME_DIR
+link_files(DOTFILES_HOME, HOME)
+link_files(DOTFILES_HOME/".config", HOME/".config")
+link_files(DOTFILES_HOME/".matplotlib", HOME/".matplotlib")
+link_files(DOTFILES_HOME/".oh-my-zsh/custom", HOME/".oh-my-zsh/custom")
+link_files(DOTFILES_HOME/".ssh", HOME/".ssh") if OS == :osx
 system "lesskey"
-mkdir_p HOME_DIR/".matplotlib"
-ln_sf ROOT_DIR/"home/matplotlibrc", HOME_DIR/".matplotlib/"
-mkdir_p HOME_DIR/".config"
-ln_sf ROOT_DIR/"home/safe-rm", HOME_DIR/".config/"
-if OS == :osx
-  mkdir_p HOME_DIR/".ssh"
-  ln_sf ROOT_DIR/"home/.ssh/config", HOME_DIR/".ssh/"
-end
-ln_sf HOME_DIR/".nviminfo", HOME_DIR/".viminfo"
 ln_sf BREW_PREFIX/"Library/Contributions/brew_zsh_completion.zsh", BREW_PREFIX/"share/zsh/site-functions/_brew"

@@ -7,7 +7,7 @@ else
     let g:python3_host_prog = system('echo -n $(brew --prefix)') . '/bin/python3'
 endif
 " Set vim-home
-let g:vim_home = $HOME . '/.nvim/'
+let g:vim_home = $HOME . '/.config/nvim/'
 " Load plugins
 execute 'source' g:vim_home . 'plugins.vim'
 " Load basic settings
