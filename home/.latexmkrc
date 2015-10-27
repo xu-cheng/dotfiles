@@ -7,4 +7,4 @@ $max_repeat = 5;
 # Use Skim.app to preview generated PDFs
 $pdf_previewer = 'open -a Skim';
 # File extensions to remove when cleaning
-$clean_ext = 'bbl nav pdfsync pyg snm synctex.gz thm vrb run.xml';
+$clean_ext = 'bbl fdb_latexmk nav pdfsync pyg run.xml snm synctex.gz thm vrb';
