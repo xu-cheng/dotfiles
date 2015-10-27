@@ -27,11 +27,13 @@ end
 ## Install oh-my-zsh
 unless (HOME/".oh-my-zsh").exist?
   system "curl -L http://install.ohmyz.sh | sh"
+  @omz_fresh_install = true
 end
 
 ## Install tmux-plugins
 unless (HOME/".tmux/plugins/tpm").exist?
-  system "git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm"
+  system "git", "clone", "https://github.com/tmux-plugins/tpm", "~/.tmux/plugins/tpm"
+  @tpm_fresh_install = true
 end
 
 # Link files
@@ -40,6 +42,17 @@ link_files(DOTFILES_HOME/".config", HOME/".config", skip_directory: false)
 link_files(DOTFILES_HOME/".matplotlib", HOME/".matplotlib")
 link_files(DOTFILES_HOME/".oh-my-zsh/custom", HOME/".oh-my-zsh/custom")
 link_files(DOTFILES_HOME/".ssh", HOME/".ssh") if OS == :osx
-system "lesskey"
 ln_sf DOTFILES_HOME/".brew-aliases", HOME
 ln_sf BREW_PREFIX/"Library/Contributions/brew_zsh_completion.zsh", BREW_PREFIX/"share/zsh/site-functions/_brew"
+
+## Post linking
+system "lesskey"
+unless @omz_fresh_install
+  ENV["ZSH"] = "#{HOME}/.oh-my-zsh"
+  system "/bin/sh $ZSH/tools/upgrade.sh"
+end
+if @tpm_fresh_install
+  system "#{HOME}/.tmux/plugins/tpm/scripts/install_plugins.sh"
+else
+  system "#{HOME}/.tmux/plugins/tpm/scripts/update_plugin.sh", "--shell-echo", "all"
+end
