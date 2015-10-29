@@ -1,3 +1,4 @@
+# vim: filetype=zsh
 
 local check_mark='\xE2\x9C\x94'
 local x_mark='\xE2\x9C\x98'
