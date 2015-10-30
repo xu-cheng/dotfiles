@@ -1,3 +1,4 @@
+" vim: set sw=4 ts=4 sts=4 et tw=78 foldmarker={,} foldlevel=0 foldmethod=marker spell:
 " General {
 
     filetype plugin indent on   " Automatically detect file types.
@@ -19,7 +20,7 @@
     set viewoptions=folds,options,cursor,unix,slash " Better Unix / Windows compatibility
     set virtualedit=onemore             " Allow for cursor beyond last character
     set history=1000                    " Store a ton of history (default is 20)
-    set nospell                         " Spell checking off be default
+    set spell                           " Spell checking on
     set spelllang=en_us                 " Spell checking language
     set hidden                          " Allow buffer switching without saving
     set switchbuf=usetab,newtab         " Switching to the existing tab or creating new one
