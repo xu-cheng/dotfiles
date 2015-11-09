@@ -1,0 +1,42 @@
+# document: http://editorconfig.org
+
+# top-most EditorConfig file
+root = true
+
+# Common
+[*]
+charset = utf-8
+end_of_line = lf
+indent_style = space
+indent_size = 4
+insert_final_newline = true
+
+# C
+[*.{C,c,c++,cc,cpp,cxx,h,h++,hh,hpp,hxx}]
+trim_trailing_whitespace = true
+
+# Java
+[*.java]
+trim_trailing_whitespace = true
+
+# Haskell
+[*.{hs,lhs}]
+indent_size = 2
+
+# Makefile
+[{m,M}akefile]
+indent_style = tab
+trim_trailing_whitespace = true
+
+# Python
+[.py]
+trim_trailing_whitespace = true
+
+# Ruby
+[*.{erb,rb}]
+indent_size = 2
+
+# YAML
+[*.{yaml,yml}]
+indent_size = 2
+trim_trailing_whitespace = true
