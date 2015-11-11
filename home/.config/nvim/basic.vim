@@ -138,6 +138,7 @@
     " Workaround broken colour highlighting in Haskell
     autocmd FileType haskell,rust setlocal nospell
     autocmd Syntax brew setlocal nospell
+    autocmd BufNewFile,BufRead .gitignore setlocal nospell
 
 " }
 
