@@ -1,27 +1,4 @@
 #!/bin/sh
 
-BREW_FILE=$(command -v brew)
+RBENV_VERSION=1.8.7-p375 HOMEBREW_RUBY_PATH="$(rbenv which ruby)" HOMEBREW_DEVELOPER=1 exec brew "$@"
 
-chdir () {
-  cd "$@" >/dev/null
-}
-
-BREW_FILE_DIRECTORY=$(chdir "${BREW_FILE%/*}" && pwd -P)
-export HOMEBREW_BREW_FILE="$BREW_FILE_DIRECTORY/${BREW_FILE##*/}"
-
-BREW_SYMLINK=$(readlink BREW_FILE)
-if [ -n "$BREW_SYMLINK" ]
-then
-    BREW_SYMLINK_DIRECTORY=$(dirname "$BREW_SYMLINK")
-    BREW_FILE_DIRECTORY=$(chdir "$BREW_FILE_DIRECTORY" &&
-                          chdir "$BREW_SYMLINK_DIRECTORY" && pwd -P)
-fi
-
-BREW_LIBRARY_DIRECTORY=$(chdir "$BREW_FILE_DIRECTORY"/../Library && pwd -P)
-
-# Users may have these set, pointing the system Ruby
-# at non-system gem paths
-unset GEM_HOME
-unset GEM_PATH
-
-RBENV_VERSION="1.8.7-p375" rbenv exec ruby -W0 "$BREW_LIBRARY_DIRECTORY/brew.rb" "$@"
