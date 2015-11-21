@@ -136,7 +136,7 @@
     " Workaround vim-commentary for Haskell
     autocmd FileType haskell setlocal commentstring=--\ %s
     " Workaround broken colour highlighting in Haskell
-    autocmd FileType haskell,rust setlocal nospell
+    autocmd FileType haskell,rust,yaml setlocal nospell
     autocmd Syntax brew setlocal nospell
     autocmd BufNewFile,BufRead .gitignore setlocal nospell
 
