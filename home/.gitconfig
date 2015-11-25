@@ -1,0 +1,55 @@
+[user]
+name = Xu Cheng
+email = xucheng@me.com
+signingkey = A0B459CE
+
+[core]
+autocrlf = input
+editor = nvim
+excludesfile = ~/.gitignore
+
+[push]
+default = simple
+
+[color]
+branch = auto
+diff = auto
+grep = auto
+interactive = auto
+showbranch = auto
+status = auto
+ui = auto
+
+[pager]
+diff = diff-highlight | less
+log = diff-highlight | less
+show = diff-highlight | less
+
+[difftool]
+prompt = false
+
+[diff]
+tool = nvimdiff
+
+[merge]
+tool = nvimdiff
+
+[difftool "nvimdiff"]
+cmd = nvim -d \"$LOCAL\" \"$REMOTE\"
+
+[alias]
+ci = commit
+co = checkout
+current-branch = symbolic-ref --short HEAD
+d = difftool
+fix-previous = !git commit --amend --no-edit --date=\"$(date '+%Y-%m-%dT%H:%M:%S')\"
+lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%C(bold blue)<%an>%Creset' --abbrev-commit
+push-current-branch = !git push --set-upstream origin $(git current-branch)
+rpo = remote prune origin
+sign = cherry-pick --signoff
+ssh-instead-of-https = !git config url.git@github.com:.insteadOf https://github.com/
+st = status
+staged = diff --staged
+sync-upstream = !CUR_BRANCH=$(git current-branch) && git checkout master && git pull upstream master && git push origin master && git checkout $CUR_BRANCH
+unstage = reset HEAD --
+
