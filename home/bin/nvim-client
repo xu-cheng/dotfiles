@@ -49,8 +49,9 @@ else:
             cmd = None
     edit = "tabedit" if args.tab else "edit"
     for f in files:
-        f = f.replace(" ", "\\ ")
-        nvim.command("{0} {1}".format(edit, f))
+        if not os.path.samefile(nvim.current.buffer.name, f):
+            f = f.replace(" ", "\\ ")
+            nvim.command("{0} {1}".format(edit, f))
         if cmd:
             nvim.command(cmd)
     if args.wait:
