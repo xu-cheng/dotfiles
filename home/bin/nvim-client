@@ -7,7 +7,8 @@ import os
 import sys
 
 parser = argparse.ArgumentParser(description="Neovim client")
-parser.add_argument("--addr", metavar="<addr>", default=os.environ.get("NVIM_LISTEN_ADDRESS"),
+parser.add_argument("--addr", metavar="<addr>",
+        default=os.environ.get("NVIM_LISTEN_ADDRESS", os.path.expanduser("~/.local/share/nvim/nvim.sock")),
         help="neovim listen address")
 parser.add_argument("--silent", action="store_true",
         help="don't complain if there is no server")
@@ -48,6 +49,7 @@ else:
             cmd = None
     edit = "tabedit" if args.tab else "edit"
     for f in files:
+        f = f.replace(" ", "\\ ")
         nvim.command("{0} {1}".format(edit, f))
         if cmd:
             nvim.command(cmd)
