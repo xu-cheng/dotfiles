@@ -1,0 +1,55 @@
+#!/usr/bin/env python
+
+from __future__ import print_function
+import argparse
+import neovim
+import os
+import sys
+
+parser = argparse.ArgumentParser(description="Neovim client")
+parser.add_argument("--addr", metavar="<addr>", default=os.environ.get("NVIM_LISTEN_ADDRESS"),
+        help="neovim listen address")
+parser.add_argument("--silent", action="store_true",
+        help="don't complain if there is no server")
+parser.add_argument("--wait", action="store_true",
+        help="wait for files to have been edited")
+parser.add_argument("--tab", action="store_true",
+        help="use tab page per file")
+group = parser.add_mutually_exclusive_group()
+group.add_argument("--send", metavar="<keys>", default=None,
+        help="send <keys> to a neovim server and exit")
+group.add_argument("--expr", metavar="<expr>", default=None,
+        help="evaluate <expr> in a neovim server and print result")
+parser.add_argument("+cmd", nargs="?",
+        help="command to run")
+parser.add_argument("file", nargs="*",
+        help="files to open")
+args = parser.parse_args()
+
+try:
+    nvim = neovim.attach("socket", path=args.addr)
+except Exception as e:
+    if not args.silent:
+        print(e, file=sys.stderr)
+    sys.exit(1)
+
+if args.send:
+    nvim.input(args.send)
+elif args.expr:
+    print(nvim.eval(args.expr))
+else:
+    cmd = vars(args)["+cmd"]
+    files = args.file
+    if cmd is not None:
+        if cmd.startswith("+"):
+            cmd = cmd[1:]
+        else:
+            files.insert(0, cmd)
+            cmd = None
+    edit = "tabedit" if args.tab else "edit"
+    for f in files:
+        nvim.command("{0} {1}".format(edit, f))
+        if cmd:
+            nvim.command(cmd)
+    if args.wait:
+        nvim.session.next_message()

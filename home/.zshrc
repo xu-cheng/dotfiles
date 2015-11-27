@@ -17,6 +17,7 @@ else # Linux
 fi
 
 export EDITOR="nvim"
+export NVIM_LISTEN_ADDRESS="$HOME/.local/share/nvim/nvim.sock"
 export PYENV_ROOT="$HOMEBREW_PREFIX/var/pyenv"
 export PYENV_VIRTUALENVWRAPPER_PREFER_PYVENV=true
 export RBENV_ROOT="$HOMEBREW_PREFIX/var/rbenv"
