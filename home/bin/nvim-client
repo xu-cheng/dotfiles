@@ -8,7 +8,7 @@ import sys
 
 parser = argparse.ArgumentParser(description="Neovim client")
 parser.add_argument("--addr", metavar="<addr>",
-        default=os.environ.get("NVIM_LISTEN_ADDRESS", os.path.expanduser("~/.local/share/nvim/nvim.sock")),
+        default=os.getenv("NVIM_LISTEN_ADDRESS", os.path.expanduser("~/.local/share/nvim/nvim.sock")),
         help="neovim listen address")
 parser.add_argument("--silent", action="store_true",
         help="don't complain if there is no server")
