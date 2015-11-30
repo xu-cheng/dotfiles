@@ -93,7 +93,6 @@ brew 'jq'
 brew 'keybase'
 brew 'libevent'
 brew 'llvm', args: ['with-python', 'with-lldb', 'with-clang']
-brew 'maven'
 brew 'mercurial'
 brew 'mono'
 brew 'mupdf-tools'
