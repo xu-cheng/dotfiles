@@ -51,6 +51,7 @@ Plug 'majutsushi/tagbar'
 Plug 'Raimondi/delimitMate'
 Plug 'Chiel92/vim-autoformat'
 Plug 'MattesGroeger/vim-bookmarks'
+Plug 'chrisbra/NrrwRgn'
 
 " Snippets & AutoComplete
 function! BuildYCM(info)
@@ -78,6 +79,13 @@ Plug 'auctex.vim'
 " Dash
 Plug 'rizzatti/funcoo.vim'
 Plug 'rizzatti/dash.vim'
+
+" Org mode
+Plug 'utl.vim'
+Plug 'SyntaxRange'
+Plug 'tpope/vim-speeddating'
+Plug 'mattn/calendar-vim'
+Plug 'jceb/vim-orgmode'
 
 " Misc
 Plug 'plasticboy/vim-markdown'
