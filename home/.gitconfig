@@ -38,11 +38,15 @@ tool = nvimdiff
 cmd = nvim -d \"$LOCAL\" \"$REMOTE\"
 
 [alias]
+c = commit -m
+a = add
 ci = commit
 co = checkout
+cob = checkout -b
 current-branch = symbolic-ref --short HEAD
 d = difftool
 fix-previous = !git commit --amend --no-edit --date=\"$(date '+%Y-%m-%dT%H:%M:%S')\"
+ir = rebase -i origin/master
 lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%C(bold blue)<%an>%Creset' --abbrev-commit
 push-current-branch = !git push --set-upstream origin $(git current-branch)
 rpo = remote prune origin
@@ -52,4 +56,5 @@ st = status
 staged = diff --staged
 sync-upstream = !CUR_BRANCH=$(git current-branch) && git checkout master && git pull upstream master && git push origin master && git checkout $CUR_BRANCH
 unstage = reset HEAD --
+up = !git fetch origin && git rebase origin/master
 
