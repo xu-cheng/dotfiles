@@ -141,6 +141,7 @@ brew 'homebrew/python/pillow', args: ['with-python3']
 brew 'homebrew/python/scipy', args: ['with-python3']
 brew 'homebrew/science/flint'
 brew 'neovim/neovim/neovim', args: ['HEAD']
+cask 'aerial'
 cask 'betterzipql'
 cask 'font-fontawesome'
 cask 'gpgtools'
