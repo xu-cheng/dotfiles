@@ -46,9 +46,11 @@ cob = checkout -b
 current-branch = symbolic-ref --short HEAD
 d = difftool
 fix-previous = !git commit --amend --no-edit --date=\"$(date '+%Y-%m-%dT%H:%M:%S')\"
-ir = rebase -i origin/master
 lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%C(bold blue)<%an>%Creset' --abbrev-commit
 push-current-branch = !git push --set-upstream origin $(git current-branch)
+ra = rebase --abort
+rc = rebase --continue
+ri = rebase -i origin/master
 rpo = remote prune origin
 sign = cherry-pick --signoff
 ssh-instead-of-https = !git config url.git@github.com:.insteadOf https://github.com/
