@@ -1,7 +1,7 @@
 ZSH=$HOME/.oh-my-zsh
 
 ZSH_THEME="mytheme"
-plugins=(brew-cask colored-man extract git git-flow-avh git-hubflow mercurial osx pip ssh-agent svn)
+plugins=(brew-cask colored-man-pages extract git git-flow-avh git-hubflow mercurial osx pip ssh-agent svn)
 
 export DOTFILES_HOME="$(dirname $(readlink $HOME/.zshrc))"
 
