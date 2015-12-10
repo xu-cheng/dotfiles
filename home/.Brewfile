@@ -132,7 +132,6 @@ brew 'with-readline'
 brew 'youtube-dl'
 brew 'yuicompressor'
 brew 'zsh-syntax-highlighting'
-brew 'caskroom/cask/brew-cask'
 brew 'homebrew/dupes/less'
 brew 'homebrew/games/ckan'
 brew 'homebrew/python/numpy', args: ['with-python3']
