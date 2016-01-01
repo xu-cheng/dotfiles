@@ -1,0 +1,26 @@
+#!/usr/bin/env ruby
+
+require "msgpack"
+require "set"
+
+NVIM_SHADA_FILE = File.expand_path "~/.local/share/nvim/shada/main.shada"
+files = Set.new
+File.open(NVIM_SHADA_FILE, "r") do |io|
+    unpacker = MessagePack::Unpacker.new(io)
+    unpacker.each do |object|
+        next unless object.is_a? Hash
+        next unless file = object["f"]
+        file = File.expand_path(file)
+        files << file if File.exist? file
+    end
+end
+
+fzf = ENV["TMUX"] ? "fzf-tmux" : "fzf"
+exec <<-EOS
+_v(){
+    local files
+    files=$(echo "#{files.to_a.join("\n")}" | #{fzf} -d -m -q "$*" -1) && nvim ${files}
+}
+
+_v
+EOS
