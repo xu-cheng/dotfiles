@@ -183,7 +183,6 @@
         :call system('rm -rf ' . '"' . l:cache . '"')
     endfunction
 
-    noremap <leader>rc :call RemoveCache()<CR>
     command RemoveCache call RemoveCache()
 " }
 
@@ -201,6 +200,5 @@
         AirlineRefresh
     endfunction
 
-    noremap <leader>bg :call ToggleBG()<CR>
     command ToggleBG call ToggleBG()
 " }
