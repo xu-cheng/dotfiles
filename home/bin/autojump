@@ -10,7 +10,7 @@ files = []
     break if line.start_with? "_____"
     file = line.split(":").last.strip
     file = File.expand_path(file)
-    files << file if File.directory? file
+    files.unshift(file) if File.directory? file
 end
 
 fzf = ENV["TMUX"] ? "fzf-tmux" : "fzf"
