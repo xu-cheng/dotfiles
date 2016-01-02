@@ -183,6 +183,7 @@
         :call system('rm -rf ' . '"' . l:cache . '"')
     endfunction
 
+    noremap <leader>rc :call RemoveCache()<CR>
     command RemoveCache call RemoveCache()
 " }
 
