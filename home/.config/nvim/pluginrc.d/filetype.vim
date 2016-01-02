@@ -7,16 +7,14 @@ autocmd BufWritePost * if getline(1) =~ "^#!.*" && get(b:, 'is_new', 0) | :call 
 " 2 space for tab for certain filetypes
 autocmd FileType haskell,puppet,ruby,yml setlocal expandtab shiftwidth=2 softtabstop=2 tabstop=2
 
-" preceding line best in a plugin but here for now.
-autocmd BufNewFile,BufRead *.coffee set filetype=coffee
-" Workaround vim-commentary for Haskell
-autocmd FileType haskell setlocal commentstring=--\ %s
-
 " Disable spelling check for certain file types
 autocmd FileType gitconfig,haskell,rust,vim-plug,yaml setlocal nospell
 autocmd Syntax brew setlocal nospell
 autocmd BufNewFile,BufRead .gitignore,.Brewfile,Brewfile setlocal nospell
 
 " Misc
+autocmd BufNewFile,BufRead *.coffee set filetype=coffee
 autocmd BufNewFile,BufRead *.html.twig set filetype=html.twig
+" Workaround vim-commentary for Haskell
+autocmd FileType haskell setlocal commentstring=--\ %s
 
