@@ -185,3 +185,21 @@
 
     command RemoveCache call RemoveCache()
 " }
+
+" ToggleBG {
+    function! ToggleBG()
+        if &background == "dark"
+            set background=light
+            color solarized
+            let g:airline_theme = 'solarized'
+        else
+            set background=dark
+            color seoul256
+            let g:airline_theme = 'bubblegum'
+        endif
+        AirlineRefresh
+    endfunction
+
+    noremap <leader>bg :call ToggleBG()<CR>
+    command ToggleBG call ToggleBG()
+" }
