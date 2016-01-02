@@ -1,6 +1,6 @@
 #!/usr/bin/env ruby
 
-if ARGV.all? { |argv| File.file? argv }
+if ARGV.any? && ARGV.all? { |argv| File.file? argv }
     exec "nvim", "-p", *ARGV
 end
 
