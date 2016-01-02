@@ -36,7 +36,7 @@
     " Restore cursor to file position in previous editing session
     function! ResCur()
         if line("'\"") <= line("$")
-            normal! g`"
+            silent! normal! g`"
             return 1
         endif
     endfunction
