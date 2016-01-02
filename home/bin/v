@@ -1,5 +1,9 @@
 #!/usr/bin/env ruby
 
+if ARGV.all? { |argv| File.file? argv }
+    exec "nvim", "-p", *ARGV
+end
+
 require "msgpack"
 require "set"
 require "shellwords"
@@ -12,7 +16,7 @@ File.open(NVIM_SHADA_FILE, "r") do |io|
         next unless object.is_a? Hash
         next unless file = object["f"]
         file = File.expand_path(file)
-        files << file if File.exist? file
+        files << file if File.file? file
     end
 end
 
