@@ -129,17 +129,6 @@
     set splitright                  " Puts new vsplit windows to the right of the current
     set splitbelow                  " Puts new split windows to the bottom of the current
     set pastetoggle=<F12>           " pastetoggle (sane indentation on pastes)
-    autocmd BufNewFile,BufRead *.html.twig set filetype=html.twig
-    autocmd FileType haskell,puppet,ruby,yml setlocal expandtab shiftwidth=2 softtabstop=2 tabstop=2
-    " preceding line best in a plugin but here for now.
-    autocmd BufNewFile,BufRead *.coffee set filetype=coffee
-    " Workaround vim-commentary for Haskell
-    autocmd FileType haskell setlocal commentstring=--\ %s
-    " Auto detect filetype if uneset
-    autocmd BufWritePost * if &filetype == "" | filetype detect | endif
-    " Automatically give executable permission to new scripts starting with a shebang (#!)
-    autocmd BufWritePre  * if !filereadable(expand('<afile>:p')) | let b:is_new = 1 | endif
-    autocmd BufWritePost * if getline(1) =~ "^#!.*" && get(b:, 'is_new', 0) | :call system('chmod a+x "' . expand('<afile>:p') . '"') | endif
 " }
 
 " Directories {
