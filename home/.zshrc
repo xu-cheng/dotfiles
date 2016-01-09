@@ -73,15 +73,6 @@ else
 fi
 }
 
-# get git commit sha
-# example usage: git rebase -i `git_sha`
-git_sha() {
-  local commits commit
-  commits=$(git log --color=always --pretty=oneline --abbrev-commit --reverse) &&
-  commit=$(echo "$commits" | fzf --tac +s +m -e --ansi --reverse) &&
-  echo -n $(echo "$commit" | sed "s/ .*//")
-}
-
 # Change iterm2 profile. Usage it2prof ProfileName (case sensitive)
 # https://coderwall.com/p/s-2_nw/change-iterm2-color-profile-from-the-cli
 it2prof()  { echo -e "\033]50;SetProfile=$1\a" }

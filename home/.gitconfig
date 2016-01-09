@@ -46,6 +46,7 @@ cob = checkout -b
 current-branch = symbolic-ref --short HEAD
 d = difftool
 fix-previous = !git commit --amend --no-edit --date=\"$(date '+%Y-%m-%dT%H:%M:%S')\"
+fix-up = !git commit --fixup=$(git_sha)
 lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%C(bold blue)<%an>%Creset' --abbrev-commit
 push-current-branch = !git push --set-upstream origin $(git current-branch)
 ra = rebase --abort
