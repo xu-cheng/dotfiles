@@ -17,7 +17,7 @@ fzf = ENV["TMUX"] ? "fzf-tmux" : "fzf"
 exec <<-EOS
 _autojump(){
     local files
-    files=$(echo "#{files.join("\n")}" | #{fzf} -d -1) && echo ${files} || echo $HOME
+    files=$(echo "#{files.join("\n")}" | #{fzf} -d -1) && echo ${files} || echo $PWD
 }
 
 _autojump
