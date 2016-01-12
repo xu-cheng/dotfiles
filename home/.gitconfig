@@ -60,4 +60,5 @@ staged = diff --staged
 sync-upstream = !CUR_BRANCH=$(git current-branch) && git checkout master && git pull upstream master && git push origin master && git checkout $CUR_BRANCH
 unstage = reset HEAD --
 up = !git fetch origin && git rebase origin/master
+wip = !git add -u && git commit -m "wip"
 
