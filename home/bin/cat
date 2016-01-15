@@ -1,6 +1,6 @@
 #!/usr/bin/env ruby
 
-if $stdout.tty? &&
+if $stdout.tty? && ARGV.size > 1 &&
    ARGV.none? { |arg| arg.start_with? "-" } &&
    (`which pygmentize &>/dev/null`; $?.success?)
   ARGV.each { |arg| system "pygmentize", "-g", arg }
