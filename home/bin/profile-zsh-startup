@@ -1,0 +1,75 @@
+#!/usr/bin/env ruby
+
+# Ref: https://kev.inburke.com/kevin/profiling-zsh-startup-time/
+
+require "fileutils"
+require "pathname"
+require "tmpdir"
+require "table_print"
+include FileUtils
+
+class String
+  def undent
+    gsub(/^[ \t]{#{(slice(/^[ \t]+/) || '').length}}/, "")
+  end
+end
+
+class LogParser
+  class LogEntry
+    attr_reader :start_time, :file, :line, :command
+    attr_reader :time
+
+    def initialize(log)
+      time, code, command = log.strip.split(" ", 3)
+      min, sec = time.split(":", 2)
+      @start_time = min.to_i * 60 + sec.to_f
+      @file, line = code.chomp(">").split(":", 2)
+      @line = line.to_i
+      @command = command[0, 50]
+    end
+
+    def update_time!(next_entry)
+      return unless next_entry
+      @time = next_entry.start_time - start_time
+    end
+  end
+
+  attr_reader :logfile, :entries
+
+  def initialize(logfile)
+    @logfile = logfile
+    @entries = @logfile.read.gsub(logfile.dirname.to_s, "~")
+      .lines.select { |log| log =~ /^\d{2}:\d{2}.\d{6}/ }.map { |log| LogEntry.new log }
+    @entries.each_with_index { |entry, idx| entry.update_time!(@entries[idx+1]) }
+  end
+
+  def total_time
+    @entries.last.start_time - @entries.first.start_time
+  end
+
+  def report!
+    puts "Total Time: #{total_time.round(3)}s"
+    entries.pop
+    tp entries.sort_by(&:time).reverse.first(10),
+        { :time => { display_method: lambda { |e| e.time.round(3) } } },
+        :file,
+        :line,
+        { :command => { width: 50 } }
+  end
+end
+
+Dir.mktmpdir("profile-zsh-starup") do |dir|
+  Dir.chdir(dir)
+  ENV["ZDOTDIR"] = dir
+  dir = Pathname.new(dir)
+  logfile = dir/"startup.log"
+  (dir/".zprofile").write <<-EOS.undent
+    PS4=$'%D{%M:%S.%6.} %N:%i> '
+    exec 3>&2 2>#{logfile}
+    setopt xtrace prompt_subst
+  EOS
+  ln_s File.expand_path("~/.zshrc"), dir/".zshrc"
+  system "zsh", "--login", "-i", "-c", "logout"
+  log = LogParser.new logfile
+  log.report!
+end
