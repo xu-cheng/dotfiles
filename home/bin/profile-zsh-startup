@@ -49,10 +49,11 @@ class LogParser
   end
 
   def report!
+    top_entries = entries[0...-1].sort_by(&:time).reverse.first(20)
     puts "Total Time: #{total_time.round(3)}s"
-    entries.pop
-    tp entries.sort_by(&:time).reverse.first(20),
-        { :time => { display_method: lambda { |e| e.time.round(3) } } },
+    puts "Total Time (Top 20): #{top_entries.map(&:time).reduce(&:+).round(3)}s"
+    tp top_entries,
+        { :time => { display_method: lambda { |e| e.time.round(5) } } },
         :file,
         :line,
         { :command => { width: 50 } }
