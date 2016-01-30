@@ -96,6 +96,7 @@ brew 'keybase'
 brew 'libevent'
 brew 'llvm', args: ['with-python', 'with-lldb', 'with-clang']
 brew 'mercurial'
+brew 'mitmproxy'
 brew 'mono'
 brew 'mupdf-tools'
 brew 'ngrok'
