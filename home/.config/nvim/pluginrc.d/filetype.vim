@@ -15,6 +15,7 @@ autocmd BufNewFile,BufRead .gitignore,.Brewfile,Brewfile setlocal nospell
 " Misc
 autocmd BufNewFile,BufRead *.coffee set filetype=coffee
 autocmd BufNewFile,BufRead *.html.twig set filetype=html.twig
+autocmd BufNewFile,BufRead .envrc set filetype=sh
 " Workaround vim-commentary for Haskell
 autocmd FileType haskell setlocal commentstring=--\ %s
 
