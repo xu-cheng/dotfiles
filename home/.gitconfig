@@ -11,6 +11,9 @@ excludesfile = ~/.gitignore
 [push]
 default = simple
 
+[grep]
+lineNumber = true
+
 [color]
 branch = auto
 diff = auto
