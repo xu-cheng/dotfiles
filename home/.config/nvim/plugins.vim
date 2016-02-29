@@ -36,6 +36,7 @@ Plug 'osyo-manga/vim-over'
 Plug 'kana/vim-textobj-user'
 Plug 'kana/vim-textobj-indent'
 Plug 'gcmt/wildfire.vim'
+Plug 'junegunn/vim-peekaboo'
 
 " Writing
 Plug 'reedes/vim-litecorrect'
@@ -55,6 +56,7 @@ Plug 'Chiel92/vim-autoformat'
 Plug 'MattesGroeger/vim-bookmarks'
 Plug 'chrisbra/NrrwRgn'
 Plug 'luochen1990/rainbow'
+Plug 'junegunn/vim-easy-align'
 
 " Snippets & AutoComplete
 function! BuildYCM(info)
