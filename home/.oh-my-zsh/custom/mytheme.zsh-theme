@@ -15,7 +15,7 @@ function prompt_machine(){
 
 # Directory info.
 function prompt_dir(){
-    echo "%{$terminfo[bold]$fg[yellow]%}${PWD/#$HOME/~}%{$reset_color%}"
+    echo "%{$fg_bold[yellow]%}${PWD/#$HOME/~}%{$reset_color%}"
 }
 
 # Git info
@@ -102,17 +102,18 @@ function prompt_additional(){
 
 # Prompt info.
 function prompt_status(){
+    local color="%(?:%{$fg_bold[green]%}:%{$fg_bold[red]%})"
     if [[ $EUID -ne 0 ]]; then
-        echo "%{$terminfo[bold]$fg[red]%}$ %{$reset_color%}"
+        echo "${color}$ %{$reset_color%}"
     else
-        echo "%{$terminfo[bold]$fg[red]%}# %{$reset_color%}"
+        echo "${color}# %{$reset_color%}"
     fi
 }
 
 # Main prompt
 # Format: \n # USER at MACHINE in DIRECTORY on [git/hg/svn] [pyenv] [rbenv] [TIME] \n $
 PROMPT='
-%{$terminfo[bold]$fg[blue]%}#%{$reset_color%} \
+%{$fg_bold[blue]%}#%{$reset_color%} \
 $(prompt_user) \
 %{$reset_color%}at \
 $(prompt_machine) \
