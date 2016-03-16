@@ -25,6 +25,7 @@ export RBENV_ROOT="$HOMEBREW_PREFIX/var/rbenv"
 export CHEATCOLORS=true
 export HOMEBREW_SANDBOX=true
 export HOMEBREW_DEVELOPER=true
+export NVIM_TUI_ENABLE_TRUE_COLOR=true
 
 BREW_COMMAND_NOT_FOUND_INIT="$HOMEBREW_PREFIX/Library/Taps/homebrew/homebrew-command-not-found/handler.sh"
 [[ -s "$BREW_COMMAND_NOT_FOUND_INIT" ]] && . "$BREW_COMMAND_NOT_FOUND_INIT"
@@ -77,7 +78,7 @@ hist() {
 # Change iterm2 profile. Usage it2prof ProfileName (case sensitive)
 # https://coderwall.com/p/s-2_nw/change-iterm2-color-profile-from-the-cli
 it2prof()  { echo -e "\033]50;SetProfile=$1\a"; }
-it2dark()  { it2prof "Tomorrow Night"; }
+it2dark()  { it2prof "Seoul256"; }
 it2light() { it2prof "Solarized Light"; }
 
 # Load confidential information
