@@ -104,12 +104,10 @@ brew 'pyenv'
 brew 'pyenv-virtualenv'
 brew 'pyenv-virtualenvwrapper'
 brew 'pyenv-which-ext'
-brew 'qt'
+brew 'qt5'
 brew 'python3'
 brew 'sip', args: ['with-python3']
-brew 'pyqt', args: ['with-python3']
-brew 'shiboken', args: ['with-python3']
-brew 'pyside', args: ['with-python3']
+brew 'pyqt5', args: ['with-python']
 brew 'ruby-build'
 brew 'rbenv'
 brew 'reattach-to-user-namespace'
@@ -133,7 +131,7 @@ brew 'zsh-syntax-highlighting'
 brew 'homebrew/dupes/less'
 brew 'homebrew/games/ckan'
 brew 'homebrew/python/numpy', args: ['with-python3']
-brew 'homebrew/python/matplotlib', args: ['with-python3', 'with-pyqt', 'with-tex', 'with-ghostscript', 'with-pyside']
+brew 'homebrew/python/matplotlib', args: ['with-python3', 'with-pyqt5', 'with-tex', 'with-ghostscript']
 brew 'homebrew/python/pillow', args: ['with-python3']
 brew 'homebrew/python/scipy', args: ['with-python3']
 brew 'homebrew/science/flint'
