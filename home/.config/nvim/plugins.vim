@@ -100,6 +100,7 @@ Plug 'henrik/vim-reveal-in-finder'
 Plug 'xu-cheng/brew.vim'
 Plug 'bfontaine/Brewfile.vim'
 Plug 'tmux-plugins/vim-tmux'
+Plug 'aklt/plantuml-syntax'
 
 " Other
 Plug 'edkolev/tmuxline.vim'
