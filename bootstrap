@@ -39,7 +39,6 @@ end
 # Link files
 link_files(DOTFILES_HOME, HOME)
 link_files(DOTFILES_HOME/".config", HOME/".config", skip_directory: false)
-link_files(DOTFILES_HOME/".matplotlib", HOME/".matplotlib")
 link_files(DOTFILES_HOME/".oh-my-zsh/custom", HOME/".oh-my-zsh/custom")
 link_files(DOTFILES_HOME/".ssh", HOME/".ssh") if OS == :osx
 ln_sf DOTFILES_HOME/".brew-aliases", HOME
