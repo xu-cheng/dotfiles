@@ -102,6 +102,7 @@ Plug 'bfontaine/Brewfile.vim'
 Plug 'tmux-plugins/vim-tmux'
 Plug 'aklt/plantuml-syntax'
 Plug 'tpope/vim-liquid'
+Plug 'kchmck/vim-coffee-script'
 
 " Other
 Plug 'edkolev/tmuxline.vim'
