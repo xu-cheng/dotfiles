@@ -9,7 +9,11 @@ if [[ `uname` == "Darwin" ]]; then # OS X
     export HOMEBREW_PREFIX="/usr/local"
     export PATH="$DOTFILES_HOME/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/MacGPG2/bin:/Library/TeX/texbin"
 else # Linux
-    export HOMEBREW_PREFIX="$(brew --prefix)"
+    if (( ${+commands[brew]} )); then
+        export HOMEBREW_PREFIX="$(brew --prefix)"
+    else
+        export HOMEBREW_PREFIX="$HOME/.linuxbrew"
+    fi
     export PATH="$DOTFILES_HOME/bin:$HOMEBREW_PREFIX/bin:$HOMEBREW_PREFIX/sbin:$PATH"
     export MANPATH="$HOMEBREW_PREFIX/share/man:$MANPATH"
     export INFOPATH="$HOMEBREW_PREFIX/share/info:$INFOPATH"
