@@ -55,6 +55,7 @@ if (( ${+commands[fzf]} )); then
     [[ $- =~ i ]] && . "$HOMEBREW_PREFIX/opt/fzf/shell/completion.zsh" 2> /dev/null
     . "$HOMEBREW_PREFIX/opt/fzf/shell/key-bindings.zsh"
 elif [[ -d "$HOME/.fzf" ]]; then
+    export PATH="$PATH:$HOME/.fzf/bin"
     [[ $- =~ i ]] && . "$HOME/.fzf/shell/completion.zsh" 2> /dev/null
     . "$HOME/.fzf/shell/key-bindings.zsh"
 fi
