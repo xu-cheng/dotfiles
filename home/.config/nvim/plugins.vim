@@ -101,6 +101,7 @@ Plug 'xu-cheng/brew.vim'
 Plug 'bfontaine/Brewfile.vim'
 Plug 'tmux-plugins/vim-tmux'
 Plug 'aklt/plantuml-syntax'
+Plug 'tpope/vim-liquid'
 
 " Other
 Plug 'edkolev/tmuxline.vim'
