@@ -54,6 +54,9 @@ zstyle :omz:plugins:ssh-agent agent-forwarding on
 if (( ${+commands[fzf]} )); then
     [[ $- =~ i ]] && . "$HOMEBREW_PREFIX/opt/fzf/shell/completion.zsh" 2> /dev/null
     . "$HOMEBREW_PREFIX/opt/fzf/shell/key-bindings.zsh"
+elif [[ -d "$HOME/.fzf" ]]; then
+    [[ $- =~ i ]] && . "$HOME/.fzf/shell/completion.zsh" 2> /dev/null
+    . "$HOME/.fzf/shell/key-bindings.zsh"
 fi
 
 alias rake='noglob rake'
