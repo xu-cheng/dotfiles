@@ -83,11 +83,11 @@ brew 'gnu-tar'
 brew 'gnu-time'
 brew 'ruby'
 brew 'heroku-toolbelt'
-brew 'libtool'
 brew 'homebrew/dupes/ncurses'
 brew 'htop', args: ['with-ncurses']
 brew 'hub'
 brew 'icdiff'
+brew 'libtool'
 brew 'imagemagick'
 brew 'oniguruma'
 brew 'jq'
@@ -138,7 +138,7 @@ brew 'homebrew/python/matplotlib', args: ['with-python3', 'with-pyqt5', 'with-te
 brew 'homebrew/python/pillow', args: ['with-python3']
 brew 'homebrew/python/scipy', args: ['with-python3']
 brew 'homebrew/science/flint'
-brew 'neovim/neovim/neovim', args: ['HEAD']
+brew 'neovim/neovim/neovim', args: ['with-release', 'HEAD']
 cask 'aerial'
 cask 'atom'
 cask 'betterzipql'
