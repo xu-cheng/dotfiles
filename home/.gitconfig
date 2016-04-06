@@ -41,7 +41,7 @@ tool = nvimdiff
 cmd = nvim -d \"$LOCAL\" \"$REMOTE\"
 
 [alias]
-c = commit -m
+c = commit -S -m
 a = add
 ci = commit
 co = checkout
