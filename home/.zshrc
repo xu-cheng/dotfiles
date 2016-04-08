@@ -33,10 +33,10 @@ export NVIM_TUI_ENABLE_TRUE_COLOR=true
 
 BREW_COMMAND_NOT_FOUND_INIT="$HOMEBREW_PREFIX/Library/Taps/homebrew/homebrew-command-not-found/handler.sh"
 [[ -s "$BREW_COMMAND_NOT_FOUND_INIT" ]] && . "$BREW_COMMAND_NOT_FOUND_INIT"
-if (( ${+commands[pyenv]} )); then eval "$(pyenv init -)"; fi
-if (( ${+commands[pyenv-virtualenv-init]} )); then eval "$(pyenv virtualenv-init -)"; fi
-if (( ${+commands[rbenv]} )); then eval "$(rbenv init -)"; fi
-if (( ${+commands[hub]} )); then eval "$(hub alias -s)"; fi
+if (( ${+commands[pyenv]} )); then eval "$(pyenv init - zsh)"; fi
+if (( ${+commands[pyenv-virtualenv-init]} )); then eval "$(pyenv virtualenv-init - zsh)"; fi
+if (( ${+commands[rbenv]} )); then eval "$(rbenv init - zsh)"; fi
+if (( ${+commands[hub]} )); then alias git=hub; fi
 if (( ${+commands[direnv]} )); then
     eval "$(direnv hook zsh)";
     [[ -n "$TMUX" && -f "$PWD/.envrc" ]] && direnv reload
