@@ -4,6 +4,7 @@ ZSH_THEME="mytheme"
 plugins=(brew-cask colored-man-pages extract git git-flow-avh gitignore gpg-agent mercurial osx pip ssh-agent svn)
 
 export DOTFILES_HOME="${$(readlink $HOME/.zshrc)%/*}"
+export HOMEBREW_NO_ANALYTICS=true # set before any brew invoking.
 
 if [[ `uname` == "Darwin" ]]; then # OS X
     export HOMEBREW_PREFIX="/usr/local"
@@ -17,7 +18,7 @@ else # Linux
     export PATH="$DOTFILES_HOME/bin:$HOMEBREW_PREFIX/bin:$HOMEBREW_PREFIX/sbin:$PATH"
     export MANPATH="$HOMEBREW_PREFIX/share/man:$MANPATH"
     export INFOPATH="$HOMEBREW_PREFIX/share/info:$INFOPATH"
-    export CMAKE_PREFIX_PATH=$HOMEBREW_PREFIX
+    export CMAKE_PREFIX_PATH="$HOMEBREW_PREFIX"
 fi
 
 export EDITOR="nvim"
@@ -29,7 +30,6 @@ export RBENV_ROOT="$HOMEBREW_PREFIX/var/rbenv"
 export CHEATCOLORS=true
 export HOMEBREW_SANDBOX=true
 export HOMEBREW_DEVELOPER=true
-export HOMEBREW_NO_ANALYTICS=true
 export NVIM_TUI_ENABLE_TRUE_COLOR=true
 
 BREW_COMMAND_NOT_FOUND_INIT="$HOMEBREW_PREFIX/Library/Taps/homebrew/homebrew-command-not-found/handler.sh"
