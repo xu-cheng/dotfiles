@@ -93,7 +93,7 @@ brew 'oniguruma'
 brew 'jq'
 brew 'keybase'
 brew 'libevent'
-brew 'llvm', args: ['with-python', 'with-lldb', 'with-clang']
+brew 'llvm', args: ['with-clang', 'with-lldb', 'with-python']
 brew 'mercurial'
 brew 'mitmproxy'
 brew 'mono'
@@ -134,11 +134,11 @@ brew 'zsh-syntax-highlighting'
 brew 'homebrew/dupes/less'
 brew 'homebrew/games/ckan'
 brew 'homebrew/python/numpy', args: ['with-python3']
-brew 'homebrew/python/matplotlib', args: ['with-python3', 'with-pyqt5', 'with-tex', 'with-ghostscript']
+brew 'homebrew/python/matplotlib', args: ['with-ghostscript', 'with-pyqt5', 'with-python3', 'with-tex']
 brew 'homebrew/python/pillow', args: ['with-python3']
 brew 'homebrew/python/scipy', args: ['with-python3']
 brew 'homebrew/science/flint'
-brew 'neovim/neovim/neovim', args: ['with-release', 'HEAD']
+brew 'neovim/neovim/neovim', args: ['HEAD', 'with-release']
 cask 'aerial'
 cask 'atom'
 cask 'betterzipql'
