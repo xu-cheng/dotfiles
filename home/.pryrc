@@ -4,6 +4,7 @@
 (%w[
   pry-byebug
   pry-coolline
+  pry-doc
   pry-highlight
   pry-theme
   pry-toys
