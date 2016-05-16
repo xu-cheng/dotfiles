@@ -30,7 +30,6 @@ export RBENV_ROOT="$HOMEBREW_PREFIX/var/rbenv"
 export CHEATCOLORS=true
 export HOMEBREW_SANDBOX=true
 export HOMEBREW_DEVELOPER=true
-export NVIM_TUI_ENABLE_TRUE_COLOR=true
 
 BREW_COMMAND_NOT_FOUND_INIT="$HOMEBREW_PREFIX/Library/Taps/homebrew/homebrew-command-not-found/handler.sh"
 [[ -s "$BREW_COMMAND_NOT_FOUND_INIT" ]] && . "$BREW_COMMAND_NOT_FOUND_INIT"
