@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 DIFF_HIGHLIGHT="share/git-core/contrib/diff-highlight/diff-highlight"
 
