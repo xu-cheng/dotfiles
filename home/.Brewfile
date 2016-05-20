@@ -152,6 +152,7 @@ brew 'homebrew/python/scipy', args: ['with-python3']
 brew 'homebrew/science/flint'
 brew 'neovim/neovim/neovim', args: ['HEAD', 'with-release']
 cask 'aerial'
+cask 'alfred'
 cask 'atom'
 cask 'betterzipql'
 cask 'font-fontawesome'
