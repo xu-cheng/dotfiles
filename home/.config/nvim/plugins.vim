@@ -55,7 +55,6 @@ Plug 'Raimondi/delimitMate'
 Plug 'Chiel92/vim-autoformat'
 Plug 'MattesGroeger/vim-bookmarks'
 Plug 'chrisbra/NrrwRgn'
-Plug 'luochen1990/rainbow'
 Plug 'junegunn/vim-easy-align'
 
 " Snippets & AutoComplete
