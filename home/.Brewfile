@@ -134,6 +134,7 @@ brew 'subversion'
 brew 'swig'
 brew 'tcping'
 brew 'terminal-notifier'
+brew 'the_silver_searcher'
 brew 'tmux', args: ['HEAD']
 brew 'tor'
 brew 'tree'

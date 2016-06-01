@@ -12,6 +12,9 @@ call plug#begin(g:vim_home . 'plugged')
 Plug 'MarcWeber/vim-addon-mw-utils'
 Plug 'tomtom/tlib_vim'
 Plug 'mileszs/ack.vim'
+if executable('ag')
+  let g:ackprg = 'ag --nogroup --nocolor --column --smart-case'
+end
 
 " General
 Plug 'editorconfig/editorconfig-vim'
