@@ -14,6 +14,8 @@ nowsecs=$(gnudate --utc +%s)
 modsecs=$(gnudate --utc --reference="$(brew --repo)/Library/Taps/neovim/homebrew-neovim/.git/FETCH_HEAD" +%s)
 [ $((nowsecs-modsecs)) -lt 86400 ] || brew update
 brew reinstall neovim/neovim/neovim --HEAD && \
+    pip2 install --upgrade neovim && \
+    pip3 install --upgrade neovim && \
     nvim --headless -c PlugUpgrade +q && \
     nvim --headless -c PlugUpdate! +qall
 
