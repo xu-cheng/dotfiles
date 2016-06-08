@@ -8,6 +8,9 @@ autocrlf = input
 editor = nvim
 excludesfile = ~/.gitignore
 
+[commit]
+gpgsign = true
+
 [push]
 default = simple
 
@@ -41,7 +44,7 @@ tool = nvimdiff
 cmd = nvim -d \"$LOCAL\" \"$REMOTE\"
 
 [alias]
-c = commit -S -m
+c = commit -m
 a = add
 ci = commit
 co = checkout
