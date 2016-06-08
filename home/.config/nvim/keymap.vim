@@ -102,6 +102,9 @@ cnoremap <M-f> <S-Right>
 " Ctrl-S to quick save
 noremap <C-s> :update<CR>
 
+" Ctrl-C as Esc
+noremap <C-c> <Esc>
+
 " Shortcut to custom commands
 noremap <leader>rc :call RemoveCache()<CR>
 noremap <leader>bg :call ToggleBG()<CR>
