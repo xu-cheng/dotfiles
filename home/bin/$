@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+# Ever pasted "$ somecommand" into the terminal and gotten this error?
+# -bash: $: command not found
+
+exec "$@"
