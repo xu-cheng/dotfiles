@@ -36,7 +36,7 @@ end
 
 ## Install tmux-plugins
 unless (HOME/".tmux/plugins/tpm").exist?
-  system "git", "clone", "https://github.com/tmux-plugins/tpm", "~/.tmux/plugins/tpm"
+  system "git", "clone", "https://github.com/tmux-plugins/tpm", "#{HOME}/.tmux/plugins/tpm"
   @tpm_fresh_install = true
 end
 
