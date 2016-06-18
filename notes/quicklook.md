@@ -12,7 +12,6 @@ brew cask install qlrest
 brew cask install qlstephen
 brew cask install quicklook-csv
 brew cask install quicklook-json
-brew cask install suspicious-package
 brew cask install webpquicklook
 brew cask install qlimagesize
 qlmanage -r
