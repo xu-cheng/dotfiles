@@ -1,5 +1,7 @@
-autoload
-cache
-spell
-plugged
+*.pyc
+
+/autoload
+/cache
+/spell
+/plugged
 
