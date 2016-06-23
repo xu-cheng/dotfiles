@@ -105,6 +105,7 @@ Plug 'tmux-plugins/vim-tmux'
 Plug 'aklt/plantuml-syntax'
 Plug 'tpope/vim-liquid'
 Plug 'kchmck/vim-coffee-script'
+"Plug 'jeaye/color_coded' # not support neovim yet
 
 " Other
 Plug 'edkolev/tmuxline.vim'
