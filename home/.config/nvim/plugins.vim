@@ -73,7 +73,7 @@ Plug 'ervandew/supertab'
 
 " Build & Debug
 Plug 'tpope/vim-dispatch'
-Plug 'gilligan/vim-lldb', { 'on': ['Lattach', 'Ltarget']}
+Plug 'critiqjo/lldb.nvim'
 
 " Color Scheme
 Plug 'junegunn/seoul256.vim'
