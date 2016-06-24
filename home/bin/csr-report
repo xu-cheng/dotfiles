@@ -1,0 +1,171 @@
+#!/usr/bin/env ruby
+
+VERSION = "1.0"
+
+def error(msg)
+  $stderr.puts "#{"\033[4;31m" if $stderr.tty?}Error#{"\033[0m" if $stderr.tty?}: #{msg}"
+  exit 1
+end
+
+begin
+  require "sshkit"
+  require "sshkit/dsl"
+  include SSHKit::DSL
+rescue LoadError
+  error <<-EOS
+Please install `sshkit` using:
+    gem install sshkit
+  EOS
+end
+
+begin
+  require "table_print"
+rescue LoadError
+  error <<-EOS
+Please install `table_print` using:
+    gem install table_print
+  EOS
+end
+
+require "json"
+require "shellwords"
+
+SSHKit::Backend::Netssh.configure do |ssh|
+  ssh.ssh_options = { auth_methods: %w(publickey) }
+end
+
+class Reporter
+  attr_reader :servers
+  attr_reader :reports
+
+  def initialize(servers)
+    @servers = servers
+    @reports = []
+  end
+
+  def get_report!
+    reports = []
+    env = { PATH: path }
+
+    on servers do |host|
+      with env do
+        begin
+          report = JSON.load(capture(:ruby, "-e", SCRIPT))
+          report["host"] = host.hostname
+          reports << report
+        rescue Net::SSH::AuthenticationFailed
+          warn "Failed to login #{host.hostname}."
+        rescue SSHKit::Runner::ExecuteError
+          warn "Failed to get report from #{host.hostname}."
+        end
+      end
+    end
+
+    @reports = reports
+    reports
+  end
+
+  def print(options = {})
+    sort_key = options.fetch(:sort_key, :host).to_s
+    sort_proc = proc do |record|
+      case sort_key
+      when "tmux"
+        record[sort_key].to_s.split(",").size
+      when "process", "mem"
+        record[sort_key].to_s.split("/").map { |x| x[/\d+/].to_i }
+      when "users", "load_1min", "load_5min", "load_10min"
+        record[sort_key].to_f
+      else
+        record[sort_key]
+      end
+    end
+    tp reports.sort_by { |r| sort_proc.call(r) }, :host, :users,
+      { load_1min:  { display_name: "LOAD(1 min)"} },
+      { load_5min:  { display_name: "LOAD(5 min)"} },
+      { load_10min: { display_name: "LOAD(10min)"} },
+      :process,
+      { mem: { display_name: "MEM(used/total)"} },
+      :tmux
+  end
+
+  private
+
+  def path
+    on servers, in: :sequence do
+      begin
+        return capture(:bash, "-l", "-c", "printenv")[/^PATH=(.*)$/, 1]
+      rescue
+      end
+    end
+    error "Cannot read remote PATH environment variable."
+  end
+
+  SCRIPT = <<-'EOS'.shellescape
+    require "json"
+    load_avg = `cat /proc/loadavg`.chomp.split(" ")
+    mem = `free -g`.split("\n").detect { |l| l.start_with? "Mem" }.split(" ")
+    tmux = `tmux list-sessions` rescue ""
+    report = {
+      users: `users`.chomp.split(" ").size,
+      load_1min: load_avg[0],
+      load_5min: load_avg[1],
+      load_10min: load_avg[2],
+      process: load_avg[3],
+      mem: "#{mem[2]}GB/#{mem[1]}GB",
+      tmux: tmux.split("\n").map { |l| l.split(":").first }.join(",")
+    }
+    puts JSON.dump(report)
+  EOS
+end
+
+if __FILE__ == $0
+  require "optparse"
+
+  print_opt = {}
+  OptionParser.new do |opts|
+    opts.banner = <<-EOS
+Usage: csr-report [options] [servers]
+
+Example:
+  csr-report               # report csr48 to csr69 (default)
+  csr-report csr40         # report csr40
+  csr-report csr40,csr41   # report csr40 and csr41
+  csr-report csr40-csr50   # report csr40 to csr50
+  csr-report --sort-by=mem # sort report by memory
+
+Accepted sort keys: host,users,load_1min,load_5min,load_10min,process,mem,tmux
+EOS
+    opts.version = VERSION
+
+    opts.separator ""
+    opts.separator "Report options:"
+    opts.on("-sKEY", "--sort-by=KEY", "Sort report by key. Default is host.") do |key|
+      print_opt[:sort_key] = key
+    end
+
+    opts.separator ""
+    opts.separator "Common options:"
+    opts.on_tail("-h", "--help", "Show this message") do
+      puts opts.help
+      exit
+    end
+    opts.on_tail("-v", "--version", "Show version") do
+      puts opts.ver
+      exit
+    end
+  end.parse!
+
+  servers = (ARGV.first || "csr48-csr69").split(",").flat_map do |s|
+    if s.include?("-")
+      start_id, end_id = s.split("-", 2)
+      start_id = start_id[/\d+/].to_i
+      end_id = end_id[/\d+/].to_i
+      (start_id..end_id).map { |id| "csr#{id}" }
+    else
+      [s]
+    end
+  end
+  reporter = Reporter.new(servers)
+  reporter.get_report!
+  reporter.print(print_opt)
+end
