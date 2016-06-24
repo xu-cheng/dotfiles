@@ -1,0 +1,2 @@
+script sys.path.append("/usr/local/lib/python2.7/site-packages")
+command script import /usr/local/lib/python2.7/site-packages/voltron/entry.py

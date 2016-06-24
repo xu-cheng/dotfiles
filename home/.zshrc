@@ -73,6 +73,7 @@ alias tl='tmux list-sessions'
 alias tksv='tmux kill-server'
 alias tkss='tmux kill-session -t'
 alias bubu='brew update && brew upgrade --cleanup'
+alias lldb="$HOMEBREW_PREFIX/opt/llvm/bin/lldb"
 
 hist() {
     if [[ "$1" == "-c" ]]; then
