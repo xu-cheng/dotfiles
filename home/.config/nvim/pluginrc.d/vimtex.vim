@@ -25,3 +25,18 @@ function! TeXWordCount()
     :echo system('cd "' . l:main_tex_dir . '"; texcount "' . l:main_tex_file . '"')
 endfunction
 nmap <localleader>lw :call TeXWordCount()<cr>
+
+" Autocomplete
+if !exists('g:ycm_semantic_triggers')
+    let g:ycm_semantic_triggers = {}
+endif
+let g:ycm_semantic_triggers.tex = [
+    \ 're!\\[A-Za-z]*cite[A-Za-z]*(\[[^]]*\]){0,2}{[^}]*',
+    \ 're!\\[A-Za-z]*ref({[^}]*|range{([^,{}]*(}{)?))',
+    \ 're!\\hyperref\[[^]]*',
+    \ 're!\\includegraphics\*?(\[[^]]*\]){0,2}{[^}]*',
+    \ 're!\\(include(only)?|input){[^}]*',
+    \ 're!\\\a*(gls|Gls|GLS)(pl)?\a*(\s*\[[^]]*\]){0,2}\s*\{[^}]*',
+    \ 're!\\includepdf(\s*\[[^]]*\])?\s*\{[^}]*',
+    \ 're!\\includestandalone(\s*\[[^]]*\])?\s*\{[^}]*',
+    \ ]
