@@ -1,0 +1,12 @@
+# vim: set ft=yaml :
+# generated from http://zed0.co.uk/clang-format-configurator/
+---
+BasedOnStyle: Google
+AccessModifierOffset: '-4'
+AllowShortCaseLabelsOnASingleLine: 'true'
+BreakBeforeBraces: Linux
+ConstructorInitializerAllOnOneLineOrOnePerLine: 'false'
+IndentWidth: '4'
+NamespaceIndentation: All
+TabWidth: '4'
+...
