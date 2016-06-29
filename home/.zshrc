@@ -1,7 +1,7 @@
 ZSH="$HOME/.oh-my-zsh"
 
 ZSH_THEME="mytheme"
-plugins=(brew-cask colored-man-pages extract git git-flow-avh gitignore gpg-agent mercurial osx pip ssh-agent svn)
+plugins=(brew-cask colored-man-pages extract git git-flow-avh gitignore mercurial osx pip ssh-agent gpg-agent svn)
 
 export DOTFILES_HOME="${$(readlink $HOME/.zshrc)%/*}"
 export HOMEBREW_NO_ANALYTICS=true # set before any brew invoking.
