@@ -25,7 +25,7 @@ function _plugin__set_ssh_agent_sock()
     if [[ ! -L "$SSH_AUTH_SOCK" ]]; then
         mkdir -p "${_plugin__ssh_sock_dir}"
         chmod 700 "${_plugin__ssh_sock_dir}"
-        ln -sf "$SSH_AUTH_SOCK" "${_plugin__ssh_sock}"
+        ln -sfn "$SSH_AUTH_SOCK" "${_plugin__ssh_sock}"
         export SSH_AUTH_SOCK="${_plugin__ssh_sock}"
     fi
 }
@@ -42,7 +42,7 @@ function _plugin__set_gpg_agent_sock()
     if [[ ! -L "$gpg_sock_file" ]]; then
         mkdir -p "${_plugin__gpg_sock_dir}"
         chmod 700 "${_plugin__gpg_sock_dir}"
-        ln -sf "$gpg_sock_file" "${_plugin__gpg_sock}"
+        ln -sfn "$gpg_sock_file" "${_plugin__gpg_sock}"
         export GPG_AGENT_INFO="${_plugin__gpg_sock}:$gpg_sock_port"
     fi
 }
