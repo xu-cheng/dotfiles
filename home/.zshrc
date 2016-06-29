@@ -1,7 +1,7 @@
 ZSH="$HOME/.oh-my-zsh"
 
 ZSH_THEME="mytheme"
-plugins=(brew-cask colored-man-pages extract git git-flow-avh gitignore mercurial osx pip ssh-agent gpg-agent svn)
+plugins=(brew-cask colored-man-pages extract git git-flow-avh gitignore mercurial osx pip ssh-gpg-agent svn)
 
 export DOTFILES_HOME="${$(readlink $HOME/.zshrc)%/*}"
 export HOMEBREW_NO_ANALYTICS=true # set before any brew invoking.
@@ -46,8 +46,6 @@ ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets)
 ZSH_HIGHLIGHT_PATH="$HOMEBREW_PREFIX/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
 [[ -s "$ZSH_HIGHLIGHT_PATH" ]] && . "$ZSH_HIGHLIGHT_PATH"
 [[ -s "$HOME/.travis/travis.sh" ]] && . "$HOME/.travis/travis.sh"
-
-zstyle :omz:plugins:ssh-agent agent-forwarding on
 
 . "$ZSH/oh-my-zsh.sh"
 
