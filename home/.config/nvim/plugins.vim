@@ -44,6 +44,7 @@ Plug 'junegunn/vim-peekaboo'
 " Writing
 Plug 'reedes/vim-litecorrect'
 Plug 'reedes/vim-wordy'
+Plug 'rhysd/vim-grammarous'
 
 " General Programming
 Plug 'scrooloose/syntastic'
