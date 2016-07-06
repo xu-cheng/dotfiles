@@ -1,0 +1,230 @@
+#!/usr/bin/env ruby
+
+VERSION = "1.0"
+
+def error(msg)
+  $stderr.puts "#{"\033[4;31m" if $stderr.tty?}Error#{"\033[0m" if $stderr.tty?}: #{msg}"
+  exit 1
+end
+
+begin
+  require "sshkit"
+  require "sshkit/dsl"
+  include SSHKit::DSL
+rescue LoadError
+  error <<-EOS
+Please install `sshkit` using:
+    gem install sshkit
+  EOS
+end
+
+require "fileutils"
+require "pathname"
+require "thread"
+include FileUtils
+
+SSHKit::Backend::Netssh.configure do |ssh|
+  ssh.ssh_options = { auth_methods: %w(publickey) }
+end
+
+class Task
+  attr_reader :command, :working_dir, :env
+  attr_accessor :result
+
+  def initialize(command, working_dir, env, options = {})
+    @command = command
+    @working_dir = working_dir
+    @env = env
+    @enable_log = options.fetch(:enable_log, true)
+  end
+
+  def run!(host)
+    args = command.dup
+    args.unshift(args.shift.to_sym)
+    args << { raise_on_non_zero_exit: false }
+    args.last[:interaction_handler] = Logger.new(command) if @enable_log
+    env[:PATH] ||= path(host)
+    @result = on_remote(host) do |sshkit, _host|
+      sshkit.with env do
+        sshkit.within(working_dir) do
+          sshkit.execute(*args)
+        end
+      end
+    end
+  end
+
+  def failed?
+    !result
+  end
+
+  private
+
+  def path(host)
+    @@path ||= on_remote(host) do |sshkit, _host|
+      sshkit.capture(:bash, "-l", "-c", "printenv")[/^PATH=(.*)$/, 1]
+    end
+  end
+
+  def on_remote(*args, &block)
+    ret = nil
+    on(*args) do |host|
+      ret = block.call(self, host)
+    end
+    ret
+  end
+
+  class Logger
+    DIR = (Pathname.pwd/"logs").freeze
+
+    def initialize(command)
+      mkdir_p DIR
+
+      @log_file_name = command.join("_").gsub(/[\\\/\s"']/, "_") + ".log"
+      @log_file = DIR/@log_file_name
+      @log = @log_file.open("wb")
+    end
+
+    def on_data(command, stream_name, data, channel)
+      @log.write data
+      @log.flush
+    end
+  end
+end
+
+class TaskRunner
+  def initialize(input)
+    @dsl = DSL.new(input)
+    @failed_tasks = []
+  end
+
+  def run!
+    @dsl.all_servers.map do |host|
+      Thread.new do
+        begin
+          while task = @dsl.tasks.pop(true)
+            begin
+              task.run!(host)
+            rescue Net::SSH::AuthenticationFailed
+              run_locally { warn "Failed to login #{host}." }
+              @dsl.tasks << task
+              break
+            end
+            @failed_tasks << task if task.failed?
+          end
+        rescue ThreadError
+        end
+      end
+    end.each(&:join)
+
+    unless @failed_tasks.empty?
+      puts "#{"\033[1;34m" if $stdout.tty?}==>#{"\033[1;39m" if $stdout.tty?} " + \
+           "Failed tasks:#{"\033[0m"if $stdout.tty?}"
+      @failed_tasks.each { |t| puts t.command.join(" ") }
+    end
+
+    unless @dsl.tasks.empty?
+      puts "#{"\033[1;34m" if $stdout.tty?}==>#{"\033[1;39m" if $stdout.tty?} " + \
+           "Unfinished tasks:#{"\033[0m"if $stdout.tty?}"
+      puts @dsl.tasks.pop.command.join(" ") until @dsl.tasks.empty?
+    end
+  end
+
+  private
+
+  class DSL
+    attr_reader :all_servers, :tasks
+
+    def initialize(input)
+      @input = input
+      @all_servers = (48..69).map { |id| "csr#{id}" }
+      @tasks = Queue.new
+      @global_env = {}
+      @global_working_dir = "/tmp"
+      @global_enable_log = true
+
+      begin
+        instance_eval(@input)
+      rescue Exception => e
+        error "Invalid Runfile.\n#{e.message}"
+      end
+    end
+
+    def working_dir(working_dir)
+      @global_working_dir = working_dir
+    end
+
+    def env(env)
+      @global_env = env
+    end
+
+    def enable_log(enable_log)
+      @global_enable_log = enable_log
+    end
+
+    def servers(*servers)
+      servers.flatten!
+      @all_servers = servers.flat_map do |host|
+        case host
+        when String then [host]
+        when Fixnum then ["csr#{host}"]
+        when Range then host.map { |id| "csr#{id}" }
+        end
+      end
+    end
+
+    def run(*args)
+      options = args.last.is_a?(Hash) ? args.pop : {}
+      command = args.flatten
+      working_dir = options.fetch(:working_dir, @global_working_dir)
+      env = @global_env.merge(options.fetch(:env, {}))
+      enable_log = options.fetch(:enable_log, @global_enable_log)
+      @tasks << Task.new(command, working_dir, env, enable_log: enable_log)
+    end
+  end
+end
+
+if __FILE__ == $0
+  require "optparse"
+
+  runfile = "Runfile"
+  OptionParser.new do |opts|
+    opts.banner = <<-EOS
+Usage: csr-run [options]
+
+Run commands from Runfile on csr servers
+
+Runfile Example:
+  servers 48, 50..69, "csr30"
+  enable_log true
+  working_dir "/path/to/working/directory"
+  env FOO: "BAR"
+
+  run "./some-program"
+  run %w[echo Hi], enable_log: false
+  run "ruby", "-e", "puts 'Hello World!'", working_dir: "/tmp", env: { FOO: "BAZ" }
+EOS
+    opts.version = VERSION
+
+    opts.separator ""
+    opts.separator "Options:"
+    opts.on("-fFILE", "--file=FILE", "Read commands from file. Default is `Runfile`.") do |file|
+      runfile = file
+    end
+    opts.on_tail("-h", "--help", "Show this message") do
+      puts opts.help
+      exit
+    end
+    opts.on_tail("-v", "--version", "Show version") do
+      puts opts.ver
+      exit
+    end
+  end.parse!
+
+  runfile = "/dev/stdin" if runfile == "-"
+  begin
+    input = File.read(runfile)
+  rescue Errno::ENOENT
+    error "Cannot read file `#{runfile}`."
+  end
+  TaskRunner.new(input).run!
+end
