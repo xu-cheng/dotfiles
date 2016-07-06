@@ -107,6 +107,7 @@ class TaskRunner
             rescue Net::SSH::AuthenticationFailed
               run_locally { warn "Failed to login #{host}." }
               @dsl.tasks << task
+              @dsl.all_servers.delete host
               break
             end
             @failed_tasks << task if task.failed?
@@ -114,18 +115,12 @@ class TaskRunner
         rescue ThreadError
         end
       end
-    end.each(&:join)
+    end.each(&:join) until @dsl.tasks.empty?
 
     unless @failed_tasks.empty?
       puts "#{"\033[1;34m" if $stdout.tty?}==>#{"\033[1;39m" if $stdout.tty?} " + \
            "Failed tasks:#{"\033[0m"if $stdout.tty?}"
       @failed_tasks.each { |t| puts t.command.join(" ") }
-    end
-
-    unless @dsl.tasks.empty?
-      puts "#{"\033[1;34m" if $stdout.tty?}==>#{"\033[1;39m" if $stdout.tty?} " + \
-           "Unfinished tasks:#{"\033[0m"if $stdout.tty?}"
-      puts @dsl.tasks.pop.command.join(" ") until @dsl.tasks.empty?
     end
   end
 
