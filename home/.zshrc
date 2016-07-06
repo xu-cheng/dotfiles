@@ -9,14 +9,20 @@ export HOMEBREW_NO_ANALYTICS=true # set before any brew invoking.
 
 if [[ `uname` == "Darwin" ]]; then # OS X
     export HOMEBREW_PREFIX="/usr/local"
-    export PATH="$DOTFILES_HOME/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/MacGPG2/bin:/Library/TeX/texbin"
+    export PATH="$DOTFILES_HOME/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin:/usr/local/MacGPG2/bin:/Library/TeX/texbin"
 else # Linux
-    if (( ${+commands[brew]} )); then
-        export HOMEBREW_PREFIX="$(brew --prefix)"
+    if [[ -n "$CSR" ]]; then
+        umask 0077
+        unset LD_LIBRARY_PATH
+        export HOMEBREW_PREFIX="$HOME/usr"
+        export HOMEBREW_CACHE="/tmp/chengxu/Caches/Homebrew"
+        export HOMEBREW_LOGS="/tmp/chengxu/Logs/Homebrew"
+        export HTTPS_PROXY="https://proxy.comp.hkbu.edu.hk:8080"
+        export HOMEBREW_RUBY_PATH="$HOME/portable/ruby/2.0.0-p648/bin/ruby"
     else
         export HOMEBREW_PREFIX="$HOME/.linuxbrew"
     fi
-    export PATH="$DOTFILES_HOME/bin:$HOMEBREW_PREFIX/bin:$HOMEBREW_PREFIX/sbin:$PATH"
+    export PATH="$DOTFILES_HOME/bin:$HOMEBREW_PREFIX/bin:$HOMEBREW_PREFIX/sbin:/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin:$PATH"
     export MANPATH="$HOMEBREW_PREFIX/share/man:$MANPATH"
     export INFOPATH="$HOMEBREW_PREFIX/share/info:$INFOPATH"
     export CMAKE_PREFIX_PATH="$HOMEBREW_PREFIX"
@@ -34,9 +40,11 @@ export HOMEBREW_DEVELOPER=true
 
 BREW_COMMAND_NOT_FOUND_INIT="$HOMEBREW_PREFIX/Library/Taps/homebrew/homebrew-command-not-found/handler.sh"
 [[ -s "$BREW_COMMAND_NOT_FOUND_INIT" ]] && . "$BREW_COMMAND_NOT_FOUND_INIT"
-if (( ${+commands[pyenv]} )); then eval "$(pyenv init - zsh)"; fi
-if (( ${+commands[pyenv-virtualenv-init]} )); then eval "$(pyenv virtualenv-init - zsh)"; fi
-if (( ${+commands[rbenv]} )); then eval "$(rbenv init - zsh)"; fi
+if [[ -z "$CSR" ]]; then
+    if (( ${+commands[pyenv]} )); then eval "$(pyenv init - zsh)"; fi
+    if (( ${+commands[pyenv-virtualenv-init]} )); then eval "$(pyenv virtualenv-init - zsh)"; fi
+    if (( ${+commands[rbenv]} )); then eval "$(rbenv init - zsh)"; fi
+fi
 if (( ${+commands[hub]} )); then alias git=hub; fi
 if (( ${+commands[direnv]} )); then
     eval "$(direnv hook zsh)";
