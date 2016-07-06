@@ -47,8 +47,10 @@ end
 
 ## Post linking
 system "lesskey"
-system "curl -L http://install.ohmyz.sh | sh" unless (HOME/".oh-my-zsh").exist?
+unless (HOME/".oh-my-zsh").exist?
+  system "git", "clone", "--depth=1", "https://github.com/robbyrussell/oh-my-zsh", "#{HOME}/.oh-my-zsh"
+end
 unless (HOME/".tmux/plugins/tpm").exist?
-  system "git", "clone", "https://github.com/tmux-plugins/tpm", "#{HOME}/.tmux/plugins/tpm"
+  system "git", "clone", "--depth=1", "https://github.com/tmux-plugins/tpm", "#{HOME}/.tmux/plugins/tpm"
   system "#{HOME}/.tmux/plugins/tpm/scripts/install_plugins.sh", "--shell-echo"
 end
