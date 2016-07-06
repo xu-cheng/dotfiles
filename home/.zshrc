@@ -17,8 +17,9 @@ else # Linux
         export HOMEBREW_PREFIX="$HOME/usr"
         export HOMEBREW_CACHE="/tmp/chengxu/Caches/Homebrew"
         export HOMEBREW_LOGS="/tmp/chengxu/Logs/Homebrew"
-        export HTTPS_PROXY="https://proxy.comp.hkbu.edu.hk:8080"
         export HOMEBREW_RUBY_PATH="$HOME/portable/ruby/2.0.0-p648/bin/ruby"
+        export HTTPS_PROXY="https://proxy.comp.hkbu.edu.hk:8080"
+        export SHELL="$HOME/usr/bin/zsh"
     else
         export HOMEBREW_PREFIX="$HOME/.linuxbrew"
     fi
