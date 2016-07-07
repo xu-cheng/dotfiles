@@ -99,4 +99,6 @@ it2dark()  { it2prof "Seoul256"; }
 it2light() { it2prof "Solarized Light"; }
 
 # Load confidential information
-[[ -s "$HOME/.config/tokens" ]] && . "$HOME/.config/tokens"
+if [[ -s "$HOME/.config/tokens" ]]; then
+    . "$HOME/.config/tokens"
+fi

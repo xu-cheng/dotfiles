@@ -1,4 +1,4 @@
-[[ "$-" != *i* ]] && return
+[[ "$-" = *i* ]] || return
 
 export CSR=1
 [[ -x "$HOME/usr/bin/zsh" ]] && exec "$HOME/usr/bin/zsh" --login
