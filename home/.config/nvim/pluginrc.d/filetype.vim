@@ -18,4 +18,6 @@ autocmd BufNewFile,BufRead *.html.twig set filetype=html.twig
 autocmd BufNewFile,BufRead .envrc set filetype=sh
 " Workaround vim-commentary for Haskell
 autocmd FileType haskell setlocal commentstring=--\ %s
+" Fix `crontab: temp file must be edited in place`
+autocmd filetype crontab setlocal nobackup nowritebackup
 
