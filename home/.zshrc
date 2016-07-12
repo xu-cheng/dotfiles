@@ -60,7 +60,7 @@ ZSH_HIGHLIGHT_PATH="$HOMEBREW_PREFIX/share/zsh-syntax-highlighting/zsh-syntax-hi
 
 . "$ZSH/oh-my-zsh.sh"
 
-if (( ${+commands[fzf]} )); then
+if [[ -d "$HOMEBREW_PREFIX/opt/fzf" ]]; then
     [[ $- =~ i ]] && . "$HOMEBREW_PREFIX/opt/fzf/shell/completion.zsh" 2> /dev/null
     . "$HOMEBREW_PREFIX/opt/fzf/shell/key-bindings.zsh"
 elif [[ -d "$HOME/.fzf" ]]; then
