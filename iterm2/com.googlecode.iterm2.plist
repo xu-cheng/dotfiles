@@ -354,16 +354,18 @@
 	<string>520 577 400 129 0 0 1440 877 </string>
 	<key>NSWindow Frame SUUpdateAlert</key>
 	<string>410 379 620 392 0 0 1440 877 </string>
+	<key>NSWindow Frame SharedPreferences</key>
+	<string>455 170 937 512 0 0 1440 877 </string>
 	<key>NSWindow Frame UKCrashReporter</key>
 	<string>99 293 592 584 0 0 1440 877 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>480 166 710 622 0 0 1440 877 </string>
+	<string>14 188 710 622 0 0 1440 877 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
-	<string>667 149 710 622 0 0 1440 877 </string>
+	<string>704 217 710 622 0 0 1440 877 </string>
 	<key>NSWindow Frame iTerm Window 2</key>
-	<string>793 164 710 622 0 0 1440 877 </string>
+	<string>641 278 710 622 0 0 1440 900 </string>
 	<key>NSWindow Frame iTerm Window 3</key>
-	<string>225 279 710 621 0 0 1440 900 </string>
+	<string>579 194 710 622 0 0 1440 877 </string>
 	<key>NSWindow Frame iTerm Window 4</key>
 	<string>246 257 710 621 0 0 1440 878 </string>
 	<key>New Bookmarks</key>
@@ -1023,6 +1025,8 @@
 				<key>text</key>
 				<string></string>
 			</dict>
+			<key>Send Bell Alert</key>
+			<false/>
 			<key>Send Code When Idle</key>
 			<false/>
 			<key>Set Local Environment Vars</key>
@@ -1898,10 +1902,16 @@
 			<string>/Users/xucheng</string>
 		</dict>
 	</array>
+	<key>NoSyncConfirmBeta</key>
+	<true/>
 	<key>NoSyncDoNotWarnBeforeMultilinePaste</key>
 	<true/>
 	<key>NoSyncDoNotWarnBeforeMultilinePaste_selection</key>
 	<integer>0</integer>
+	<key>NoSyncHaveWarnedAboutIncompatibleSoftware</key>
+	<true/>
+	<key>NoSyncInstallationId</key>
+	<string>12D8A34F-4818-4FB9-9DF7-55C256154B42</string>
 	<key>NoSyncLastTipTime</key>
 	<real>467793928.23859698</real>
 	<key>NoSyncNeverRemindPrefsChangesCopy</key>
@@ -1914,6 +1924,8 @@
 	<true/>
 	<key>NoSyncSuppressAnnyoingBellOffer</key>
 	<true/>
+	<key>NoSyncTimeOfFirstLaunchForIncompatibilityWarnings</key>
+	<real>485086613.01130903</real>
 	<key>NoSyncTimeOfFirstLaunchOfVersionWithTip</key>
 	<real>467050032.29694498</real>
 	<key>NoSyncTimeOfLastPromo</key>
@@ -1995,11 +2007,11 @@
 	<key>SUFeedAlternateAppNameKey</key>
 	<string>iTerm</string>
 	<key>SUFeedURL</key>
-	<string>https://iterm2.com/appcasts/nightly.xml</string>
+	<string>https://iterm2.com/appcasts/nightly.xml?shard=16</string>
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2016-03-14T03:34:34Z</date>
+	<date>2016-07-11T14:05:47Z</date>
 	<key>SavePasteHistory</key>
 	<false/>
 	<key>Secure Input</key>
@@ -2058,7 +2070,7 @@
 	<key>findRegex_iTerm</key>
 	<false/>
 	<key>iTerm Version</key>
-	<string>2.9.20160307-nightly</string>
+	<string>3.0.20160711-nightly</string>
 	<key>kCPKSelectionViewPreferredModeKey</key>
 	<integer>0</integer>
 	<key>kCPKSelectionViewShowHSBTextFieldsKey</key>
