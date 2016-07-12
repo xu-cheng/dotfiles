@@ -1,15 +1,18 @@
 #!/usr/bin/env ruby
 
+VERSION = "1.0"
+
 require "ipaddr"
 require "optparse"
 require "socket"
 
 OptionParser.new do |opts|
   opts.banner = "Usage: ssh-proxy-helper [options]"
-  opts.on("-h", "--host HOST","Host name to connect") do |host|
+  opts.version = VERSION
+  opts.on("-H", "--host HOST","Host name to connect") do |host|
     $host = host
   end
-  opts.on("-p", "--port Port", "Port number to connect") do |port|
+  opts.on("-P", "--port Port", "Port number to connect") do |port|
     $port = port
   end
   opts.on("--proxy PROXY", "Proxy host used as `ssh proxy -W %h:%p`") do |proxy|
@@ -17,6 +20,14 @@ OptionParser.new do |opts|
   end
   opts.on("--internal-ip IP", "CIDR IP range to indicate when to disable the proxy") do |net|
     $net = IPAddr.new net
+  end
+  opts.on_tail("-h", "--help", "Show this message") do
+    puts opts.help
+    exit
+  end
+  opts.on_tail("-v", "--version", "Show version") do
+    puts opts.ver
+    exit
   end
 end.parse!
 
