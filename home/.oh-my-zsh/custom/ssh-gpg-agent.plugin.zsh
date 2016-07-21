@@ -2,8 +2,9 @@
 #   https://github.com/robbyrussell/oh-my-zsh/blob/master/plugins/ssh-agent/ssh-agent.plugin.zsh
 #   https://github.com/robbyrussell/oh-my-zsh/blob/master/plugins/gpg-agent/gpg-agent.plugin.zsh
 
-_plugin__ssh_env="$HOME/.ssh/ssh-agent-${HOST:=$(hostname)}.env"
-_plugin__gpg_env="$HOME/.gnupg/gpg-agent-${HOST:=$(hostname)}.env"
+[[ -n "$HOST" ]] || HOST="$(hostname)"
+_plugin__ssh_env="$HOME/.ssh/ssh-agent-$HOST.env"
+_plugin__gpg_env="$HOME/.gnupg/gpg-agent-$HOST.env"
 _plugin__ssh_sock_dir="/tmp/ssh-agent-$USER"
 _plugin__gpg_sock_dir="/tmp/gpg-agent-$USER"
 _plugin__ssh_sock="${_plugin__ssh_sock_dir}/S.ssh-agent"
@@ -81,6 +82,8 @@ else
     if [[ -f "${_plugin__ssh_env}" ]]; then
         . "${_plugin__ssh_env}" > /dev/null
         _plugin__set_ssh_agent_sock
+    elif [[ -S "${_plugin__ssh_sock}" ]]; then
+        export SSH_AUTH_SOCK="${_plugin__ssh_sock}"
     fi
 
     if ! _plugin__ssh_agent_running; then
