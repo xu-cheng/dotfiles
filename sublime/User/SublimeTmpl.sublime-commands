@@ -1,6 +1,0 @@
-[
-  {
-    "caption": "Tmpl: Create python3", "command": "sublime_tmpl",
-    "args": {"type": "python3"}
-  }
-]
