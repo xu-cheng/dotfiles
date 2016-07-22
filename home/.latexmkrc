@@ -24,7 +24,7 @@ sub cleanup1 {
     my $dir = fix_pattern( shift );
     my $root_fixed = fix_pattern( $root_filename );
     foreach (@_) {
-        (my $name = (/%R/ || /[\*\.\?]/) ? $_ : "%R.$_") =~ s/%R/$dir$root_fixed/;
+        (my $name = (/%R/ || /[\*\?]/) ? $_ : "%R.$_") =~ s/%R/$dir$root_fixed/;
         unlink_or_move( glob( "$name" ) );
     }
 }
