@@ -10,6 +10,7 @@ excludesfile = ~/.gitignore
 
 [commit]
 gpgsign = true
+verbose = true
 
 [push]
 default = simple
