@@ -40,3 +40,6 @@ let g:ycm_semantic_triggers.tex = [
     \ 're!\\includepdf(\s*\[[^]]*\])?\s*\{[^}]*',
     \ 're!\\includestandalone(\s*\[[^]]*\])?\s*\{[^}]*',
     \ ]
+
+" Linter
+let g:syntastic_tex_checkers = ['chktex']
