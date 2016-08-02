@@ -43,3 +43,7 @@ let g:ycm_semantic_triggers.tex = [
 
 " Linter
 let g:syntastic_tex_checkers = ['chktex']
+
+" Autoformat
+let g:formatdef_latexindent = '"latexindentwrapper"'
+let g:formatters_tex = ['latexindent']

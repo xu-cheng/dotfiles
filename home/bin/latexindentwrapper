@@ -1,0 +1,14 @@
+#!/usr/bin/env ruby
+
+require "tempfile"
+
+Dir.mktmpdir("latexindent") do |dir|
+  file = "#{dir}/input.tex"
+  File.write(file, $stdin.read)
+  IO.popen(["latexindent", file, *ARGV]) do |io|
+    content = io.read
+    content.gsub!(/\t/, " " * 4)
+    content.gsub!(/^\s+$/, "")
+    puts content
+  end
+end
