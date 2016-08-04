@@ -14,9 +14,10 @@ else # Linux
     if [[ -n "$CSR" ]]; then
         umask 0077
         unset LD_LIBRARY_PATH
+        [[ -d "/tmp/$USER" ]] || mkdir -p "/tmp/$USER"
         export HOMEBREW_PREFIX="$HOME/usr"
-        export HOMEBREW_CACHE="/tmp/chengxu/Caches/Homebrew"
-        export HOMEBREW_LOGS="/tmp/chengxu/Logs/Homebrew"
+        export HOMEBREW_CACHE="/tmp/$USER/Caches/Homebrew"
+        export HOMEBREW_LOGS="/tmp/$USER/Logs/Homebrew"
         export HOMEBREW_FORCE_VENDOR_RUBY=true
         export HTTPS_PROXY="https://proxy.comp.hkbu.edu.hk:8080"
         export SHELL="$HOME/usr/bin/zsh"
