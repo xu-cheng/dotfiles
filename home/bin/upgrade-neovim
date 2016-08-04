@@ -16,6 +16,7 @@ modsecs=$(gnudate --utc --reference="$(brew --repo)/Library/Taps/neovim/homebrew
 brew reinstall neovim/neovim/neovim --HEAD && \
     pip2 install --upgrade neovim && \
     pip3 install --upgrade neovim && \
+    pip3 install --upgrade neovim-client && \
     gem install neovim && \
     nvim --headless -c PlugUpgrade +q && \
     nvim --headless -c PlugClean! +qall && \

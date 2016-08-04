@@ -1,22 +1,19 @@
 let g:tex_flavor = 'latex'
 let g:vimtex_view_method = 'general'
-let g:vimtex_view_general_viewer = 'open'
-let g:vimtex_view_general_options = '-a Skim'
-let g:vimtex_view_general_options_latexmk = '-a Skim'
+let g:vimtex_view_general_viewer =
+            \ '/Applications/Skim.app/Contents/SharedSupport/displayline'
+let g:vimtex_view_general_options = '-r @line @pdf @tex'
+let g:vimtex_quickfix_ignore_all_warnings = 1
+let g:vimtex_latexmk_progname = 'nvr'
+let g:vimtex_latexmk_callback_hooks = ['VimtexUpdateView']
+function! VimtexUpdateView(status)
+    if a:status | call b:vimtex.viewer.view("") | endif
+endfunction
 
 " Backward Search
 " set up a `Custom` sync profile in Skim
-" command: `nvim`
-" arguments: `--remote-silent +"%line" "%file"`
-
-" Forward Search
-function! SyncTexForward()
-    let l:pdf_file = b:vimtex.out()
-    let l:tex_file = expand('%:p')
-    let l:tex_line = line(".")
-    :call system('displayline' . ' -r ' . l:tex_line . ' "' . l:pdf_file . '" "' . l:tex_file . '"')
-endfunction
-nmap <localleader>ls :call SyncTexForward()<cr>
+" command: `/usr/local/bin/nvr`
+" arguments: `--servername "/tmp/nvimsocket" --remote-silent +"%line" "%file"`
 
 " TeX Word Count
 function! TeXWordCount()
@@ -31,15 +28,15 @@ if !exists('g:ycm_semantic_triggers')
     let g:ycm_semantic_triggers = {}
 endif
 let g:ycm_semantic_triggers.tex = [
-    \ 're!\\[A-Za-z]*cite[A-Za-z]*(\[[^]]*\]){0,2}{[^}]*',
-    \ 're!\\[A-Za-z]*ref({[^}]*|range{([^,{}]*(}{)?))',
-    \ 're!\\hyperref\[[^]]*',
-    \ 're!\\includegraphics\*?(\[[^]]*\]){0,2}{[^}]*',
-    \ 're!\\(include(only)?|input){[^}]*',
-    \ 're!\\\a*(gls|Gls|GLS)(pl)?\a*(\s*\[[^]]*\]){0,2}\s*\{[^}]*',
-    \ 're!\\includepdf(\s*\[[^]]*\])?\s*\{[^}]*',
-    \ 're!\\includestandalone(\s*\[[^]]*\])?\s*\{[^}]*',
-    \ ]
+            \ 're!\\[A-Za-z]*cite[A-Za-z]*(\[[^]]*\]){0,2}{[^}]*',
+            \ 're!\\[A-Za-z]*ref({[^}]*|range{([^,{}]*(}{)?))',
+            \ 're!\\hyperref\[[^]]*',
+            \ 're!\\includegraphics\*?(\[[^]]*\]){0,2}{[^}]*',
+            \ 're!\\(include(only)?|input){[^}]*',
+            \ 're!\\\a*(gls|Gls|GLS)(pl)?\a*(\s*\[[^]]*\]){0,2}\s*\{[^}]*',
+            \ 're!\\includepdf(\s*\[[^]]*\])?\s*\{[^}]*',
+            \ 're!\\includestandalone(\s*\[[^]]*\])?\s*\{[^}]*',
+            \ ]
 
 " Linter
 let g:syntastic_tex_checkers = ['chktex']
