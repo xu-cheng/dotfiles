@@ -13,7 +13,7 @@ endfunction
 " Backward Search
 " set up a `Custom` sync profile in Skim
 " command: `/usr/local/bin/nvr`
-" arguments: `--servername "/tmp/nvimsocket" --remote-silent +"%line" "%file"`
+" arguments: `--servername "/tmp/nvimsocket" --remote-tab-silent +"%line" "%file"`
 
 " TeX Word Count
 function! TeXWordCount()
