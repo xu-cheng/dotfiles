@@ -1,24 +1,11 @@
 #!/usr/bin/env bash
 
-gnudate()
-{
-    if which gdate > /dev/null 2>&1; then
-        gdate "$@"
-    else
-        date "$@"
-    fi
-}
-
-[ -d "$(brew --repo)/Library/Taps/neovim/homebrew-neovim" ] || brew tap neovim/neovim
-nowsecs=$(gnudate --utc +%s)
-modsecs=$(gnudate --utc --reference="$(brew --repo)/Library/Taps/neovim/homebrew-neovim/.git/FETCH_HEAD" +%s)
-[ $((nowsecs-modsecs)) -lt 86400 ] || brew update
-brew reinstall neovim/neovim/neovim --HEAD && \
-    pip2 install --upgrade neovim && \
-    pip3 install --upgrade neovim && \
-    pip3 install --upgrade neovim-client && \
-    gem install neovim && \
-    nvim --headless -c PlugUpgrade +q && \
-    nvim --headless -c PlugClean! +qall && \
-    nvim --headless -c PlugUpdate! +qall
-
+brew update
+brew upgrade neovim/neovim/neovim --fetch-HEAD
+pip2 install --upgrade neovim
+pip3 install --upgrade neovim
+pip3 install --upgrade neovim-client
+gem install neovim
+nvim --headless -c PlugUpgrade +q
+nvim --headless -c PlugClean! +qall
+nvim --headless -c PlugUpdate! +qall
