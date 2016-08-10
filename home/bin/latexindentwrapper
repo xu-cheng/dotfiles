@@ -4,11 +4,10 @@ require "tempfile"
 
 Dir.mktmpdir("latexindent") do |dir|
   file = "#{dir}/input.tex"
+  config = "#{dir}/localSettings.yaml"
   File.write(file, $stdin.read)
-  IO.popen(["latexindent", file, *ARGV]) do |io|
-    content = io.read
-    content.gsub!(/\t/, " " * 4)
-    content.gsub!(/^\s+$/, "")
-    puts content
+  File.write(config, 'defaultIndent: "    "')
+  IO.popen(["latexindent", "-l", file, *ARGV]) do |io|
+    puts io.read.gsub(/^\s+$/, "")
   end
 end
