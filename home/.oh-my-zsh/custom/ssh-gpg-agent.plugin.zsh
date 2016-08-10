@@ -12,7 +12,8 @@ _plugin__gpg_sock="${_plugin__gpg_sock_dir}/S.gpg-agent"
 
 function _plugin__ssh_agent_running()
 {
-    [[ -n "$SSH_AUTH_SOCK" ]] && /usr/bin/env ssh-add -l &>/dev/null
+    # ssh-add -l exit code: 0 agent running, 1 agent running without key, 2 not running
+    [[ -n "$SSH_AUTH_SOCK" && "$(/usr/bin/env ssh-add -l &>/dev/null; echo $?)" -ne 2 ]]
 }
 
 function _plugin__gpg_agent_running()
