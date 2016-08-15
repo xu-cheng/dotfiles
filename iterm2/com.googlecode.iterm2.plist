@@ -353,17 +353,17 @@
 	<key>NSWindow Frame Preferences</key>
 	<string>369 419 606 456 0 0 1440 877 </string>
 	<key>NSWindow Frame SUStatusFrame</key>
-	<string>520 577 400 129 0 0 1440 877 </string>
+	<string>520 578 400 129 0 0 1440 877 </string>
 	<key>NSWindow Frame SUUpdateAlert</key>
-	<string>410 379 620 392 0 0 1440 877 </string>
+	<string>410 380 620 392 0 0 1440 877 </string>
 	<key>NSWindow Frame SharedPreferences</key>
-	<string>455 148 918 495 0 0 1440 900 </string>
+	<string>455 148 796 473 0 0 1440 900 </string>
 	<key>NSWindow Frame UKCrashReporter</key>
 	<string>99 293 592 584 0 0 1440 877 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>688 132 710 622 0 0 1440 877 </string>
+	<string>702 185 710 622 0 0 1440 900 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
-	<string>372 109 710 622 0 0 1440 877 </string>
+	<string>309 172 710 622 0 0 1440 900 </string>
 	<key>NSWindow Frame iTerm Window 2</key>
 	<string>641 278 710 622 0 0 1440 900 </string>
 	<key>NSWindow Frame iTerm Window 3</key>
@@ -2013,7 +2013,7 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2016-07-17T08:16:02Z</date>
+	<date>2016-08-15T02:32:47Z</date>
 	<key>SavePasteHistory</key>
 	<false/>
 	<key>Secure Input</key>
@@ -2066,13 +2066,13 @@
 	<key>WindowStyle</key>
 	<integer>0</integer>
 	<key>WordCharacters</key>
-	<string>/-+\~_.</string>
+	<string>≥ </string>
 	<key>findIgnoreCase_iTerm</key>
 	<true/>
 	<key>findRegex_iTerm</key>
 	<false/>
 	<key>iTerm Version</key>
-	<string>3.0.20160717-nightly</string>
+	<string>3.0.20160729-nightly</string>
 	<key>kCPKSelectionViewPreferredModeKey</key>
 	<integer>0</integer>
 	<key>kCPKSelectionViewShowHSBTextFieldsKey</key>
