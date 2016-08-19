@@ -1,4 +1,6 @@
 let g:tex_flavor = 'latex'
+" Ref: https://b4winckler.wordpress.com/2010/08/07/using-the-conceal-vim-feature-with-latex/
+let g:tex_conceal = 'adgm'
 let g:vimtex_view_method = 'general'
 let g:vimtex_view_general_viewer =
             \ '/Applications/Skim.app/Contents/SharedSupport/displayline'
