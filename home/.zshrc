@@ -96,14 +96,17 @@ hist() {
 
 # auto update environment when running in tmux
 TRAPUSR1() {
+    local -a envs
+    local env
     if [[ -o interactive && -n "$TMUX" ]]; then
-        while read -r line; do
-            if [[ "$line" = "-"* ]]; then
-                unset "${line:1}"
+        envs=("${(@f)$(tmux show-environment 2>/dev/null)}")
+        for env in $envs; do
+            if [[ "$env" = "-"* ]]; then
+                unset "${env:1}"
             else
-                export "$line"
+                export "$env"
             fi
-        done < "$(tmux show-environment)"
+        done
     fi
 }
 
