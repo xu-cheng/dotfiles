@@ -4,7 +4,7 @@ brew update
 brew upgrade neovim/neovim/neovim --fetch-HEAD
 pip2 install --upgrade neovim
 pip3 install --upgrade neovim
-pip3 install --upgrade neovim-client
+pip3 install --upgrade neovim-remote
 gem install neovim
 nvim --headless -c PlugUpgrade +q
 nvim --headless -c PlugClean! +qall
