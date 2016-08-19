@@ -52,7 +52,6 @@ if ! _plugin__ssh_agent_running; then
 fi
 
 if ! _plugin__gpg_agent_running; then
-else
     if [[ -f "${_plugin__gpg_env}" ]]; then
         . "${_plugin__gpg_env}" > /dev/null
         export GPG_AGENT_INFO
