@@ -94,6 +94,19 @@ hist() {
     fi
 }
 
+# auto update environment when running in tmux
+TRAPUSR1() {
+    if [[ -o interactive && -n "$TMUX" ]]; then
+        while read -r line; do
+            if [[ "$line" = "-"* ]]; then
+                unset "${line:1}"
+            else
+                export "$line"
+            fi
+        done < "$(tmux show-environment)"
+    fi
+}
+
 # Change iterm2 profile. Usage it2prof ProfileName (case sensitive)
 # https://coderwall.com/p/s-2_nw/change-iterm2-color-profile-from-the-cli
 it2prof()  { echo -e "\033]50;SetProfile=$1\a"; }

@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+pids="$(tmux list-panes -a -F "#{pane_pid}" 2>/dev/null)"
+for pid in $pids; do
+    pname="$(ps c -p "$pid" -o ucomm=)"
+    if [[ "${pname##*/}" = zsh* ]]; then
+        kill -s SIGUSR1 "$pid"
+    fi
+done
