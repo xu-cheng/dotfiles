@@ -1,6 +1,6 @@
 #!/usr/bin/env ruby
 
-VERSION = "1.0"
+VERSION = "1.1"
 
 def error(msg)
   $stderr.puts "#{"\033[4;31m" if $stderr.tty?}Error#{"\033[0m" if $stderr.tty?}: #{msg}"
@@ -19,11 +19,11 @@ Please install `sshkit` using:
 end
 
 begin
-  require "table_print"
+  require "terminal-table"
 rescue LoadError
   error <<-EOS
-Please install `table_print` using:
-    gem install table_print
+Please install `terminal-table` using:
+    gem install terminal-table
   EOS
 end
 
@@ -68,24 +68,33 @@ class Reporter
   def print(options = {})
     sort_key = options.fetch(:sort_key, :host).to_s
     sort_proc = proc do |record|
-      case sort_key
+      first_value = case sort_key
       when "tmux"
-        record[sort_key].to_s.split(",").size
-      when "process", "mem"
-        record[sort_key].to_s.split("/").map { |x| x[/\d+/].to_i }
-      when "users", "load_1min", "load_5min", "load_10min"
-        record[sort_key].to_f
+        record["tmux"].size
+      when "process"
+        [record["process_running"], record["process_all"]]
+      when "mem"
+        [record["mem_used"], record["mem_total"]]
+      when "cpu"
+        record["cpufreq"] * record["cpusocket"] * record["cpucore"]
       else
         record[sort_key]
       end
+      second_value = record["host"]
+      [first_value, second_value]
     end
-    tp reports.sort_by { |r| sort_proc.call(r) }, :host, :users,
-      { load_1min:  { display_name: "LOAD(1 min)"} },
-      { load_5min:  { display_name: "LOAD(5 min)"} },
-      { load_10min: { display_name: "LOAD(10min)"} },
-      :process,
-      { mem: { display_name: "MEM(used/total)"} },
-      :tmux
+    rows = reports.sort_by { |record| sort_proc.call(record) }.map do |record|
+      row = %w[host users load_1min load_5min load_10min process mem cpu].map do |k|
+        record[k]
+      end
+      row << record["tmux"].join(",")
+      row
+    end
+    table = Terminal::Table.new headings: [
+                "HOST", "USERS", "LOAD\n(1min)", "LOAD\n(5min)", "LOAD\n(10min)",
+                "PROCESS", "MEM\n(used/total)", "CPU", "TMUX"
+              ], rows: rows
+    puts table
   end
 
   private
@@ -102,17 +111,34 @@ class Reporter
 
   SCRIPT = <<-'EOS'.shellescape
     require "json"
+    users = `users`.chomp.split(" ").size rescue 0
     load_avg = `cat /proc/loadavg`.chomp.split(" ")
-    mem = `free -g`.split("\n").detect { |l| l.start_with? "Mem" }.split(" ")
-    tmux = `tmux list-sessions` rescue ""
+    process = load_avg[3]
+    process_running, process_all = process.split("/")
+    mem = `free -g`.match(/^Mem: +(\d+) +(\d+)/)
+    mem_total = mem[1].to_i
+    mem_used = mem[2].to_i
+    tmux = `tmux list-sessions -F "#S"`.split("\n") rescue []
+    cpu = `lscpu`
+    cpufreq = cpu[/^Model name:.* ([\d\.]+GHz)$/, 1]
+    cpusocket = cpu[/^Socket\(s\): *(\d+)$/, 1].to_i
+    cpucore = cpu[/^Core\(s\) per socket: *(\d+)$/, 1].to_i
     report = {
-      users: `users`.chomp.split(" ").size,
-      load_1min: load_avg[0],
-      load_5min: load_avg[1],
-      load_10min: load_avg[2],
-      process: load_avg[3],
-      mem: "#{mem[2]}GB/#{mem[1]}GB",
-      tmux: tmux.split("\n").map { |l| l.split(":").first }.join(",")
+      users: users,
+      load_1min: load_avg[0].to_f,
+      load_5min: load_avg[1].to_f,
+      load_10min: load_avg[2].to_f,
+      process_running: process_running.to_i,
+      process_all: process_all.to_i,
+      process: process,
+      mem_total: mem_total,
+      mem_used: mem_used,
+      mem: "#{"%02i" % mem_used}/#{mem_total} GB",
+      cpufreq: cpufreq[0..-4].to_f,
+      cpusocket: cpusocket,
+      cpucore: cpucore,
+      cpu: "#{cpufreq} (#{cpusocket}S/#{cpucore}C)",
+      tmux: tmux,
     }
     puts JSON.dump(report)
   EOS
@@ -133,7 +159,7 @@ Example:
   csr-report csr40-csr50   # report csr40 to csr50
   csr-report --sort-by=mem # sort report by memory
 
-Accepted sort keys: host,users,load_1min,load_5min,load_10min,process,mem,tmux
+Accepted sort keys: host,users,load_1min,load_5min,load_10min,process,mem,cpu,tmux
 EOS
     opts.version = VERSION
 
