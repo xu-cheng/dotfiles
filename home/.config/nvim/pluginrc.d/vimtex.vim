@@ -6,6 +6,7 @@ let g:vimtex_view_general_viewer =
             \ '/Applications/Skim.app/Contents/SharedSupport/displayline'
 let g:vimtex_view_general_options = '-r @line @pdf @tex'
 let g:vimtex_quickfix_ignore_all_warnings = 1
+let g:vimtex_quickfix_open_on_warning = 0
 let g:vimtex_latexmk_progname = 'nvr'
 let g:vimtex_latexmk_callback_hooks = ['VimtexUpdateView']
 function! VimtexUpdateView(status)
