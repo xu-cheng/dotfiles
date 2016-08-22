@@ -28,9 +28,9 @@ status = auto
 ui = auto
 
 [pager]
-diff = diff-highlight | less
-log = diff-highlight | less
-show = diff-highlight | less
+diff = diff-highlight | less -F -X
+log = diff-highlight | less -F -X
+show = diff-highlight | less -F -X
 
 [interactive]
 diffFilter = diff-highlight
