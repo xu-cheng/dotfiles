@@ -9,7 +9,7 @@ export HOMEBREW_NO_ANALYTICS=true # set before any brew invoking.
 
 if [[ `uname` == "Darwin" ]]; then # OS X
     export HOMEBREW_PREFIX="/usr/local"
-    export PATH="$DOTFILES_HOME/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin:/usr/local/MacGPG2/bin:/Library/TeX/texbin"
+    export PATH="$DOTFILES_HOME/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin:/usr/local/gnupg-2.1/bin:/Library/TeX/texbin"
 else # Linux
     if [[ -n "$CSR" ]]; then
         umask 0077

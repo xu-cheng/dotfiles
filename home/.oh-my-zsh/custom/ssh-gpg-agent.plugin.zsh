@@ -4,7 +4,11 @@
 
 [[ -n "$HOST" ]] || HOST="$(hostname)"
 _plugin__ssh_env="$HOME/.ssh/ssh-agent-$HOST.env"
-_plugin__gpg_env="$HOME/.gnupg/gpg-agent-$HOST.env"
+
+function _plugin__gpg21()
+{
+    [[ "$(/usr/bin/env gpg2 --version | head -n 1)" = *"2.1"* ]]
+}
 
 function _plugin__ssh_agent_running()
 {
@@ -14,7 +18,7 @@ function _plugin__ssh_agent_running()
 
 function _plugin__gpg_agent_running()
 {
-    [[ -n "$GPG_AGENT_INFO" ]] && /usr/bin/env gpg-connect-agent --quiet /bye &>/dev/null
+    [[ "$(/usr/bin/env gpg-connect-agent --no-autostart --quiet /bye 2>&1)" != *"no gpg-agent running"* ]]
 }
 
 function _plugin__start_ssh_agent()
@@ -33,12 +37,7 @@ function _plugin__start_ssh_agent()
 function _plugin__start_gpg_agent()
 {
     echo starting gpg-agent...
-
-    # start gpg-agent and setup environment
-    (umask 0077; /usr/bin/env gpg-agent --quiet --daemon --write-env-file "${_plugin__gpg_env}" > /dev/null)
-    chmod 600 "${_plugin__gpg_env}"
-    . "${_plugin__gpg_env}" > /dev/null
-    export GPG_AGENT_INFO
+    (umask 0077; /usr/bin/env gpg-agent --quiet --daemon > /dev/null)
 }
 
 if ! _plugin__ssh_agent_running; then
@@ -51,24 +50,17 @@ if ! _plugin__ssh_agent_running; then
     fi
 fi
 
-if ! _plugin__gpg_agent_running; then
-    if [[ -f "${_plugin__gpg_env}" ]]; then
-        . "${_plugin__gpg_env}" > /dev/null
-        export GPG_AGENT_INFO
-    fi
-
-    if ! _plugin__gpg_agent_running; then
-        _plugin__start_gpg_agent
-    fi
+if _plugin__gpg21 && ! _plugin__gpg_agent_running; then
+    _plugin__start_gpg_agent
 fi
 
 GPG_TTY="$(tty)"
 export GPG_TTY
 
 # cleanup
+unset -f _plugin__gpg21
 unset -f _plugin__ssh_agent_running
 unset -f _plugin__gpg_agent_running
 unset -f _plugin__start_ssh_agent
 unset -f _plugin__start_gpg_agent
 unset _plugin__ssh_env
-unset _plugin__gpg_env
