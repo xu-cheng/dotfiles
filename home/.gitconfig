@@ -1,7 +1,7 @@
 [user]
 name = Xu Cheng
 email = git@xuc.me
-signingkey = A0B459CE
+signingkey = CCE0112A1CCDE1685DBA86C4C2A3860FA0B459CE
 
 [core]
 autocrlf = input
