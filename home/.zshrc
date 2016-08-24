@@ -70,21 +70,20 @@ elif [[ -d "$HOME/.fzf" ]]; then
     . "$HOME/.fzf/shell/key-bindings.zsh"
 fi
 
+alias bubu='brew update && brew upgrade --cleanup'
 alias rake='noglob rake'
+alias lldb="$HOMEBREW_PREFIX/opt/llvm/bin/lldb"
 alias rm='safe-rm'
+alias ta='tmux attach -t'
+alias tl='tmux list-sessions'
+alias ts='tmux new-session -s'
+alias tkss='tmux kill-session -t'
+alias tksv='tmux kill-server'
+alias vim='nvim -p'
+alias vimdiff='nvim -d'
 if (( ! ${+commands[sha1sum]} )); then alias sha1sum='gsha1sum'; fi
 if (( ! ${+commands[sha256sum]} )); then alias sha256sum='gsha256sum'; fi
 if (( ! ${+commands[md5sum]} )); then alias md5sum='gmd5sum'; fi
-alias vim='nvim -p'
-alias vimdiff='nvim -d'
-alias subl='subl && sleep 0.1 && subl'
-alias ta='tmux attach -t'
-alias ts='tmux new-session -s'
-alias tl='tmux list-sessions'
-alias tksv='tmux kill-server'
-alias tkss='tmux kill-session -t'
-alias bubu='brew update && brew upgrade --cleanup'
-alias lldb="$HOMEBREW_PREFIX/opt/llvm/bin/lldb"
 
 hist() {
     if [[ "$1" == "-c" ]]; then
