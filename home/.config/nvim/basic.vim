@@ -176,6 +176,7 @@
     function! RemoveCache()
         let l:cache = g:vim_home . 'cache/'
         :call system('rm -rf ' . '"' . l:cache . '"')
+        :call system('rm "$NVIM_LISTEN_ADDRESS"')
     endfunction
 
     command RemoveCache call RemoveCache()
