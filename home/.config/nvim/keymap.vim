@@ -101,8 +101,8 @@ cnoremap <M-f> <S-Right>
 
 " Ctrl-S to quick save
 noremap <C-s> :update<CR>
-inoremap <C-S> <C-O>:update<CR>
-vnoremap <C-S> <C-C>:update<CR>gv
+inoremap <C-s> <C-o>:update<CR>
+vnoremap <C-s> <C-c>:update<CR>gv
 
 " Ctrl-C as Esc
 noremap <C-c> <Esc>
