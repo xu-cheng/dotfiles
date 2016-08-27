@@ -1,0 +1,59 @@
+#!/usr/bin/env ruby
+
+require "socket"
+
+def gpg21?
+  `gpg2 --version`[/\d\.\d/] == "2.1"
+rescue
+  false
+end
+
+def gpg_agent_running?
+  return false unless gpg21?
+  ! `gpg-connect-agent --no-autostart --quiet /bye 2>&1`.include? "no gpg-agent running"
+rescue
+  false
+end
+
+def free_tcp_port
+  server = TCPServer.new("127.0.0.1", 0)
+  server.addr[1]
+ensure
+  server.close
+end
+
+exit 0 unless gpg_agent_running?
+
+remote, port = ARGV.first.split(":")
+ppid = Process.ppid
+Process.daemon
+
+tcp_port = free_tcp_port
+# spawn local socat to forward gpg-agent unix socket to tcp socket
+local_pid = Process.spawn "socat", "TCP-LISTEN:#{tcp_port},bind=127.0.0.1,reuseaddr,fork",
+                                   "UNIX-CONNECT:#{ENV["HOME"]}/.gnupg/S.extra-gpg-agent"
+# spawn remote socat to forward tcp socket to remote gpg-agent unix socket
+# `-t -t` is used to make sure remote socat exit when ssh connect is terminated.
+remote_pid = Process.spawn "ssh", "-oLocalCommand=", "-oPermitLocalCommand=no", "-t", "-t",
+                                  "-R#{tcp_port}:localhost:#{tcp_port}", remote, "-P#{port}",
+                                  "socat", "UNIX-LISTEN:$HOME/.gnupg/S.gpg-agent,unlink-close,unlink-early,reuseaddr,fork",
+                                           "TCP4:localhost:#{tcp_port}"
+Process.detach(local_pid)
+Process.detach(remote_pid)
+
+# exit when either ssh connection(parent process) or remote socat is terminated.
+begin
+  loop do
+    begin
+      Process.kill 0, ppid
+      Process.kill 0, remote_pid
+    rescue
+      break
+    end
+    sleep 2
+  end
+ensure
+  Process.kill 9, local_pid
+  Process.kill 9, remote_pid
+  Process.wait
+end
