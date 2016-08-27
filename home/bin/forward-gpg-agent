@@ -30,12 +30,12 @@ Process.daemon
 
 tcp_port = free_tcp_port
 # spawn local socat to forward gpg-agent unix socket to tcp socket
-local_pid = Process.spawn "socat", "TCP-LISTEN:#{tcp_port},bind=127.0.0.1,reuseaddr,fork",
+local_pid = Process.spawn "socat", "TCP-LISTEN:#{tcp_port},bind=localhost,reuseaddr,fork",
                                    "UNIX-CONNECT:#{ENV["HOME"]}/.gnupg/S.extra-gpg-agent"
 # spawn remote socat to forward tcp socket to remote gpg-agent unix socket
 # `-t -t` is used to make sure remote socat exit when ssh connect is terminated.
 remote_pid = Process.spawn "ssh", "-oLocalCommand=", "-oPermitLocalCommand=no", "-t", "-t",
-                                  "-R#{tcp_port}:localhost:#{tcp_port}", remote, "-P#{port}",
+                                  "-Rlocalhost:#{tcp_port}:localhost:#{tcp_port}", remote, "-P#{port}",
                                   "socat", "UNIX-LISTEN:$HOME/.gnupg/S.gpg-agent,unlink-close,unlink-early,reuseaddr,fork",
                                            "TCP4:localhost:#{tcp_port}"
 Process.detach(local_pid)
