@@ -12,6 +12,9 @@ excludesfile = ~/.gitignore
 gpgsign = true
 verbose = true
 
+[gpg]
+program = gpg2
+
 [push]
 default = simple
 

@@ -71,8 +71,9 @@ elif [[ -d "$HOME/.fzf" ]]; then
 fi
 
 alias bubu='brew update && brew upgrade --cleanup'
-alias rake='noglob rake'
+alias gpg='gpg2'
 alias lldb="$HOMEBREW_PREFIX/opt/llvm/bin/lldb"
+alias rake='noglob rake'
 alias rm='safe-rm'
 alias ta='tmux attach -t'
 alias tl='tmux list-sessions'
