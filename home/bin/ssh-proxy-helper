@@ -37,5 +37,5 @@ if $net.include? $localip
   exec "nc", $host, $port
 else
   STDERR.puts "Connect to #{$host} over #{$proxy}."
-  exec "ssh", $proxy, "-W", "#{$host}:#{$port}"
+  exec "ssh", "-q", $proxy, "-W", "#{$host}:#{$port}"
 end
