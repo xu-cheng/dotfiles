@@ -1,5 +1,7 @@
 #!/usr/bin/env ruby
 
+# NOTE: in order to make it work, you are required to import public keys into remote machine.
+
 require "socket"
 
 def gpg21?
@@ -33,7 +35,7 @@ tcp_port = free_tcp_port
 local_pid = Process.spawn "socat", "TCP-LISTEN:#{tcp_port},bind=localhost,reuseaddr,fork",
                                    "UNIX-CONNECT:#{ENV["HOME"]}/.gnupg/S.extra-gpg-agent"
 # spawn remote socat to forward tcp socket to remote gpg-agent unix socket
-# `-t -t` is used to make sure remote socat exit when ssh connect is terminated.
+# `-t -t` is used to make sure remote socat exit when ssh connection is terminated.
 remote_pid = Process.spawn "ssh", "-oLocalCommand=", "-oPermitLocalCommand=no", "-t", "-t",
                                   "-Rlocalhost:#{tcp_port}:localhost:#{tcp_port}", remote, "-P#{port}",
                                   "socat", "UNIX-LISTEN:$HOME/.gnupg/S.gpg-agent,unlink-close,unlink-early,reuseaddr,fork",
@@ -50,7 +52,7 @@ begin
     rescue
       break
     end
-    sleep 2
+    sleep 5
   end
 ensure
   Process.kill 9, local_pid
