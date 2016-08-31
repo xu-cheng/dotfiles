@@ -39,6 +39,7 @@ class Task
   end
 
   def run!(host)
+    host = host.end_with?(".comp.hkbu.edu.hk") ? host : "#{host}.comp.hkbu.edu.hk"
     args = command.dup
     args.unshift(args.shift.to_sym)
     args << { raise_on_non_zero_exit: false }

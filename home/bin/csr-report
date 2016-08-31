@@ -39,7 +39,9 @@ class Reporter
   attr_reader :reports
 
   def initialize(servers)
-    @servers = servers
+    @servers = servers.map do |host|
+      host.end_with?(".comp.hkbu.edu.hk") ? host : "#{host}.comp.hkbu.edu.hk"
+    end
     @reports = []
   end
 
@@ -51,7 +53,7 @@ class Reporter
       with env do
         begin
           report = JSON.load(capture(:ruby, "-e", SCRIPT))
-          report["host"] = host.hostname
+          report["host"] = host.hostname.sub(".comp.hkbu.edu.hk", "")
           reports << report
         rescue Net::SSH::AuthenticationFailed
           warn "Failed to login #{host.hostname}."
