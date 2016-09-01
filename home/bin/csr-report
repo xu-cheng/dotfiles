@@ -92,29 +92,28 @@ class Reporter
       record["tmux"] = record["tmux"].join(",")
     end
 
+    tmux_width = sorted_reports.map { |record| record["tmux"].size }.max + 3
+    tmux_width = 7 if tmux_width < 7
     cols = {
-      "host" => "HOST",
-      "users" => "USERS",
-      "load_1min" => "LOAD\n(1min)",
-      "load_5min" => "LOAD\n(5min)",
-      "load_10min" => "LOAD\n(10min)",
-      "process" => "PROCESS",
-      "mem" => "MEM\n(used/total)",
-      "cpu" => "CPU SPEC",
-      "tmux" => "TMUX",
+      "host" => ["HOST", 9],
+      "users" => ["USERS", 8],
+      "load_1min" => ["LOAD\n(1min)", 9],
+      "load_5min" => ["LOAD\n(5min)", 9],
+      "load_10min" => ["LOAD\n(10min)", 10],
+      "process" => ["PROCESS", 10],
+      "mem" => ["MEM\n(used/total)", 15],
+      "cpu" => ["CPU SPEC", 18],
+      "tmux" => ["TMUX", tmux_width],
     }
 
-    width = `/usr/bin/tput cols`.strip.to_i rescue 100
-    cols.delete("cpu") if width < 95
-    cols.delete("process") if width < 77
-    cols.delete("tmux") if width < 67
-    cols.delete("users") if width < 60
-    cols.delete("mem") if width < 52
-    cols.delete("load_10min") if width < 37
-    cols.delete("load_5min") if width < 27
+    width = `/usr/bin/tput cols`.strip.to_i rescue 80
+    delete_order = %w[cpu process tmux users mem load_10min load_5min]
+    while width < cols.values.map(&:last).reduce(&:+) && !delete_order.empty?
+      cols.delete(delete_order.shift)
+    end
 
     rows = sorted_reports.map { |record| cols.keys.map { |k| record[k] } }
-    table = Terminal::Table.new headings: cols.values, rows: rows
+    table = Terminal::Table.new headings: cols.values.map(&:first), rows: rows
     puts table
   end
 
