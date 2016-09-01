@@ -7,6 +7,8 @@ def error(msg)
   exit 1
 end
 
+error "Ruby 2.0+ is required!" if RUBY_VERSION <= "2.0"
+
 begin
   require "sshkit"
   require "sshkit/dsl"
@@ -57,7 +59,7 @@ class Reporter
           reports << report
         rescue Net::SSH::AuthenticationFailed
           warn "Failed to login #{host.hostname}."
-        rescue SSHKit::Runner::ExecuteError
+        rescue SSHKit::Runner::ExecuteError, SSHKit::Command::Failed
           warn "Failed to get report from #{host.hostname}."
         end
       end
@@ -112,6 +114,7 @@ class Reporter
   end
 
   SCRIPT = <<-'EOS'.shellescape
+    exit 1 if RUBY_VERSION <= "2.0"
     require "json"
     users = `users`.chomp.split(" ").size rescue 0
     load_avg = `cat /proc/loadavg`.chomp.split(" ")
