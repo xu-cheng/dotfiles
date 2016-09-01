@@ -87,17 +87,34 @@ class Reporter
       second_value = record["host"]
       [first_value, second_value]
     end
-    rows = reports.sort_by { |record| sort_proc.call(record) }.map do |record|
-      row = %w[host users load_1min load_5min load_10min process mem cpu].map do |k|
-        record[k]
-      end
-      row << record["tmux"].join(",")
-      row
+    sorted_reports = reports.sort_by { |record| sort_proc.call(record) }
+    sorted_reports.each do |record|
+      record["tmux"] = record["tmux"].join(",")
     end
-    table = Terminal::Table.new headings: [
-                "HOST", "USERS", "LOAD\n(1min)", "LOAD\n(5min)", "LOAD\n(10min)",
-                "PROCESS", "MEM\n(used/total)", "CPU", "TMUX"
-              ], rows: rows
+
+    cols = {
+      "host" => "HOST",
+      "users" => "USERS",
+      "load_1min" => "LOAD\n(1min)",
+      "load_5min" => "LOAD\n(5min)",
+      "load_10min" => "LOAD\n(10min)",
+      "process" => "PROCESS",
+      "mem" => "MEM\n(used/total)",
+      "cpu" => "CPU SPEC",
+      "tmux" => "TMUX",
+    }
+
+    width = `/usr/bin/tput cols`.strip.to_i rescue 100
+    cols.delete("cpu") if width < 95
+    cols.delete("process") if width < 77
+    cols.delete("tmux") if width < 67
+    cols.delete("users") if width < 60
+    cols.delete("mem") if width < 52
+    cols.delete("load_10min") if width < 37
+    cols.delete("load_5min") if width < 27
+
+    rows = sorted_reports.map { |record| cols.keys.map { |k| record[k] } }
+    table = Terminal::Table.new headings: cols.values, rows: rows
     puts table
   end
 
