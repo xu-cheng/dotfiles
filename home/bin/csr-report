@@ -54,7 +54,7 @@ class Reporter
     on servers do |host|
       with env do
         begin
-          report = JSON.load(capture(:ruby, "-e", SCRIPT))
+          report = JSON.load(capture(:ruby, "-e", RUBY_SCRIPT))
           report["host"] = host.hostname.sub(".comp.hkbu.edu.hk", "")
           reports << report
         rescue Net::SSH::AuthenticationFailed
@@ -104,16 +104,52 @@ class Reporter
   private
 
   def path
-    on servers, in: :sequence do
+    this = self
+    on servers, in: :sequence do |host|
       begin
-        return capture(:bash, "-l", "-c", "printenv")[/^PATH=(.*)$/, 1]
+        return capture(:bash, "-l", "-c", BASH_SCRIPT)
+      rescue Net::SSH::AuthenticationFailed
+        warn "Failed to login #{host.hostname}."
+        this.servers.delete(host.hostname)
       rescue
+        warn "Failed to get PATH from #{host.hostname}. Ruby 2.x cannot be found."
       end
     end
     error "Cannot read remote PATH environment variable."
   end
 
-  SCRIPT = <<-'EOS'.shellescape
+  BASH_SCRIPT = <<-'EOS'.shellescape
+    ruby2()
+    {
+      local version="$(/usr/bin/env ruby --version 2>/dev/null)"
+      version="${version#ruby }"
+      version="${version%%.*}"
+      [[ "$version" = "2" ]]
+    }
+
+    print_path_if_ruby2()
+    {
+      if ruby2
+      then
+        echo "$PATH"
+        exit 0
+      fi
+    }
+
+    print_path_if_ruby2
+
+    ORIG_PATH="$PATH"
+    candidates=("$HOME/.linuxbrew/bin" "$HOME/usr/bin" "$HOME/bin")
+    for c in "${candidates[@]}"
+    do
+      export PATH="$c:$ORIG_PATH"
+      print_path_if_ruby2
+    done
+
+    exit 1
+  EOS
+
+  RUBY_SCRIPT = <<-'EOS'.shellescape
     exit 1 if RUBY_VERSION <= "2.0"
     require "json"
     users = `users`.chomp.split(" ").size rescue 0
