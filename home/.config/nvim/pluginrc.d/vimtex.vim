@@ -47,3 +47,7 @@ let g:syntastic_tex_checkers = ['chktex']
 " Autoformat
 let g:formatdef_latexindent = '"latexindentwrapper"'
 let g:formatters_tex = ['latexindent']
+
+" Table of Content
+autocmd FileType tex nnoremap <silent> <leader>tt :VimtexTocToggle<CR>
+
