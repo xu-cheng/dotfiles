@@ -88,7 +88,7 @@ if (( ! ${+commands[md5sum]} )); then alias md5sum='gmd5sum'; fi
 
 hist() {
     if [[ "$1" == "-c" ]]; then
-        rm -f "$HOME/.zsh_history"
+        echo -n > "$HISTFILE"
     else
         history
     fi
