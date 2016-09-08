@@ -2,6 +2,11 @@ if !has('mac')
     finish
 endif
 
+" NOTE: remember to create file `/usr/local/lib/python2.7/site-packages/llvm.pth`
+" with following content after `brew install llvm --with-lldb --with-python`:
+"   /usr/local/opt/llvm/lib/python2.7/site-packages
+"   /usr/local/opt/llvm/lib/python2.7/site-packages/lldb
+
 call remote#host#RegisterPlugin(
     \ 'python',
     \ g:vim_home . 'plugged/lldb.nvim/rplugin/python/lldb_nvim',
