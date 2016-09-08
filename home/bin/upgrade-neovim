@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 brew update
-brew upgrade neovim/neovim/neovim --fetch-HEAD
+brew upgrade neovim/neovim/neovim --fetch-HEAD --cleanup
 pip2 install --upgrade neovim
 pip3 install --upgrade neovim
 pip3 install --upgrade neovim-remote
