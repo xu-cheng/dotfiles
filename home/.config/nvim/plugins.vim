@@ -41,6 +41,8 @@ Plug 'kana/vim-textobj-user'
 Plug 'kana/vim-textobj-indent'
 Plug 'gcmt/wildfire.vim'
 Plug 'junegunn/vim-peekaboo'
+Plug 'junegunn/vim-pseudocl'
+Plug 'junegunn/vim-oblique'
 
 " Writing
 Plug 'reedes/vim-litecorrect'
