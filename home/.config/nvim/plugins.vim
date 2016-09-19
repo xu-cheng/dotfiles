@@ -43,6 +43,7 @@ Plug 'gcmt/wildfire.vim'
 Plug 'junegunn/vim-peekaboo'
 Plug 'junegunn/vim-pseudocl'
 Plug 'junegunn/vim-oblique'
+Plug 'hecal3/vim-leader-guide'
 
 " Writing
 Plug 'reedes/vim-litecorrect'
