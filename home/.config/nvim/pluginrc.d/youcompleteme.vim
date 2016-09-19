@@ -53,4 +53,4 @@ endif
 set completeopt-=preview
 
 " Keymapping
-nnoremap <leader>g :YcmCompleter GoToDefinitionElseDeclaration<CR>
+nnoremap <localleader>g :YcmCompleter GoToDefinitionElseDeclaration<CR>

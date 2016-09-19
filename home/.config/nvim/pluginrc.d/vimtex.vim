@@ -24,7 +24,7 @@ function! TeXWordCount()
     let l:main_tex_file = b:vimtex.base
     :echo system('cd "' . l:main_tex_dir . '"; texcount "' . l:main_tex_file . '"')
 endfunction
-nmap <localleader>lw :call TeXWordCount()<cr>
+autocmd FileType tex nnoremap <localleader>lw :call TeXWordCount()<cr>
 
 " Autocomplete
 if !exists('g:ycm_semantic_triggers')
