@@ -10,7 +10,6 @@ export INFOPATH="$HOME/usr/share/info:$INFOPATH"
 export CMAKE_PREFIX_PATH="$HOME/usr"
 export HOMEBREW_CACHE="/tmp/$USER/Caches/Homebrew"
 export HOMEBREW_LOGS="/tmp/$USER/Logs/Homebrew"
-export HTTPS_PROXY="https://proxy.comp.hkbu.edu.hk:8080"
 export SHELL="$HOME/usr/bin/zsh"
 export HOMEBREW_FORCE_VENDOR_RUBY=true
 export HOMEBREW_DEVELOPER=true

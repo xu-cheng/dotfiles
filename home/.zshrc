@@ -19,7 +19,6 @@ else # Linux
         export HOMEBREW_CACHE="/tmp/$USER/Caches/Homebrew"
         export HOMEBREW_LOGS="/tmp/$USER/Logs/Homebrew"
         export HOMEBREW_FORCE_VENDOR_RUBY=true
-        export HTTPS_PROXY="https://proxy.comp.hkbu.edu.hk:8080"
         export SHELL="$HOME/usr/bin/zsh"
     else
         export HOMEBREW_PREFIX="$HOME/.linuxbrew"
