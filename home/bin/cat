@@ -1,12 +1,25 @@
-#!/usr/bin/env ruby
+#!/usr/bin/env python
 
-if $stdout.tty? && ARGV.size > 0 &&
-   ARGV.none? { |arg| arg.start_with? "-" } &&
-   (`which pygmentize &>/dev/null`; $?.success?)
-  ARGV.each { |arg| system "pygmentize", "-g", arg }
-else
-  orig_cat = "/bin/cat" if File.executable?("/bin/cat")
-  orig_cat ||= (`which -a cat`.split("\n") - [__FILE__]).first
-  exec orig_cat, *ARGV
-end
+import sys
 
+def use_pygements():
+    if not sys.stdout.isatty():
+        return False
+    if len(sys.argv) == 1:
+        return False
+    for arg in sys.argv:
+        if arg.startswith("-"):
+            return False
+    try:
+        import pygments
+        return True
+    except ImportError:
+        return False
+
+if use_pygements():
+    import pygments.cmdline
+    for arg in sys.argv[1:]:
+        pygments.cmdline.main_inner([("-g", "")], [arg], "")
+else:
+    import os
+    os.execv("/bin/cat", sys.argv)
