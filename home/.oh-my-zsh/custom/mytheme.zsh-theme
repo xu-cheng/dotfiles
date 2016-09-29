@@ -38,7 +38,7 @@ function prompt_hg(){
 
 # Pyenv info
 function prompt_pyenv(){
-    if (( ${+commands[pyenv} )); then
+    if (( ${+commands[pyenv]} )); then
         local pyenv_version="$(pyenv version-name)"
         if [[ "$pyenv_version" != "system" ]]; then
             echo "pyenv:%{${fg[yellow]}%}$pyenv_version%{$reset_color%}"
@@ -48,7 +48,7 @@ function prompt_pyenv(){
 
 # Rbenv info
 function prompt_rbenv(){
-    if (( ${+commands[rbenv} )); then
+    if (( ${+commands[rbenv]} )); then
         local rbenv_version="$(rbenv version-name)"
         if [[ "$rbenv_version" != "system" ]]; then
             echo "rbenv:%{${fg[yellow]}%}$rbenv_version%{$reset_color%}"
