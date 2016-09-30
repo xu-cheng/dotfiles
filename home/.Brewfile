@@ -132,7 +132,7 @@ brew 'swig'
 brew 'tcping'
 brew 'terminal-notifier'
 brew 'the_silver_searcher'
-brew 'tmux', args: ['HEAD']
+brew 'tmux'
 brew 'tor'
 brew 'tree'
 brew 'unrar'
