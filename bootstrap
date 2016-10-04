@@ -25,6 +25,7 @@ def link_files(src_dir, dst_dir, options = {})
   mkdir_p dst_dir unless dst_dir.directory?
   src_dir.children.each do |file|
     next if options.fetch(:skip_directory, true) && file.directory?
+    next if file.basename.to_s == ".DS_Store"
     ln_sf file, dst_dir
   end
 end
