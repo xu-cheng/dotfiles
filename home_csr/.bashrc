@@ -14,3 +14,4 @@ export SHELL="$HOME/usr/bin/zsh"
 export HOMEBREW_FORCE_VENDOR_RUBY=true
 export HOMEBREW_DEVELOPER=true
 export HOMEBREW_NO_ANALYTICS=true
+export HOMEBREW_NO_AUTO_UPDATE=true
