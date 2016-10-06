@@ -1,4 +1,0 @@
-tap 'homebrew/bundle'
-brew 'autojump'
-brew 'safe-rm'
-brew 'zsh-syntax-highlighting'
