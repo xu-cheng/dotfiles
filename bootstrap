@@ -40,7 +40,6 @@ link_files(DOTFILES_HOME/".config", HOME/".config", skip_directory: false)
 link_files(DOTFILES_HOME/".oh-my-zsh/custom", HOME/".oh-my-zsh/custom")
 link_files(DOTFILES_HOME/".ssh", HOME/".ssh") unless csr?
 link_files(DOTFILES_HOME/".gnupg", HOME/".gnupg")
-ln_sf DOTFILES_HOME/".brew-aliases", HOME
 
 if csr?
   link_files(DOTFILES_HOME_CSR, HOME)
