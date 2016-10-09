@@ -1,9 +1,9 @@
 #!/usr/bin/env ruby
 
-VERSION = "1.1"
+VERSION = "1.2"
 
 def error(msg)
-  $stderr.puts "#{"\033[4;31m" if $stderr.tty?}Error#{"\033[0m" if $stderr.tty?}: #{msg}"
+  $stderr.puts "  #{"\033[31m" if $stderr.tty?}Error#{"\033[0m" if $stderr.tty?}: #{msg}"
   exit 1
 end
 
@@ -49,19 +49,16 @@ class Reporter
 
   def get_report!
     reports = []
-    env = { PATH: path }
 
     on servers do |host|
-      with env do
-        begin
-          report = JSON.load(capture(:ruby, "-e", RUBY_SCRIPT))
-          report["host"] = host.hostname.sub(".comp.hkbu.edu.hk", "")
-          reports << report
-        rescue Net::SSH::AuthenticationFailed
-          warn "Failed to login #{host.hostname}."
-        rescue SSHKit::Runner::ExecuteError, SSHKit::Command::Failed
-          warn "Failed to get report from #{host.hostname}."
-        end
+      begin
+        report = JSON.load(capture(:"/usr/bin/ruby", "-e", SCRIPT))
+        report["host"] = host.hostname.sub(".comp.hkbu.edu.hk", "")
+        reports << report
+      rescue Net::SSH::AuthenticationFailed
+        warn "Failed to login #{host.hostname}."
+      rescue SSHKit::Runner::ExecuteError, SSHKit::Command::Failed
+        warn "Failed to get report from #{host.hostname}."
       end
     end
 
@@ -92,7 +89,7 @@ class Reporter
       record["tmux"] = record["tmux"].join(",")
     end
 
-    tmux_width = sorted_reports.map { |record| record["tmux"].size }.max + 3
+    tmux_width = sorted_reports.map { |record| record["tmux"].size }.max.to_i + 3
     tmux_width = 7 if tmux_width < 7
     cols = {
       "host" => ["HOST", 9],
@@ -119,85 +116,48 @@ class Reporter
 
   private
 
-  def path
-    this = self
-    on servers, in: :sequence do |host|
-      begin
-        return capture(:bash, "-l", "-c", BASH_SCRIPT)
-      rescue Net::SSH::AuthenticationFailed
-        warn "Failed to login #{host.hostname}."
-        this.servers.delete(host.hostname)
-      rescue
-        warn "Failed to get PATH from #{host.hostname}. Ruby 2.x cannot be found."
-      end
-    end
-    error "Cannot read remote PATH environment variable."
-  end
-
-  BASH_SCRIPT = <<-'EOS'.shellescape
-    ruby2()
-    {
-      local version="$(/usr/bin/env ruby --version 2>/dev/null)"
-      version="${version#ruby }"
-      version="${version%%.*}"
-      [[ "$version" = "2" ]]
-    }
-
-    print_path_if_ruby2()
-    {
-      if ruby2
-      then
-        echo "$PATH"
-        exit 0
-      fi
-    }
-
-    print_path_if_ruby2
-
-    ORIG_PATH="$PATH"
-    candidates=("$HOME/.linuxbrew/bin" "$HOME/usr/bin" "$HOME/bin")
-    for c in "${candidates[@]}"
-    do
-      export PATH="$c:$ORIG_PATH"
-      print_path_if_ruby2
-    done
-
-    exit 1
-  EOS
-
-  RUBY_SCRIPT = <<-'EOS'.shellescape
-    exit 1 if RUBY_VERSION <= "2.0"
-    require "json"
-    users = `users`.chomp.split(" ").size rescue 0
-    load_avg = `cat /proc/loadavg`.chomp.split(" ")
+  SCRIPT = <<-'EOS'.shellescape
+    users = `/usr/bin/users`.chomp.split(" ").size rescue 0
+    load_avg = `/bin/cat /proc/loadavg`.chomp.split(" ")
     process = load_avg[3]
     process_running, process_all = process.split("/")
-    mem = `free -g`.match(/^Mem: +(\d+) +(\d+)/)
+    mem = `/usr/bin/free -g`.match(/^Mem: +(\d+) +(\d+)/)
     mem_total = mem[1].to_i
     mem_used = mem[2].to_i
-    tmux = `tmux list-sessions -F "#S"`.split("\n") rescue []
-    cpu = `lscpu`
+    tmux_bin = %W[
+      #{ENV["HOME"]}/usr/bin/tmux
+      #{ENV["HOME"]}/.linuxbrew/bin/tmux
+      #{ENV["HOME"]}/bin/tmux
+      /usr/local/bin/tmux
+    ].detect { |p| File.executable?(p) }
+    tmux = if tmux_bin
+      `#{tmux_bin} list-sessions -F "#S"`.split("\n") rescue []
+    else
+      []
+    end
+    cpu = `/usr/bin/lscpu`
     cpufreq = cpu[/^Model name:.* ([\d\.]+GHz)$/, 1]
     cpusocket = cpu[/^Socket\(s\): *(\d+)$/, 1].to_i
     cpucore = cpu[/^Core\(s\) per socket: *(\d+)$/, 1].to_i
-    report = {
-      users: users,
-      load_1min: load_avg[0].to_f,
-      load_5min: load_avg[1].to_f,
-      load_10min: load_avg[2].to_f,
-      process_running: process_running.to_i,
-      process_all: process_all.to_i,
-      process: process,
-      mem_total: mem_total,
-      mem_used: mem_used,
-      mem: "#{"%02i" % mem_used}/#{mem_total} GB",
-      cpufreq: cpufreq[0..-4].to_f,
-      cpusocket: cpusocket,
-      cpucore: cpucore,
-      cpu: "#{cpufreq} (#{cpusocket}S/#{cpucore}C)",
-      tmux: tmux,
+    puts <<-EOF
+    {
+      "users": #{users},
+      "load_1min": #{load_avg[0].to_f},
+      "load_5min": #{load_avg[1].to_f},
+      "load_10min": #{load_avg[2].to_f},
+      "process_running": #{process_running.to_i},
+      "process_all": #{process_all.to_i},
+      "process": "#{process}",
+      "mem_total": #{mem_total},
+      "mem_used": #{mem_used},
+      "mem": "#{"%02i" % mem_used}/#{mem_total} GB",
+      "cpufreq": #{cpufreq[0..-4].to_f},
+      "cpusocket": #{cpusocket},
+      "cpucore": #{cpucore},
+      "cpu": "#{cpufreq} (#{cpusocket}S/#{cpucore}C)",
+      "tmux": [#{tmux.map { |s| "\"#{s}\""}.join(",")}]
     }
-    puts JSON.dump(report)
+    EOF
   EOS
 end
 
