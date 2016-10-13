@@ -1,8 +1,8 @@
-export ZSH="$ZDOTDIR/oh-my-zsh"
-export ZSH_CUSTOM="$ZDOTDIR/custom"
-export ZSH_CACHE_DIR="$XDG_CACHE_HOME/zsh"
-export ZSH_COMPDUMP="$ZSH_CACHE_DIR/zcompdump-${HOST}-${ZSH_VERSION}"
-export HISTFILE="$ZSH_CACHE_DIR/history"
+ZSH="$ZDOTDIR/oh-my-zsh"
+ZSH_CUSTOM="$ZDOTDIR/custom"
+ZSH_CACHE_DIR="$XDG_CACHE_HOME/zsh"
+ZSH_COMPDUMP="$ZSH_CACHE_DIR/zcompdump-${HOST}-${ZSH_VERSION}"
+HISTFILE="$ZSH_CACHE_DIR/history"
 
 [[ -d "$ZSH_CACHE_DIR" ]] || mkdir -p "$ZSH_CACHE_DIR"
 
