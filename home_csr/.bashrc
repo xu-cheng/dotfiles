@@ -3,7 +3,7 @@ umask 0077
 [[ -d "/tmp/$USER" ]] || mkdir -p "/tmp/$USER"
 
 unset LD_LIBRARY_PATH
-export DOTFILES_HOME="$(dirname "$(readlink "$HOME/.zshrc")")"
+export DOTFILES_HOME="$(dirname "$(readlink "$HOME/.zshenv")")"
 export PATH="$DOTFILES_HOME/bin:$HOME/usr/bin:$HOME/usr/sbin:/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin"
 export MANPATH="$HOME/usr/share/man:$MANPATH"
 export INFOPATH="$HOME/usr/share/info:$INFOPATH"
