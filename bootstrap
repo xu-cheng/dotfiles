@@ -30,6 +30,16 @@ def link_files(src_dir, dst_dir, options = {})
   end
 end
 
+def clean(dir)
+  dir.children.each do |file|
+    next if file.exist?
+    next unless file.symlink?
+    if file.readlink.to_s.start_with? ROOT.to_s
+      rm file
+    end
+  end
+end
+
 def csr?
   HOSTNAME =~ /.*\.comp\.hkbu\.edu\.hk/ || HOSTNAME =~ /^csr\d+/
 end
@@ -44,6 +54,11 @@ if csr?
   link_files(DOTFILES_HOME_CSR, HOME)
   link_files(DOTFILES_HOME_CSR/".ssh", HOME/".ssh")
 end
+
+clean(HOME)
+clean(HOME/".config")
+clean(HOME/".ssh")
+clean(HOME/".gnupg")
 
 ## Post linking
 system "lesskey"
