@@ -136,10 +136,9 @@
 
     " Initialize directories
     function! InitializeDirectories()
-        let parent = g:vim_home . 'cache/'
         if exists("*mkdir")
-            if !isdirectory(parent)
-                call mkdir(parent)
+            if !isdirectory(g:cache_home)
+                call mkdir(g:cache_home, 'p')
             endif
         endif
 
@@ -152,7 +151,7 @@
             let dir_list['undo'] = 'undodir'
         endif
         for [dirname, settingname] in items(dir_list)
-            let directory = parent . dirname . '/'
+            let directory = g:cache_home . dirname . '/'
             if exists("*mkdir")
                 if !isdirectory(directory)
                     call mkdir(directory)
@@ -174,8 +173,7 @@
 
 " Remove Cache {
     function! RemoveCache()
-        let l:cache = g:vim_home . 'cache/'
-        :call system('rm -rf ' . '"' . l:cache . '"')
+        :call system('rm -rf ' . '"' . g:cache_home . '"')
         :call system('rm "$NVIM_LISTEN_ADDRESS"')
     endfunction
 

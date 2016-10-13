@@ -16,7 +16,23 @@ else
     end
 endif
 " Set vim-home
-let g:vim_home = $HOME . '/.config/nvim/'
+if empty($XDG_CONFIG_HOME)
+    let g:vim_home = $HOME . '/.config/nvim/'
+else
+    let g:vim_home = $XDG_CONFIG_HOME . '/nvim/'
+endif
+" Set cache-home
+if empty($XDG_CACHE_HOME)
+    let g:cache_home = $HOME . '/.cache/nvim/'
+else
+    let g:cache_home = $XDG_CACHE_HOME . '/nvim/'
+endif
+" Set data-home
+if empty($XDG_DATA_HOME)
+    let g:data_home = $HOME . '/.local/share/nvim/'
+else
+    let g:data_home = $XDG_DATA_HOME. '/nvim/'
+endif
 " Load plugins
 execute 'source' g:vim_home . 'plugins.vim'
 " Load basic settings

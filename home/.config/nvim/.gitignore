@@ -1,7 +1,4 @@
 *.pyc
 
 /autoload
-/cache
-/spell
 /plugged
-
