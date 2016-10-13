@@ -70,7 +70,11 @@ Dir.mktmpdir("profile-zsh-starup") do |dir|
     exec 3>&2 2>#{logfile}
     setopt xtrace prompt_subst
   EOS
-  ln_s File.expand_path("~/.zshrc"), dir/".zshrc"
+  if (zdotdir = Pathname.new("~/.config/zsh").expand_path).exist?
+    zdotdir.children.each { |f| ln_s f, dir }
+  else
+    ln_s File.expand_path("~/.zshrc"), dir
+  end
   system "zsh", "--login", "-i", "-c", "logout"
   log = LogParser.new logfile
   log.report!
