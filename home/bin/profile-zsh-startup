@@ -39,7 +39,7 @@ class LogParser
 
   def initialize(logfile)
     @logfile = logfile
-    @entries = @logfile.read.gsub(logfile.dirname.to_s, "~").gsub(Dir.home, "~")
+    @entries = @logfile.read.gsub(logfile.dirname.to_s, "$ZDOTDIR").gsub(Dir.home, "~")
       .lines.select { |log| log =~ /^\d{2}:\d{2}.\d{6}/ }.map { |log| LogEntry.new log }
     @entries.each_with_index { |entry, idx| entry.update_time!(@entries[idx+1]) }
   end
