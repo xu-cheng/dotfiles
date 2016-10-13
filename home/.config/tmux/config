@@ -8,8 +8,8 @@
 set-option -g mouse on
 
 # load tmuxline
-TMUXLINE_SNAPSHOT="$HOME/.tmuxline.snapshot"
-if-shell "test -f $TMUXLINE_SNAPSHOT" "source-file $TMUXLINE_SNAPSHOT"
+TMUXLINE="$HOME/.config/tmux/tmuxline"
+if-shell "test -f $TMUXLINE" "source-file $TMUXLINE"
 
 # visual notification of activity in other windows
 set-option -g visual-activity on
@@ -47,6 +47,7 @@ bind-key p paste-buffer
 bind-key b list-buffers
 
 # Load plugins
+set-environment -g TMUX_PLUGIN_MANAGER_PATH "$HOME/.config/tmux/plugins"
 set-option -g @tpm_plugins '       \
   tmux-plugins/tpm                 \
   tmux-plugins/tmux-continuum      \
@@ -65,6 +66,7 @@ set-option -g @tpm_plugins '       \
 # Resturrect settings
 set-option -g @resurrect-processes 'ssh'
 set-option -g @resurrect-strategy-nvim 'session'
+set-option -g @resurrect-dir "$HOME/.local/share/tmux/resurrect"
 
 # Enable tmux automatic start
 set-option -g @continuum-restore 'on'
@@ -74,4 +76,4 @@ set-option -g @continuum-boot-options 'iterm'
 
 # Initializes TMUX plugin manager.
 # Keep this line at the very bottom of tmux.conf.
-run-shell '~/.tmux/plugins/tpm/tpm'
+run-shell "$HOME/.config/tmux/plugins/tpm/tpm"

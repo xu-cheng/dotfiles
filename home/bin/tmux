@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+SCRIPT_PATH="${BASH_SOURCE[0]}"
+SCRIPT_DIR="$(cd "$(dirname "$SCRIPT_PATH")" && pwd)"
+
+TMUX_CONFIG="${XDG_CONFIG_HOME:-"${HOME}/.config"}/tmux/config"
+for tmux in $(which -a tmux 2>/dev/null); do
+    if [[ "$tmux" != "$SCRIPT_DIR/tmux" ]]; then
+        exec "$tmux" -f "$TMUX_CONFIG" "$@"
+    fi
+done
+
+echo "command not found: tmux" >&2

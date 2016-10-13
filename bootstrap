@@ -7,6 +7,7 @@ include FileUtils::Verbose
 
 class Pathname
   alias_method :/, :+ unless method_defined?(:/)
+  alias_method :to_str, :to_s unless method_defined?(:to_str)
 end
 
 OS = RUBY_PLATFORM =~ /darwin/ ? :osx : :linux
@@ -55,17 +56,21 @@ if csr?
   link_files(DOTFILES_HOME_CSR/".ssh", HOME/".ssh")
 end
 
+# Cleanup broken symlinks
 clean(HOME)
 clean(HOME/".config")
 clean(HOME/".ssh")
 clean(HOME/".gnupg")
 
-## Post linking
+# Post linking
 system "lesskey"
-unless (HOME/".config/zsh/oh-my-zsh").exist?
-  system "git", "clone", "--depth=1", "https://github.com/robbyrussell/oh-my-zsh", "#{HOME}/.config/zsh/oh-my-zsh"
+OMZ_DIR = HOME/".config/zsh/oh-my-zsh"
+unless OMZ_DIR.exist?
+  system "git", "clone", "--depth=1", "https://github.com/robbyrussell/oh-my-zsh", OMZ_DIR
 end
-unless (HOME/".tmux/plugins/tpm").exist?
-  system "git", "clone", "--depth=1", "https://github.com/tmux-plugins/tpm", "#{HOME}/.tmux/plugins/tpm"
-  system "#{HOME}/.tmux/plugins/tpm/scripts/install_plugins.sh", "--shell-echo"
+
+TPM_DIR = HOME/".config/tmux/plugins/tpm"
+unless TPM_DIR.exist?
+  system "git", "clone", "--depth=1", "https://github.com/tmux-plugins/tpm", TPM_DIR
+  system "#{TPM_DIR}/scripts/install_plugins.sh", "--shell-echo"
 end
