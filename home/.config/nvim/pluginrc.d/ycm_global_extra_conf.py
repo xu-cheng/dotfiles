@@ -13,7 +13,6 @@ def SystemIncludePathasFlags(cpp=True):
     flags = [["-isystem", p] for p in out]
     return [f for ff in flags for f in ff]
 
-
 def FlagsForFile(filename, **kwargs):
     extension = os.path.splitext(filename)[1]
     cpp = extension != ".c"

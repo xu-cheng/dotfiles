@@ -29,7 +29,7 @@ endif
 if empty($XDG_DATA_HOME)
     let g:data_home = $HOME . '/.local/share/nvim/'
 else
-    let g:data_home = $XDG_DATA_HOME. '/nvim/'
+    let g:data_home = $XDG_DATA_HOME . '/nvim/'
 endif
 " Load plugins
 execute 'source' g:config_home . 'plugins.vim'
