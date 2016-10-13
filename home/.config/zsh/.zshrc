@@ -1,10 +1,16 @@
-ZSH="$HOME/.oh-my-zsh"
+export ZSH="$ZDOTDIR/oh-my-zsh"
+export ZSH_CUSTOM="$ZDOTDIR/custom"
+export ZSH_CACHE_DIR="$XDG_CACHE_HOME/zsh"
+export ZSH_COMPDUMP="$ZSH_CACHE_DIR/zcompdump-${HOST}-${ZSH_VERSION}"
+export HISTFILE="$ZSH_CACHE_DIR/history"
+
+[[ -d "$ZSH_CACHE_DIR" ]] || mkdir -p "$ZSH_CACHE_DIR"
 
 ZSH_THEME="mytheme"
 plugins=(brew-cask colored-man-pages docker docker-compose extract git \
          git-flow-avh gitignore mercurial osx pip ssh-gpg-agent svn vagrant)
 
-export DOTFILES_HOME="${$(readlink "$HOME/.zshrc")%/*}"
+export DOTFILES_HOME="${$(readlink "$HOME/.zshenv")%/*}"
 export HOMEBREW_NO_ANALYTICS=true # set before any brew invoking.
 
 if [[ `uname` == "Darwin" ]]; then # OS X

@@ -37,7 +37,6 @@ end
 # Link files
 link_files(DOTFILES_HOME, HOME)
 link_files(DOTFILES_HOME/".config", HOME/".config", skip_directory: false)
-link_files(DOTFILES_HOME/".oh-my-zsh/custom", HOME/".oh-my-zsh/custom")
 link_files(DOTFILES_HOME/".ssh", HOME/".ssh") unless csr?
 link_files(DOTFILES_HOME/".gnupg", HOME/".gnupg")
 
@@ -48,8 +47,8 @@ end
 
 ## Post linking
 system "lesskey"
-unless (HOME/".oh-my-zsh").exist?
-  system "git", "clone", "--depth=1", "https://github.com/robbyrussell/oh-my-zsh", "#{HOME}/.oh-my-zsh"
+unless (HOME/".config/zsh/oh-my-zsh").exist?
+  system "git", "clone", "--depth=1", "https://github.com/robbyrussell/oh-my-zsh", "#{HOME}/.config/zsh/oh-my-zsh"
 end
 unless (HOME/".tmux/plugins/tpm").exist?
   system "git", "clone", "--depth=1", "https://github.com/tmux-plugins/tpm", "#{HOME}/.tmux/plugins/tpm"
