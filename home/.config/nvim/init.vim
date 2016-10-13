@@ -15,31 +15,29 @@ else
         let g:python3_host_prog = '/usr/bin/python3'
     end
 endif
-" Set vim-home
+" Set config/cache/data home
 if empty($XDG_CONFIG_HOME)
-    let g:vim_home = $HOME . '/.config/nvim/'
+    let g:config_home = $HOME . '/.config/nvim/'
 else
-    let g:vim_home = $XDG_CONFIG_HOME . '/nvim/'
+    let g:config_home = $XDG_CONFIG_HOME . '/nvim/'
 endif
-" Set cache-home
 if empty($XDG_CACHE_HOME)
     let g:cache_home = $HOME . '/.cache/nvim/'
 else
     let g:cache_home = $XDG_CACHE_HOME . '/nvim/'
 endif
-" Set data-home
 if empty($XDG_DATA_HOME)
     let g:data_home = $HOME . '/.local/share/nvim/'
 else
     let g:data_home = $XDG_DATA_HOME. '/nvim/'
 endif
 " Load plugins
-execute 'source' g:vim_home . 'plugins.vim'
+execute 'source' g:config_home . 'plugins.vim'
 " Load basic settings
-execute 'source' g:vim_home . 'basic.vim'
+execute 'source' g:config_home . 'basic.vim'
 " Load key mapping
-execute 'source' g:vim_home . 'keymap.vim'
+execute 'source' g:config_home . 'keymap.vim'
 " Load plugins settings
-for f in split(glob(g:vim_home . 'pluginrc.d/*.vim'), '\n')
+for f in split(glob(g:config_home . 'pluginrc.d/*.vim'), '\n')
   execute 'source' f
 endfor

@@ -1,7 +1,7 @@
 let g:acp_enableAtStartup = 0
 
 " Global .ycm_extra_conf.py file
-let g:ycm_global_ycm_extra_conf = g:vim_home . 'pluginrc.d/.ycm_global_extra_conf.py'
+let g:ycm_global_ycm_extra_conf = g:config_home . 'pluginrc.d/ycm_global_extra_conf.py'
 
 " Don't ask about .ycm_extra_conf.py file
 let g:ycm_confirm_extra_conf = 0

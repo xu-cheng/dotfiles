@@ -9,7 +9,7 @@ endif
 
 call remote#host#RegisterPlugin(
     \ 'python',
-    \ g:vim_home . 'plugged/lldb.nvim/rplugin/python/lldb_nvim',
+    \ g:config_home . 'plugged/lldb.nvim/rplugin/python/lldb_nvim',
     \ [ {
     \     'sync': v:false,
     \     'name': 'LLsession',
