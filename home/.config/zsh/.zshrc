@@ -15,7 +15,11 @@ export HOMEBREW_NO_ANALYTICS=true # set before any brew invoking.
 
 if [[ `uname` == "Darwin" ]]; then # OS X
     export HOMEBREW_PREFIX="/usr/local"
+    export HOMEBREW_REPOSITORY="/usr/local/Homebrew"
     export PATH="$DOTFILES_HOME/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin:/usr/local/gnupg-2.1/bin:/Library/TeX/texbin"
+else # Linux
+    [[ -n "$HOMEBREW_PREFIX" ]] || export HOMEBREW_PREFIX="$HOME/.linuxbrew"
+    export HOMEBREW_REPOSITORY="$HOMEBREW_PREFIX"
 fi
 
 export EDITOR="nvim"
@@ -29,7 +33,7 @@ export HOMEBREW_SANDBOX=true
 export HOMEBREW_DEVELOPER=true
 export HOMEBREW_NO_AUTO_UPDATE=true
 
-BREW_COMMAND_NOT_FOUND_INIT="$HOMEBREW_PREFIX/Library/Taps/homebrew/homebrew-command-not-found/handler.sh"
+BREW_COMMAND_NOT_FOUND_INIT="$HOMEBREW_REPOSITORY/Library/Taps/homebrew/homebrew-command-not-found/handler.sh"
 [[ -s "$BREW_COMMAND_NOT_FOUND_INIT" ]] && . "$BREW_COMMAND_NOT_FOUND_INIT"
 if (( ${+commands[pyenv]} )); then eval "$(pyenv init - zsh)"; fi
 if (( ${+commands[pyenv-virtualenv-init]} )); then eval "$(pyenv virtualenv-init - zsh)"; fi
