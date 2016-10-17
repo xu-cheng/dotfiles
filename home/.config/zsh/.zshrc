@@ -47,17 +47,12 @@ fi
 ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets)
 ZSH_HIGHLIGHT_PATH="$HOMEBREW_PREFIX/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
 [[ -s "$ZSH_HIGHLIGHT_PATH" ]] && . "$ZSH_HIGHLIGHT_PATH"
-[[ -s "$HOME/.travis/travis.sh" ]] && . "$HOME/.travis/travis.sh"
 
 . "$ZSH/oh-my-zsh.sh"
 
 if [[ -d "$HOMEBREW_PREFIX/opt/fzf" ]]; then
     [[ $- =~ i ]] && . "$HOMEBREW_PREFIX/opt/fzf/shell/completion.zsh" 2> /dev/null
     . "$HOMEBREW_PREFIX/opt/fzf/shell/key-bindings.zsh"
-elif [[ -d "$HOME/.fzf" ]]; then
-    export PATH="$PATH:$HOME/.fzf/bin"
-    [[ $- =~ i ]] && . "$HOME/.fzf/shell/completion.zsh" 2> /dev/null
-    . "$HOME/.fzf/shell/key-bindings.zsh"
 fi
 
 alias bubu='brew update && brew upgrade --cleanup'
