@@ -1,11 +1,22 @@
-export CSR=1
+umask 0077
 
-if [[ "$-" != *i* ]]; then
-    [[ -f ~/.bashrc ]] && . ~/.bashrc
-    return
-fi
+[[ -d "/tmp/$USER" ]] || mkdir -p "/tmp/$USER"
 
-[[ -x "$HOME/usr/bin/zsh" ]] && exec "$HOME/usr/bin/zsh" --login --interactive
+unset LD_LIBRARY_PATH
+export XDG_CONFIG_HOME="$HOME/.config"
+export XDG_CACHE_HOME="/tmp/$USER/cache"
+export XDG_DATA_HOME="$HOME/.local/share"
+export DOTFILES_HOME="$(dirname "$(readlink "$HOME/.zshenv")")"
+export HOMEBREW_PREFIX="$HOME/usr"
+export PATH="$DOTFILES_HOME/bin:$HOMEBREW_PREFIX/bin:$HOMEBREW_PREFIX/sbin:$PATH"
+export MANPATH="$HOME/usr/share/man:$MANPATH"
+export INFOPATH="$HOME/usr/share/info:$INFOPATH"
+export CMAKE_PREFIX_PATH="$HOMEBREW_PREFIX"
+export SHELL="$HOMEBREW_PREFIX/bin/zsh"
+export HOMEBREW_FORCE_VENDOR_RUBY=true
+export HOMEBREW_DEVELOPER=true
+export HOMEBREW_NO_ANALYTICS=true
+export HOMEBREW_NO_AUTO_UPDATE=true
 
+[[ -x "$SHELL" ]] && exec "$SHELL" --login --interactive
 [[ -f /etc/bashrc ]] && . /etc/bashrc
-[[ -f ~/.bashrc ]] && . ~/.bashrc
