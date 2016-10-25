@@ -1,4 +1,6 @@
-# Sample Tor Config
+# Tor Config Example
+
+Path: `/usr/local/etc/tor/torrc`
 
 ```
 AvoidDiskWrites 1
