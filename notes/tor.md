@@ -1,3 +1,6 @@
+# Sample Tor Config
+
+```
 AvoidDiskWrites 1
 
 ExcludeNodes {cn},{hk},{mo},{sg},{th},{pk},{by},{ru},{ir},{vn},{ph},{my},{cu}
@@ -13,3 +16,4 @@ ClientTransportPlugin fte exec /usr/local/bin/fteproxy --managed
 
 UseBridges 1
 # Get Tor Bridges from https://bridges.torproject.org/bridges and append them below
+```
