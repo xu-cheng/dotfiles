@@ -16,6 +16,12 @@ function _plugin__ssh_agent_running()
     [[ -n "$SSH_AUTH_SOCK" && "$(/usr/bin/env ssh-add -l &>/dev/null; echo $?)" -ne 2 ]]
 }
 
+function _plugin__mac_ssh_agent_running_without_key()
+{
+    # ssh-add -l exit code: 0 agent running, 1 agent running without key, 2 not running
+    [[ "$OSTYPE" == darwin* && -n "$SSH_AUTH_SOCK" && "$(/usr/bin/env ssh-add -l &>/dev/null; echo $?)" -eq 1 ]]
+}
+
 function _plugin__gpg_agent_running()
 {
     [[ "$(/usr/bin/env gpg-connect-agent --no-autostart --quiet /bye 2>&1)" != *"no gpg-agent running"* ]]
@@ -50,6 +56,11 @@ if ! _plugin__ssh_agent_running; then
     fi
 fi
 
+if _plugin__mac_ssh_agent_running_without_key; then
+    echo loading ssh keys from macOS keychain...
+    (/usr/bin/env ssh-add -A &>/dev/null &)
+fi
+
 if _plugin__gpg21 && ! _plugin__gpg_agent_running; then
     _plugin__start_gpg_agent
 fi
@@ -63,4 +74,5 @@ unset -f _plugin__ssh_agent_running
 unset -f _plugin__gpg_agent_running
 unset -f _plugin__start_ssh_agent
 unset -f _plugin__start_gpg_agent
+unset -f _plugin__mac_ssh_agent_running_without_key
 unset _plugin__ssh_env
