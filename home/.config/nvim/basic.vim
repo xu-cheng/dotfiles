@@ -68,7 +68,11 @@
 " Vim UI {
 
     " Color Scheme
-    set background=dark " TODO: auto determine based on shell colorscheme
+    if systemlist('get-iterm2-background-color')[0] == "light"
+        set background=light
+    else
+        set background=dark
+    endif
     if &background == "dark"
         color seoul256
     else
