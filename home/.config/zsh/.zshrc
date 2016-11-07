@@ -97,7 +97,7 @@ TRAPUSR1() {
 
 # Change iterm2 profile. Usage it2prof ProfileName (case sensitive)
 # https://coderwall.com/p/s-2_nw/change-iterm2-color-profile-from-the-cli
-it2prof()  { echo -e "\033]50;SetProfile=$1\a"; }
+it2prof()  { echo -ne "\033]50;SetProfile=$1\a"; }
 it2dark()  { it2prof "Seoul256"; }
 it2light() { it2prof "Solarized Light"; }
 
