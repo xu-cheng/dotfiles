@@ -147,7 +147,7 @@ brew 'homebrew/python/matplotlib', args: ['with-ghostscript', 'with-pyqt5', 'wit
 brew 'homebrew/python/pillow', args: ['with-python3']
 brew 'homebrew/python/scipy', args: ['with-python3']
 brew 'homebrew/science/flint'
-brew 'neovim/neovim/neovim', args: ['HEAD', 'with-release']
+brew 'neovim/neovim/neovim', args: ['HEAD']
 cask '1password'
 cask 'aerial'
 cask 'alfred'
