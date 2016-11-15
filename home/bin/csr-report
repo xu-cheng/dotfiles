@@ -1,6 +1,6 @@
 #!/usr/bin/env ruby
 
-VERSION = "1.2"
+VERSION = "1.3"
 
 def error(msg)
   $stderr.puts "  #{"\033[31m" if $stderr.tty?}Error#{"\033[0m" if $stderr.tty?}: #{msg}"
@@ -87,10 +87,28 @@ class Reporter
     sorted_reports = reports.sort_by { |record| sort_proc.call(record) }
     sorted_reports.each do |record|
       record["tmux"] = record["tmux"].join(",")
+      uptime = record["uptime"]
+      record["uptime"] = if uptime < 60
+        "%d seconds" % uptime
+      else
+        uptime = uptime/60
+        if uptime < 60
+          "%d minutes" % uptime
+        else
+          uptime = uptime/60
+          if uptime < 24
+            "%d hours" % uptime
+          else
+            "%d days" % (uptime/24)
+          end
+        end
+      end
     end
 
     tmux_width = sorted_reports.map { |record| record["tmux"].size }.max.to_i + 3
-    tmux_width = 7 if tmux_width < 7
+    tmux_width = 6 if tmux_width < 6
+    uptime_width = sorted_reports.map { |record| record["uptime"].size }.max.to_i + 3
+    uptime_width = 8 if uptime_width < 8
     cols = {
       "host" => ["HOST", 9],
       "users" => ["USERS", 8],
@@ -100,11 +118,13 @@ class Reporter
       "process" => ["PROCESS", 10],
       "mem" => ["MEM\n(used/total)", 15],
       "cpu" => ["CPU SPEC", 18],
+      "uptime" => ["UPTIME", uptime_width],
       "tmux" => ["TMUX", tmux_width],
     }
 
     width = `/usr/bin/tput cols`.strip.to_i rescue 80
-    delete_order = %w[cpu process tmux users mem load_10min load_5min]
+    delete_order = %w[uptime cpu process tmux users mem load_10min load_5min]
+    cols.delete "tmux" unless sorted_reports.any? { |record| record["tmux_runing"] }
     while width < cols.values.map(&:last).reduce(&:+) && !delete_order.empty?
       cols.delete(delete_order.shift)
     end
@@ -117,8 +137,24 @@ class Reporter
   private
 
   SCRIPT = <<-'EOS'.shellescape
+    def encstr(s)
+      '"' + s.chars.map do |c|
+        case c[0]
+        when ?"  then '\\"'
+        when ?\\ then '\\\\'
+        when ?\b then '\\b'
+        when ?\f then '\\f'
+        when ?\n then '\\n'
+        when ?\r then '\\r'
+        when ?\t then '\\t'
+        else c
+        end
+      end.join + '"'
+    end
+
     users = `/usr/bin/users`.chomp.split(" ").size rescue 0
     load_avg = `/bin/cat /proc/loadavg`.chomp.split(" ")
+    uptime = `/bin/cat /proc/uptime`.chomp.split(" ")[0].to_i
     process = load_avg[3]
     process_running, process_all = process.split("/")
     mem = `/usr/bin/free -g`.match(/^Mem: +(\d+) +(\d+)/)
@@ -142,6 +178,7 @@ class Reporter
     puts <<-EOF
     {
       "users": #{users},
+      "uptime": #{uptime},
       "load_1min": #{load_avg[0].to_f},
       "load_5min": #{load_avg[1].to_f},
       "load_10min": #{load_avg[2].to_f},
@@ -155,7 +192,8 @@ class Reporter
       "cpusocket": #{cpusocket},
       "cpucore": #{cpucore},
       "cpu": "#{cpufreq} (#{cpusocket}S/#{cpucore}C)",
-      "tmux": [#{tmux.map { |s| "\"#{s}\""}.join(",")}]
+      "tmux": [#{tmux.map { |s| encstr(s) }.join(",")}],
+      "tmux_running": #{tmux.empty? ? "false" : "true"}
     }
     EOF
   EOS
@@ -176,7 +214,7 @@ Example:
   csr-report csr40-csr50   # report csr40 to csr50
   csr-report --sort-by=mem # sort report by memory
 
-Accepted sort keys: host,users,load_1min,load_5min,load_10min,process,mem,cpu,tmux
+Accepted sort keys: host,users,load_1min,load_5min,load_10min,process,mem,cpu,uptime,tmux
 EOS
     opts.version = VERSION
 
