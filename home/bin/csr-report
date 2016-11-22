@@ -124,7 +124,7 @@ class Reporter
 
     width = `/usr/bin/tput cols`.strip.to_i rescue 80
     delete_order = %w[uptime cpu process tmux users mem load_10min load_5min]
-    cols.delete "tmux" unless sorted_reports.any? { |record| record["tmux_runing"] }
+    cols.delete "tmux" unless sorted_reports.any? { |record| record["tmux_running"] }
     while width < cols.values.map(&:last).reduce(&:+) && !delete_order.empty?
       cols.delete(delete_order.shift)
     end
