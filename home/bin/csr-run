@@ -93,7 +93,10 @@ class Task
 
     def on_data(command, stream_name, data, channel)
       # reopen log file if it was accidentally deleted.
-      @log = @log_file.open("wb") unless @log_file.file?
+      unless @log_file.file?
+        mkdir_p DIR
+        @log = @log_file.open("wb")
+      end
       @log.write data
       @log.flush
     end
