@@ -116,12 +116,12 @@ class TaskRunner
           rescue Net::SSH::AuthenticationFailed
             run_locally { warn "Failed to login #{host}." }
             @dsl.all_servers.delete host
-            break
+            Thread.exit
           end
           if task.failed?
             run_locally { warn "Failed to execute setup task on #{host}." }
             @dsl.all_servers.delete host
-            break
+            Thread.exit
           end
         end
         begin
@@ -139,12 +139,20 @@ class TaskRunner
         rescue ThreadError
         end
       end
-    end.each(&:join) until @dsl.tasks.empty?
+    end.each(&:join) until @dsl.tasks.empty? || @dsl.all_servers.empty?
 
     unless @failed_tasks.empty?
       puts "#{"\033[1;34m" if $stdout.tty?}==>#{"\033[1;39m" if $stdout.tty?} " + \
         "Failed tasks:#{"\033[0m"if $stdout.tty?}"
-      @failed_tasks.each { |t| puts t.command.join(" ") }
+      @failed_tasks.each { |t| puts t.command.shelljoin }
+      $failed = true
+    end
+
+    unless @dsl.tasks.empty?
+      puts "#{"\033[1;34m" if $stdout.tty?}==>#{"\033[1;39m" if $stdout.tty?} " + \
+        "Unfinished tasks:#{"\033[0m"if $stdout.tty?}"
+      @dsl.tasks.size.times { puts @dsl.tasks.pop.command.shelljoin }
+      $failed = true
     end
   end
 
@@ -267,4 +275,5 @@ Runfile Example:
     error "Cannot read file `#{runfile}`."
   end
   TaskRunner.new(input).run!
+  exit 1 if $failed
 end
