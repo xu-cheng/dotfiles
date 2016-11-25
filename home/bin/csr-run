@@ -252,12 +252,12 @@ Runfile Example:
   working_dir "/path/to/working/directory"
   env FOO: "BAR"
 
-  setup "bash", "-c", <<-EOSCRIPT.shellescape
+  setup <<-EOF
     if [[ -f "somefile" ]]
     then
       curl -L http://example.com -o somefile
     fi
-  EOSCRIPT
+  EOF
 
   run "./some-program"
   run %w[echo Hi], enable_log: false
