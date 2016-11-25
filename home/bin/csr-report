@@ -3,7 +3,7 @@
 VERSION = "1.3"
 
 def error(msg)
-  $stderr.puts "  #{"\033[31m" if $stderr.tty?}Error#{"\033[0m" if $stderr.tty?}: #{msg}"
+  $stderr.puts "  #{"\033[31m" if $stderr.tty?}Error#{"\033[0m" if $stderr.tty?} #{msg}"
   exit 1
 end
 

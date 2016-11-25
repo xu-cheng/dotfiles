@@ -3,9 +3,15 @@
 VERSION = "1.2"
 
 def error(msg)
-  $stderr.puts " #{"\033[31m" if $stderr.tty?}Error#{"\033[0m" if $stderr.tty?}: #{msg}"
+  $stderr.puts "  #{"\033[31m" if $stderr.tty?}ERROR#{"\033[0m" if $stderr.tty?} #{msg}"
   exit 1
 end
+
+def warn(msg)
+  $stderr.puts "  #{"\033[33m" if $stderr.tty?}WARN#{"\033[0m" if $stderr.tty?} #{msg}"
+end
+
+error "Ruby 2.0+ is required!" if RUBY_VERSION <= "2.0"
 
 begin
   require "sshkit"
@@ -118,12 +124,12 @@ class TaskRunner
           begin
             task.run!(host)
           rescue Net::SSH::AuthenticationFailed
-            run_locally { warn "Failed to login #{host}." }
+            warn "Failed to login #{host}."
             @dsl.all_servers.delete_at(i)
             next
           end
           if task.failed?
-            run_locally { warn "Failed to execute setup task on #{host}." }
+            warn "Failed to execute setup task on #{host}."
             @dsl.all_servers.delete_at(i)
             next
           end
@@ -139,7 +145,7 @@ class TaskRunner
             begin
               task.run!(host)
             rescue Net::SSH::AuthenticationFailed
-              run_locally { warn "Failed to login #{host}." }
+              warn "Failed to login #{host}."
               @dsl.tasks << task
               @dsl.all_servers.delete host
               break
