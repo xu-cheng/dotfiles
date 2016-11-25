@@ -253,7 +253,7 @@ Runfile Example:
   env FOO: "BAR"
 
   setup <<-EOF
-    if [[ -f "somefile" ]]
+    if [[ ! -f "somefile" ]]
     then
       curl -L http://example.com -o somefile
     fi
