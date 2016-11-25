@@ -1,6 +1,6 @@
 #!/usr/bin/env ruby
 
-VERSION = "1.1"
+VERSION = "1.2"
 
 def error(msg)
   $stderr.puts " #{"\033[31m" if $stderr.tty?}Error#{"\033[0m" if $stderr.tty?}: #{msg}"
@@ -110,23 +110,30 @@ class TaskRunner
   end
 
   def run!
-    @dsl.all_servers.map do |host|
-      Thread.new do
-        if @dsl.setup_task
+    if @dsl.setup_task
+      puts "#{"\033[1;34m" if $stdout.tty?}==>#{"\033[1;39m" if $stdout.tty?} " + \
+        "Setup servers...#{"\033[0m"if $stdout.tty?}"
+      @dsl.all_servers.dup.each_with_index do |host, i|
           task = @dsl.setup_task.dup
           begin
             task.run!(host)
           rescue Net::SSH::AuthenticationFailed
             run_locally { warn "Failed to login #{host}." }
-            @dsl.all_servers.delete host
-            Thread.exit
+            @dsl.all_servers.delete_at(i)
+            next
           end
           if task.failed?
             run_locally { warn "Failed to execute setup task on #{host}." }
-            @dsl.all_servers.delete host
-            Thread.exit
+            @dsl.all_servers.delete_at(i)
+            next
           end
-        end
+      end
+      puts "#{"\033[1;34m" if $stdout.tty?}==>#{"\033[1;39m" if $stdout.tty?} " + \
+        "Run tasks...#{"\033[0m"if $stdout.tty?}"
+    end
+
+    @dsl.all_servers.map do |host|
+      Thread.new do
         begin
           while task = @dsl.tasks.pop(true)
             begin
