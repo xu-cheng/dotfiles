@@ -237,7 +237,7 @@ class TaskRunner
       command = args.flatten
       working_dir = options.fetch(:working_dir, @global_working_dir)
       env = @global_env.merge(options.fetch(:env, {}))
-      enable_log = options.fetch(:enable_log, false)
+      enable_log = options.fetch(:enable_log, @global_enable_log)
       log_file_name = options.fetch(:log_file_name, "setup")
       @setup_task = Task.new(command, working_dir, env, enable_log: enable_log, log_file_name: log_file_name)
     end
