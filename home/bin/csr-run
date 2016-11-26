@@ -1,6 +1,6 @@
 #!/usr/bin/env ruby
 
-VERSION = "1.2"
+VERSION = "1.3"
 
 def error(msg)
   $stderr.puts "  #{"\033[31m" if $stderr.tty?}ERROR#{"\033[0m" if $stderr.tty?} #{msg}"
@@ -43,6 +43,8 @@ class Task
     @working_dir = working_dir
     @env = env
     @enable_log = options.fetch(:enable_log, false)
+    @log_file_name = File.basename(options[:log_file_name] ||
+      command.join("_").gsub(/[\\\/\s"';\[\]]/, "_").gsub(/_+/, "_"))
   end
 
   def run!(host)
@@ -50,7 +52,9 @@ class Task
     args = command.dup
     args.unshift(args.shift.to_sym)
     args << { raise_on_non_zero_exit: false }
-    args.last[:interaction_handler] = Logger.new(host, command) if @enable_log
+    if @enable_log
+      args.last[:interaction_handler] = Logger.new(@log_file_name, host, command)
+    end
     env[:PATH] ||= path(host)
     @result = on_remote(host) do |sshkit, _host|
       sshkit.with env do
@@ -84,12 +88,12 @@ class Task
   class Logger
     DIR = (Pathname.pwd/"logs").freeze
 
-    def initialize(host, command)
+    def initialize(filename, host, command)
       mkdir_p DIR
 
       host = host.sub ".comp.hkbu.edu.hk", ""
       time = Time.now
-      @log_file_name = "#{host}-#{time.to_i}-#{command.join("_").gsub(/[\\\/\s"';]/, "_").gsub(/_+/, "_")}.log"
+      @log_file_name = "#{host}-#{time.to_i}-#{filename}.log"
       @log_file = DIR/@log_file_name
       @log = @log_file.open("wb")
       @log.puts "At #{time}, on #{host}."
@@ -119,26 +123,28 @@ class TaskRunner
     if @dsl.setup_task
       puts "#{"\033[1;34m" if $stdout.tty?}==>#{"\033[1;39m" if $stdout.tty?} " + \
         "Setup servers...#{"\033[0m"if $stdout.tty?}"
-      @dsl.all_servers.dup.each_with_index do |host, i|
+      @dsl.all_servers.dup.map do |host|
+        Thread.new do
           task = @dsl.setup_task.dup
           begin
             task.run!(host)
           rescue Net::SSH::AuthenticationFailed
             warn "Failed to login #{host}."
-            @dsl.all_servers.delete_at(i)
-            next
+            @dsl.all_servers.delete host
+            Thread.exit
           end
           if task.failed?
             warn "Failed to execute setup task on #{host}."
-            @dsl.all_servers.delete_at(i)
-            next
+            @dsl.all_servers.delete host
+            Thread.exit
           end
-      end
+        end
+      end.each(&:join)
       puts "#{"\033[1;34m" if $stdout.tty?}==>#{"\033[1;39m" if $stdout.tty?} " + \
         "Run tasks...#{"\033[0m"if $stdout.tty?}"
     end
 
-    @dsl.all_servers.map do |host|
+    @dsl.all_servers.dup.map do |host|
       Thread.new do
         begin
           while task = @dsl.tasks.pop(true)
@@ -189,7 +195,7 @@ class TaskRunner
       begin
         instance_eval(@input)
       rescue Exception => e
-        error "Invalid Runfile.\n#{e.message}"
+        error "Invalid Runfile.\n#{e.message}\n#{e.backtrace.join("\n")}"
       end
     end
 
@@ -222,7 +228,8 @@ class TaskRunner
       working_dir = options.fetch(:working_dir, @global_working_dir)
       env = @global_env.merge(options.fetch(:env, {}))
       enable_log = options.fetch(:enable_log, @global_enable_log)
-      @tasks << Task.new(command, working_dir, env, enable_log: enable_log)
+      log_file_name = options[:log_file_name]
+      @tasks << Task.new(command, working_dir, env, enable_log: enable_log, log_file_name: log_file_name)
     end
 
     def setup(*args)
@@ -231,7 +238,8 @@ class TaskRunner
       working_dir = options.fetch(:working_dir, @global_working_dir)
       env = @global_env.merge(options.fetch(:env, {}))
       enable_log = options.fetch(:enable_log, false)
-      @setup_task = Task.new(command, working_dir, env, enable_log: enable_log)
+      log_file_name = options.fetch(:log_file_name, "setup")
+      @setup_task = Task.new(command, working_dir, env, enable_log: enable_log, log_file_name: log_file_name)
     end
   end
 end
@@ -254,14 +262,14 @@ Runfile Example:
 
   setup <<-EOF
     if [[ ! -f "somefile" ]]
-    then
-      curl -L http://example.com -o somefile
+    then curl -L http://example.com -o somefile
     fi
   EOF
 
   run "./some-program"
   run %w[echo Hi], enable_log: false
   run "ruby", "-e", "puts 'Hello World!'", working_dir: "/tmp", env: { FOO: "BAZ" }
+  run "if [[ ! -d /foo ]]; then mkdir -p /foo; fi", log_file_name: "ensure_dir" # save log to ./logs/{CSR}-{TIME}-ensure_dir.log
     EOS
     opts.version = VERSION
 
