@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+bibtex="$(curl -sfLH "Accept: application/x-bibtex;q=1" "http://dx.doi.org/$1")"
+if [[ $? -eq 0 ]]; then
+    if [[ "$(uname)" = "Darwin" ]]; then
+        echo "$bibtex" | pbcopy
+    fi
+    echo "$bibtex"
+else
+    echo "Unknown DOI." >&2
+    exit 1
+fi
