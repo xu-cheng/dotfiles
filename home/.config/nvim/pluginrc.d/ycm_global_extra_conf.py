@@ -38,4 +38,4 @@ def FlagsForFile(filename, **kwargs):
                 ]
 
     flags += SystemIncludePathasFlags(cpp)
-    return { "flags": flags, "do_cache": True}
+    return { "flags": flags, "do_cache": True }
