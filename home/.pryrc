@@ -4,6 +4,7 @@
 (%w[
   pry-byebug
   pry-coolline
+  pry-editline
   pry-doc
   pry-highlight
   pry-theme
