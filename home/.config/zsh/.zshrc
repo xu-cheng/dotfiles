@@ -20,6 +20,10 @@ if [[ `uname` == "Darwin" ]]; then # OS X
 else # Linux
     [[ -n "$HOMEBREW_PREFIX" ]] || export HOMEBREW_PREFIX="$HOME/.linuxbrew"
     export HOMEBREW_REPOSITORY="$HOMEBREW_PREFIX"
+    if [[ -n "$CSR" ]]; then
+        # do not load ssh-gpg-agent on CSR
+        plugins[${plugins[(i)ssh-gpg-agent]}]=()
+    fi
 fi
 
 export EDITOR="nvim"

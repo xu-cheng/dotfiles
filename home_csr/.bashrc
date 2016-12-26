@@ -7,6 +7,7 @@ umask 0077
 [[ -d "/tmp/$USER" ]] || mkdir -p "/tmp/$USER"
 
 unset LD_LIBRARY_PATH
+export CSR=true
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_CACHE_HOME="/tmp/$USER/cache"
 export XDG_DATA_HOME="$HOME/.local/share"
