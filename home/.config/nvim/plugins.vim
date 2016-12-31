@@ -65,7 +65,7 @@ Plug 'MattesGroeger/vim-bookmarks'
 Plug 'chrisbra/NrrwRgn'
 Plug 'junegunn/vim-easy-align'
 
-" Snippets & AutoComplete
+" Snippets & AutoComplete & Semantic Highlight
 function! BuildYCM(info)
   if a:info.status == 'installed' || a:info.force
     !./install.sh --clang-completer
@@ -75,6 +75,7 @@ Plug 'Valloric/YouCompleteMe', { 'do': function('BuildYCM') }
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'ervandew/supertab'
+"Plug 'jeaye/color_coded' # not support neovim yet
 
 " Build & Debug
 Plug 'tpope/vim-dispatch'
@@ -103,18 +104,19 @@ Plug 'tpope/vim-speeddating'
 Plug 'mattn/calendar-vim'
 Plug 'jceb/vim-orgmode'
 
-" Misc
-Plug 'plasticboy/vim-markdown'
-Plug 'kannokanno/previm'
-Plug 'tyru/open-browser.vim'
-Plug 'henrik/vim-reveal-in-finder'
+" Syntax
 Plug 'xu-cheng/brew.vim'
 Plug 'bfontaine/Brewfile.vim'
 Plug 'tmux-plugins/vim-tmux'
 Plug 'aklt/plantuml-syntax'
 Plug 'tpope/vim-liquid'
 Plug 'kchmck/vim-coffee-script'
-"Plug 'jeaye/color_coded' # not support neovim yet
+
+" Misc
+Plug 'plasticboy/vim-markdown'
+Plug 'kannokanno/previm'
+Plug 'tyru/open-browser.vim'
+Plug 'henrik/vim-reveal-in-finder'
 
 " Other
 Plug 'edkolev/tmuxline.vim'
