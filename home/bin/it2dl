@@ -13,7 +13,7 @@ tmux_escape_end() {
 }
 
 if [[ $# -lt 1 ]]; then
-  echo "Usage: $(basename $0) file ..."
+  echo "Usage: $(basename "$0") file ..."
   exit 1
 fi
 
@@ -22,7 +22,7 @@ do
   if [[ -r "$fn" ]] ; then
     [[ -d "$fn" ]] && { echo "$fn is a directory"; continue; }
     tmux_escape_begin
-    printf '\033]1337;File=name=%s' "$(echo -n "$fn" | base64);"
+    printf '\033]1337;File=name=%s;' "$(echo -n "$fn" | base64)"
     wc -c "$fn" | awk '{printf "size=%d",$1}'
     printf ":"
     base64 < "$fn"
