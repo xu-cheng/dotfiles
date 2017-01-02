@@ -102,7 +102,7 @@ TRAPUSR1() {
 # Change iterm2 profile. Usage it2prof ProfileName (case sensitive)
 # https://coderwall.com/p/s-2_nw/change-iterm2-color-profile-from-the-cli
 tmux_escape() {
-    if [[ -n "$TMUX" ]]; then
+    if [[ -n "$TMUX" || "$TERM" = *screen* ]]; then
         printf '\033Ptmux;\033%b\033\\' "$1"
     else
         printf "$1"
