@@ -44,6 +44,9 @@ Plug 'junegunn/vim-pseudocl'
 Plug 'junegunn/vim-oblique'
 Plug 'hecal3/vim-leader-guide'
 Plug 'yuttie/comfortable-motion.vim'
+Plug 'bogado/file-line'
+Plug 'itchyny/vim-cursorword'
+Plug 'terryma/vim-expand-region'
 
 " Writing
 Plug 'reedes/vim-litecorrect'
