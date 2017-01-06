@@ -67,6 +67,7 @@ Plug 'Chiel92/vim-autoformat'
 Plug 'MattesGroeger/vim-bookmarks'
 Plug 'chrisbra/NrrwRgn'
 Plug 'junegunn/vim-easy-align'
+Plug 'junegunn/rainbow_parentheses.vim'
 
 " Snippets & AutoComplete & Semantic Highlight
 function! BuildYCM(info)
