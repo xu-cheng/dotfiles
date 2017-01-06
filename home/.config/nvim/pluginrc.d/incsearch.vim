@@ -9,3 +9,13 @@ map *  <Plug>(incsearch-nohl-*)
 map #  <Plug>(incsearch-nohl-#)
 map g* <Plug>(incsearch-nohl-g*)
 map g# <Plug>(incsearch-nohl-g#)
+
+" Fuzzy search
+map z/ <Plug>(incsearch-fuzzy-/)
+map z? <Plug>(incsearch-fuzzy-?)
+map zg/ <Plug>(incsearch-fuzzy-stay)
+
+" Easymotion
+map m/ <Plug>(incsearch-easymotion-/)
+map m? <Plug>(incsearch-easymotion-?)
+map mg/ <Plug>(incsearch-easymotion-stay)
