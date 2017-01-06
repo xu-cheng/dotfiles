@@ -68,6 +68,7 @@ Plug 'MattesGroeger/vim-bookmarks'
 Plug 'chrisbra/NrrwRgn'
 Plug 'junegunn/vim-easy-align'
 Plug 'junegunn/rainbow_parentheses.vim'
+Plug 'Valloric/MatchTagAlways'
 
 " Snippets & AutoComplete & Semantic Highlight
 function! BuildYCM(info)
