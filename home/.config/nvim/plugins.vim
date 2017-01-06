@@ -46,7 +46,6 @@ Plug 'haya14busa/incsearch-easymotion.vim'
 Plug 'hecal3/vim-leader-guide'
 Plug 'yuttie/comfortable-motion.vim'
 Plug 'bogado/file-line'
-Plug 'itchyny/vim-cursorword'
 Plug 'terryma/vim-expand-region'
 
 " Writing
