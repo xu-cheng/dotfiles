@@ -1,0 +1,19 @@
+#!/usr/bin/env ruby
+
+require "shellwords"
+
+def outdated?(cask)
+  info = `brew cask info #{cask.shellescape}`
+  latest_version = info.lines.first[/#{Regexp.escape(cask)}: ([^ \n]+)/, 1]
+  return false if latest_version == "latest"
+  app = info[/Artifacts\n([^\n]+\.app) \(app\)\n/m, 1]
+  cask_version = info[%r{/usr/local/Caskroom/#{Regexp.escape(cask)}/([^ ]+) \([^\)]+\)\nFrom:}m, 1]
+  if app
+    app_version = `mdls -name kMDItemVersion /Applications/#{app.shellescape}`[/kMDItemVersion = "([^"]+)"/, 1]
+  end
+  cask_version != latest_version && app_version != latest_version
+end
+
+casks = `brew cask list`.split("\n")
+casks.select! { |cask| outdated?(cask) }
+puts casks
