@@ -1,6 +1,6 @@
 #!/usr/bin/env ruby
 
-VERSION = "1.3"
+VERSION = "1.4"
 
 def error(msg)
   $stderr.puts "  #{"\033[31m" if $stderr.tty?}ERROR#{"\033[0m" if $stderr.tty?} #{msg}"
@@ -216,7 +216,7 @@ class TaskRunner
       @all_servers = servers.flat_map do |host|
         case host
         when String then [host]
-        when Fixnum then ["csr#{host}"]
+        when Integer then ["csr#{host}"]
         when Range then host.map { |id| "csr#{id}" }
         end
       end
