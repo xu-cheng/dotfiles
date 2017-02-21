@@ -208,7 +208,7 @@ if __FILE__ == $0
 Usage: csr-report [options] [servers]
 
 Example:
-  csr-report               # report csr40 to csr69 (default)
+  csr-report               # report csr30 to csr31 and csr40 to csr69 (default)
   csr-report csr40         # report csr40
   csr-report csr40,csr41   # report csr40 and csr41
   csr-report csr40-csr50   # report csr40 to csr50
@@ -236,7 +236,7 @@ EOS
     end
   end.parse!
 
-  servers = (ARGV.first || "csr40-csr69").split(",").flat_map do |s|
+  servers = (ARGV.first || "csr30-csr31,csr40-csr69").split(",").flat_map do |s|
     if s.include?("-")
       start_id, end_id = s.split("-", 2)
       start_id = start_id[/\d+/].to_i
