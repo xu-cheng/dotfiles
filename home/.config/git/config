@@ -6,6 +6,7 @@ signingkey = CCE0112A1CCDE1685DBA86C4C2A3860FA0B459CE
 [core]
 autocrlf = input
 editor = nvim
+pager = less -F -X
 
 [commit]
 gpgsign = true
