@@ -44,7 +44,6 @@ Plug 'haya14busa/incsearch.vim'
 Plug 'haya14busa/incsearch-fuzzy.vim'
 Plug 'haya14busa/incsearch-easymotion.vim'
 Plug 'hecal3/vim-leader-guide'
-Plug 'yuttie/comfortable-motion.vim'
 Plug 'bogado/file-line'
 Plug 'terryma/vim-expand-region'
 
