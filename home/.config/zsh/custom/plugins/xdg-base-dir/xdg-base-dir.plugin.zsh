@@ -12,3 +12,7 @@ export PERL_CPANM_HOME="$XDG_CACHE_HOME/cpanm"
 # fpp
 # https://github.com/facebook/PathPicker/pull/231
 export FPP_DIR="$XDG_CACHE_HOME/fpp"
+
+# vagrant
+# https://www.vagrantup.com/docs/other/environmental-variables.html
+export VAGRANT_HOME="$XDG_DATA_HOME/vagrant"
