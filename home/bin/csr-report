@@ -1,6 +1,6 @@
 #!/usr/bin/env ruby
 
-VERSION = "1.3"
+VERSION = "1.4"
 
 def error(msg)
   $stderr.puts "  #{"\033[31m" if $stderr.tty?}Error#{"\033[0m" if $stderr.tty?} #{msg}"
@@ -34,6 +34,11 @@ require "shellwords"
 
 SSHKit::Backend::Netssh.configure do |ssh|
   ssh.ssh_options = { auth_methods: %w(publickey) }
+end
+
+# drop remote ssh-agent if we have already logged in csr
+if ENV["SSH_AUTH_SOCK"] && `hostname` =~ /csr\d+/
+  ENV.delete "SSH_AUTH_SOCK"
 end
 
 class Reporter
