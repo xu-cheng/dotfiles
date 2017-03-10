@@ -51,8 +51,9 @@ tool = nvimdiff
 cmd = nvim -d \"$LOCAL\" \"$REMOTE\"
 
 [alias]
-c = commit -m
 a = add
+aliases = !git config --get-regexp 'alias.*' | colrm 1 6 | sed 's/[ ]/ = /' | sort
+c = commit -m
 ci = commit
 co = checkout
 cob = checkout -b
