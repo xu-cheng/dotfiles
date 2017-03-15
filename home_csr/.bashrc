@@ -6,6 +6,7 @@ umask 0077
 
 [[ -d "/tmp/$USER" ]] || mkdir -p "/tmp/$USER"
 
+unset FPATH
 unset LD_LIBRARY_PATH
 export CSR=true
 export XDG_CONFIG_HOME="$HOME/.config"
