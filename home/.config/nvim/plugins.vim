@@ -46,6 +46,7 @@ Plug 'haya14busa/incsearch-easymotion.vim'
 Plug 'hecal3/vim-leader-guide'
 Plug 'bogado/file-line'
 Plug 'terryma/vim-expand-region'
+Plug 'farmergreg/vim-lastplace'
 
 " Writing
 Plug 'reedes/vim-litecorrect'
