@@ -2,7 +2,8 @@
 
 # NOTE: in order to make it work, you are required to import public keys into remote machine.
 
-require "socket"
+require "open3"
+require "shellwords"
 
 def gpg21?
   `gpg2 --version`[/\d\.\d/] == "2.1"
@@ -17,29 +18,43 @@ rescue
   false
 end
 
-def free_tcp_port
-  server = TCPServer.new("127.0.0.1", 0)
-  server.addr[1]
-ensure
-  server.close
-end
-
 exit 0 unless gpg_agent_running?
 
-remote, port = ARGV.first.split(":")
+ssh_host, ssh_port = ARGV.first.split(":")
 ppid = Process.ppid
 Process.daemon
 
-tcp_port = free_tcp_port
 # spawn local socat to forward gpg-agent unix socket to tcp socket
-local_pid = Process.spawn "socat", "TCP-LISTEN:#{tcp_port},bind=localhost,reuseaddr,fork",
+local_pid = Process.spawn "socat", "TCP-LISTEN:0,bind=localhost,reuseaddr,fork",
                                    "UNIX-CONNECT:#{ENV["HOME"]}/.gnupg/S.extra-gpg-agent"
+sleep 0.1
+
+# get local socat port
+output, status = Open3.capture2 "lsof", "-Fn", "-iTCP", "-sTCP:LISTEN", "-a", "-p#{local_pid}"
+unless status.success?
+  Process.kill 9, local_pid
+  Process.wait
+  exit 1
+end
+local_port = output[/n[^:]+:(\d+)/, 1]
+
 # spawn remote socat to forward tcp socket to remote gpg-agent unix socket
+remote_script = <<-EOS.shellescape
+while read line; do
+  if [[ "$line" =~ ^Allocated[[:space:]]port[[:space:]]([0-9]+).*$ ]]; then
+    exec socat "UNIX-LISTEN:$HOME/.gnupg/S.gpg-agent,unlink-close,unlink-early,reuseaddr,fork" \
+               "TCP4:localhost:${BASH_REMATCH[1]}"
+  fi
+done
+EOS
 # `-t -t` is used to make sure remote socat exit when ssh connection is terminated.
+r,w = IO.pipe
 remote_pid = Process.spawn "ssh", "-oLocalCommand=", "-oPermitLocalCommand=no", "-t", "-t",
-                                  "-Rlocalhost:#{tcp_port}:localhost:#{tcp_port}", remote, "-P#{port}",
-                                  "socat", "UNIX-LISTEN:$HOME/.gnupg/S.gpg-agent,unlink-close,unlink-early,reuseaddr,fork",
-                                           "TCP4:localhost:#{tcp_port}"
+                                  "-Rlocalhost:0:localhost:#{local_port}",
+                                  ssh_host, "-P#{ssh_port}",
+                                  "bash", "-c", remote_script,
+                                  in: r, err: w
+
 Process.detach(local_pid)
 Process.detach(remote_pid)
 
