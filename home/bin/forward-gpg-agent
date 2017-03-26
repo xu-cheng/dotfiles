@@ -26,7 +26,7 @@ Process.daemon
 
 # spawn local socat to forward gpg-agent unix socket to tcp socket
 local_pid = Process.spawn "socat", "TCP-LISTEN:0,bind=localhost,reuseaddr,fork",
-                                   "UNIX-CONNECT:#{ENV["HOME"]}/.gnupg/S.extra-gpg-agent"
+                                   "UNIX-CONNECT:#{ENV["HOME"]}/.gnupg/S.gpg-agent.extra"
 sleep 0.1
 
 # get local socat port
