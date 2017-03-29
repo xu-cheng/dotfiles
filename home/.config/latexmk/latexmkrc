@@ -15,6 +15,28 @@ $clean_ext = 'bbl fdb_latexmk fls nav pdfsync pyg pytxcode run.xml ' .
 # PythonTeX support
 add_cus_dep('pytxcode', 'tex', 0, 'pythontex');
 sub pythontex { return system("pythontex \"$_[0]\""); }
+# R (knitr) support
+if(grep(/\.(rnw|rtex)$/i, @ARGV)) {
+    $pdflatex = 'internal knitrlatex ' . $pdflatex;
+    my $knitr_compiled = {};
+    sub knitrlatex {
+        for (@_) {
+            next unless -e $_;
+            my $input = $_;
+            next unless $_ =~ s/\.(rnw|rtex)$/.tex/i;
+            my $tex = $_;
+            my $stat = fdb_get($input);
+            if (!$knitr_compiled{$input} || $knitr_compiled{$input} != $stat) {
+                my $ret = system("Rscript -e \"knitr::knit('$input')\"");
+                if($ret) { return $ret; }
+                rdb_ensure_file($rule, $tex);
+                $knitr_compiled{$input} = $stat;
+            }
+        }
+        return system(@_);
+    }
+    $clean_ext .= ' %R.tex';
+}
 
 no warnings 'redefine';
 
