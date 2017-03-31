@@ -7,8 +7,10 @@ let g:vimtex_view_general_viewer =
 let g:vimtex_view_general_options = '-r @line @pdf @tex'
 let g:vimtex_quickfix_warnings = {'default' : 0}
 let g:vimtex_quickfix_open_on_warning = 0
-let g:vimtex_latexmk_progname = 'nvr'
-let g:vimtex_latexmk_callback_hooks = ['VimtexUpdateView']
+let g:vimtex_compiler_method = 'latexmk'
+let g:vimtex_compiler_progname = 'nvr'
+let g:vimtex_compiler_callback_hooks = ['VimtexUpdateView']
+
 function! VimtexUpdateView(status)
     if !a:status | return | endif
     let l:out = b:vimtex.out()
