@@ -17,7 +17,7 @@ export HOMEBREW_NO_ANALYTICS=true # set before any brew invoking.
 if [[ `uname` == "Darwin" ]]; then # OS X
     export HOMEBREW_PREFIX="/usr/local"
     export HOMEBREW_REPOSITORY="/usr/local/Homebrew"
-    export PATH="$DOTFILES_HOME/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin:/usr/local/opt/gnupg@2.1/bin:/Library/TeX/texbin"
+    export PATH="$DOTFILES_HOME/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin:/Library/TeX/texbin"
 else # Linux
     [[ -n "$HOMEBREW_PREFIX" ]] || export HOMEBREW_PREFIX="$HOME/.linuxbrew"
     export HOMEBREW_REPOSITORY="$HOMEBREW_PREFIX"
