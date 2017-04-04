@@ -27,7 +27,7 @@ if(grep(/\.(rnw|rtex)$/i, @ARGV)) {
             my $tex = $_;
             my $checksum = (fdb_get($input))[-1];
             if (!$knitr_compiled{$input} || $knitr_compiled{$input} ne $checksum) {
-                my $ret = system("Rscript", "e", "knitr::knit('$input')");
+                my $ret = system("Rscript", "-e", "knitr::knit('$input')");
                 if($ret) { return $ret; }
                 rdb_ensure_file($rule, $tex);
                 $knitr_compiled{$input} = $checksum;
