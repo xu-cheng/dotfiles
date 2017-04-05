@@ -64,5 +64,5 @@ let g:formatdef_latexindent = '"latexindentwrapper"'
 let g:formatters_tex = ['latexindent']
 
 " Table of Content
-autocmd FileType tex nnoremap <silent> <leader>tt :VimtexTocToggle<CR>
+autocmd FileType tex,rnoweb nnoremap <silent> <leader>tt :VimtexTocToggle<CR>
 
