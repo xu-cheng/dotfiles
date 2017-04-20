@@ -73,6 +73,6 @@ bind-key Q confirm-before kill-window
 # vi-style controls for copy mode
 set-option -g mode-keys vi
 set-window-option -g mode-keys vi
-bind-key -t vi-copy v begin-selection
+bind-key -T copy-mode-vi v send -X begin-selection
 bind-key p paste-buffer
 bind-key b list-buffers
