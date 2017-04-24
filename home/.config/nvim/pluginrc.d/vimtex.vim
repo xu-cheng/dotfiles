@@ -1,32 +1,11 @@
 let g:tex_flavor = 'latex'
 " Ref: https://b4winckler.wordpress.com/2010/08/07/using-the-conceal-vim-feature-with-latex/
 let g:tex_conceal = 'adgm'
-let g:vimtex_view_method = 'general'
-let g:vimtex_view_general_viewer =
-            \ '/Applications/Skim.app/Contents/SharedSupport/displayline'
-let g:vimtex_view_general_options = '-r @line @pdf @tex'
+let g:vimtex_view_method = 'skim'
 let g:vimtex_quickfix_latexlog = {'default' : 0}
 let g:vimtex_quickfix_open_on_warning = 0
 let g:vimtex_compiler_method = 'latexmk'
 let g:vimtex_compiler_progname = 'nvr'
-let g:vimtex_compiler_callback_hooks = ['VimtexUpdateView']
-
-function! VimtexUpdateView(status)
-    if !a:status | return | endif
-    let l:out = b:vimtex.out()
-    let l:tex = expand('%:p')
-    let l:cmd = [g:vimtex_view_general_viewer, '-r']
-    if !empty(system('pgrep Skim'))
-        call extend(l:cmd, ['-g'])
-    endif
-    if has('nvim')
-        call jobstart(l:cmd + [line('.'), l:out, l:tex])
-    elseif has('job')
-        call job_start(l:cmd + [line('.'), l:out, l:tex])
-    else
-        call system(join(l:cmd + [line('.'), shellescape(l:out), shellescape(l:tex)], ' '))
-    endif
-endfunction
 
 " Backward Search
 " set up a `Custom` sync profile in Skim
