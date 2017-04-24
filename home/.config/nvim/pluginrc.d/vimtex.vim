@@ -37,6 +37,7 @@ let g:ycm_semantic_triggers.tex = [
         \ 're!\\documentclass(\s*\[[^]]*\])?\s*\{[^}]*',
         \ 're!\\[A-Za-z]*',
         \ ]
+let g:ycm_semantic_triggers.rnoweb = g:ycm_semantic_triggers.tex
 
 " Linter
 let g:syntastic_tex_checkers = ['chktex']
