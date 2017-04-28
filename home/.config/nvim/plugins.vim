@@ -83,6 +83,7 @@ Plug 'Valloric/YouCompleteMe', { 'do': function('BuildYCM') }
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'ervandew/supertab'
+Plug 'lyuts/vim-rtags'
 "Plug 'jeaye/color_coded' # not support neovim yet
 
 " Build & Debug

@@ -11,6 +11,7 @@ let g:vim_leader_guide_map = {
             \   },
             \ }
 autocmd FileType tex let g:vim_leader_guide_map[maplocalleader].l = { 'name': 'Vimtex' }
+autocmd FileType c,cpp let g:vim_leader_guide_map[maplocalleader].r = { 'name': 'Rtags' }
 call leaderGuide#register_prefix_descriptions('', 'g:vim_leader_guide_map')
 
 nnoremap <silent> <leader> :<C-u>LeaderGuide mapleader<CR>

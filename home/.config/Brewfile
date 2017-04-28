@@ -117,6 +117,7 @@ brew 'pyqt', args: ['with-python']
 brew 'ruby-build'
 brew 'rbenv'
 brew 'reattach-to-user-namespace'
+brew 'rtags'
 brew 'ruby'
 brew 'safe-rm'
 brew 'shellcheck'
