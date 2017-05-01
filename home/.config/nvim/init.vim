@@ -15,6 +15,8 @@ else
         let g:python3_host_prog = '/usr/bin/python3'
     end
 endif
+let g:python_host_prog = g:python2_host_prog
+
 " Set config/cache/data home
 if empty($XDG_CONFIG_HOME)
     let g:config_home = $HOME . '/.config/nvim/'
