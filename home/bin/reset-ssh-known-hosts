@@ -1,0 +1,25 @@
+#!/usr/bin/env ruby
+
+require "open3"
+
+hosts = %w[
+  github.com
+  bitbucket.com
+  lab.xuc.me
+  haibo.server.xuc.me
+  faith.comp.hkbu.edu.hk
+]
+
+hosts += (30..31).map { |h| "csr#{h}.comp.hkbu.edu.hk" }
+hosts += (38..69).map { |h| "csr#{h}.comp.hkbu.edu.hk" }
+
+new = hosts.map do |h|
+  o, s = Open3.capture2("ssh-keyscan", "-H", h)
+  unless s.success?
+    $stderr.puts "Failed to get key from #{h}"
+    next
+  end
+  o
+end.compact.join("\n")
+
+File.write("#{ENV["HOME"]}/.ssh/known_hosts", new)
