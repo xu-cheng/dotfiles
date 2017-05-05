@@ -19,7 +19,7 @@ new = hosts.map do |h|
     $stderr.puts "Failed to get key from #{h}"
     next
   end
-  o
+  o.strip
 end.compact.join("\n")
 
 File.write("#{ENV["HOME"]}/.ssh/known_hosts", new)
