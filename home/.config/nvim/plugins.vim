@@ -96,7 +96,7 @@ Plug 'altercation/vim-colors-solarized'
 
 " LaTeX
 Plug 'lervag/vimtex'
-Plug 'auctex.vim'
+Plug 'vim-scripts/auctex.vim'
 
 " Ruby
 Plug 'vim-ruby/vim-ruby'
@@ -107,8 +107,8 @@ Plug 'rizzatti/funcoo.vim'
 Plug 'rizzatti/dash.vim'
 
 " Org mode
-Plug 'utl.vim'
-Plug 'SyntaxRange'
+Plug 'vim-scripts/utl.vim'
+Plug 'vim-scripts/SyntaxRange'
 Plug 'tpope/vim-speeddating'
 Plug 'mattn/calendar-vim'
 Plug 'jceb/vim-orgmode'
