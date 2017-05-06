@@ -164,7 +164,7 @@
         call delete($NVIM_LISTEN_ADDRESS)
     endfunction
 
-    command RemoveCache call RemoveCache()
+    command! RemoveCache call RemoveCache()
 " }
 
 " ToggleBG {
@@ -181,5 +181,5 @@
         AirlineRefresh
     endfunction
 
-    command ToggleBG call ToggleBG()
+    command! ToggleBG call ToggleBG()
 " }
