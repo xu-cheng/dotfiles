@@ -122,10 +122,8 @@
 
     " Initialize directories
     function! InitializeDirectories()
-        if exists("*mkdir")
-            if !isdirectory(g:cache_home)
-                call mkdir(g:cache_home, 'p')
-            endif
+        if !isdirectory(g:cache_home) && exists('*mkdir')
+            call mkdir(g:cache_home, 'p')
         endif
 
         let dir_list = {
@@ -138,17 +136,15 @@
         endif
         for [dirname, settingname] in items(dir_list)
             let directory = g:cache_home . dirname . '/'
-            if exists("*mkdir")
-                if !isdirectory(directory)
-                    call mkdir(directory)
-                endif
+            if !isdirectory(directory) && exists('*mkdir')
+                call mkdir(directory)
             endif
             if !isdirectory(directory)
-                echo "Warning: Unable to create backup directory: " . directory
-                echo "Try: mkdir -p " . directory
+                echo 'Warning: Unable to create backup directory: ' . directory
+                echo 'Try: mkdir -p ' . directory
             else
-                let directory = substitute(directory, " ", "\\\\ ", "g")
-                exec "set " . settingname . "=" . directory
+                let directory = substitute(directory, ' ', '\\\\ ', 'g')
+                exec 'set ' . settingname . '=' . directory
             endif
         endfor
     endfunction
