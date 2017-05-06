@@ -43,12 +43,12 @@ else
     let g:data_home = $HOME . '/.local/share/nvim/'
 endif
 " Load plugins
-execute 'source' g:config_home . 'plugins.vim'
+execute 'source' fnameescape(g:config_home . 'plugins.vim')
 " Load basic settings
-execute 'source' g:config_home . 'basic.vim'
+execute 'source' fnameescape(g:config_home . 'basic.vim')
 " Load key mapping
-execute 'source' g:config_home . 'keymap.vim'
+execute 'source' fnameescape(g:config_home . 'keymap.vim')
 " Load plugins settings
 for f in split(glob(g:config_home . 'pluginrc.d/*.vim'), '\n')
-  execute 'source' f
+  execute 'source' fnameescape(f)
 endfor
