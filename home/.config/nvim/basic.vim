@@ -157,11 +157,11 @@
 " Remove Cache {
     function! RemoveCache()
         if has('win32')
-            :call system('rd /s /q ' . '"' . g:cache_home . '"')
+            call system('rd /s /q ' . shellescape(g:cache_home))
         else
-            :call system('rm -rf ' . '"' . g:cache_home . '"')
+            call system('rm -rf ' . shellescape(g:cache_home))
         endif
-        :call delete($NVIM_LISTEN_ADDRESS)
+        call delete($NVIM_LISTEN_ADDRESS)
     endfunction
 
     command RemoveCache call RemoveCache()

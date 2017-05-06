@@ -16,7 +16,8 @@ let g:vimtex_compiler_progname = 'nvr'
 function! TeXWordCount()
     let l:main_tex_dir = b:vimtex.root
     let l:main_tex_file = b:vimtex.base
-    :echo system('cd "' . l:main_tex_dir . '"; texcount "' . l:main_tex_file . '"')
+    echo system('cd ' . shellescape(l:main_tex_dir) .
+                \ ' && texcount ' . shellescape(l:main_tex_file))
 endfunction
 autocmd FileType tex nnoremap <localleader>lw :call TeXWordCount()<cr>
 

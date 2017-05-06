@@ -4,7 +4,7 @@ autocmd BufWritePost * if &filetype == "" | filetype detect | endif
 autocmd BufWritePre  * if !filereadable(expand('<afile>:p')) | let b:is_new = 1 | endif
 autocmd BufWritePost *
     \ if !has('win32') && getline(1) =~ "^#!.*" && get(b:, 'is_new', 0) |
-    \   :call system('chmod a+x "' . expand('<afile>:p') . '"') |
+    \   call system('chmod a+x ' . expand('<afile>:p:S')) |
     \ endif
 
 " 2 space for tab for certain filetypes
