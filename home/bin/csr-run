@@ -219,7 +219,7 @@ class TaskRunner
         when Integer then ["csr#{host}"]
         when Range then host.map { |id| "csr#{id}" }
         end
-      end
+      end.uniq
     end
 
     def run(*args)
