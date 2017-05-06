@@ -7,18 +7,15 @@ hosts = %w[
   bitbucket.com
   lab.xuc.me
   haibo.server.xuc.me
-  faith.comp.hkbu.edu.hk
 ]
 
-hosts += (30..31).map { |h| "csr#{h}.comp.hkbu.edu.hk" }
-hosts += (38..69).map { |h| "csr#{h}.comp.hkbu.edu.hk" }
+csrs = (30..31).to_a + (38..69).to_a
+comp_hosts = %w[faith] + csrs.map { |h| "csr#{h}" }
+hosts += comp_hosts
+hosts += comp_hosts.map { |h| "#{h}.comp.hkbu.edu.hk" }
 
 new = hosts.map do |h|
-  o, s = Open3.capture2("ssh-keyscan", "-H", h)
-  unless s.success?
-    $stderr.puts "Failed to get key from #{h}"
-    next
-  end
+  o, _s = Open3.capture2("ssh-keyscan", "-H", h)
   o.strip
 end.compact.join("\n")
 
