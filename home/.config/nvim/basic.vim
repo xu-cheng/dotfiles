@@ -8,7 +8,8 @@
     scriptencoding utf-8
 
     " Set clipboard
-    if (executable('pbcopy') || executable('xclip') || executable('xsel') || executable('win32yank')) && has('clipboard')
+    if (executable('pbcopy') || executable('xclip') || executable('xsel') ||
+                \ executable('win32yank')) && has('clipboard')
         if has('unnamedplus')  " When possible use + register for copy-paste
             set clipboard=unnamed,unnamedplus
         else             " On mac and Windows, use * register for copy-paste

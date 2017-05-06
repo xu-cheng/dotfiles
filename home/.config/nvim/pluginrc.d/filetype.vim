@@ -2,7 +2,10 @@
 autocmd BufWritePost * if &filetype == "" | filetype detect | endif
 " Automatically give executable permission to new scripts starting with a shebang (#!)
 autocmd BufWritePre  * if !filereadable(expand('<afile>:p')) | let b:is_new = 1 | endif
-autocmd BufWritePost * if getline(1) =~ "^#!.*" && get(b:, 'is_new', 0) | :call system('chmod a+x "' . expand('<afile>:p') . '"') | endif
+autocmd BufWritePost *
+    \ if !has('win32') && getline(1) =~ "^#!.*" && get(b:, 'is_new', 0) |
+    \   :call system('chmod a+x "' . expand('<afile>:p') . '"') |
+    \ endif
 
 " 2 space for tab for certain filetypes
 autocmd FileType haskell,puppet,ruby,yml setlocal expandtab shiftwidth=2 softtabstop=2 tabstop=2
