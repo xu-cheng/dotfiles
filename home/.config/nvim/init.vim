@@ -2,6 +2,9 @@
 if has('mac')
     let g:python2_host_prog = '/usr/local/bin/python'
     let g:python3_host_prog = '/usr/local/bin/python3'
+elseif has('win32')
+    let g:python2_host_prog = 'C:\Python27\python'
+    let g:python3_host_prog = 'C:\Python36\python'
 else
     let s:brew_prefix = systemlist('brew --prefix')[0]
     if executable(s:brew_prefix . '/bin/python')
@@ -18,20 +21,26 @@ endif
 let g:python_host_prog = g:python2_host_prog
 
 " Set config/cache/data home
-if empty($XDG_CONFIG_HOME)
-    let g:config_home = $HOME . '/.config/nvim/'
-else
+if has('win32')
+    let g:config_home = $USERPROFILE . '\AppData\Local\nvim\'
+elseif !empty($XDG_CONFIG_HOME)
     let g:config_home = $XDG_CONFIG_HOME . '/nvim/'
-endif
-if empty($XDG_CACHE_HOME)
-    let g:cache_home = $HOME . '/.cache/nvim/'
 else
+    let g:config_home = $HOME . '/.config/nvim/'
+endif
+if has('win32')
+    let g:cache_home = $USERPROFILE . '\AppData\Local\Temp\nvim\'
+elseif !empty($XDG_CACHE_HOME)
     let g:cache_home = $XDG_CACHE_HOME . '/nvim/'
-endif
-if empty($XDG_DATA_HOME)
-    let g:data_home = $HOME . '/.local/share/nvim/'
 else
+    let g:cache_home = $HOME . '/.cache/nvim/'
+endif
+if has('win32')
+    let g:data_home = $USERPROFILE . '\AppData\Local\nvim-data\'
+elseif !empty($XDG_DATA_HOME)
     let g:data_home = $XDG_DATA_HOME . '/nvim/'
+else
+    let g:data_home = $HOME . '/.local/share/nvim/'
 endif
 " Load plugins
 execute 'source' g:config_home . 'plugins.vim'
