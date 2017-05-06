@@ -1,7 +1,6 @@
 " Load vim-plug
 if empty(glob(g:config_home . 'autoload/plug.vim'))
-  execute '!mkdir -p "' . g:config_home . 'autoload"'
-  execute '!curl -fLo "' . g:config_home . 'autoload/plug.vim" '
+  execute '!curl -fLo "' . g:config_home . 'autoload/plug.vim" --create-dirs '
     \ . 'https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
