@@ -1,11 +1,19 @@
 let g:tex_flavor = 'latex'
 " Ref: https://b4winckler.wordpress.com/2010/08/07/using-the-conceal-vim-feature-with-latex/
 let g:tex_conceal = 'adgm'
-let g:vimtex_view_method = 'skim'
 let g:vimtex_quickfix_latexlog = {'default' : 0}
 let g:vimtex_quickfix_open_on_warning = 0
 let g:vimtex_compiler_method = 'latexmk'
 let g:vimtex_compiler_progname = 'nvr'
+if has('mac')
+    let g:vimtex_view_method = 'skim'
+elseif has('win32')
+    let g:vimtex_view_method = 'general'
+    let g:vimtex_view_general_viewer = 'SumatraPDF'
+    let g:vimtex_view_general_options
+        \ = '-reuse-instance -forward-search @tex @line @pdf'
+    let g:vimtex_view_general_options_latexmk = '-reuse-instance'
+endif
 
 " Backward Search
 " set up a `Custom` sync profile in Skim
