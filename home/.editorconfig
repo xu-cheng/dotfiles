@@ -32,3 +32,7 @@ trim_trailing_whitespace = false
 # YAML
 [*.{yaml,yml}]
 indent_size = 2
+
+# Nix
+[*.nix]
+indent_size = 2
