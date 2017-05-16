@@ -65,6 +65,9 @@ clean(HOME/".ssh")
 clean(HOME/".gnupg")
 
 # Post linking
+chmod 0700, HOME/".ssh"
+chmod 0700, HOME/".gnupg"
+
 system "lesskey"
 OMZ_DIR = HOME/".config/zsh/oh-my-zsh"
 unless OMZ_DIR.exist?
