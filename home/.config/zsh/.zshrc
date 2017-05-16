@@ -61,7 +61,7 @@ if (( ${+commands[pyenv]} )); then eval "$(pyenv init - zsh)"; fi
 if (( ${+commands[pyenv-virtualenv-init]} )); then eval "$(pyenv virtualenv-init - zsh)"; fi
 if (( ${+commands[rbenv]} )); then eval "$(rbenv init - zsh)"; fi
 if (( ${+commands[hub]} )); then alias git=hub; fi
-if (( ${+commands[safe-rm]} )); then alias rm='safe-rm' fi
+if (( ${+commands[safe-rm]} )); then alias rm='safe-rm'; fi
 if (( ${+commands[direnv]} )); then
     eval "$(direnv hook zsh)";
     [[ -n "$TMUX" && -f "$PWD/.envrc" ]] && direnv reload
