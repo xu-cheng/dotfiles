@@ -17,4 +17,9 @@ then
     exec "$HOMEBREW_PREFIX/$DIFF_HIGHLIGHT"
 fi
 
+if [[ -x "/run/current-system/sw/share/git/contrib/diff-highlight/diff-highlight" ]]
+then
+    exec "/run/current-system/sw/share/git/contrib/diff-highlight/diff-highlight"
+fi
+
 exec cat
