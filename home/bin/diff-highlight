@@ -2,17 +2,17 @@
 
 DIFF_HIGHLIGHT="share/git-core/contrib/diff-highlight/diff-highlight"
 
-if [ -x "/usr/local/$DIFF_HIGHLIGHT" ]
+if [[ -x "/usr/local/$DIFF_HIGHLIGHT" ]]
 then
     exec "/usr/local/$DIFF_HIGHLIGHT"
 fi
 
-if [ -z "$HOMEBREW_PREFIX" ] && which brew > /dev/null
+if [[ -z "$HOMEBREW_PREFIX" ]] && which brew >/dev/null 2>&1
 then
     HOMEBREW_PREFIX="$(brew --prefix)"
 fi
 
-if [ -x "$HOMEBREW_PREFIX/$DIFF_HIGHLIGHT" ]
+if [[ -x "$HOMEBREW_PREFIX/$DIFF_HIGHLIGHT" ]]
 then
     exec "$HOMEBREW_PREFIX/$DIFF_HIGHLIGHT"
 fi
