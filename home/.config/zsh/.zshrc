@@ -12,13 +12,15 @@ plugins=(brew-cask colored-man-pages docker docker-compose extract git \
          xdg-base-dir)
 
 export DOTFILES_HOME="${$(readlink "$HOME/.zshenv")%/*}"
-export HOMEBREW_NO_ANALYTICS=true # set before any brew invoking.
 
-if [[ `uname` == "Darwin" ]]; then # OS X
+if [[ `uname` == "Darwin" ]]; then # macOS
     export HOMEBREW_PREFIX="/usr/local"
     export HOMEBREW_REPOSITORY="/usr/local/Homebrew"
     export PATH="$DOTFILES_HOME/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin:/Library/TeX/texbin"
-else # Linux
+elif (( ${+commands[nix-env]} )); then # Linux (NixOS)
+    export NIX_PREFIX="/run/current-system/sw"
+    export PATH="$DOTFILES_HOME/bin:$PATH"
+else # Linux (Linuxbrew)
     [[ -n "$HOMEBREW_PREFIX" ]] || export HOMEBREW_PREFIX="$HOME/.linuxbrew"
     export HOMEBREW_REPOSITORY="$HOMEBREW_PREFIX"
     if [[ -n "$CSR" ]]; then
@@ -27,51 +29,68 @@ else # Linux
     fi
 fi
 
-export EDITOR="nvim"
-export NVIM_LISTEN_ADDRESS="/tmp/nvimsocket"
-export PYENV_ROOT="$HOMEBREW_PREFIX/var/pyenv"
+if [[ -n "$HOMEBREW_PREFIX" ]]; then
+    export HOMEBREW_DEVELOPER=true
+    export HOMEBREW_NO_ANALYTICS=true
+    export HOMEBREW_NO_AUTO_UPDATE=true
+    export HOMEBREW_SANDBOX=true
+
+    export PYENV_ROOT="$HOMEBREW_PREFIX/var/pyenv"
+    export RBENV_ROOT="$HOMEBREW_PREFIX/var/rbenv"
+
+    BREW_COMMAND_NOT_FOUND_PATH="$HOMEBREW_REPOSITORY/Library/Taps/homebrew/homebrew-command-not-found/handler.sh"
+    [[ -s "$BREW_COMMAND_NOT_FOUND_PATH" ]] && . "$BREW_COMMAND_NOT_FOUND_PATH"
+
+    AUTOJUMP_PATH="$HOMEBREW_PREFIX/share/autojump/autojump.zsh"
+    ZSH_HIGHLIGHT_PATH="$HOMEBREW_PREFIX/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
+    FZF_SHELL_PATH="$HOMEBREW_PREFIX/opt/fzf/shell"
+
+    [[ -d "$HOMEBREW_PREFIX/opt/llvm" ]] && alias lldb="$HOMEBREW_PREFIX/opt/llvm/bin/lldb"
+    alias bubu='brew update && brew upgrade --cleanup'
+elif [[ -n "$NIX_PREFIX" ]]; then
+    AUTOJUMP_PATH="$NIX_PREFIX/share/autojump/autojump.zsh"
+    ZSH_HIGHLIGHT_PATH="$NIX_PREFIX/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
+    FZF_SHELL_PATH="$NIX_PREFIX/share/fzf" # require https://github.com/NixOS/nixpkgs/pull/25080
+fi
+
 export PYENV_VIRTUALENVWRAPPER_PREFER_PYVENV=true
 export PYENV_VIRTUALENV_DISABLE_PROMPT=true
-export RBENV_ROOT="$HOMEBREW_PREFIX/var/rbenv"
 export CHEATCOLORS=true
-export HOMEBREW_SANDBOX=true
-export HOMEBREW_DEVELOPER=true
-export HOMEBREW_NO_AUTO_UPDATE=true
 
-BREW_COMMAND_NOT_FOUND_INIT="$HOMEBREW_REPOSITORY/Library/Taps/homebrew/homebrew-command-not-found/handler.sh"
-[[ -s "$BREW_COMMAND_NOT_FOUND_INIT" ]] && . "$BREW_COMMAND_NOT_FOUND_INIT"
 if (( ${+commands[pyenv]} )); then eval "$(pyenv init - zsh)"; fi
 if (( ${+commands[pyenv-virtualenv-init]} )); then eval "$(pyenv virtualenv-init - zsh)"; fi
 if (( ${+commands[rbenv]} )); then eval "$(rbenv init - zsh)"; fi
 if (( ${+commands[hub]} )); then alias git=hub; fi
+if (( ${+commands[safe-rm]} )); then alias rm='safe-rm' fi
 if (( ${+commands[direnv]} )); then
     eval "$(direnv hook zsh)";
     [[ -n "$TMUX" && -f "$PWD/.envrc" ]] && direnv reload
 fi
-[[ -s "$HOMEBREW_PREFIX/etc/profile.d/autojump.sh" ]] && . "$HOMEBREW_PREFIX/etc/profile.d/autojump.sh"
+if (( ${+commands[nvim]} )); then
+    export EDITOR="nvim"
+    export NVIM_LISTEN_ADDRESS="/tmp/nvimsocket"
+    alias vim='nvim -p'
+    alias vimdiff='nvim -d'
+fi
+[[ -s "$AUTOJUMP_PATH" ]] && . "$AUTOJUMP_PATH"
 ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets)
-ZSH_HIGHLIGHT_PATH="$HOMEBREW_PREFIX/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
 [[ -s "$ZSH_HIGHLIGHT_PATH" ]] && . "$ZSH_HIGHLIGHT_PATH"
 
 . "$ZSH/oh-my-zsh.sh"
 
-if [[ -d "$HOMEBREW_PREFIX/opt/fzf" ]]; then
-    [[ $- =~ i ]] && . "$HOMEBREW_PREFIX/opt/fzf/shell/completion.zsh" 2> /dev/null
-    . "$HOMEBREW_PREFIX/opt/fzf/shell/key-bindings.zsh"
+if [[ -d "$FZF_SHELL_PATH" ]]; then
+    [[ $- =~ i ]] && . "$FZF_SHELL_PATH/completion.zsh" 2> /dev/null
+    . "$FZF_SHELL_PATH/key-bindings.zsh"
 fi
 
-alias bubu='brew update && brew upgrade --cleanup'
 alias gpg='gpg2'
-alias lldb="$HOMEBREW_PREFIX/opt/llvm/bin/lldb"
 alias rake='noglob rake'
-alias rm='safe-rm'
 alias ta='tmux attach -t'
 alias tl='tmux list-sessions'
 alias ts='tmux new-session -s'
 alias tkss='tmux kill-session -t'
 alias tksv='tmux kill-server'
-alias vim='nvim -p'
-alias vimdiff='nvim -d'
+
 if (( ! ${+commands[sha1sum]} )); then alias sha1sum='gsha1sum'; fi
 if (( ! ${+commands[sha256sum]} )); then alias sha256sum='gsha256sum'; fi
 if (( ! ${+commands[md5sum]} )); then alias md5sum='gmd5sum'; fi
