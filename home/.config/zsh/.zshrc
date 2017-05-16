@@ -13,7 +13,7 @@ plugins=(brew-cask colored-man-pages docker docker-compose extract git \
 
 export DOTFILES_HOME="${$(readlink "$HOME/.zshenv")%/*}"
 
-if [[ `uname` == "Darwin" ]]; then # macOS
+if [[ "$OSTYPE" == darwin* ]]; then # macOS
     export HOMEBREW_PREFIX="/usr/local"
     export HOMEBREW_REPOSITORY="/usr/local/Homebrew"
     export PATH="$DOTFILES_HOME/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin:/Library/TeX/texbin"
