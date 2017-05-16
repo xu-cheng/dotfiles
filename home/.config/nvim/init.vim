@@ -11,19 +11,11 @@ else
         let g:python2_host_prog = s:brew_prefix . '/bin/python'
     elseif executable('/usr/bin/python')
         let g:python2_host_prog = '/usr/bin/python'
-    elseif executable('/run/current-system/sw/bin/python')
-        let g:python2_host_prog = '/run/current-system/sw/bin/python'
-    else
-        let g:python2_host_prog = 'python'
     end
     if executable(s:brew_prefix . '/bin/python3')
         let g:python3_host_prog = s:brew_prefix . '/bin/python3'
     elseif executable('/usr/bin/python3')
         let g:python3_host_prog = '/usr/bin/python3'
-    elseif executable('/run/current-system/sw/bin/python3')
-        let g:python3_host_prog = '/run/current-system/sw/bin/python3'
-    else
-        let g:python3_host_prog = 'python3'
     end
 endif
 let g:python_host_prog = g:python2_host_prog
