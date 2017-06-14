@@ -21,6 +21,13 @@ else
     let g:data_home = $HOME . '/.local/share/nvim/'
 endif
 
+function! s:brew_prefix()
+    if !exists('s:brew_prefix')
+        let s:brew_prefix = systemlist('brew --prefix')[0]
+    endif
+    return s:brew_prefix
+endfunction
+
 " Set python interpreter path
 if !exists('g:python_host_prog')
     if has('mac')
@@ -28,9 +35,8 @@ if !exists('g:python_host_prog')
     elseif has('win32')
         let g:python_host_prog = 'C:\Python27\python'
     else
-        if !exists('s:brew_prefix') | let s:brew_prefix = systemlist('brew --prefix')[0] | endif
-        if executable(s:brew_prefix . '/bin/python')
-            let g:python_host_prog = s:brew_prefix . '/bin/python'
+        if executable(s:brew_prefix() . '/bin/python')
+            let g:python_host_prog = s:brew_prefix() . '/bin/python'
         else
             let g:python_host_prog = '/usr/bin/python'
         endif
@@ -43,9 +49,8 @@ if !exists('g:python3_host_prog')
     elseif has('win32')
         let g:python3_host_prog = 'C:\Python36\python'
     else
-        if !exists('s:brew_prefix') | let s:brew_prefix = systemlist('brew --prefix')[0] | endif
-        if executable(s:brew_prefix . '/bin/python3')
-            let g:python3_host_prog = s:brew_prefix . '/bin/python3'
+        if executable(s:brew_prefix() . '/bin/python3')
+            let g:python3_host_prog = s:brew_prefix() . '/bin/python3'
         else
             let g:python3_host_prog = '/usr/bin/python3'
         endif
