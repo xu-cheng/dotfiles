@@ -1,18 +1,18 @@
-" Set config/cache/data home
+" Set config/data/cache home
 let g:config_home = expand('<sfile>:p:h')
 if has('win32')
-    let g:cache_home = $USERPROFILE . '\AppData\Local\Temp\nvim\'
-elseif !empty($XDG_CACHE_HOME)
-    let g:cache_home = $XDG_CACHE_HOME . '/nvim/'
+    let g:data_home = $USERPROFILE . '\AppData\Local\nvim-data'
+elseif exists('$XDG_DATA_HOME')
+    let g:data_home = $XDG_DATA_HOME . '/nvim'
 else
-    let g:cache_home = $HOME . '/.cache/nvim/'
+    let g:data_home = $HOME . '/.local/share/nvim'
 endif
 if has('win32')
-    let g:data_home = $USERPROFILE . '\AppData\Local\nvim-data\'
-elseif !empty($XDG_DATA_HOME)
-    let g:data_home = $XDG_DATA_HOME . '/nvim/'
+    let g:cache_home = $USERPROFILE . '\AppData\Local\Temp\nvim'
+elseif exists('$XDG_CACHE_HOME')
+    let g:cache_home = $XDG_CACHE_HOME . '/nvim'
 else
-    let g:data_home = $HOME . '/.local/share/nvim/'
+    let g:cache_home = $HOME . '/.cache/nvim'
 endif
 
 " Set python interpreter path

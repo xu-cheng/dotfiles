@@ -135,7 +135,7 @@
             let dir_list['undo'] = 'undodir'
         endif
         for [dirname, settingname] in items(dir_list)
-            let directory = g:cache_home . dirname . '/'
+            let directory = g:cache_home . '/' . dirname . '/'
             if !isdirectory(directory) && exists('*mkdir')
                 call mkdir(directory)
             endif
