@@ -1,4 +1,4 @@
-if !has('mac')
+if !executable('lldb')
     finish
 endif
 

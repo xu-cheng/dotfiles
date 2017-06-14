@@ -88,7 +88,9 @@ Plug 'lyuts/vim-rtags'
 
 " Build & Debug
 Plug 'tpope/vim-dispatch'
-Plug 'critiqjo/lldb.nvim'
+if executable('lldb')
+    Plug 'critiqjo/lldb.nvim'
+endif
 
 " Color Scheme
 Plug 'junegunn/seoul256.vim'
