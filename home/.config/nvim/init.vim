@@ -15,6 +15,7 @@ else
     let g:data_home = $HOME . '/.local/share/nvim/'
 endif
 
+" Set python interpreter path
 function! s:brew_prefix()
     if !exists('s:brew_prefix')
         let s:brew_prefix = systemlist('brew --prefix')[0]
@@ -22,8 +23,6 @@ function! s:brew_prefix()
     return s:brew_prefix
 endfunction
 
-
-" Set python interpreter path
 if !exists('g:python_host_prog')
     if has('mac')
         let g:python_host_prog = '/usr/local/bin/python'
