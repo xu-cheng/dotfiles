@@ -1,28 +1,3 @@
-" Set python interpreter path before every other thing
-if has('mac')
-    let g:python_host_prog = '/usr/local/bin/python'
-    let g:python3_host_prog = '/usr/local/bin/python3'
-elseif has('win32')
-    let g:python_host_prog = 'C:\Python27\python'
-    let g:python3_host_prog = 'C:\Python36\python'
-else
-    let s:brew_prefix = systemlist('brew --prefix')[0]
-    if !exists("g:python_host_prog")
-        if executable(s:brew_prefix . '/bin/python')
-            let g:python_host_prog = s:brew_prefix . '/bin/python'
-        else
-            let g:python_host_prog = '/usr/bin/python'
-        end
-    end
-    if !exists("g:python3_host_prog")
-        if executable(s:brew_prefix . '/bin/python3')
-            let g:python3_host_prog = s:brew_prefix . '/bin/python3'
-        else
-            let g:python3_host_prog = '/usr/bin/python3'
-        end
-    end
-endif
-
 " Set config/cache/data home
 if has('win32')
     let g:config_home = $USERPROFILE . '\AppData\Local\nvim\'
@@ -45,6 +20,38 @@ elseif !empty($XDG_DATA_HOME)
 else
     let g:data_home = $HOME . '/.local/share/nvim/'
 endif
+
+" Set python interpreter path
+if !exists('g:python_host_prog')
+    if has('mac')
+        let g:python_host_prog = '/usr/local/bin/python'
+    elseif has('win32')
+        let g:python_host_prog = 'C:\Python27\python'
+    else
+        if !exists('s:brew_prefix') | let s:brew_prefix = systemlist('brew --prefix')[0] | endif
+        if executable(s:brew_prefix . '/bin/python')
+            let g:python_host_prog = s:brew_prefix . '/bin/python'
+        else
+            let g:python_host_prog = '/usr/bin/python'
+        endif
+    endif
+endif
+
+if !exists('g:python3_host_prog')
+    if has('mac')
+        let g:python3_host_prog = '/usr/local/bin/python3'
+    elseif has('win32')
+        let g:python3_host_prog = 'C:\Python36\python'
+    else
+        if !exists('s:brew_prefix') | let s:brew_prefix = systemlist('brew --prefix')[0] | endif
+        if executable(s:brew_prefix . '/bin/python3')
+            let g:python3_host_prog = s:brew_prefix . '/bin/python3'
+        else
+            let g:python3_host_prog = '/usr/bin/python3'
+        endif
+    endif
+endif
+
 " Load plugins
 execute 'source' fnameescape(g:config_home . 'plugins.vim')
 " Load basic settings
