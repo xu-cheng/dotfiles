@@ -61,7 +61,7 @@ class Reporter
 
     on servers do |host|
       begin
-        Timeout::timeout(2) do
+        Timeout::timeout(5) do
           report = JSON.load(capture(:"/usr/bin/ruby", "-e", SCRIPT))
           report["host"] = host.hostname.sub(".comp.hkbu.edu.hk", "")
           reports << report
