@@ -1,6 +1,6 @@
 #!/usr/bin/env ruby
 
-VERSION = "1.4"
+VERSION = "1.5"
 
 def error(msg)
   $stderr.puts "  #{"\033[31m" if $stderr.tty?}Error#{"\033[0m" if $stderr.tty?} #{msg}"
@@ -31,9 +31,13 @@ end
 
 require "json"
 require "shellwords"
+require "timeout"
 
 SSHKit::Backend::Netssh.configure do |ssh|
-  ssh.ssh_options = { auth_methods: %w(publickey) }
+  ssh.ssh_options = {
+    auth_methods: %w(publickey),
+    forward_agent: false,
+  }
 end
 
 # drop remote ssh-agent if we have already logged in csr
@@ -57,13 +61,17 @@ class Reporter
 
     on servers do |host|
       begin
-        report = JSON.load(capture(:"/usr/bin/ruby", "-e", SCRIPT))
-        report["host"] = host.hostname.sub(".comp.hkbu.edu.hk", "")
-        reports << report
-      rescue Net::SSH::AuthenticationFailed
+        Timeout::timeout(2) do
+          report = JSON.load(capture(:"/usr/bin/ruby", "-e", SCRIPT))
+          report["host"] = host.hostname.sub(".comp.hkbu.edu.hk", "")
+          reports << report
+        end
+      rescue Net::SSH::AuthenticationFailed, Net::SSH::Proxy::ConnectError
         warn "Failed to login #{host.hostname}."
       rescue SSHKit::Runner::ExecuteError, SSHKit::Command::Failed
         warn "Failed to get report from #{host.hostname}."
+      rescue Timeout::Error
+        warn "Failed to get report from #{host.hostname} (timeout)."
       end
     end
 
@@ -255,3 +263,4 @@ EOS
   reporter.get_report!
   reporter.print(print_opt)
 end
+
