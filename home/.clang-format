@@ -5,7 +5,6 @@ BasedOnStyle: Google
 AccessModifierOffset: '-4'
 AllowShortCaseLabelsOnASingleLine: 'true'
 BreakBeforeBraces: Linux
-ConstructorInitializerAllOnOneLineOrOnePerLine: 'false'
 IndentWidth: '4'
 NamespaceIndentation: All
 TabWidth: '4'
