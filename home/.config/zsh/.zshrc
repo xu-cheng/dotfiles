@@ -17,16 +17,11 @@ if [[ "$OSTYPE" == darwin* ]]; then # macOS
     export HOMEBREW_PREFIX="/usr/local"
     export HOMEBREW_REPOSITORY="/usr/local/Homebrew"
     export PATH="$DOTFILES_HOME/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin:/Library/TeX/texbin"
-elif (( ${+commands[nix-env]} )); then # Linux (NixOS)
-    export NIX_PREFIX="/run/current-system/sw"
-    export PATH="$DOTFILES_HOME/bin:$PATH"
-else # Linux (Linuxbrew)
-    [[ -n "$HOMEBREW_PREFIX" ]] || export HOMEBREW_PREFIX="$HOME/.linuxbrew"
+elif [[ -n "$CSR" ]] then # Linux on CSR
+    export HOMEBREW_PREFIX="$HOME/usr"
     export HOMEBREW_REPOSITORY="$HOMEBREW_PREFIX"
-    if [[ -n "$CSR" ]]; then
-        # do not load ssh-gpg-agent on CSR
-        plugins[${plugins[(i)ssh-gpg-agent]}]=()
-    fi
+    # do not load ssh-gpg-agent on CSR
+    plugins[${plugins[(i)ssh-gpg-agent]}]=()
 fi
 
 if [[ -n "$HOMEBREW_PREFIX" ]]; then
@@ -47,10 +42,6 @@ if [[ -n "$HOMEBREW_PREFIX" ]]; then
 
     [[ -d "$HOMEBREW_PREFIX/opt/llvm" ]] && alias lldb="$HOMEBREW_PREFIX/opt/llvm/bin/lldb"
     alias bubu='brew update && brew upgrade --cleanup'
-elif [[ -n "$NIX_PREFIX" ]]; then
-    AUTOJUMP_PATH="$NIX_PREFIX/share/autojump/autojump.zsh"
-    ZSH_HIGHLIGHT_PATH="$NIX_PREFIX/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
-    FZF_SHELL_PATH="$NIX_PREFIX/share/fzf" # require https://github.com/NixOS/nixpkgs/pull/25080
 fi
 
 export PYENV_VIRTUALENVWRAPPER_PREFER_PYVENV=true
