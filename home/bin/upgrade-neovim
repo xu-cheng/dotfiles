@@ -2,8 +2,7 @@
 
 trap '{ echo "Quit by Ctrl-C." >&2; exit 130; }' INT
 
-brew update
-brew upgrade neovim/neovim/neovim --fetch-HEAD --cleanup
+brew update && brew upgrade neovim --fetch-HEAD && brew cleanup neovim
 pip2 install --upgrade neovim
 pip3 install --upgrade neovim
 pip3 install --upgrade neovim-remote
