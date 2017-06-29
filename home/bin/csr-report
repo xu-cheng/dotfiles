@@ -1,6 +1,6 @@
 #!/usr/bin/env ruby
 
-VERSION = "1.5"
+VERSION = "1.6"
 
 def error(msg)
   $stderr.puts "  #{"\033[31m" if $stderr.tty?}Error#{"\033[0m" if $stderr.tty?} #{msg}"
@@ -89,6 +89,8 @@ class Reporter
         [record["process_running"], record["process_all"]]
       when "mem"
         [record["mem_used"], record["mem_total"]]
+      when "disk"
+        record["disk"][0...-1].to_i
       when "cpu"
         record["cpufreq"] * record["cpusocket"] * record["cpucore"]
       else
@@ -130,13 +132,14 @@ class Reporter
       "load_10min" => ["LOAD\n(10min)", 10],
       "process" => ["PROCESS", 10],
       "mem" => ["MEM\n(used/total)", 15],
+      "disk" => ["DISK\n(used)", 10],
       "cpu" => ["CPU SPEC", 18],
       "uptime" => ["UPTIME", uptime_width],
       "tmux" => ["TMUX", tmux_width],
     }
 
     width = `/usr/bin/tput cols`.strip.to_i rescue 80
-    delete_order = %w[uptime cpu process tmux users mem load_10min load_5min]
+    delete_order = %w[uptime cpu disk process tmux users mem load_10min load_5min]
     cols.delete "tmux" unless sorted_reports.any? { |record| record["tmux_running"] }
     while width < cols.values.map(&:last).reduce(&:+) && !delete_order.empty?
       cols.delete(delete_order.shift)
@@ -173,6 +176,7 @@ class Reporter
     mem = `/usr/bin/free -g`.match(/^Mem: +(\d+) +(\d+)/)
     mem_total = mem[1].to_i
     mem_used = mem[2].to_i
+    disk = `/bin/df -h /`[/\d+%/]
     tmux_bin = %W[
       #{ENV["HOME"]}/usr/bin/tmux
       #{ENV["HOME"]}/.linuxbrew/bin/tmux
@@ -201,6 +205,7 @@ class Reporter
       "mem_total": #{mem_total},
       "mem_used": #{mem_used},
       "mem": "#{"%02i" % mem_used}/#{mem_total} GB",
+      "disk": "#{disk}",
       "cpufreq": #{cpufreq[0..-4].to_f},
       "cpusocket": #{cpusocket},
       "cpucore": #{cpucore},
@@ -227,7 +232,8 @@ Example:
   csr-report csr40-csr50   # report csr40 to csr50
   csr-report --sort-by=mem # sort report by memory
 
-Accepted sort keys: host,users,load_1min,load_5min,load_10min,process,mem,cpu,uptime,tmux
+Accepted sort keys:
+  host,users,load_1min,load_5min,load_10min,process,mem,disk,cpu,uptime,tmux
 EOS
     opts.version = VERSION
 
