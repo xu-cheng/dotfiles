@@ -39,8 +39,7 @@ run-shell "$HOME/.config/tmux/plugins/tpm/tpm"
 set-option -g mouse on
 
 # load tmuxline
-TMUXLINE="$HOME/.config/tmux/tmuxline"
-if-shell "test -f $TMUXLINE" "source-file $TMUXLINE"
+source-file "$HOME/.config/tmux/tmuxline.tmux"
 
 # visual notification of activity in other windows
 set-option -g visual-activity on
