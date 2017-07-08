@@ -9,7 +9,6 @@ set-environment -g TMUX_PLUGIN_MANAGER_PATH "$HOME/.config/tmux/plugins"
 set-option -g @tpm_plugins '       \
   tmux-plugins/tpm                 \
   tmux-plugins/tmux-continuum      \
-  tmux-plugins/tmux-copycat        \
   tmux-plugins/tmux-fpp            \
   tmux-plugins/tmux-logging        \
   tmux-plugins/tmux-open           \
@@ -20,6 +19,8 @@ set-option -g @tpm_plugins '       \
   tmux-plugins/tmux-sidebar        \
   tmux-plugins/tmux-yank           \
 '
+# disabled plugins:
+# tmux-plugins/tmux-copycat (https://github.com/tmux-plugins/tmux-copycat/issues/118)
 
 # resturrect settings
 set-option -g @resurrect-processes 'ssh'
