@@ -25,14 +25,14 @@ endfunction
 
 if !exists('g:python_host_prog')
     if has('mac')
-        let g:python_host_prog = '/usr/local/bin/python'
+        let g:python_host_prog = '/usr/local/bin/python2'
     elseif has('win32')
         let g:python_host_prog = 'C:\Python27\python'
     else
-        if executable(s:brew_prefix() . '/bin/python')
-            let g:python_host_prog = s:brew_prefix() . '/bin/python'
+        if executable(s:brew_prefix() . '/bin/python2')
+            let g:python_host_prog = s:brew_prefix() . '/bin/python2'
         else
-            let g:python_host_prog = '/usr/bin/python'
+            let g:python_host_prog = '/usr/bin/python2'
         endif
     endif
 endif
