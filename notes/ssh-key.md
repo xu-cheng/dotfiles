@@ -9,6 +9,9 @@ $ ssh-keygen -t rsa -b 4096 -f ~/.ssh/id_rsa -C "your_email@youremail.com"
 $ ssh-keygen -t ed25519 -o -a 100 -f ~/.ssh/id_ed25519 -C "your_email@youremail.com"
 ```
 
+* `-o`: Use OpenSSH key format rather than the older PEM format.
+* `-a <N>`: KDF rounds. (Require new format)
+
 ## Add key to ssh-agent
 
 ```bash
