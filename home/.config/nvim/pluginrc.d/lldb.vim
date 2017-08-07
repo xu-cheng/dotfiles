@@ -8,7 +8,7 @@ endif
 "   /usr/local/opt/llvm/lib/python2.7/site-packages/lldb
 
 call remote#host#RegisterPlugin(
-    \ 'python',
+    \ 'python2',
     \ g:config_home . '/plugged/lldb.nvim/rplugin/python/lldb_nvim',
     \ [ {
     \     'sync': v:false,
