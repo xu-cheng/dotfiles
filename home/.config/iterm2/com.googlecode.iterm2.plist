@@ -339,9 +339,11 @@
 	<key>NSWindow Frame SUUpdateAlert</key>
 	<string>530 511 620 392 0 0 1680 1050 </string>
 	<key>NSWindow Frame SharedPreferences</key>
-	<string>397 319 918 507 0 0 1680 1050 </string>
+	<string>397 319 796 473 0 0 1680 1050 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>305 268 710 645 0 0 1680 1027 </string>
+	<string>305 211 810 692 0 0 1680 1027 </string>
+	<key>NSWindow Frame iTerm Window 1</key>
+	<string>212 101 810 692 0 0 1680 1027 </string>
 	<key>New Bookmarks</key>
 	<array>
 		<dict>
@@ -2009,7 +2011,7 @@
 	<key>WindowStyle</key>
 	<integer>0</integer>
 	<key>WordCharacters</key>
-	<string>≥ </string>
+	<string>/-+\~_.</string>
 	<key>findIgnoreCase_iTerm</key>
 	<true/>
 	<key>findRegex_iTerm</key>
