@@ -6,7 +6,7 @@ require "open3"
 require "shellwords"
 
 def gpg21?
-  `gpg2 --version`[/\d\.\d/] == "2.1"
+  `gpg --version`[/\d\.\d/] == "2.1"
 rescue
   false
 end
