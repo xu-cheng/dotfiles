@@ -7,7 +7,7 @@ _plugin__ssh_env="$HOME/.ssh/ssh-agent-$HOST.env"
 
 function _plugin__gpg21()
 {
-    [[ "$(/usr/bin/env gpg2 --version | head -n 1)" = *"2.1"* ]]
+    [[ "$(/usr/bin/env gpg --version 2>/dev/null | head -n 1)" = *"2.1"* ]]
 }
 
 function _plugin__ssh_agent_running()

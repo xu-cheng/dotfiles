@@ -74,7 +74,6 @@ if [[ -d "$FZF_SHELL_PATH" ]]; then
     . "$FZF_SHELL_PATH/key-bindings.zsh"
 fi
 
-alias gpg='gpg2'
 alias rake='noglob rake'
 alias ta='tmux attach -t'
 alias tl='tmux list-sessions'
