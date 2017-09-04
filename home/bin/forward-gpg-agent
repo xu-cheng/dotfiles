@@ -5,14 +5,7 @@
 require "open3"
 require "shellwords"
 
-def gpg21?
-  `gpg --version`[/\d\.\d/] == "2.1"
-rescue
-  false
-end
-
 def gpg_agent_running?
-  return false unless gpg21?
   ! `gpg-connect-agent --no-autostart --quiet /bye 2>&1`.include? "no gpg-agent running"
 rescue
   false

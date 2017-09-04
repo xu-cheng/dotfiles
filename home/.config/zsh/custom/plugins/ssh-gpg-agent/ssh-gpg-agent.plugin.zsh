@@ -5,11 +5,6 @@
 [[ -n "$HOST" ]] || HOST="$(hostname)"
 _plugin__ssh_env="$HOME/.ssh/ssh-agent-$HOST.env"
 
-function _plugin__gpg21()
-{
-    [[ "$(/usr/bin/env gpg --version 2>/dev/null | head -n 1)" = *"2.1"* ]]
-}
-
 function _plugin__ssh_agent_running()
 {
     # ssh-add -l exit code: 0 agent running, 1 agent running without key, 2 not running
@@ -61,7 +56,7 @@ if _plugin__mac_ssh_agent_running_without_key; then
     (/usr/bin/env ssh-add -A &>/dev/null &)
 fi
 
-if _plugin__gpg21 && ! _plugin__gpg_agent_running; then
+if ! _plugin__gpg_agent_running; then
     _plugin__start_gpg_agent
 fi
 
@@ -69,7 +64,6 @@ GPG_TTY="$(tty)"
 export GPG_TTY
 
 # cleanup
-unset -f _plugin__gpg21
 unset -f _plugin__ssh_agent_running
 unset -f _plugin__gpg_agent_running
 unset -f _plugin__start_ssh_agent
