@@ -1,3 +1,0 @@
-# vim: set ft=crontab:
-
-0 18 * * * export DIR="$HOME/Pictures/Wallpaper Wizard"; [[ ! -d "$DIR" ]] || find "$DIR" -name "*.jpg" -mtime +1d -delete
