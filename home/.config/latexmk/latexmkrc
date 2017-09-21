@@ -6,8 +6,8 @@ $pdflatex = 'lualatex --shell-escape --synctex=1 %O %S';
 $pdf_mode = 1;
 # Try 5 times at maximum then give up
 $max_repeat = 5;
-# Use Skim.app to preview generated PDFs
-$pdf_previewer = 'open -a Skim';
+# Use PDF Expert.app to preview generated PDFs
+$pdf_previewer = 'open -a "PDF Expert"';
 # File extensions to remove when cleaning
 $clean_ext = 'bbl fdb_latexmk fls nav pdfsync pyg pytxcode run.xml ' .
              'snm synctex.gz thm upa vrb _minted-%R pythontex-files-%R ' .
