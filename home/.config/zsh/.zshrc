@@ -22,6 +22,8 @@ elif [[ -n "$CSR" ]] then # Linux on CSR
     export HOMEBREW_REPOSITORY="$HOMEBREW_PREFIX"
     # do not load ssh-gpg-agent on CSR
     plugins[${plugins[(i)ssh-gpg-agent]}]=()
+else # Linux
+    export PATH="$DOTFILES_HOME/bin:$PATH"
 fi
 
 if [[ -n "$HOMEBREW_PREFIX" ]]; then
