@@ -44,6 +44,9 @@ if [[ -n "$HOMEBREW_PREFIX" ]]; then
 
     [[ -d "$HOMEBREW_PREFIX/opt/llvm" ]] && alias lldb="$HOMEBREW_PREFIX/opt/llvm/bin/lldb"
     alias bubu='brew update && brew upgrade --cleanup'
+else
+    AUTOJUMP_PATH="/usr/share/autojump/autojump.zsh"
+    ZSH_HIGHLIGHT_PATH="/usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
 fi
 
 export PYENV_VIRTUALENVWRAPPER_PREFER_PYVENV=true
