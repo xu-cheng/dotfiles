@@ -45,6 +45,10 @@ def csr?
   HOSTNAME =~ /.*\.comp\.hkbu\.edu\.hk/ || HOSTNAME =~ /^csr\d+/
 end
 
+def mac?
+  `uname`.chomp == "Darwin"
+end
+
 # Link files
 link_files(DOTFILES_HOME, HOME)
 link_files(DOTFILES_HOME/".config", HOME/".config", skip_directory: false)
@@ -52,10 +56,14 @@ link_files(DOTFILES_HOME/".config", HOME/".config", skip_directory: false)
 if csr?
   link_files(DOTFILES_HOME_CSR, HOME)
   link_files(DOTFILES_HOME_CSR/".ssh", HOME/".ssh")
-  link_files(DOTFILES_HOME_CSR/".gnupg", HOME/".gnupg")
 else
   link_files(DOTFILES_HOME/".ssh", HOME/".ssh")
+end
+
+if mac?
   link_files(DOTFILES_HOME/".gnupg", HOME/".gnupg")
+else
+  ln_sf DOTFILES_HOME/".gnupg/gpg.conf", HOME/".gnupg"
 end
 
 # Cleanup broken symlinks
