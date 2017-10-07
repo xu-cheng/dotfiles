@@ -8,12 +8,10 @@
 set-environment -g TMUX_PLUGIN_MANAGER_PATH "$HOME/.config/tmux/plugins"
 set-option -g @tpm_plugins '       \
   tmux-plugins/tpm                 \
-  tmux-plugins/tmux-continuum      \
   tmux-plugins/tmux-fpp            \
   tmux-plugins/tmux-logging        \
   tmux-plugins/tmux-open           \
   tmux-plugins/tmux-pain-control   \
-  tmux-plugins/tmux-resurrect      \
   tmux-plugins/tmux-sensible       \
   tmux-plugins/tmux-sessionist     \
   tmux-plugins/tmux-yank           \
@@ -21,16 +19,7 @@ set-option -g @tpm_plugins '       \
 # disabled plugins:
 # tmux-plugins/tmux-copycat (https://github.com/tmux-plugins/tmux-copycat/issues/118)
 
-# resturrect settings
-set-option -g @resurrect-processes 'ssh'
-set-option -g @resurrect-strategy-nvim 'session'
-set-option -g @resurrect-dir "$HOME/.local/share/tmux/resurrect"
-
-# enable tmux automatic start
-set-option -g @continuum-restore 'on'
-set-option -g @continuum-save-interval '10'
-set-option -g @continuum-boot 'on'
-set-option -g @continuum-boot-options 'iterm'
+if-shell "uname | grep -q Darwin" "source $HOME/.config/tmux/mac.tmux"
 
 # initializes TMUX plugin manager.
 run-shell "$HOME/.config/tmux/plugins/tpm/tpm"
