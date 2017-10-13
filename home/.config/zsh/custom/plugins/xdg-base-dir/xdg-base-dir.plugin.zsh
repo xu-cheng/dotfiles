@@ -1,6 +1,10 @@
 # enforce XDG Base Directory Specification
 # Ref: https://wiki.archlinux.org/index.php/XDG_Base_Directory_support
 
+# bundler
+# https://github.com/bundler/bundler/pull/6024
+export BUNDLE_USER_CACHE="$XDG_CACHE_HOME/bundle"
+
 # cheat
 # https://github.com/chrisallenlane/cheat#setting-a-default_cheat_dir
 export DEFAULT_CHEAT_DIR="$XDG_CONFIG_HOME/cheat"
