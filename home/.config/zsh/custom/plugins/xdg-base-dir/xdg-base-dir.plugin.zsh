@@ -17,6 +17,10 @@ export PERL_CPANM_HOME="$XDG_CACHE_HOME/cpanm"
 # https://github.com/facebook/PathPicker/pull/231
 export FPP_DIR="$XDG_CACHE_HOME/fpp"
 
+# jupyter/ipython
+export JUPYTER_CONFIG_DIR="$XDG_CONFIG_HOME/jupyter"
+export IPYTHONDIR="$XDG_CONFIG_HOME/ipython"
+
 # less
 export LESSKEY="$XDG_CONFIG_HOME/less/less"
 export LESSHISTFILE="$XDG_CACHE_HOME/less/history"
