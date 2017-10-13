@@ -13,6 +13,10 @@ export PERL_CPANM_HOME="$XDG_CACHE_HOME/cpanm"
 # https://github.com/facebook/PathPicker/pull/231
 export FPP_DIR="$XDG_CACHE_HOME/fpp"
 
+# less
+export LESSKEY="$XDG_CONFIG_HOME/less/less"
+export LESSHISTFILE="$XDG_CACHE_HOME/less/history"
+
 # vagrant
 # https://www.vagrantup.com/docs/other/environmental-variables.html
 export VAGRANT_HOME="$XDG_DATA_HOME/vagrant"

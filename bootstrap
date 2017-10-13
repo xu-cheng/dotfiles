@@ -77,7 +77,7 @@ clean(HOME/".gnupg")
 chmod 0700, HOME/".ssh"
 chmod 0700, HOME/".gnupg"
 
-system "lesskey"
+system "lesskey", HOME/".config/less/lesskey"
 OMZ_DIR = HOME/".config/zsh/oh-my-zsh"
 unless OMZ_DIR.exist?
   system "git", "clone", "--depth=1", "https://github.com/robbyrussell/oh-my-zsh", OMZ_DIR
