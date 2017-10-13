@@ -17,6 +17,10 @@ export FPP_DIR="$XDG_CACHE_HOME/fpp"
 export LESSKEY="$XDG_CONFIG_HOME/less/less"
 export LESSHISTFILE="$XDG_CACHE_HOME/less/history"
 
+# pry
+# https://github.com/pry/pry/issues/1316#issuecomment-98436268
+export PRYRC="$XDG_CONFIG_HOME/pry/config"
+
 # vagrant
 # https://www.vagrantup.com/docs/other/environmental-variables.html
 export VAGRANT_HOME="$XDG_DATA_HOME/vagrant"
