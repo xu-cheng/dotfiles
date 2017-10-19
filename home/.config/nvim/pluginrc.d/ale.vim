@@ -9,8 +9,8 @@ endif
 " C/C++ lint
 let g:ycm_error_symbol = g:ale_sign_error
 let g:ycm_warning_symbol = g:ale_sign_warning
-let g:ale_linters.c = []
-let g:ale_linters.cpp = []
+let g:ale_linters.c = ['clang-format']
+let g:ale_linters.cpp = ['clang-format']
 highlight link YcmWarningSign ALEWarningSign
 highlight link YcmErrorSign ALEErrorSign
 highlight link YcmWarningLine ALEWarningLine
