@@ -19,4 +19,4 @@ highlight link YcmErrorSection ALEError
 highlight link YcmWarningSection ALEWarning
 
 " LaTeX lint
-let g:ale_linters.tex = ['chktex']
+let g:ale_linters.tex = ['chktex', 'proselint']
