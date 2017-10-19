@@ -17,3 +17,6 @@ highlight link YcmWarningLine ALEWarningLine
 highlight link YcmErrorLine ALEErrorLine
 highlight link YcmErrorSection ALEError
 highlight link YcmWarningSection ALEWarning
+
+" LaTeX lint
+let g:ale_linters.tex = ['chktex']
