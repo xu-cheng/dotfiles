@@ -71,6 +71,7 @@ Plug 'chrisbra/NrrwRgn'
 Plug 'junegunn/vim-easy-align'
 Plug 'junegunn/rainbow_parentheses.vim'
 Plug 'Valloric/MatchTagAlways'
+Plug 'tpope/vim-endwise'
 Plug 'metakirby5/codi.vim'
 
 " Snippets & AutoComplete & Semantic Highlight
