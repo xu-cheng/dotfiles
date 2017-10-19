@@ -116,14 +116,10 @@ Plug 'mattn/calendar-vim'
 Plug 'jceb/vim-orgmode'
 
 " Syntax
+Plug 'sheerun/vim-polyglot'
 Plug 'xu-cheng/brew.vim'
 Plug 'bfontaine/Brewfile.vim'
 Plug 'tmux-plugins/vim-tmux'
-Plug 'aklt/plantuml-syntax'
-Plug 'tpope/vim-liquid'
-Plug 'kchmck/vim-coffee-script'
-Plug 'keith/swift.vim'
-Plug 'LnL7/vim-nix'
 
 " Misc
 Plug 'plasticboy/vim-markdown'
