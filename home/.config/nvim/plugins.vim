@@ -56,7 +56,7 @@ Plug 'rhysd/vim-grammarous'
 Plug 'beloglazov/vim-online-thesaurus'
 
 " General Programming
-Plug 'scrooloose/syntastic'
+Plug 'w0rp/ale'
 Plug 'scrooloose/nerdcommenter'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
