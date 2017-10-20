@@ -58,6 +58,6 @@ execute 'source' fnameescape(g:config_home . '/basic.vim')
 " Load key mapping
 execute 'source' fnameescape(g:config_home . '/keymap.vim')
 " Load plugins settings
-for f in split(glob(g:config_home . '/pluginrc.d/*.vim'), '\n')
-  execute 'source' fnameescape(f)
+for s:f in split(glob(g:config_home . '/pluginrc.d/*.vim'), '\n')
+  execute 'source' fnameescape(s:f)
 endfor

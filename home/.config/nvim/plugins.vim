@@ -76,7 +76,7 @@ Plug 'metakirby5/codi.vim'
 
 " Snippets & AutoComplete & Semantic Highlight
 function! BuildYCM(info)
-  if a:info.status == 'installed' || a:info.force
+  if a:info.status ==# 'installed' || a:info.force
     !python3 ./install.py --clang-completer
   endif
 endfunction
