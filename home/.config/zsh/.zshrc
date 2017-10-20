@@ -77,6 +77,11 @@ ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets)
 if [[ -d "$FZF_SHELL_PATH" ]]; then
     [[ $- =~ i ]] && . "$FZF_SHELL_PATH/completion.zsh" 2> /dev/null
     . "$FZF_SHELL_PATH/key-bindings.zsh"
+    export FZF_DEFAULT_COMMAND='ag --smart-case --hidden --ignore .git -g ""'
+    export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+    bindkey -r '^T'
+    bindkey '^P' fzf-file-widget # use <Ctrl-P> instead of <Ctrl-T>
+    export FZF_TMUX=1
 fi
 
 alias rake='noglob rake'
