@@ -1,9 +1,12 @@
 " Load vim-plug
 if empty(glob(g:config_home . '/autoload/plug.vim'))
-  execute '!curl -fL --create-dirs'
-    \ . ' -o ' . shellescape(g:config_home . '/autoload/plug.vim')
-    \ . ' https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
-  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+    execute '!curl -fL --create-dirs'
+                \ . ' -o ' . shellescape(g:config_home . '/autoload/plug.vim')
+                \ . ' https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+    augroup vim_plug
+        autocmd!
+        autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+    augroup END
 endif
 
 call plug#begin(g:config_home . '/plugged')
@@ -13,7 +16,7 @@ Plug 'MarcWeber/vim-addon-mw-utils'
 Plug 'tomtom/tlib_vim'
 Plug 'mileszs/ack.vim'
 if executable('ag')
-  let g:ackprg = 'ag --nogroup --nocolor --column --smart-case'
+    let g:ackprg = 'ag --nogroup --nocolor --column --smart-case'
 end
 
 " General
@@ -76,9 +79,9 @@ Plug 'metakirby5/codi.vim'
 
 " Snippets & AutoComplete & Semantic Highlight
 function! BuildYCM(info)
-  if a:info.status ==# 'installed' || a:info.force
-    !python3 ./install.py --clang-completer
-  endif
+    if a:info.status ==# 'installed' || a:info.force
+        !python3 ./install.py --clang-completer
+    endif
 endfunction
 Plug 'Valloric/YouCompleteMe', { 'do': function('BuildYCM') }
 Plug 'SirVer/ultisnips'

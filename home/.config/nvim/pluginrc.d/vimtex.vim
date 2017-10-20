@@ -27,7 +27,12 @@ function! TeXWordCount()
     echo system('cd ' . shellescape(l:main_tex_dir) .
                 \ ' && texcount ' . shellescape(l:main_tex_file))
 endfunction
-autocmd FileType tex nnoremap <localleader>lw :call TeXWordCount()<cr>
+
+augroup tex
+    autocmd!
+    autocmd FileType tex nnoremap <localleader>lw :call TeXWordCount()<cr>
+    autocmd FileType tex,rnoweb nnoremap <silent> <leader>tt :VimtexTocToggle<CR>
+augroup END
 
 " Autocomplete
 if !exists('g:ycm_semantic_triggers')
@@ -51,7 +56,4 @@ let g:ycm_semantic_triggers.rnoweb = g:ycm_semantic_triggers.tex
 " Autoformat
 let g:formatdef_latexindent = '"latexindentwrapper"'
 let g:formatters_tex = ['latexindent']
-
-" Table of Content
-autocmd FileType tex,rnoweb nnoremap <silent> <leader>tt :VimtexTocToggle<CR>
 

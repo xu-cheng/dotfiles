@@ -1,17 +1,22 @@
 let g:vim_leader_guide_map = {
-            \   mapleader: {
+            \   g:mapleader: {
             \       'name': '<leader>',
             \       'c': { 'name' : 'Comments' },
             \       'f': { 'name' : 'Fold level/Find' },
             \       'g': { 'name' : 'Git' },
             \       'h': { 'name' : 'Git Gutter' },
             \   },
-            \   maplocalleader: {
+            \   g:maplocalleader: {
             \       'name': '<localleader>',
             \   },
             \ }
-autocmd FileType tex let g:vim_leader_guide_map[maplocalleader].l = { 'name': 'Vimtex' }
-autocmd FileType c,cpp let g:vim_leader_guide_map[maplocalleader].r = { 'name': 'Rtags' }
+
+augroup vim_leader_guide
+    autocmd!
+    autocmd FileType tex let g:vim_leader_guide_map[g:maplocalleader].l = { 'name': 'Vimtex' }
+    autocmd FileType c,cpp let g:vim_leader_guide_map[g:maplocalleader].r = { 'name': 'Rtags' }
+augroup END
+
 call leaderGuide#register_prefix_descriptions('', 'g:vim_leader_guide_map')
 
 nnoremap <silent> <leader> :<C-u>LeaderGuide mapleader<CR>
