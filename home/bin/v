@@ -24,7 +24,7 @@ fzf = ENV["TMUX"] ? "fzf-tmux" : "fzf"
 exec <<-EOS
 _v(){
     local files
-    files=$(echo "#{files.to_a.join("\n")}" | #{fzf} -d -m -q "#{ARGV.shelljoin}" -1) && nvim -p ${files}
+    files=$(echo "#{files.to_a.join("\n")}" | #{fzf} -d -m -q "#{ARGV.shelljoin}" -0 -1) && nvim -p ${files}
 }
 
 _v
