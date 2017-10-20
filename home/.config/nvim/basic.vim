@@ -67,6 +67,7 @@
     set showmode                    " Display the current mode
 
     set cursorline                  " Highlight current line
+    set signcolumn=yes              " Always show signcolumn
 
     highlight clear SignColumn      " SignColumn should match background
     highlight clear LineNr          " Current line number row will have same background color in relative mode
