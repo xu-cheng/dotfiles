@@ -50,12 +50,12 @@
 " Vim UI {
 
     " Color Scheme
-    if systemlist('get-iterm2-background-color')[0] == "light"
+    if systemlist('get-iterm2-background-color')[0] ==# 'light'
         set background=light
     else
         set background=dark
     endif
-    if &background == "dark"
+    if &background ==# 'dark'
         color seoul256
     else
         color solarized
@@ -85,7 +85,7 @@
 
     set backspace=indent,eol,start  " Backspace for dummies
     set linespace=0                 " No extra spaces between rows
-    set nu                          " Line numbers on
+    set number                      " Line numbers on
     set showmatch                   " Show matching brackets/parenthesis
     set incsearch                   " Find as you type search
     set hlsearch                    " Highlight search terms
@@ -127,25 +127,25 @@
             call mkdir(g:cache_home, 'p')
         endif
 
-        let dir_list = {
+        let l:dir_list = {
                     \ 'backup': 'backupdir',
                     \ 'views': 'viewdir',
                     \ 'swap': 'directory' }
 
         if has('persistent_undo')
-            let dir_list['undo'] = 'undodir'
+            let l:dir_list['undo'] = 'undodir'
         endif
-        for [dirname, settingname] in items(dir_list)
-            let directory = g:cache_home . '/' . dirname . '/'
-            if !isdirectory(directory) && exists('*mkdir')
-                call mkdir(directory)
+        for [l:dirname, l:settingname] in items(l:dir_list)
+            let l:directory = g:cache_home . '/' . l:dirname . '/'
+            if !isdirectory(l:directory) && exists('*mkdir')
+                call mkdir(l:directory)
             endif
-            if !isdirectory(directory)
-                echo 'Warning: Unable to create backup directory: ' . directory
-                echo 'Try: mkdir -p ' . directory
+            if !isdirectory(l:directory)
+                echo 'Warning: Unable to create backup directory: ' . l:directory
+                echo 'Try: mkdir -p ' . l:directory
             else
-                let directory = substitute(directory, ' ', '\\\\ ', 'g')
-                exec 'set ' . settingname . '=' . directory
+                let l:directory = substitute(l:directory, ' ', '\\\\ ', 'g')
+                exec 'set ' . l:settingname . '=' . l:directory
             endif
         endfor
     endfunction
@@ -169,7 +169,7 @@
 
 " ToggleBG {
     function! ToggleBG()
-        if &background == "dark"
+        if &background ==# 'dark'
             set background=light
             color solarized
             let g:airline_theme = 'solarized'
