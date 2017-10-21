@@ -183,3 +183,11 @@
 
     command! ToggleBG call ToggleBG()
 " }
+
+" Auto quit {
+" Ref: http://vim.wikia.com/wiki/Automatically_quit_Vim_if_quickfix_window_is_the_last
+    augroup auto_quit_if_quickfix_is_the_last
+        autocmd!
+        autocmd BufEnter * if &buftype ==# 'quickfix' && winbufnr(2) == -1 | quit! | endif
+    augroup END
+" }
