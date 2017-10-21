@@ -11,7 +11,7 @@ elseif has('win32')
     let g:vimtex_view_method = 'general'
     let g:vimtex_view_general_viewer = 'SumatraPDF'
     let g:vimtex_view_general_options
-        \ = '-reuse-instance -forward-search @tex @line @pdf'
+                \ = '-reuse-instance -forward-search @tex @line @pdf'
     let g:vimtex_view_general_options_latexmk = '-reuse-instance'
 endif
 
@@ -30,7 +30,7 @@ endfunction
 
 augroup tex
     autocmd!
-    autocmd FileType tex nnoremap <localleader>lw :call TeXWordCount()<cr>
+    autocmd FileType tex nnoremap <silent> <localleader>lw :call TeXWordCount()<CR>
     autocmd FileType tex,rnoweb nnoremap <silent> <leader>tt :VimtexTocToggle<CR>
 augroup END
 
@@ -38,20 +38,8 @@ augroup END
 if !exists('g:ycm_semantic_triggers')
     let g:ycm_semantic_triggers = {}
 endif
-let g:ycm_semantic_triggers.tex = [
-        \ 're!\\[A-Za-z]*cite[A-Za-z]*(\[[^]]*\]){0,2}{[^}]*',
-        \ 're!\\[A-Za-z]*ref({[^}]*|range{([^,{}]*(}{)?))',
-        \ 're!\\hyperref\[[^]]*',
-        \ 're!\\includegraphics\*?(\[[^]]*\]){0,2}{[^}]*',
-        \ 're!\\(include(only)?|input){[^}]*',
-        \ 're!\\\a*(gls|Gls|GLS)(pl)?\a*(\s*\[[^]]*\]){0,2}\s*\{[^}]*',
-        \ 're!\\includepdf(\s*\[[^]]*\])?\s*\{[^}]*',
-        \ 're!\\includestandalone(\s*\[[^]]*\])?\s*\{[^}]*',
-        \ 're!\\usepackage(\s*\[[^]]*\])?\s*\{[^}]*',
-        \ 're!\\documentclass(\s*\[[^]]*\])?\s*\{[^}]*',
-        \ 're!\\[A-Za-z]*',
-        \ ]
-let g:ycm_semantic_triggers.rnoweb = g:ycm_semantic_triggers.tex
+let g:ycm_semantic_triggers.tex = g:vimtex#re#youcompleteme
+let g:ycm_semantic_triggers.rnoweb = g:vimtex#re#youcompleteme
 
 " Autoformat
 let g:formatdef_latexindent = '"latexindentwrapper"'
