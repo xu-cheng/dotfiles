@@ -102,11 +102,6 @@ Plug 'altercation/vim-colors-solarized'
 
 " LaTeX
 Plug 'lervag/vimtex'
-Plug 'vim-scripts/auctex.vim'
-
-" Ruby
-Plug 'vim-ruby/vim-ruby'
-Plug 'tpope/vim-rails'
 
 " Dash
 Plug 'rizzatti/funcoo.vim'
