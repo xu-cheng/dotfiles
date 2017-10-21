@@ -122,7 +122,7 @@
 " Directories {
 
     " Initialize directories
-    function! InitializeDirectories()
+    function! s:InitializeDirectories()
         if !isdirectory(g:cache_home) && exists('*mkdir')
             call mkdir(g:cache_home, 'p')
         endif
@@ -150,7 +150,7 @@
         endfor
     endfunction
 
-    call InitializeDirectories()
+    call s:InitializeDirectories()
 
 " }
 
