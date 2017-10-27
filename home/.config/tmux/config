@@ -68,3 +68,7 @@ bind-key b list-buffers
 # neovim related
 # Ref: https://github.com/neovim/neovim/wiki/FAQ#cursor-shape-doesnt-change-in-tmux
 set-option -g -a terminal-overrides ',*:Ss=\E[%p1%d q:Se=\E[2 q'
+
+# true color support
+set-option -s default-terminal "screen-256color"
+set-option -g -a terminal-overrides ",*256color*:Tc"
