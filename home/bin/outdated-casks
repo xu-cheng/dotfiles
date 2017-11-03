@@ -1,19 +1,34 @@
 #!/usr/bin/env ruby
 
-require "shellwords"
+require "open3"
+
+$cask_versions = {}
 
 def outdated?(cask)
-  info = `brew cask info #{cask.shellescape}`
+  info, _ = Open3.capture2("brew", "cask", "info", cask)
   latest_version = info.lines.first[/#{Regexp.escape(cask)}: ([^ \n]+)/, 1]
   return false if latest_version == "latest"
-  app = info[/Artifacts\n([^\n]+\.app) \(app\)\n/m, 1]
+  app = info[/Artifacts\n([^\n]+\.app) \(App\)\n/m, 1]
   cask_version = info[%r{/usr/local/Caskroom/#{Regexp.escape(cask)}/([^ ]+) \([^\)]+\)\nFrom:}m, 1]
-  if app
-    app_version = `mdls -name kMDItemVersion /Applications/#{app.shellescape}`[/kMDItemVersion = "([^"]+)"/, 1]
+  if app && File.exist?("/Applications/#{app}")
+    app_version, _ = Open3.capture2("mdls", "-name", "kMDItemVersion", "/Applications/#{app}")
+    app_version = app_version[/kMDItemVersion = "([^"]+)"/, 1]
   end
-  cask_version != latest_version && app_version != latest_version
+  current_version = app_version ? app_version : cask_version
+  $cask_versions[cask] = {
+    cask_version: cask_version,
+    app_version: app_version,
+    current_version: current_version,
+    latest_version: latest_version,
+  }
+  current_version != latest_version
 end
 
-casks = `brew cask list`.split("\n")
+casks = Open3.capture2("brew", "cask", "list").first.split("\n")
 casks.select! { |cask| outdated?(cask) }
-puts casks
+casks.each do |cask|
+  version = $cask_versions[cask]
+  current_version = version[:current_version]
+  latest_version = version[:latest_version]
+  puts "#{cask} (#{current_version} != #{latest_version})"
+end
