@@ -21,7 +21,16 @@ def outdated?(cask)
     current_version: current_version,
     latest_version: latest_version,
   }
-  current_version != latest_version
+  return false if cask_version == latest_version
+  return false if app_version == latest_version
+  if app_version
+    if latest_version.include? ","
+      return false if app_version == latest_version.split(",").first
+    elsif latest_version.include? "_"
+      return false if app_version == latest_version.split("_").first
+    end
+  end
+  true
 end
 
 casks = Open3.capture2("brew", "cask", "list").first.split("\n")
