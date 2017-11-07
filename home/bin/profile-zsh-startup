@@ -8,12 +8,6 @@ require "tmpdir"
 require "table_print"
 include FileUtils
 
-class String
-  def undent
-    gsub(/^[ \t]{#{(slice(/^[ \t]+/) || '').length}}/, "")
-  end
-end
-
 class LogParser
   class LogEntry
     attr_reader :start_time, :file, :line, :command
@@ -53,28 +47,26 @@ class LogParser
     puts "Total Time: #{total_time.round(3)}s"
     puts "Total Time (Top 20): #{top_entries.map(&:time).reduce(&:+).round(3)}s"
     tp top_entries,
-        { :time => { display_method: lambda { |e| e.time.round(5) } } },
-        :file,
-        :line,
-        { :command => { width: 50 } }
+      { :time => { display_method: lambda { |e| e.time.round(5) } } },
+      :file,
+      :line,
+      { :command => { width: 50 } }
   end
 end
 
 Dir.mktmpdir("profile-zsh-starup") do |dir|
   Dir.chdir(dir)
+  zdotdir = ENV["ZDOTDIR"] || ENV["HOME"]
   ENV["ZDOTDIR"] = dir
   dir = Pathname.new(dir)
   logfile = dir/"startup.log"
-  (dir/".zprofile").write <<-EOS.undent
+  (dir/".zshenv").write <<~EOS
     PS4=$'%D{%M:%S.%6.} %N:%i> '
-    exec 3>&2 2>#{logfile}
+    exec 3>&2 2>"#{logfile}"
     setopt xtrace prompt_subst
+    export ZDOTDIR="#{zdotdir}"
+    [[ -s "$ZDOTDIR/.zshenv" ]] || source "$ZDOTDIR/.zshenv"
   EOS
-  if (zdotdir = Pathname.new("~/.config/zsh").expand_path).exist?
-    zdotdir.children.each { |f| ln_s f, dir }
-  else
-    ln_s File.expand_path("~/.zshrc"), dir
-  end
   system "zsh", "--login", "-i", "-c", "logout"
   log = LogParser.new logfile
   log.report!
