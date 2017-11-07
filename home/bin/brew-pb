@@ -1,3 +1,0 @@
-#! /bin/bash
-# alias: brew pb
-brew pull --bottle $*
