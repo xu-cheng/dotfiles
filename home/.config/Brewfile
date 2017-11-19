@@ -1,7 +1,6 @@
 tap "homebrew/science"
 tap "homebrew/command-not-found"
 tap "homebrew/core"
-tap "homebrew/dev-tools"
 tap "homebrew/bundle"
 tap "caskroom/drivers"
 tap "caskroom/cask"
