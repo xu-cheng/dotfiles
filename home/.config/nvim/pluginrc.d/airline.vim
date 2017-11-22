@@ -8,3 +8,6 @@ if &background ==# 'dark'
 else
     let g:airline_theme = 'solarized'
 endif
+
+" prevent airline auto freshing tmuxline
+let g:airline#extensions#tmuxline#enabled = 0
