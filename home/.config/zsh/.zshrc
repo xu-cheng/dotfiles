@@ -49,6 +49,11 @@ else
     ZSH_HIGHLIGHT_PATH="/usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
 fi
 
+if [[ -d "$HOME/.fzf" ]]; then
+    export PATH="$HOME/.fzf/bin:$PATH"
+    FZF_SHELL_PATH="$HOME/.fzf/shell"
+fi
+
 export PYENV_VIRTUALENVWRAPPER_PREFER_PYVENV=true
 export PYENV_VIRTUALENV_DISABLE_PROMPT=true
 export CHEATCOLORS=true
