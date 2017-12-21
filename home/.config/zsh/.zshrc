@@ -69,7 +69,6 @@ if (( ${+commands[direnv]} )); then
 fi
 if (( ${+commands[nvim]} )); then
     export EDITOR="nvim"
-    export NVIM_LISTEN_ADDRESS="/tmp/nvimsocket"
     alias vim='nvim -p'
     alias vimdiff='nvim -d'
 fi

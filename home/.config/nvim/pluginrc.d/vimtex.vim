@@ -17,8 +17,8 @@ endif
 
 " Backward Search
 " set up a `Custom` sync profile in Skim
-" command: `/usr/local/bin/nvr`
-" arguments: `--servername "/tmp/nvimsocket" --remote-silent +"%line" "%file"`
+" command: `<path to dotfiles>/home/bin/synctex-callback`
+" arguments: `"%file" "%line"`
 
 " TeX Word Count
 function! TeXWordCount()

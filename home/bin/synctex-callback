@@ -1,0 +1,72 @@
+#!/usr/bin/env python3
+
+import argparse
+import psutil
+import neovim
+import os
+import sys
+
+parser = argparse.ArgumentParser(description="Neovim SyncTeX callback")
+parser.add_argument("file", metavar="<file>", help="LaTeX source file path")
+parser.add_argument("line", metavar="<line>", help="LaTeX source line number")
+args = parser.parse_args()
+file = os.path.abspath(args.file)
+line = args.line
+
+
+def open_file_in_neovim(nvim, file, line, edit="edit"):
+    nvim.command("{} {}".format(edit, file.replace(" ", "\ ")))
+    nvim.command(line)
+    sys.exit(0)
+
+
+def path_similarity(file_a, file_b):
+    file_a = file_a.split("/")
+    file_b = file_b.split("/")
+    idx = 0
+    while len(file_a) > idx and \
+          len(file_b) > idx and \
+          file_a[idx] == file_b[idx]:
+        idx += 1
+    return len(file_a) + len(file_b) - 2 * idx
+
+
+sockaddrs = []
+opened_tex_files = []
+
+for proc in psutil.process_iter():
+    if proc.name() == "nvim":
+        for conn in proc.connections("inet4"):
+            sockaddrs.insert(0, ":".join(map(str, conn.laddr)))
+        for conn in proc.connections("unix"):
+            if conn.laddr:
+                sockaddrs.insert(0, conn.laddr)
+
+for addr in sockaddrs:
+    try:
+        nvim = neovim.attach("socket", path=addr)
+        for buffer in nvim.buffers:
+            if os.path.samefile(file, buffer.name):
+                open_file_in_neovim(nvim, file, line)
+            if os.path.splitext(buffer.name)[1] == ".tex":
+                opened_tex_files.append((buffer.name, addr))
+    except Exception:
+        pass
+
+if len(opened_tex_files) > 0:
+    opened_tex_files.sort(key = lambda x: path_similarity(x[0], file))
+    try:
+        nvim = neovim.attach("socket", path=opened_tex_files[0][1])
+        open_file_in_neovim(nvim, file, line)
+    except Exception:
+        pass
+
+if len(sockaddrs) > 0:
+    try:
+        nvim = neovim.attach("socket", path=sockaddrs[0])
+        open_file_in_neovim(nvim, file, line, edit="tabedit")
+    except Exception:
+        pass
+
+print("cannot find neovim instance", file=sys.stderr)
+sys.exit(1)
