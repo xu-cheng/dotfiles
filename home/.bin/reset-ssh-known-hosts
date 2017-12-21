@@ -5,8 +5,9 @@ require "open3"
 hosts = %w[
   github.com
   bitbucket.com
-  lab.xuc.me
   haibo.server.xuc.me
+  syr.server.xuc.me
+  syr2.server.xuc.me
 ]
 
 csrs = (30..31).to_a + (38..69).to_a
