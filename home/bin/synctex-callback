@@ -54,7 +54,7 @@ for addr in sockaddrs:
         pass
 
 if len(opened_tex_files) > 0:
-    opened_tex_files.sort(key = lambda x: path_similarity(x[0], file))
+    opened_tex_files.sort(key=lambda x: path_similarity(x[0], file))
     try:
         nvim = neovim.attach("socket", path=opened_tex_files[0][1])
         open_file_in_neovim(nvim, file, line)
