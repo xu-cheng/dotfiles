@@ -51,6 +51,7 @@ end
 
 # Link files
 link_files(DOTFILES_HOME, HOME)
+ln_sf DOTFILES_HOME/".bin", HOME/".bin"
 link_files(DOTFILES_HOME/".config", HOME/".config", skip_directory: false)
 
 if csr?

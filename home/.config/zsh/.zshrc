@@ -11,19 +11,18 @@ plugins=(brew-cask colored-man-pages docker docker-compose extract git \
          git-flow-avh gitignore mercurial osx pip ssh-gpg-agent svn vagrant \
          xdg-base-dir)
 
-export DOTFILES_HOME="${$(readlink "$HOME/.zshenv")%/*}"
 
 if [[ "$OSTYPE" == darwin* ]]; then # macOS
     export HOMEBREW_PREFIX="/usr/local"
     export HOMEBREW_REPOSITORY="/usr/local/Homebrew"
-    export PATH="$DOTFILES_HOME/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin:/Library/TeX/texbin"
+    export PATH="$HOME/.bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin:/Library/TeX/texbin"
 elif [[ -n "$CSR" ]] then # Linux on CSR
     export HOMEBREW_PREFIX="$HOME/usr"
     export HOMEBREW_REPOSITORY="$HOMEBREW_PREFIX"
     # do not load ssh-gpg-agent on CSR
     plugins[${plugins[(i)ssh-gpg-agent]}]=()
 else # Linux
-    export PATH="$DOTFILES_HOME/bin:$PATH"
+    export PATH="$HOME/.bin:$PATH"
 fi
 
 if [[ -n "$HOMEBREW_PREFIX" ]]; then
