@@ -14,6 +14,26 @@ file = os.path.abspath(args.file)
 line = args.line
 
 
+def list_neovim_addrs():
+    sockaddrs = []
+    for proc in psutil.process_iter():
+        if proc.name() == "nvim":
+            for conn in proc.connections("inet4"):
+                sockaddrs.insert(0, ":".join(map(str, conn.laddr)))
+            for conn in proc.connections("unix"):
+                if conn.laddr:
+                    sockaddrs.insert(0, conn.laddr)
+    return sockaddrs
+
+
+def attach_neovim(addr):
+    if ":" in addr:
+        ip, port = self.addr.split(":", 1)
+        if port.isdigit():
+            return neovim.attach("tcp", address=ip, port=int(port))
+    return neovim.attach("socket", path=addr)
+
+
 def open_file_in_neovim(nvim, file, line, edit="edit"):
     nvim.command("{} {}".format(edit, file.replace(" ", "\ ")))
     nvim.command(line)
@@ -31,20 +51,12 @@ def path_similarity(file_a, file_b):
     return len(file_a) + len(file_b) - 2 * idx
 
 
-sockaddrs = []
+sockaddrs = list_neovim_addrs()
 opened_tex_files = []
-
-for proc in psutil.process_iter():
-    if proc.name() == "nvim":
-        for conn in proc.connections("inet4"):
-            sockaddrs.insert(0, ":".join(map(str, conn.laddr)))
-        for conn in proc.connections("unix"):
-            if conn.laddr:
-                sockaddrs.insert(0, conn.laddr)
 
 for addr in sockaddrs:
     try:
-        nvim = neovim.attach("socket", path=addr)
+        nvim = attach_neovim(addr)
         for buffer in nvim.buffers:
             if os.path.samefile(file, buffer.name):
                 open_file_in_neovim(nvim, file, line)
@@ -56,14 +68,14 @@ for addr in sockaddrs:
 if len(opened_tex_files) > 0:
     opened_tex_files.sort(key=lambda x: path_similarity(x[0], file))
     try:
-        nvim = neovim.attach("socket", path=opened_tex_files[0][1])
+        nvim = attach_neovim(opened_tex_files[0][1])
         open_file_in_neovim(nvim, file, line)
     except Exception:
         pass
 
 if len(sockaddrs) > 0:
     try:
-        nvim = neovim.attach("socket", path=sockaddrs[0])
+        nvim = attach_neovim(sockaddrs[0])
         open_file_in_neovim(nvim, file, line, edit="tabedit")
     except Exception:
         pass
