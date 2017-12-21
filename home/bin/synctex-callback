@@ -69,7 +69,7 @@ if len(opened_tex_files) > 0:
     opened_tex_files.sort(key=lambda x: path_similarity(x[0], file))
     try:
         nvim = attach_neovim(opened_tex_files[0][1])
-        open_file_in_neovim(nvim, file, line)
+        open_file_in_neovim(nvim, file, line, edit="tabedit")
     except Exception:
         pass
 
