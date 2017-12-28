@@ -119,6 +119,7 @@ Plug 'sheerun/vim-polyglot'
 Plug 'xu-cheng/brew.vim'
 Plug 'bfontaine/Brewfile.vim'
 Plug 'tmux-plugins/vim-tmux'
+Plug 'tomlion/vim-solidity'
 
 " Misc
 Plug 'plasticboy/vim-markdown'
