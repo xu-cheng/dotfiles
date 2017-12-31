@@ -53,7 +53,6 @@ if [[ -d "$HOME/.fzf" ]]; then
     FZF_SHELL_PATH="$HOME/.fzf/shell"
 fi
 
-export PYENV_VIRTUALENVWRAPPER_PREFER_PYVENV=true
 export PYENV_VIRTUALENV_DISABLE_PROMPT=true
 export CHEATCOLORS=true
 
