@@ -1,4 +1,8 @@
-[[ -n "$LANG" ]] || export LANG="en_US.UTF-8"
+if [[ -z "$LANG" || -z "$LANGUAGE" || -z "$LC_CTYPE" ]]; then
+    export LANG="en_US.UTF-8"
+    export LANGUAGE="en_US.UTF-8"
+    export LC_CTYPE="en_US.UTF-8"
+fi
 
 if [[ -f /etc/bashrc ]]; then
     . /etc/bashrc
