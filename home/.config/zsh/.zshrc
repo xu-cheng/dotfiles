@@ -1,3 +1,5 @@
+[[ -n "$LANG" ]] || export LANG="en_US.UTF-8"
+
 ZSH="$ZDOTDIR/oh-my-zsh"
 ZSH_CUSTOM="$ZDOTDIR/custom"
 ZSH_CACHE_DIR="$XDG_CACHE_HOME/zsh"
