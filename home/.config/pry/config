@@ -14,7 +14,7 @@
   begin
     require plugin
   rescue LoadError
-    puts "WARNING: fail to install #{plugin}."
+    $stderr.puts "WARNING: fail to install #{plugin}."
   end
 end
 
