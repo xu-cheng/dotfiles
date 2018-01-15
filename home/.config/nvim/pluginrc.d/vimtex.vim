@@ -42,6 +42,6 @@ let g:ycm_semantic_triggers.tex = g:vimtex#re#youcompleteme
 let g:ycm_semantic_triggers.rnoweb = g:vimtex#re#youcompleteme
 
 " Autoformat
-let g:formatdef_latexindent = '"latexindentwrapper"'
+let g:formatdef_latexindent = '"latexindent -y=\"defaultIndent:\\\"" . repeat(" ", &shiftwidth) . "\\\"\""'
 let g:formatters_tex = ['latexindent']
 
