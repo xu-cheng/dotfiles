@@ -52,11 +52,11 @@ if [[ -n "$HOMEBREW_PREFIX" ]]; then
 else
     AUTOJUMP_PATH="/usr/share/autojump/autojump.zsh"
     ZSH_HIGHLIGHT_PATH="/usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
-fi
 
-if [[ -d "$HOME/.fzf" ]]; then
-    export PATH="$HOME/.fzf/bin:$PATH"
-    FZF_SHELL_PATH="$HOME/.fzf/shell"
+    if [[ -d "$HOME/.fzf" ]]; then
+        export PATH="$HOME/.fzf/bin:$PATH"
+        FZF_SHELL_PATH="$HOME/.fzf/shell"
+    fi
 fi
 
 export PYENV_VIRTUALENV_DISABLE_PROMPT=true
@@ -99,9 +99,15 @@ alias ts='tmux new-session -s'
 alias tkss='tmux kill-session -t'
 alias tksv='tmux kill-server'
 
-if (( ! ${+commands[sha1sum]} )); then alias sha1sum='gsha1sum'; fi
-if (( ! ${+commands[sha256sum]} )); then alias sha256sum='gsha256sum'; fi
-if (( ! ${+commands[md5sum]} )); then alias md5sum='gmd5sum'; fi
+if (( ! ${+commands[sha1sum]} && ${+commands[gsha1sum]} )); then
+    alias sha1sum='gsha1sum';
+fi
+if (( ! ${+commands[sha256sum]} && ${+commands[gsha256sum]} )); then
+    alias sha256sum='gsha256sum';
+fi
+if (( ! ${+commands[md5sum]} && ${+commands[gmd5sum]} )); then
+    alias md5sum='gmd5sum';
+fi
 
 hist() {
     if [[ "$1" == "-c" ]]; then
