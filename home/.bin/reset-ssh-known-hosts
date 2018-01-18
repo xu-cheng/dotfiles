@@ -28,6 +28,6 @@ hashes = hosts.map do |host|
   hash, _ = Open3.capture2("ssh-keyscan", "-H", host)
   hash.strip!
   hash unless hash.empty?
-end.compact.join("\n")
+end.compact.join("\n") + "\n"
 
 File.write("#{ENV["HOME"]}/.ssh/known_hosts", hashes)
