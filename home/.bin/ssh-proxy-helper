@@ -1,6 +1,6 @@
 #!/usr/bin/env ruby
 
-VERSION = "1.0"
+VERSION = "1.1"
 
 require "ipaddr"
 require "optparse"
@@ -31,9 +31,11 @@ OptionParser.new do |opts|
   end
 end.parse!
 
-$localip = IPAddr.new Socket.ip_address_list.detect { |addr| addr.ipv4? && !addr.ipv4_loopback? }.ip_address
+$localips = Socket.ip_address_list
+  .reject { |addr| addr.ipv4_loopback? || addr.ipv6_loopback? }
+  .map { |addr| IPAddr.new addr.ip_address.sub(/%.*$/, "") }
 
-if $net.include? $localip
+if $localips.any? { |ip| $net.include? ip }
   exec "nc", $host, $port
 else
   STDERR.puts "Connect to #{$host} over #{$proxy}."
