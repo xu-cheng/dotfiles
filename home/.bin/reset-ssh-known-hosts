@@ -9,7 +9,7 @@ end
 
 hosts = %w[
   github.com
-  bitbucket.com
+  bitbucket.org
 ]
 
 servers = %w[
