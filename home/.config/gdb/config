@@ -1,9 +1,13 @@
-# allow load libstdc++.so.X.X.X-gdb.py from Linuxbrew gcc
-add-auto-load-safe-path ~/usr/opt/gcc/lib/
+# vim: set ft=gdb:
 
-# == read XDG dirs ==
+# == import python modules ==
 python
 import os
+import subprocess
+end
+
+# == get XDG dirs ==
+python
 config_dir = os.environ.get('XDG_CONFIG_HOME', os.path.join(os.environ['HOME'], '.config'))
 config_dir = os.path.join(config_dir, 'gdb')
 cache_dir = os.environ.get('XDG_CACHE_HOME', os.path.join(os.environ['HOME'], '.cache'))
@@ -19,7 +23,6 @@ set history size 10000
 
 # == gdb-dashboard configure ==
 python
-import subprocess
 dashboard_dir = os.path.join(config_dir, 'dashboard')
 dashboard_init = os.path.join(dashboard_dir, '.gdbinit')
 if not os.path.exists(dashboard_init):
@@ -40,5 +43,13 @@ print('\n'.join(stack.lines(Dashboard.get_term_width(), False)))
 end
 end
 
-# set layout (hide assembly registers memory threads)
-dashboard -layout source expressions history stack
+# set layout (hide assembly registers memory)
+dashboard -layout source expressions history stack threads
+
+# == csr config ==
+# allow load libstdc++.so.X.X.X-gdb.py from Linuxbrew gcc
+python
+if os.path.exists(os.path.expanduser('~/usr/opt/gcc/lib')):
+    gdb.execute('add-auto-load-safe-path ~/usr/opt/gcc/lib/')
+end
+
