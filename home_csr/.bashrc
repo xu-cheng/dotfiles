@@ -32,4 +32,4 @@ export HOMEBREW_CACHE="$XDG_CACHE_HOME/homebrew"
 export HOMEBREW_LOGS="$XDG_CACHE_HOME/homebrew/logs"
 export MAKEFLAGS="-j$(nproc)"
 
-HISTFILE="$XDG_CACHE_HOME/bash/history"
+HISTFILE="$XDG_CACHE_HOME/bash_history"
