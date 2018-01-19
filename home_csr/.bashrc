@@ -31,3 +31,5 @@ export HOMEBREW_NO_AUTO_UPDATE=true
 export HOMEBREW_CACHE="$XDG_CACHE_HOME/homebrew"
 export HOMEBREW_LOGS="$XDG_CACHE_HOME/homebrew/logs"
 export MAKEFLAGS="-j$(nproc)"
+
+HISTFILE="$XDG_CACHE_HOME/bash/history"
