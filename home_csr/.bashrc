@@ -10,8 +10,6 @@ fi
 
 umask 0077
 
-[[ -d "/tmp/$USER" ]] || mkdir -p "/tmp/$USER"
-
 unset FPATH
 unset LD_LIBRARY_PATH
 export CSR=true
@@ -33,3 +31,5 @@ export HOMEBREW_LOGS="$XDG_CACHE_HOME/homebrew/logs"
 export MAKEFLAGS="-j$(nproc)"
 
 HISTFILE="$XDG_CACHE_HOME/bash_history"
+
+[[ -d "$XDG_CACHE_HOME" ]] || mkdir -p "$XDG_CACHE_HOME"
