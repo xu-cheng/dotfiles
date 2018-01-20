@@ -3,7 +3,8 @@
 # == import python modules ==
 python
 import os
-import subprocess
+import subprocess as sp
+import sys
 end
 
 # == get XDG dirs ==
@@ -26,7 +27,7 @@ python
 dashboard_dir = os.path.join(config_dir, 'dashboard')
 dashboard_init = os.path.join(dashboard_dir, '.gdbinit')
 if not os.path.exists(dashboard_init):
-    subprocess.call(['git', 'clone', 'https://github.com/cyrus-and/gdb-dashboard', dashboard_dir])
+    sp.call(['git', 'clone', 'https://github.com/cyrus-and/gdb-dashboard', dashboard_dir])
 gdb.execute('source ' + dashboard_init)
 end
 
@@ -53,3 +54,15 @@ if os.path.exists(os.path.expanduser('~/usr/opt/gcc/lib')):
     gdb.execute('add-auto-load-safe-path ~/usr/opt/gcc/lib/')
 end
 
+# == mac config ==
+python
+if sys.platform == 'darwin':
+    # required due to SIP
+    gdb.execute('set startup-with-shell off')
+    # check codesign
+    gdb_path = sp.check_output(['which', 'gdb']).strip()
+    if sp.call(['codesign', '-v', gdb_path]) != 0:
+        print 'Please codesign the gdb with: (using the same cert for lldb)'
+        print '    codesign -s lldb_codesign ' + gdb_path
+        sys.exit(1)
+end
