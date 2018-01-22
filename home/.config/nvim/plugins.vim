@@ -74,7 +74,6 @@ Plug 'chrisbra/NrrwRgn'
 Plug 'junegunn/vim-easy-align'
 Plug 'Valloric/MatchTagAlways'
 Plug 'tpope/vim-endwise'
-Plug 'metakirby5/codi.vim'
 
 " Snippets & AutoComplete & Semantic Highlight
 function! BuildYCM(info)
