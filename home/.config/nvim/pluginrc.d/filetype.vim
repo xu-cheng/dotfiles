@@ -10,6 +10,10 @@ augroup filetype_group
                 \   call system('chmod a+x ' . expand('<afile>:p:S')) |
                 \ endif
 
+    " set it to the first line when editing a git commit message
+    autocmd FileType gitcommit autocmd! BufEnter COMMIT_EDITMSG
+                \ call setpos('.', [0, 1, 1, 0])
+
     " 2 space for tab for certain filetypes
     autocmd FileType haskell,puppet,ruby,yml setlocal expandtab shiftwidth=2 softtabstop=2 tabstop=2
 
@@ -25,5 +29,5 @@ augroup filetype_group
     " Workaround vim-commentary for Haskell
     autocmd FileType haskell setlocal commentstring=--\ %s
     " Fix `crontab: temp file must be edited in place`
-    autocmd filetype crontab setlocal nobackup nowritebackup
+    autocmd FileType crontab setlocal nobackup nowritebackup
 augroup END
