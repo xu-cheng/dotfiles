@@ -17,7 +17,7 @@ endif
 
 " Backward Search
 " set up a `Custom` sync profile in Skim
-" command: `$HOME/.bin/synctex-callback`
+" command: `$HOME/.local/bin/synctex-callback`
 " arguments: `"%file" "%line"`
 
 " TeX Word Count
