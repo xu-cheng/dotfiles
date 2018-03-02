@@ -39,9 +39,9 @@ brew "less"
 brew "swig"
 brew "llvm", args: ["with-lldb", "with-python"]
 brew "sqlite"
-brew "python"
+brew "python@2", link: true
 brew "mercurial"
-brew "python3"
+brew "python"
 brew "mitmproxy"
 brew "mupdf-tools"
 brew "neovim", args: ["HEAD"]
