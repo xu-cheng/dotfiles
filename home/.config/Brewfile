@@ -37,7 +37,7 @@ brew "jq"
 brew "languagetool"
 brew "less"
 brew "swig"
-brew "llvm", args: ["with-lldb", "with-python"]
+brew "llvm", args: ["with-lldb", "with-python@2"]
 brew "sqlite"
 brew "python@2", link: true
 brew "mercurial"
