@@ -119,9 +119,12 @@ Plug 'bfontaine/Brewfile.vim'
 Plug 'tmux-plugins/vim-tmux'
 Plug 'tomlion/vim-solidity'
 
-" Misc
+" Markdown
 Plug 'plasticboy/vim-markdown'
+Plug 'dhruvasagar/vim-table-mode'
 Plug 'kannokanno/previm'
+
+" Misc
 Plug 'tyru/open-browser.vim'
 Plug 'henrik/vim-reveal-in-finder'
 
