@@ -78,7 +78,7 @@ Plug 'tpope/vim-endwise'
 " Snippets & AutoComplete & Semantic Highlight
 function! BuildYCM(info)
     if a:info.status ==# 'installed' || a:info.force
-        !python3 ./install.py --clang-completer
+        !python3 ./install.py --clang-completer --rust-completer
     endif
 endfunction
 Plug 'Valloric/YouCompleteMe', { 'do': function('BuildYCM') }
