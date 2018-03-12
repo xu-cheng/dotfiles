@@ -52,7 +52,7 @@ end
 # Link files
 link_files(DOTFILES_HOME, HOME)
 link_files(DOTFILES_HOME/".config", HOME/".config", skip_directory: false)
-link_files(DOTFILES_HOME/".local", HOME/".local", skip_directory: false)
+link_files(DOTFILES_HOME/".local/bin", HOME/".local/bin")
 
 if csr?
   link_files(DOTFILES_HOME_CSR, HOME)
