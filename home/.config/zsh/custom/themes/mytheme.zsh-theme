@@ -46,6 +46,13 @@ function prompt_pyenv(){
     fi
 }
 
+# Venv info
+function prompt_venv() {
+    if [[ -n "$VIRTUAL_ENV" ]]; then
+        echo "venv:%{${fg[yellow]}%}${VIRTUAL_ENV##*/}%{$reset_color%}"
+    fi
+}
+
 # Rbenv info
 function prompt_rbenv(){
     if (( ${+commands[rbenv]} )); then
@@ -63,6 +70,7 @@ function prompt_additional(){
         "$(prompt_git)" \
         "$(prompt_hg)" \
         "$(prompt_pyenv)" \
+        "$(prompt_venv)" \
         "$(prompt_rbenv)" \
     )
     array=(${array[@]})
