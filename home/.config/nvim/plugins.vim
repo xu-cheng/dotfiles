@@ -101,6 +101,9 @@ Plug 'altercation/vim-colors-solarized'
 " LaTeX
 Plug 'lervag/vimtex'
 
+" Rust
+Plug 'rust-lang/rust'
+
 " Dash
 Plug 'rizzatti/funcoo.vim'
 Plug 'rizzatti/dash.vim'

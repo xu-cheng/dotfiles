@@ -24,6 +24,9 @@ let g:UltiSnipsJumpForwardTrigger = '<Tab>'
 let g:UltiSnipsJumpBackwardTrigger = '<S-Tab>'
 let g:SuperTabCrMapping = 0
 
+" rust
+let g:ycm_rust_src_path = g:config_home . '/plugged/rust/src'
+
 " Enable omni completion.
 augroup youcompleteme
     autocmd!
