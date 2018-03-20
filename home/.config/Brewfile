@@ -60,7 +60,7 @@ brew "reattach-to-user-namespace"
 brew "ripgrep"
 brew "rtags"
 brew "ruby"
-brew "rust"
+brew "rust", args: ["with-racer"]
 brew "safe-rm"
 brew "shellcheck"
 brew "socat"

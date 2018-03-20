@@ -25,7 +25,9 @@ let g:UltiSnipsJumpBackwardTrigger = '<S-Tab>'
 let g:SuperTabCrMapping = 0
 
 " rust
-let g:ycm_rust_src_path = g:config_home . '/plugged/rust/src'
+if has('mac')
+    let g:ycm_rust_src_path = '/usr/local/share/rust/rust_src'
+endif
 
 " Enable omni completion.
 augroup youcompleteme
