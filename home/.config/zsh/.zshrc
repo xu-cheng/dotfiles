@@ -59,8 +59,8 @@ else
     fi
 fi
 
-if [[ -d "$HOME/.cargo/bin" ]]; then
-    export PATH="$HOME/.cargo/bin:$PATH"
+if [[ -d "$XDG_DATA_HOME/cargo/bin" ]]; then
+    export PATH="$XDG_DATA_HOME/cargo/bin:$PATH"
 fi
 
 export VIRTUAL_ENV_DISABLE_PROMPT=true

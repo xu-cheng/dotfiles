@@ -5,6 +5,10 @@
 # https://github.com/bundler/bundler/pull/6024
 export BUNDLE_USER_CACHE="$XDG_CACHE_HOME/bundle"
 
+# cargo
+# https://doc.rust-lang.org/cargo/reference/environment-variables.html
+export CARGO_HOME="$XDG_DATA_HOME/cargo"
+
 # cheat
 # https://github.com/chrisallenlane/cheat#setting-a-default_cheat_dir
 export DEFAULT_CHEAT_DIR="$XDG_CONFIG_HOME/cheat"
