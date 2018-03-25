@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-bibtex="$(curl -sfLH "Accept: application/x-bibtex;q=1" "http://dx.doi.org/$1")"
+bibtex="$(curl -sfLH "Accept: application/x-bibtex;q=1" "https://doi.org/$1")"
 if [[ $? -eq 0 ]]; then
     if [[ "$(uname)" = "Darwin" ]]; then
         echo "$bibtex" | pbcopy
