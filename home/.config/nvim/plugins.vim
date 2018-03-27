@@ -79,6 +79,24 @@ Plug 'tpope/vim-endwise'
 function! BuildYCM(info)
     if a:info.status ==# 'installed' || a:info.force
         !python3 ./install.py --clang-completer --rust-completer
+
+        " Fix libclang.so.* on CSR.
+        if exists('$CSR')
+            for a:lib in split(globpath('third_party/ycmd', 'libclang.so.*'), '\n')
+                if a:lib !=# resolve(a:lib)
+                    continue
+                elseif !empty(matchstr(a:lib, '\.bak$'))
+                    continue
+                elseif empty(matchstr(system('ldd ' . shellescape(a:lib)), 'not found'))
+                    continue
+                else
+                    let a:rpath = systemlist('patchelf --print-rpath ' . shellescape(a:lib))[0]
+                    let a:rpath = $HOMEBREW_PREFIX . '/lib:' . a:rpath
+                    execute '!cp -f ' . shellescape(a:lib) . ' ' . shellescape(a:lib) . '.bak'
+                    execute '!patchelf --set-rpath ' . shellescape(a:rpath) . ' ' . shellescape(a:lib)
+                endif
+            endfor
+        endif
     endif
 endfunction
 Plug 'Valloric/YouCompleteMe', { 'do': function('BuildYCM') }
