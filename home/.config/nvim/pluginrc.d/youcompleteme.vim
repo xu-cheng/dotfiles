@@ -25,8 +25,8 @@ let g:UltiSnipsJumpBackwardTrigger = '<S-Tab>'
 let g:SuperTabCrMapping = 0
 
 " rust
-if has('mac')
-    let g:ycm_rust_src_path = '/usr/local/share/rust/rust_src'
+if exists('$HOMEBREW_PREFIX') && isdirectory($HOMEBREW_PREFIX . '/share/rust/rust_src')
+    let g:ycm_rust_src_path = $HOMEBREW_PREFIX . '/share/rust/rust_src'
 endif
 
 " Enable omni completion.
