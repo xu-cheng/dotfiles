@@ -14,7 +14,6 @@ let g:vim_leader_guide_map = {
 augroup vim_leader_guide
     autocmd!
     autocmd FileType tex let g:vim_leader_guide_map[g:maplocalleader].l = { 'name': 'Vimtex' }
-    autocmd FileType c,cpp let g:vim_leader_guide_map[g:maplocalleader].r = { 'name': 'Rtags' }
 augroup END
 
 call leaderGuide#register_prefix_descriptions('', 'g:vim_leader_guide_map')

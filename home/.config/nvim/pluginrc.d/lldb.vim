@@ -7,16 +7,6 @@ endif
 "   /usr/local/opt/llvm/lib/python2.7/site-packages
 "   /usr/local/opt/llvm/lib/python2.7/site-packages/lldb
 
-call remote#host#RegisterPlugin(
-    \ 'python',
-    \ g:config_home . '/plugged/lldb.nvim/rplugin/python/lldb_nvim',
-    \ [ {
-    \     'sync': v:false,
-    \     'name': 'LLsession',
-    \     'type': 'command',
-    \     'opts': {'complete': 'customlist,lldb#session#complete', 'nargs': '+'}
-    \ } ])
-
 " Add and remove breakpoints on the current lines.
 nmap <F9> <Plug>LLBreakSwitch
 
