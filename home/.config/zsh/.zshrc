@@ -4,12 +4,13 @@ if [[ -z "$LANG" || -z "$LANGUAGE" || -z "$LC_CTYPE" ]]; then
     export LC_CTYPE="en_US.UTF-8"
 fi
 
-ZSH="$ZDOTDIR/oh-my-zsh"
-ZSH_CUSTOM="$ZDOTDIR/custom"
+ZSH="$XDG_DATA_HOME/zsh/oh-my-zsh"
+ZSH_CUSTOM="$XDG_CONFIG_HOME/zsh/custom"
 ZSH_CACHE_DIR="$XDG_CACHE_HOME/zsh"
 ZSH_COMPDUMP="$ZSH_CACHE_DIR/zcompdump-${HOST}-${ZSH_VERSION}"
 HISTFILE="$ZSH_CACHE_DIR/history"
 
+[[ -d "$ZSH" ]] || git clone --depth=1 https://github.com/robbyrussell/oh-my-zsh "$ZSH"
 [[ -d "$ZSH_CACHE_DIR" ]] || mkdir -p "$ZSH_CACHE_DIR"
 
 ZSH_THEME="mytheme"

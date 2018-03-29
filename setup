@@ -78,14 +78,6 @@ clean(HOME/".gnupg")
 chmod 0700, HOME/".ssh"
 chmod 0700, HOME/".gnupg"
 
+ENV["LESSKEY"] = "#{ENV["HOME"]}/.local/share/less/lesskey"
 system "lesskey", HOME/".config/less/lesskey"
-OMZ_DIR = HOME/".config/zsh/oh-my-zsh"
-unless OMZ_DIR.exist?
-  system "git", "clone", "--depth=1", "https://github.com/robbyrussell/oh-my-zsh", OMZ_DIR
-end
 
-TPM_DIR = HOME/".config/tmux/plugins/tpm"
-unless TPM_DIR.exist?
-  system "git", "clone", "--depth=1", "https://github.com/tmux-plugins/tpm", TPM_DIR
-  system "#{TPM_DIR}/scripts/install_plugins.sh", "--shell-echo"
-end

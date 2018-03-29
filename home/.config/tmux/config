@@ -5,7 +5,7 @@
 #  https://gist.github.com/shinzui/866897
 
 # load plugins
-set-environment -g TMUX_PLUGIN_MANAGER_PATH "$HOME/.config/tmux/plugins"
+set-environment -g TMUX_PLUGIN_MANAGER_PATH "$HOME/.local/share/tmux/plugins"
 set-option -g @tpm_plugins '       \
   tmux-plugins/tpm                 \
   tmux-plugins/tmux-copycat        \
@@ -20,8 +20,14 @@ set-option -g @tpm_plugins '       \
 
 if-shell "uname | grep -q Darwin" "source $HOME/.config/tmux/mac.tmux"
 
-# initializes TMUX plugin manager.
-run-shell "$HOME/.config/tmux/plugins/tpm/tpm"
+#install TMUX plugin manager if necessary
+run-shell '[[ -d "$TMUX_PLUGIN_MANAGER_PATH" ]] || git clone --depth=1 https://github.com/tmux-plugins/tpm "$TMUX_PLUGIN_MANAGER_PATH/tpm"'
+
+# initializes TMUX plugin manager
+run-shell "$HOME/.local/share/tmux/plugins/tpm/tpm"
+
+# install plugins if necessary
+run-shell '[[ "$(find "$TMUX_PLUGIN_MANAGER_PATH" -type d -maxdepth 1 | wc -l)" -gt 1 ]] || "$TMUX_PLUGIN_MANAGER_PATH/tpm/scripts/install_plugins.sh" --tmux-echo'
 
 # allow mouse
 set-option -g mouse on

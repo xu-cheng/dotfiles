@@ -32,8 +32,12 @@ export JUPYTER_CONFIG_DIR="$XDG_CONFIG_HOME/jupyter"
 export IPYTHONDIR="$XDG_CONFIG_HOME/ipython"
 
 # less
-export LESSKEY="$XDG_CONFIG_HOME/less/less"
+export LESSKEY="$XDG_DATA_HOME/less/lesskey"
 export LESSHISTFILE="$XDG_CACHE_HOME/less/history"
+if [[ ! -f "$LESSKEY" ]]; then
+    mkdir -p "$XDG_DATA_HOME/less"
+    lesskey "$XDG_CONFIG_HOME/less/lesskey"
+fi
 
 # pry
 # https://github.com/pry/pry/issues/1316#issuecomment-98436268

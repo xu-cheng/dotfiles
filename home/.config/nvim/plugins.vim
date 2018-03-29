@@ -9,7 +9,7 @@ if empty(glob(g:config_home . '/autoload/plug.vim'))
     augroup END
 endif
 
-call plug#begin(g:config_home . '/plugged')
+call plug#begin(g:data_home . '/plugged')
 
 " Deps
 Plug 'MarcWeber/vim-addon-mw-utils'
