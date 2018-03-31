@@ -21,6 +21,7 @@ augroup vimfiler
     autocmd FileType vimfiler nmap <buffer> <2-LeftMouse> <Plug>(vimfiler_edit_file)
     " auto close if it is the last
     autocmd BufEnter * if (&buftype ==# 'vimfilter' || &buftype ==# 'nofile')
+                \ && (!has('vim_starting'))
                 \ && winbufnr(2) == -1 | quit! | endif
 augroup END
 
