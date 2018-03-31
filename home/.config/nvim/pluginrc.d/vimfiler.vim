@@ -32,4 +32,4 @@ call vimfiler#custom#profile('default', 'context', {
             \ 'explorer_columns': 'devicons:space',
             \ })
 
-map <C-e> :VimFilerExplorer<CR>
+map <C-e> :VimFilerExplorer -parent<CR>
