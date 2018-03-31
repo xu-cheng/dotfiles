@@ -24,9 +24,12 @@ augroup vimfiler
                 \ && winbufnr(2) == -1 | quit! | endif
 augroup END
 
-" Edit file by tabedit.
+" Edit file by tabedit and overwrite default webdevicon style
+let g:webdevicons_enable_vimfiler = 0
 call vimfiler#custom#profile('default', 'context', {
             \ 'edit_action' : 'tabopen',
+            \ 'columns' : 'devicons:size:time',
+            \ 'explorer_columns': 'devicons:space',
             \ })
 
 map <C-e> :VimFilerExplorer<CR>
