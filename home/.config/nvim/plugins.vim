@@ -12,6 +12,7 @@ endif
 call plug#begin(g:data_home . '/plugged')
 
 " Deps
+Plug 'Shougo/unite.vim'
 Plug 'MarcWeber/vim-addon-mw-utils'
 Plug 'tomtom/tlib_vim'
 Plug 'mileszs/ack.vim'
@@ -21,7 +22,7 @@ end
 
 " General
 Plug 'editorconfig/editorconfig-vim'
-Plug 'scrooloose/nerdtree'
+Plug 'Shougo/vimfiler.vim'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 Plug 'junegunn/fzf'
@@ -35,7 +36,6 @@ Plug 'easymotion/vim-easymotion'
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'myusuf3/numbers.vim'
 Plug 'vim-scripts/sessionman.vim'
-Plug 'jistr/vim-nerdtree-tabs'
 Plug 'mbbill/undotree'
 Plug 'vim-scripts/restore_view.vim'
 Plug 'tpope/vim-abolish'
@@ -148,5 +148,8 @@ Plug 'henrik/vim-reveal-in-finder'
 " Other
 Plug 'edkolev/tmuxline.vim'
 Plug 'tmux-plugins/vim-tmux-focus-events'
+
+" Require to be loaded as the very last one
+Plug 'ryanoasis/vim-devicons'
 
 call plug#end()
