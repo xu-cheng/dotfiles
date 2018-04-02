@@ -31,6 +31,8 @@ if defined?(PryByebug) && Byebug.started?
 end
 
 if defined?(PryTheme)
+  PryTheme.send(:remove_const, :USER_THEMES_DIR)
+  PryTheme::USER_THEMES_DIR = "#{ENV["XDG_DATA_HOME"] || "#{ENV["HOME"]}/.local/share"}/pry/theme".freeze
   Pry.config.theme = "pry-classic-256"
 end
 
