@@ -30,7 +30,7 @@ if exists('$HOMEBREW_PREFIX') && isdirectory($HOMEBREW_PREFIX . '/share/rust/rus
 endif
 
 " Enable omni completion.
-augroup youcompleteme
+augroup youcompleteme_group
     autocmd!
     autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
     autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags

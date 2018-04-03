@@ -28,7 +28,7 @@ function! TeXWordCount()
                 \ ' && texcount ' . shellescape(l:main_tex_file))
 endfunction
 
-augroup tex
+augroup tex_group
     autocmd!
     autocmd FileType tex nnoremap <silent> <localleader>lw :call TeXWordCount()<CR>
     autocmd FileType tex,rnoweb nnoremap <silent> <leader>tt :VimtexTocToggle<CR>

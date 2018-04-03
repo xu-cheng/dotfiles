@@ -1,4 +1,4 @@
-augroup litecorrect
+augroup litecorrect_group
   autocmd!
   autocmd FileType markdown,mkd call litecorrect#init()
   autocmd FileType textile call litecorrect#init()

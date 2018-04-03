@@ -15,7 +15,7 @@ let g:vimfiler_ignore_pattern = [
             \ '^\.DS_Store$',
             \ ]
 
-augroup vimfiler
+augroup vimfiler_group
     autocmd!
     " double click to open file
     autocmd FileType vimfiler nmap <buffer> <2-LeftMouse> <Plug>(vimfiler_edit_file)

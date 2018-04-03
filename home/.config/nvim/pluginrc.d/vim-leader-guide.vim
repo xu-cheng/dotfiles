@@ -11,7 +11,7 @@ let g:vim_leader_guide_map = {
             \   },
             \ }
 
-augroup vim_leader_guide
+augroup vim_leader_guide_group
     autocmd!
     autocmd FileType tex let g:vim_leader_guide_map[g:maplocalleader].l = { 'name': 'Vimtex' }
 augroup END
