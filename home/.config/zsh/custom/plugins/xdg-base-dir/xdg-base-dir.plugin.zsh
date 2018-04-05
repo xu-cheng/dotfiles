@@ -6,10 +6,12 @@
 export BUNDLE_USER_HOME="$XDG_DATA_HOME/bundle"
 export BUNDLE_USER_CACHE="$XDG_CACHE_HOME/bundle"
 
-# cargo
+# cargo and rustup
 # https://doc.rust-lang.org/cargo/reference/environment-variables.html
+# https://github.com/rust-lang-nursery/rustup.rs#choosing-where-to-install
 export CARGO_HOME="$XDG_DATA_HOME/cargo"
 export RUSTUP_HOME="$XDG_DATA_HOME/rustup"
+export PATH="$CARGO_HOME/bin:$PATH"
 
 # cheat
 # https://github.com/chrisallenlane/cheat#setting-a-default_cheat_dir

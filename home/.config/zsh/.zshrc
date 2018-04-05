@@ -60,10 +60,6 @@ else
     fi
 fi
 
-if [[ -d "$XDG_DATA_HOME/cargo/bin" ]]; then
-    export PATH="$XDG_DATA_HOME/cargo/bin:$PATH"
-fi
-
 export VIRTUAL_ENV_DISABLE_PROMPT=true
 export CHEATCOLORS=true
 
