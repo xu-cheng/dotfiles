@@ -27,8 +27,8 @@ let g:SuperTabCrMapping = 0
 " rust
 if executable('rustc')
     let s:rust_sysroot = systemlist('rustc --print sysroot')[0]
-    if isdirectory(s:rust_sysroot . '/lib/rustlib/src')
-        let g:ycm_rust_src_path = s:rust_sysroot . '/lib/rustlib/src'
+    if isdirectory(s:rust_sysroot . '/lib/rustlib/src/rust/src')
+        let g:ycm_rust_src_path = s:rust_sysroot . '/lib/rustlib/src/rust/src'
     endif
 endif
 
