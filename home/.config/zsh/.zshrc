@@ -49,6 +49,7 @@ if [[ -n "$HOMEBREW_PREFIX" ]]; then
     FZF_SHELL_PATH="$HOMEBREW_PREFIX/opt/fzf/shell"
 
     [[ -d "$HOMEBREW_PREFIX/opt/llvm" ]] && alias lldb="$HOMEBREW_PREFIX/opt/llvm/bin/lldb"
+    alias bubo='brew update && brew outdated'
     alias bubu='brew update && brew upgrade --cleanup'
 else
     AUTOJUMP_PATH="/usr/share/autojump/autojump.zsh"
