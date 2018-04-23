@@ -64,7 +64,7 @@
     set termguicolors               " enable true color
 
     set tabpagemax=15               " Only show 15 tabs
-    set showmode                    " Display the current mode
+    set noshowmode                  " Hide the current mode, it is already shown by the airline.
 
     set cursorline                  " Highlight current line
     set signcolumn=yes              " Always show signcolumn

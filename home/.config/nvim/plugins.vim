@@ -76,34 +76,20 @@ Plug 'Valloric/MatchTagAlways'
 Plug 'tpope/vim-endwise'
 
 " Snippets & AutoComplete & Semantic Highlight
-function! BuildYCM(info)
-    if a:info.status ==# 'installed' || a:info.force
-        !python3 ./install.py --clang-completer --rust-completer
-
-        " Fix libclang.so.* on CSR.
-        if exists('$CSR')
-            for a:lib in split(globpath('third_party/ycmd', 'libclang.so.*'), '\n')
-                if a:lib !=# resolve(a:lib)
-                    continue
-                elseif !empty(matchstr(a:lib, '\.bak$'))
-                    continue
-                elseif empty(matchstr(system('ldd ' . shellescape(a:lib)), 'not found'))
-                    continue
-                else
-                    let a:rpath = systemlist('patchelf --print-rpath ' . shellescape(a:lib))[0]
-                    let a:rpath = $HOMEBREW_PREFIX . '/lib:' . a:rpath
-                    execute '!cp -f ' . shellescape(a:lib) . ' ' . shellescape(a:lib) . '.bak'
-                    execute '!patchelf --set-rpath ' . shellescape(a:rpath) . ' ' . shellescape(a:lib)
-                endif
-            endfor
-        endif
-    endif
-endfunction
-Plug 'Valloric/YouCompleteMe', { 'do': function('BuildYCM') }
-Plug 'SirVer/ultisnips'
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'autozimu/LanguageClient-neovim', {
+    \ 'branch': 'next',
+    \ 'do': 'bash install.sh',
+    \ }
+Plug 'Shougo/neco-syntax'
+Plug 'Shougo/neco-vim'
+Plug 'Shougo/neoinclude.vim'
+Plug 'wellle/tmux-complete.vim'
+Plug 'ujihisa/neco-look'
+Plug 'Shougo/neosnippet.vim'
+Plug 'Shougo/neosnippet-snippets'
 Plug 'honza/vim-snippets'
-Plug 'ervandew/supertab'
-"Plug 'jeaye/color_coded' # not support neovim yet
+Plug 'Shougo/echodoc.vim'
 
 " Build & Debug
 Plug 'tpope/vim-dispatch'

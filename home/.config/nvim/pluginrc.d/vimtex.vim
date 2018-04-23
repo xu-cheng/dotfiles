@@ -35,11 +35,11 @@ augroup tex_group
 augroup END
 
 " Autocomplete
-if !exists('g:ycm_semantic_triggers')
-    let g:ycm_semantic_triggers = {}
+if !exists('g:deoplete#omni#input_patterns')
+  let g:deoplete#omni#input_patterns = {}
 endif
-let g:ycm_semantic_triggers.tex = g:vimtex#re#youcompleteme
-let g:ycm_semantic_triggers.rnoweb = g:vimtex#re#youcompleteme
+let g:deoplete#omni#input_patterns.tex = g:vimtex#re#deoplete
+let g:deoplete#omni#input_patterns.rnoweb = g:vimtex#re#deoplete
 
 " Autoformat
 let g:formatdef_latexindent = '"latexindent --logfile=/dev/null -y=\"defaultIndent:\\\"" . repeat(" ", &shiftwidth) . "\\\"\""'
