@@ -60,7 +60,18 @@ elseif exists('$XDG_CACHE_HOME')
 else
     let s:tmp_dir = '/tmp'
 endif
-let s:cquery_opts = { 'cacheDirectory': s:tmp_dir . '/cquery' }
+let s:cquery_opts = {
+            \ 'cacheDirectory': s:tmp_dir . '/cquery',
+            \ 'extraClangArguments': [
+            \     '-Wall',
+            \     '-Wextra',
+            \     '-Werror',
+            \     '-Wno-long-long',
+            \     '-Wno-variadic-macros',
+            \     '-fexceptions',
+            \     '-DNDEBUG',
+            \   ],
+            \ }
 " install LSP:
 " * c/cpp: `brew install cquery`
 " * python: `pip3 install python-language-server`
