@@ -12,6 +12,7 @@ umask 0077
 
 unset FPATH
 unset LD_LIBRARY_PATH
+unset LESSOPEN
 export CSR=true
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_CACHE_HOME="/tmp/$USER/cache"
