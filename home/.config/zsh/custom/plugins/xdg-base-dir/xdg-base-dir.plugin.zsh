@@ -48,7 +48,7 @@ export NPM_CONFIG_DEVDIR="$XDG_CACHE_HOME/node-gyp"
 
 # openssl
 # https://www.openssl.org/docs/faq.html
-export RANDFILE="$XDG_DATA_HOME/openssl-rnd"
+export RANDFILE="$XDG_CACHE_HOME/openssl-rnd"
 
 # perl/cpanm
 # https://github.com/miyagawa/cpanminus#how-does-cpanm-getparseupdate-the-cpan-index
