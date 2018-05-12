@@ -39,6 +39,10 @@ if [[ ! -f "$LESSKEY" ]]; then
     lesskey "$XDG_CONFIG_HOME/less/lesskey"
 fi
 
+# openssl
+# https://www.openssl.org/docs/faq.html
+export RANDFILE="$XDG_DATA_HOME/openssl-rnd"
+
 # perl/cpanm
 # https://github.com/miyagawa/cpanminus#how-does-cpanm-getparseupdate-the-cpan-index
 # Install `local::lib` by `cpanm local::lib`
