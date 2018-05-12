@@ -1,0 +1,30 @@
+# vim: set ft=python:
+
+import atexit
+import os
+import readline
+
+try:
+    get_ipython()
+    # do nothing if it is in ipython
+except NameError:
+    cache_dir = os.environ.get('XDG_CACHE_HOME',
+                               os.path.join(os.environ['HOME'], '.cache'))
+    cache_dir = os.path.join(cache_dir, 'python')
+    histfile = os.path.join(cache_dir, 'history')
+
+    if not os.path.exists(cache_dir):
+        os.makedirs(cache_dir)
+
+    try:
+        atexit.unregister(readline.write_history_file)
+    except:
+        pass
+
+    try:
+        readline.read_history_file(histfile)
+    except:
+        pass
+
+    readline.set_history_length(10000)
+    atexit.register(readline.write_history_file, histfile)

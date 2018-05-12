@@ -64,6 +64,10 @@ export PATH="$XDG_DATA_HOME/perl5/bin:$PATH"
 # https://github.com/pry/pry/issues/1316#issuecomment-98436268
 export PRYRC="$XDG_CONFIG_HOME/pry/config"
 
+# python
+# https://docs.python.org/3/library/readline.html?highlight=readline#example
+export PYTHONSTARTUP="$XDG_CONFIG_HOME/python/pythonrc"
+
 # vagrant
 # https://www.vagrantup.com/docs/other/environmental-variables.html
 export VAGRANT_HOME="$XDG_DATA_HOME/vagrant"
