@@ -8,4 +8,6 @@ curl https://sh.rustup.rs -sSf | sh -s -- --no-modify-path
 rustup completions zsh > "$HOMEBREW_PREFIX/share/zsh/site-functions/_rustup"
 rustup component add rustfmt-preview rls-preview rust-analysis rust-src
 cargo install racer
+rustup install nightly
+cargo +nightly install clippy
 ```
