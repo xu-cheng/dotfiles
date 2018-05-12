@@ -28,3 +28,5 @@ except NameError:
 
     readline.set_history_length(10000)
     atexit.register(readline.write_history_file, histfile)
+
+    del cache_dir, histfile
