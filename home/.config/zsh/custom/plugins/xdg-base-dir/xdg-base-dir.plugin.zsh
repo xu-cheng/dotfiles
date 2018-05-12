@@ -39,6 +39,13 @@ if [[ ! -f "$LESSKEY" ]]; then
     lesskey "$XDG_CONFIG_HOME/less/lesskey"
 fi
 
+# npm
+# https://github.com/npm/npm/issues/6675
+# https://github.com/nodejs/node-gyp/issues/21
+export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME/npm/npmrc"
+export NPM_CONFIG_CACHE="$XDG_CACHE_HOME/npm"
+export NPM_CONFIG_DEVDIR="$XDG_CACHE_HOME/node-gyp"
+
 # openssl
 # https://www.openssl.org/docs/faq.html
 export RANDFILE="$XDG_DATA_HOME/openssl-rnd"
