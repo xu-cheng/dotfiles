@@ -23,10 +23,6 @@ export CP_HOME_DIR="$XDG_CONFIG_HOME/cocoapods"
 export CP_REPOS_DIR="$XDG_CACHE_HOME/cocoapods/repos"
 export CP_TEMPLATES_DIR="$XDG_DATA_HOME/cocoapods/templates"
 
-# cpanm
-# https://github.com/miyagawa/cpanminus#how-does-cpanm-getparseupdate-the-cpan-index
-export PERL_CPANM_HOME="$XDG_CACHE_HOME/cpanm"
-
 # fpp
 # https://github.com/facebook/PathPicker/pull/231
 export FPP_DIR="$XDG_CACHE_HOME/fpp"
@@ -42,6 +38,16 @@ if [[ ! -f "$LESSKEY" ]]; then
     mkdir -p "$XDG_DATA_HOME/less"
     lesskey "$XDG_CONFIG_HOME/less/lesskey"
 fi
+
+# perl/cpanm
+# https://github.com/miyagawa/cpanminus#how-does-cpanm-getparseupdate-the-cpan-index
+# Install `local::lib` by `cpanm local::lib`
+export PERL_CPANM_HOME="$XDG_CACHE_HOME/cpanm"
+export PERL5LIB="$XDG_DATA_HOME/perl5/lib/perl5"
+export PERL_LOCAL_LIB_ROOT="$XDG_DATA_HOME/perl5"
+export PERL_MB_OPT="--install_base \"$XDG_DATA_HOME/perl5\""
+export PERL_MM_OPT="INSTALL_BASE=$XDG_DATA_HOME/perl5"
+export PATH="$XDG_DATA_HOME/perl5/bin:$PATH"
 
 # pry
 # https://github.com/pry/pry/issues/1316#issuecomment-98436268
