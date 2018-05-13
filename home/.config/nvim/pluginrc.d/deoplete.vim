@@ -4,7 +4,7 @@
 " https://github.com/Shougo/deoplete.nvim/blob/master/doc/deoplete.txt
 " https://github.com/autozimu/LanguageClient-neovim/blob/next/doc/LanguageClient.txt
 
-let g:deoplete#enable_at_startup = 0
+let g:deoplete#enable_at_startup = 1
 let g:deoplete#num_processes = 1
 let g:deoplete#file#enable_buffer_path = 1
 let g:neosnippet#enable_completed_snippet = 1
@@ -14,8 +14,6 @@ let g:echodoc#enable_at_startup = 1
 
 augroup deoplete_group
     autocmd!
-    " Enable deoplete when InsertEnter.
-    autocmd InsertEnter * call deoplete#enable()
     " Close the preview window after completion is done.
     autocmd CompleteDone * silent! pclose!
     " Clear snippet markers after Insert.
