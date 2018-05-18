@@ -14,8 +14,9 @@ unset FPATH
 unset LD_LIBRARY_PATH
 unset LESSOPEN
 export CSR=true
+export TMPDIR="/tmp/$USER"
 export XDG_CONFIG_HOME="$HOME/.config"
-export XDG_CACHE_HOME="/tmp/$USER/cache"
+export XDG_CACHE_HOME="$TMPDIR/cache"
 export XDG_DATA_HOME="$HOME/.local/share"
 export XDG_BIN_HOME="$HOME/.local/bin"
 export HOMEBREW_PREFIX="$HOME/usr"
