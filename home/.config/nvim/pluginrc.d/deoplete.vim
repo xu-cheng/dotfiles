@@ -7,7 +7,7 @@
 let g:deoplete#enable_at_startup = 1
 let g:deoplete#num_processes = 1
 let g:deoplete#file#enable_buffer_path = 1
-let g:neosnippet#enable_completed_snippet = 1
+let g:neosnippet#enable_auto_clear_markers = 1
 let g:neosnippet#enable_snipmate_compatibility = 1
 let g:neosnippet#snippets_directory = g:data_home . '/plugged/vim-snippets/snippets'
 let g:echodoc#enable_at_startup = 1
@@ -16,10 +16,6 @@ augroup deoplete_group
     autocmd!
     " Close the preview window after completion is done.
     autocmd CompleteDone * silent! pclose!
-    " Clear snippet markers after Insert.
-    autocmd InsertLeave * NeoSnippetClearMarkers
-    " For let g:neosnippet#enable_completed_snippet = 1
-    autocmd CompleteDone * call neosnippet#complete_done()
 augroup END
 
 " don't give |ins-completion-menu| messages.  For example,
