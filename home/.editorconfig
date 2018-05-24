@@ -1,38 +1,18 @@
 # vim: set ft=dosini nospell:
 # document: http://editorconfig.org
 
-# top-most EditorConfig file
 root = true
 
-# Common
 [*]
 charset = utf-8
 end_of_line = lf
 indent_style = space
 insert_final_newline = true
 trim_trailing_whitespace = true
-
-# Common files with ext
-[*.*]
-indent_size = 4
-
-# Haskell
-[*.{hs,lhs}]
 indent_size = 2
 
-# Makefile
 [{m,M}akefile]
 indent_style = tab
 
-# Ruby
-[*.{erb,rb}]
-indent_size = 2
+[*.rb]
 trim_trailing_whitespace = false
-
-# YAML
-[*.{yaml,yml}]
-indent_size = 2
-
-# Nix
-[*.nix]
-indent_size = 2
