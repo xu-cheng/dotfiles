@@ -14,9 +14,6 @@ augroup filetype_group
     autocmd FileType gitcommit autocmd! BufEnter COMMIT_EDITMSG
                 \ call setpos('.', [0, 1, 1, 0])
 
-    " 2 space for tab for certain filetypes
-    autocmd FileType haskell,puppet,ruby,yml setlocal expandtab shiftwidth=2 softtabstop=2 tabstop=2
-
     " Disable spelling check for certain file types
     autocmd FileType gitconfig,haskell,rust,vim-plug,yaml setlocal nospell
     autocmd Syntax brew setlocal nospell
