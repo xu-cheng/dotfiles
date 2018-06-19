@@ -106,6 +106,7 @@ vnoremap <C-s> <C-c>:update<CR>gv
 
 " Ctrl-C as Esc
 noremap <C-c> <Esc>
+inoremap <C-c> <Esc>
 
 " Shortcut to custom commands
 noremap <leader>rc :call RemoveCache()<CR>
