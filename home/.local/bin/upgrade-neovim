@@ -8,5 +8,7 @@ pip3 install --upgrade neovim
 pip3 install --upgrade neovim-remote
 gem install neovim && gem cleanup neovim
 nvim --headless -c PlugUpgrade +q
+echo ''
 nvim --headless -c PlugClean! +qall
+echo ''
 nvim --headless -c PlugUpdate! +qall
