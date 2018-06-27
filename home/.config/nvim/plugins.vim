@@ -1,7 +1,7 @@
 " Load vim-plug
-if empty(glob(g:config_home . '/autoload/plug.vim'))
+if empty(glob(stdpath('config') . '/autoload/plug.vim'))
     execute '!curl -fL --create-dirs'
-                \ . ' -o ' . shellescape(g:config_home . '/autoload/plug.vim')
+                \ . ' -o ' . shellescape(stdpath('config') . '/autoload/plug.vim')
                 \ . ' https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
     augroup vim_plug
         autocmd!
@@ -9,7 +9,7 @@ if empty(glob(g:config_home . '/autoload/plug.vim'))
     augroup END
 endif
 
-call plug#begin(g:data_home . '/plugged')
+call plug#begin(stdpath('data') . '/plugged')
 
 " Deps
 Plug 'Shougo/unite.vim'

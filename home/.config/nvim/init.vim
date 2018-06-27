@@ -1,19 +1,4 @@
-" Set config/data/cache home
-let g:config_home = expand('<sfile>:p:h')
-if has('win32')
-    let g:data_home = $USERPROFILE . '\AppData\Local\nvim-data'
-elseif exists('$XDG_DATA_HOME')
-    let g:data_home = $XDG_DATA_HOME . '/nvim'
-else
-    let g:data_home = $HOME . '/.local/share/nvim'
-endif
-if has('win32')
-    let g:cache_home = $USERPROFILE . '\AppData\Local\Temp\nvim'
-elseif exists('$XDG_CACHE_HOME')
-    let g:cache_home = $XDG_CACHE_HOME . '/nvim'
-else
-    let g:cache_home = $HOME . '/.cache/nvim'
-endif
+let s:config_home = stdpath('config')
 
 " Set python interpreter path
 function! s:brew_prefix()
@@ -52,12 +37,12 @@ if !exists('g:python3_host_prog')
 endif
 
 " Load plugins
-execute 'source' fnameescape(g:config_home . '/plugins.vim')
+execute 'source' fnameescape(s:config_home . '/plugins.vim')
 " Load basic settings
-execute 'source' fnameescape(g:config_home . '/basic.vim')
+execute 'source' fnameescape(s:config_home . '/basic.vim')
 " Load key mapping
-execute 'source' fnameescape(g:config_home . '/keymap.vim')
+execute 'source' fnameescape(s:config_home . '/keymap.vim')
 " Load plugins settings
-for s:f in split(glob(g:config_home . '/pluginrc.d/*.vim'), '\n')
+for s:f in split(glob(s:config_home . '/pluginrc.d/*.vim'), '\n')
   execute 'source' fnameescape(s:f)
 endfor

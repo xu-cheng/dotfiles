@@ -123,8 +123,9 @@
 
     " Initialize directories
     function! s:InitializeDirectories()
-        if !isdirectory(g:cache_home) && exists('*mkdir')
-            call mkdir(g:cache_home, 'p')
+        let l:cache_home = stdpath('cache')
+        if !isdirectory(l:cache_home) && exists('*mkdir')
+            call mkdir(l:cache_home, 'p')
         endif
 
         let l:dir_list = {
@@ -136,7 +137,7 @@
             let l:dir_list['undo'] = 'undodir'
         endif
         for [l:dirname, l:settingname] in items(l:dir_list)
-            let l:directory = g:cache_home . '/' . l:dirname . '/'
+            let l:directory = l:cache_home . '/' . l:dirname . '/'
             if !isdirectory(l:directory) && exists('*mkdir')
                 call mkdir(l:directory)
             endif
@@ -156,10 +157,11 @@
 
 " Remove Cache {
     function! RemoveCache()
+        let l:cache_home = stdpath('cache')
         if has('win32')
-            call system('rd /s /q ' . shellescape(g:cache_home))
+            call system('rd /s /q ' . shellescape(l:cache_home))
         else
-            call system('rm -rf ' . shellescape(g:cache_home))
+            call system('rm -rf ' . shellescape(l:cache_home))
         endif
         call delete($NVIM_LISTEN_ADDRESS)
     endfunction

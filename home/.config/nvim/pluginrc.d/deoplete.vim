@@ -9,7 +9,7 @@ let g:deoplete#num_processes = 1
 let g:deoplete#file#enable_buffer_path = 1
 let g:neosnippet#enable_auto_clear_markers = 1
 let g:neosnippet#enable_snipmate_compatibility = 1
-let g:neosnippet#snippets_directory = g:data_home . '/plugged/vim-snippets/snippets'
+let g:neosnippet#snippets_directory = stdpath('data') . '/plugged/vim-snippets/snippets'
 let g:echodoc#enable_at_startup = 1
 
 augroup deoplete_group
