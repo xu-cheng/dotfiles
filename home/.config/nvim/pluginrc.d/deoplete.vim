@@ -54,8 +54,8 @@ elseif exists('$XDG_CACHE_HOME')
 else
     let s:tmp_dir = '/tmp'
 endif
-let g:LanguageClient_loggingFile = s:tmp_dir . '/LanguageClient.log'
-let g:LanguageClient_serverStderr = s:tmp_dir . '/LanguageServer.log'
+"let g:LanguageClient_loggingFile = s:tmp_dir . '/LanguageClient.log'
+"let g:LanguageClient_serverStderr = s:tmp_dir . '/LanguageServer.log'
 let s:cquery_opts = {
             \ 'cacheDirectory': s:tmp_dir . '/cquery',
             \ 'extraClangArguments': [
