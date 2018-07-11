@@ -48,6 +48,9 @@ tool = nvimdiff
 [difftool "nvimdiff"]
 cmd = nvim -d \"$LOCAL\" \"$REMOTE\"
 
+[difftool "icdiff"]
+cmd = icdiff --line-numbers \"$LOCAL\" \"$REMOTE\" | less -F -X
+
 [alias]
 a = add
 aliases = !git config --get-regexp 'alias.*' | colrm 1 6 | sed 's/[ ]/ = /' | sort
