@@ -46,7 +46,6 @@ brew "python@2"
 brew "mercurial"
 brew "python"
 brew "mitmproxy"
-brew "mongodb"
 brew "mupdf-tools"
 brew "neovim", args: ["HEAD"]
 brew "node"
