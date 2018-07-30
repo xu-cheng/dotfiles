@@ -1,6 +1,9 @@
 Style/Documentation:
   Enabled: false
 
+Style/RegexpLiteral:
+  AllowInnerSlashes: true
+
 Style/StringLiterals:
   EnforcedStyle: double_quotes
 
