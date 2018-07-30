@@ -1,12 +1,12 @@
 " Load vim-plug
 if empty(glob(stdpath('config') . '/autoload/plug.vim'))
-    execute '!curl -fL --create-dirs'
-                \ . ' -o ' . shellescape(stdpath('config') . '/autoload/plug.vim')
-                \ . ' https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
-    augroup vim_plug
-        autocmd!
-        autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
-    augroup END
+  execute '!curl -fL --create-dirs'
+        \ . ' -o ' . shellescape(stdpath('config') . '/autoload/plug.vim')
+        \ . ' https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+  augroup vim_plug
+    autocmd!
+    autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+  augroup END
 endif
 
 call plug#begin(stdpath('data') . '/plugged')
@@ -16,8 +16,9 @@ Plug 'Shougo/unite.vim'
 Plug 'MarcWeber/vim-addon-mw-utils'
 Plug 'tomtom/tlib_vim'
 Plug 'mileszs/ack.vim'
+Plug 'roxma/nvim-yarp'
 if executable('rg')
-    let g:ackprg = 'rg --hidden --glob "!.git" --vimgrep'
+  let g:ackprg = 'rg --hidden --glob "!.git" --vimgrep'
 end
 
 " General
@@ -73,28 +74,32 @@ Plug 'MattesGroeger/vim-bookmarks'
 Plug 'chrisbra/NrrwRgn'
 Plug 'junegunn/vim-easy-align'
 Plug 'Valloric/MatchTagAlways'
-Plug 'tpope/vim-endwise'
+"Plug 'tpope/vim-endwise'
 
 " Snippets & AutoComplete & Semantic Highlight
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'ncm2/ncm2'
 Plug 'autozimu/LanguageClient-neovim', {
-    \ 'branch': 'next',
-    \ 'do': 'bash install.sh',
-    \ }
-Plug 'Shougo/neco-syntax'
-Plug 'Shougo/neco-vim'
-Plug 'Shougo/neoinclude.vim'
-Plug 'wellle/tmux-complete.vim'
-Plug 'ujihisa/neco-look'
-Plug 'Shougo/neosnippet.vim'
-Plug 'Shougo/neosnippet-snippets'
+      \ 'branch': 'next',
+      \ 'do': 'bash install.sh',
+      \ }
 Plug 'honza/vim-snippets'
-Plug 'Shougo/echodoc.vim'
+Plug 'SirVer/ultisnips'
+Plug 'ncm2/ncm2-ultisnips'
+Plug 'ncm2/ncm2-bufword'
+Plug 'ncm2/ncm2-tmux'
+Plug 'ncm2/ncm2-path'
+Plug 'Shougo/neco-syntax'
+Plug 'ncm2/ncm2-syntax'
+Plug 'Shougo/neco-vim'
+Plug 'ncm2/ncm2-vim'
+Plug 'filipekiss/ncm2-look.vim'
+Plug 'ncm2/ncm2-html-subscope'
+Plug 'ncm2/ncm2-markdown-subscope'
 
 " Build & Debug
 Plug 'tpope/vim-dispatch'
 if executable('lldb')
-    Plug 'critiqjo/lldb.nvim', { 'do': ':UpdateRemotePlugins' }
+  Plug 'critiqjo/lldb.nvim', { 'do': ':UpdateRemotePlugins' }
 endif
 
 " Color Scheme
