@@ -5,8 +5,8 @@ let g:ncm2_look#source_override = { 'priority': 2 }
 " don't give |ins-completion-menu| messages.  For example,
 " '-- XXX completion (YYY)', 'match 1 of 2', 'The only match',
 set shortmess+=c
-
-set completeopt=noinsert,menuone
+" per ncm document
+set completeopt=noinsert,menuone,noselect
 
 " Compatible with vim-multiple-cursors
 function! g:Multiple_cursors_before()
