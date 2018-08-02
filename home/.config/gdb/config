@@ -66,7 +66,7 @@ if sys.platform == 'darwin':
     # check codesign
     gdb_path = sp.check_output(['which', 'gdb']).strip()
     if sp.call(['codesign', '-v', gdb_path]) != 0:
-        print 'Please codesign the gdb with: (using the same cert for lldb)'
-        print '    codesign -s lldb_codesign ' + gdb_path
+        print('Please codesign the gdb with: (using the same cert for lldb)')
+        print('    codesign -s lldb_codesign ' + gdb_path)
         sys.exit(1)
 end
