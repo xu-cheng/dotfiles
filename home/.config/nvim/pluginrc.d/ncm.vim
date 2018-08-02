@@ -1,4 +1,4 @@
-autocmd BufEnter * if &filetype != "Startify" | call ncm2#enable_for_buffer() | endif
+autocmd InsertEnter * call ncm2#enable_for_buffer()
 let g:ncm2_look_enabled = 1
 let g:ncm2_look#source_override = { 'priority': 2 }
 
