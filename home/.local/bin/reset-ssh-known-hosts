@@ -14,8 +14,7 @@ hosts = %w[
 
 servers = %w[
   haibo
-  syr
-  syr2
+  db
 ]
 hosts += servers.map { |s| "#{s}.server.xuc.me" }
 
