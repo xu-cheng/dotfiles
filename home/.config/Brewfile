@@ -16,6 +16,7 @@ brew "cmake"
 brew "cocoapods"
 brew "coreutils"
 brew "cpanminus"
+brew "llvm", args: ["with-lldb", "with-python@2"]
 brew "cquery", args: ["HEAD"]
 brew "cryptopp"
 brew "ctags"
@@ -40,7 +41,6 @@ brew "imagemagick"
 brew "jq"
 brew "languagetool"
 brew "less"
-brew "llvm", args: ["with-lldb", "with-python@2"]
 brew "sqlite"
 brew "python@2"
 brew "mercurial"
