@@ -2,6 +2,11 @@
 
 require "open3"
 
+def csr?
+  hostname = `hostname`.chomp
+  hostname =~ /.*\.comp\.hkbu\.edu\.hk/ || hostname =~ /^csr\d+/
+end
+
 hosts = %w[
   github.com
   bitbucket.org
@@ -15,10 +20,11 @@ hosts += servers.map { |s| "#{s}.server.xuc.me" }
 
 csrs = (30..31).to_a + (38..69).to_a
 comp_hosts = %w[faith] + csrs.map { |h| "csr#{h}" }
+hosts += comp_hosts if csr?
 hosts += comp_hosts.map { |h| "#{h}.comp.hkbu.edu.hk" }
 
 hashes = hosts.map do |host|
-  hash, = Open3.capture2("ssh-keyscan", "-H", host)
+  hash, _ = Open3.capture2("ssh-keyscan", "-H", host)
   hash.strip!
   hash unless hash.empty?
 end.compact.join("\n") + "\n"
