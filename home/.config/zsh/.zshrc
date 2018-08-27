@@ -55,6 +55,10 @@ else
     AUTOJUMP_PATH="/usr/share/autojump/autojump.zsh"
     ZSH_HIGHLIGHT_PATH="/usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
 
+    if [[ -s "/etc/zsh_command_not_found" ]]; then
+        source "/etc/zsh_command_not_found"
+    fi
+
     if [[ -d "$HOME/.fzf" ]]; then
         export PATH="$HOME/.fzf/bin:$PATH"
         FZF_SHELL_PATH="$HOME/.fzf/shell"
