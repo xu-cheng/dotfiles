@@ -1,4 +1,5 @@
-autocmd InsertEnter * call ncm2#enable_for_buffer()
+autocmd BufEnter * call ncm2#enable_for_buffer()
+
 let g:ncm2_look_enabled = 1
 let g:ncm2_look#source_override = { 'priority': 2 }
 
