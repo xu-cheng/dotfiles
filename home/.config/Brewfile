@@ -24,6 +24,7 @@ brew "cquery", args: ["HEAD"]
 brew "cryptopp"
 brew "ctags"
 brew "direnv"
+brew "exiftool"
 brew "fd"
 brew "ffmpeg"
 brew "fpp"
