@@ -60,10 +60,6 @@ export PERL_MB_OPT="--install_base \"$XDG_DATA_HOME/perl5\""
 export PERL_MM_OPT="INSTALL_BASE=$XDG_DATA_HOME/perl5"
 export PATH="$XDG_DATA_HOME/perl5/bin:$PATH"
 
-# pry
-# https://github.com/pry/pry/issues/1316#issuecomment-98436268
-export PRYRC="$XDG_CONFIG_HOME/pry/config"
-
 # python
 # https://docs.python.org/3/library/readline.html?highlight=readline#example
 export PYTHONSTARTUP="$XDG_CONFIG_HOME/python/pythonrc"
