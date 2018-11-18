@@ -339,19 +339,19 @@
 	<key>NSWindow Frame NSFontPanel</key>
 	<string>601 323 698 292 0 0 1680 1050 </string>
 	<key>NSWindow Frame SUAutomaticUpdateAlert</key>
-	<string>532 674 616 174 0 0 1680 1050 </string>
+	<string>532 657 616 174 0 0 1680 1050 </string>
 	<key>NSWindow Frame SUUpdateAlert</key>
 	<string>530 493 620 392 0 0 1680 1050 </string>
 	<key>NSWindow Frame SessionsPreferences</key>
-	<string>269 148 606 469 0 0 1680 1027 </string>
+	<string>269 148 606 469 0 0 1680 1050 </string>
 	<key>NSWindow Frame SharedPreferences</key>
-	<string>502 169 796 486 0 0 1680 1050 </string>
+	<string>502 208 796 486 0 0 1680 1050 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>659 223 810 692 0 0 1680 1050 </string>
+	<string>779 145 810 692 0 0 1680 1050 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
-	<string>266 196 810 692 0 0 1680 1050 </string>
+	<string>599 358 810 692 0 0 1680 1050 </string>
 	<key>NSWindow Frame iTerm Window 2</key>
-	<string>794 206 810 692 0 0 1680 1027 </string>
+	<string>794 220 810 692 0 0 1680 1050 </string>
 	<key>NSWindow Frame iTerm Window 3</key>
 	<string>580 234 810 692 0 0 1680 1050 </string>
 	<key>NSWindow Frame iTerm Window 4</key>
@@ -1024,7 +1024,7 @@
 			<key>Shortcut</key>
 			<string></string>
 			<key>Silence Bell</key>
-			<false/>
+			<true/>
 			<key>Smart Cursor Color</key>
 			<true/>
 			<key>Smart Selection Rules</key>
@@ -1768,7 +1768,7 @@
 			<key>Shortcut</key>
 			<string></string>
 			<key>Silence Bell</key>
-			<false/>
+			<true/>
 			<key>Smart Cursor Color</key>
 			<true/>
 			<key>Smart Selection Rules</key>
@@ -1982,7 +1982,7 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2018-08-30T12:16:28Z</date>
+	<date>2018-11-17T16:46:50Z</date>
 	<key>SUSendProfileInfo</key>
 	<false/>
 	<key>SavePasteHistory</key>
@@ -2045,7 +2045,7 @@
 	<key>findRegex_iTerm</key>
 	<false/>
 	<key>iTerm Version</key>
-	<string>3.2.1beta2</string>
+	<string>3.2.5beta1</string>
 	<key>kCPKSelectionViewPreferredModeKey</key>
 	<integer>0</integer>
 	<key>kCPKSelectionViewShowHSBTextFieldsKey</key>
