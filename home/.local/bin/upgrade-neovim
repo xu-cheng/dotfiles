@@ -3,8 +3,8 @@
 trap '{ echo "Quit by Ctrl-C." >&2; exit 130; }' INT
 
 brew update && brew upgrade neovim --fetch-HEAD --cleanup && brew cleanup neovim
-pip2 install --upgrade neovim
-pip3 install --upgrade neovim
+pip2 install --upgrade pynvim
+pip3 install --upgrade pynvim
 pip3 install --upgrade neovim-remote
 gem install neovim && gem cleanup neovim
 nvim --headless -c PlugUpgrade +q
