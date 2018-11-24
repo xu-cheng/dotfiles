@@ -3,7 +3,6 @@ let g:tex_flavor = 'latex'
 let g:tex_conceal = 'adgm'
 let g:vimtex_quickfix_open_on_warning = 0
 let g:vimtex_compiler_method = 'latexmk'
-let g:vimtex_compiler_progname = 'nvr'
 if has('mac')
   let g:vimtex_view_method = 'skim'
 elseif has('win32')
