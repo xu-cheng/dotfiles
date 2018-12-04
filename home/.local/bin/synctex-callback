@@ -2,7 +2,7 @@
 
 import argparse
 import psutil
-import neovim
+import pynvim
 import os
 import sys
 
@@ -30,8 +30,8 @@ def attach_neovim(addr):
     if ":" in addr:
         ip, port = self.addr.split(":", 1)
         if port.isdigit():
-            return neovim.attach("tcp", address=ip, port=int(port))
-    return neovim.attach("socket", path=addr)
+            return pynvim.attach("tcp", address=ip, port=int(port))
+    return pynvim.attach("socket", path=addr)
 
 
 def open_file_in_neovim(nvim, file, line, edit="edit"):
