@@ -99,9 +99,6 @@ Plug 'ncm2/ncm2-markdown-subscope'
 
 " Build & Debug
 Plug 'tpope/vim-dispatch'
-if executable('lldb')
-  Plug 'critiqjo/lldb.nvim', { 'do': ':UpdateRemotePlugins' }
-endif
 
 " Color Scheme
 Plug 'junegunn/seoul256.vim'
