@@ -50,16 +50,8 @@
 " Vim UI {
 
     " Color Scheme
-    if systemlist('get-iterm2-background-color')[0] ==# 'light'
-        set background=light
-    else
-        set background=dark
-    endif
-    if &background ==# 'dark'
-        color seoul256
-    else
-        color solarized
-    endif
+    set background=dark
+    color seoul256
 
     set termguicolors               " enable true color
 
@@ -167,23 +159,6 @@
     endfunction
 
     command! RemoveCache call RemoveCache()
-" }
-
-" ToggleBG {
-    function! ToggleBG()
-        if &background ==# 'dark'
-            set background=light
-            color solarized
-            let g:airline_theme = 'solarized'
-        else
-            set background=dark
-            color seoul256
-            let g:airline_theme = 'bubblegum'
-        endif
-        AirlineRefresh
-    endfunction
-
-    command! ToggleBG call ToggleBG()
 " }
 
 " Auto quit {

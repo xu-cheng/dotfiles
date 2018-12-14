@@ -137,19 +137,6 @@ TRAPUSR1() {
     fi
 }
 
-# Change iterm2 profile. Usage it2prof ProfileName (case sensitive)
-# https://coderwall.com/p/s-2_nw/change-iterm2-color-profile-from-the-cli
-tmux_escape() {
-    if [[ -n "$TMUX" || "$TERM" = *screen* ]]; then
-        printf '\033Ptmux;\033%b\033\\' "$1"
-    else
-        printf "$1"
-    fi
-}
-it2prof()  { tmux_escape "\033]50;SetProfile=$1\a"; }
-it2dark()  { it2prof "Seoul256"; }
-it2light() { it2prof "Solarized Light"; }
-
 # Load confidential information
 if [[ -s "$XDG_CONFIG_HOME/tokens" ]]; then
     . "$XDG_CONFIG_HOME/tokens"

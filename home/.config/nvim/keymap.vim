@@ -110,4 +110,3 @@ inoremap <C-c> <Esc>
 
 " Shortcut to custom commands
 noremap <leader>rc :call RemoveCache()<CR>
-noremap <leader>bg :call ToggleBG()<CR>
