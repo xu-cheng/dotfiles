@@ -4,7 +4,6 @@ let g:vim_leader_guide_map = {
             \       'c': { 'name' : 'Comments' },
             \       'f': { 'name' : 'Fold level/Find' },
             \       'g': { 'name' : 'Git' },
-            \       'h': { 'name' : 'Git Gutter' },
             \   },
             \   g:maplocalleader: {
             \       'name': '<localleader>',
