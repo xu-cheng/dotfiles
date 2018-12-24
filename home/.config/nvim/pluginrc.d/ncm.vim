@@ -47,7 +47,7 @@ let g:LanguageClient_serverCommands = {
       \ 'c': ['cquery', '--log-all-to-stderr', '--init=' . json_encode(s:cquery_opts)],
       \ 'cpp': ['cquery', '--log-all-to-stderr', '--init=' . json_encode(s:cquery_opts)],
       \ 'python': ['pyls'],
-      \ 'rust': ['rls'],
+      \ 'rust': ['rustup', 'run', 'nightly', 'rls'],
       \ 'sh': ['bash-language-server', 'start'],
       \ }
 let g:LanguageClient_diagnosticsDisplay = {
