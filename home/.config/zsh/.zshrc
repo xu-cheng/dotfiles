@@ -22,7 +22,7 @@ plugins=(brew-cask colored-man-pages docker docker-compose extract git \
 if [[ "$OSTYPE" == darwin* ]]; then # macOS
     export HOMEBREW_PREFIX="/usr/local"
     export HOMEBREW_REPOSITORY="/usr/local/Homebrew"
-    export PATH="$XDG_BIN_HOME:/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin:/Library/TeX/texbin:/usr/local/lib/ruby/gems/2.5.0/bin"
+    export PATH="$XDG_BIN_HOME:/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin:/Library/TeX/texbin:/usr/local/lib/ruby/gems/2.6.0/bin"
 elif [[ -n "$CSR" ]] then # Linux on CSR
     export HOMEBREW_PREFIX="$HOME/usr"
     export HOMEBREW_REPOSITORY="$HOMEBREW_PREFIX"
