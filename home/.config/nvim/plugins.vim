@@ -120,6 +120,7 @@ Plug 'jceb/vim-orgmode'
 
 " Syntax
 Plug 'sheerun/vim-polyglot'
+Plug 'rust-lang/rust.vim'
 Plug 'xu-cheng/brew.vim'
 Plug 'bfontaine/Brewfile.vim'
 Plug 'tmux-plugins/vim-tmux'

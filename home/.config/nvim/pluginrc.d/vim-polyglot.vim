@@ -1,1 +1,1 @@
-let g:polyglot_disabled = ['latex', 'ruby']
+let g:polyglot_disabled = ['latex', 'ruby', 'rust']
