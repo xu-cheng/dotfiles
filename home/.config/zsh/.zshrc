@@ -76,7 +76,7 @@ if (( ${+commands[direnv]} )); then
     [[ -n "$TMUX" && -f "$PWD/.envrc" ]] && direnv reload
 fi
 if (( ${+commands[nvim]} )); then
-    export EDITOR="nvim"
+    export EDITOR='nvim'
     alias vim='nvim -p'
     alias vimdiff='nvim -d'
 fi
@@ -102,6 +102,11 @@ alias tl='tmux list-sessions'
 alias ts='tmux new-session -s'
 alias tkss='tmux kill-session -t'
 alias tksv='tmux kill-server'
+
+if (( ${+commands[exa]} )); then
+  alias ls='exa'
+  alias l='exa --all --long --header --git'
+fi
 
 if (( ! ${+commands[sha1sum]} && ${+commands[gsha1sum]} )); then
     alias sha1sum='gsha1sum';

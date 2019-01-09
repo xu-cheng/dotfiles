@@ -23,6 +23,7 @@ brew "cquery", args: ["HEAD"]
 brew "cryptopp"
 brew "ctags"
 brew "direnv"
+brew "exa"
 brew "exiftool"
 brew "fd"
 brew "ffmpeg"
