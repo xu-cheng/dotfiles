@@ -49,7 +49,7 @@ if [[ -n "$HOMEBREW_PREFIX" ]]; then
     FZF_SHELL_PATH="$HOMEBREW_PREFIX/opt/fzf/shell"
 
     alias bubo='brew update && brew outdated'
-    alias bubu='brew update && brew upgrade --cleanup'
+    alias bubu='brew update && brew upgrade && brew cleanup'
 else
     AUTOJUMP_PATH="/usr/share/autojump/autojump.zsh"
     ZSH_HIGHLIGHT_PATH="/usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
