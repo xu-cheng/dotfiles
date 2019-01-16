@@ -1,7 +1,6 @@
 let g:vim_leader_guide_map = {
             \   g:mapleader: {
             \       'name': '<leader>',
-            \       'c': { 'name' : 'Comments' },
             \       'f': { 'name' : 'Fold level/Find' },
             \       'g': { 'name' : 'Git' },
             \   },
