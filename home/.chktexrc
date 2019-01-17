@@ -2,5 +2,9 @@ CmdLine
 {
   -q
   -v2
+  -wall
+  -n21
+  -n22
+  -n30
   -n46
 }
