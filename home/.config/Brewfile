@@ -64,7 +64,7 @@ brew "pyqt"
 brew "rbenv"
 brew "reattach-to-user-namespace"
 brew "ripgrep"
-brew "ruby", link: true
+brew "ruby"
 brew "safe-rm"
 brew "shellcheck"
 brew "socat"
@@ -127,6 +127,8 @@ cask "steam"
 cask "terminology"
 cask "typora"
 cask "vagrant"
+cask "virtualbox"
+cask "visual-studio-code"
 cask "vmware-fusion"
 cask "webpquicklook"
 mas "Amphetamine", id: 937984704
@@ -142,6 +144,7 @@ mas "Mate Translate", id: 1005088137
 mas "MathStudio", id: 829912893
 mas "Moom", id: 419330170
 mas "Noizio", id: 928871589
+mas "Notability", id: 736189492
 mas "Numbers", id: 409203825
 mas "Orangered Notifier", id: 468366517
 mas "Pages", id: 409201541
