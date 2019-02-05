@@ -14,7 +14,7 @@ HISTFILE="$ZSH_CACHE_DIR/history"
 [[ -d "$ZSH_CACHE_DIR" ]] || mkdir -p "$ZSH_CACHE_DIR"
 
 ZSH_THEME="mytheme"
-plugins=(brew-cask colored-man-pages docker docker-compose extract git \
+plugins=(brew-cask colored-man-pages docker docker-compose git \
          git-flow-avh gitignore mercurial osx ssh-gpg-agent svn vagrant \
          xdg-base-dir)
 
