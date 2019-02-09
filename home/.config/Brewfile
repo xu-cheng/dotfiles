@@ -40,7 +40,7 @@ brew "gnupg"
 brew "gnuplot"
 brew "graphviz"
 brew "highlight"
-brew "htop", args: ["with-ncurses"]
+brew "htop"
 brew "hub"
 brew "icdiff"
 brew "imagemagick"
