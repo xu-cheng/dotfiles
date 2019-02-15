@@ -27,10 +27,10 @@ brew "direnv"
 brew "exa"
 brew "exiftool"
 brew "fd"
+brew "gmp"
 brew "ffmpeg"
 brew "fpp"
 brew "fzf"
-brew "gmp"
 brew "gcc"
 brew "ghostscript"
 brew "gistit"
@@ -136,7 +136,6 @@ mas "Amphetamine", id: 937984704
 mas "Archiver", id: 619437121
 mas "Clear Day", id: 411543336
 mas "Dropshelf", id: 540404405
-mas "F5Access", id: 1243219105
 mas "GarageBand", id: 682658836
 mas "iMovie", id: 408981434
 mas "Keynote", id: 409183694
