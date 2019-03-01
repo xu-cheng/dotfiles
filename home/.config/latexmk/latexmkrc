@@ -1,42 +1,76 @@
 # vim: set filetype=perl:
 
 # Use lualatex
-$pdflatex = 'lualatex --shell-escape --synctex=1 %O %S';
-# Always create PDFs
-$pdf_mode = 1;
+$pdf_mode = 4;
+set_tex_cmds('-synctex=1 -file-line-error %O %S');
 # Try 5 times at maximum then give up
 $max_repeat = 5;
 # Use PDF Expert.app to preview generated PDFs
 $pdf_previewer = 'open -a "PDF Expert"';
 # File extensions to remove when cleaning
-$clean_ext = 'bbl fdb_latexmk fls nav pdfsync pyg pytxcode run.xml ' .
-             'snm synctex.gz thm upa vrb _minted-%R pythontex-files-%R ' .
-             '**/*-eps-converted-to.pdf';
-# PythonTeX support
-add_cus_dep('pytxcode', 'tex', 0, 'pythontex');
-sub pythontex { return system("pythontex", $_[0]); }
-# R (knitr) support
-if(grep(/\.(rnw|rtex)$/i, @ARGV)) {
-    $pdflatex = 'internal knitrlatex ' . $pdflatex;
-    my $knitr_compiled = {};
-    sub knitrlatex {
-        for (@_) {
-            next unless -e $_;
-            my $input = $_;
-            next unless $_ =~ s/\.(rnw|rtex)$/.tex/i;
-            my $tex = $_;
-            my $checksum = (fdb_get($input))[-1];
-            if (!$knitr_compiled{$input} || $knitr_compiled{$input} ne $checksum) {
-                my $ret = system("Rscript", "-e", "knitr::knit('$input')");
-                if($ret) { return $ret; }
-                rdb_ensure_file($rule, $tex);
-                $knitr_compiled{$input} = $checksum;
-            }
-        }
-        return system(@_);
-    }
-    $clean_ext .= ' %R.tex';
-}
+# Ref: https://www.gitignore.io/api/latex
+my @clean_ext = qw(
+  %R-blx.aux
+  %R-blx.bib
+  _minted-%R
+  acn
+  acr
+  alg
+  aux
+  bbl
+  bcf
+  blg
+  brf
+  cb
+  cb2
+  cpt
+  cut
+  dvi
+  fdb_latexmk
+  fls
+  fmt
+  fot
+  glg
+  glo
+  gls
+  glsdefs
+  idx
+  ilg
+  ind
+  ist
+  lb
+  listing
+  loa
+  loe
+  lof
+  log
+  lol
+  lot
+  lox
+  nav
+  out
+  pdfsync
+  pre
+  run.xml
+  snm
+  soc
+  synctex
+  synctex(busy)
+  synctex.gz
+  synctex.gz(busy)
+  tdo
+  thm
+  toc
+  upa
+  upb
+  vrb
+  xcp
+  xdv
+  xmpi
+  xyc
+  **/*-converted-to.*
+);
+$clean_ext = join ' ', @clean_ext;
 
 no warnings 'redefine';
 
@@ -44,31 +78,31 @@ no warnings 'redefine';
 # Ref: https://github.com/e-dschungel/latexmk-config/blob/master/latexmkrc
 use File::Zglob; # installed with `cpanm File::Zglob`.
 sub cleanup1 {
-    my $dir = fix_pattern( shift );
-    my $root_fixed = fix_pattern( $root_filename );
-    foreach (@_) {
-        (my $name = (/%R/ || /[\*\?]/) ? $_ : "%R.$_") =~ s/%R/$dir$root_fixed/;
-        unlink_or_move( zglob( "$name" ) );
-    }
+  my $dir = fix_pattern( shift );
+  my $root_fixed = fix_pattern( $root_filename );
+  foreach (@_) {
+    (my $name = (/%R/ || /[\*\?]/) ? $_ : "%R.$_") =~ s/%R/$dir$root_fixed/;
+    unlink_or_move( zglob( "$name" ) );
+  }
 }
 
 # Overwrite `unlink_or_move` to support clean directory.
 use File::Path 'rmtree';
 sub unlink_or_move {
-    if ( $del_dir eq '' ) {
-        foreach (@_) {
-            if (-d $_) {
-                rmtree $_;
-            } else {
-                unlink $_;
-            }
-        }
+  if ( $del_dir eq '' ) {
+    foreach (@_) {
+      if (-d $_) {
+        rmtree $_;
+      } else {
+        unlink $_;
+      }
     }
-    else {
-        foreach (@_) {
-            if (-e $_ && ! rename $_, "$del_dir/$_" ) {
-                warn "$My_name:Cannot move '$_' to '$del_dir/$_'\n";
-            }
-        }
+  }
+  else {
+    foreach (@_) {
+      if (-e $_ && ! rename $_, "$del_dir/$_" ) {
+        warn "$My_name:Cannot move '$_' to '$del_dir/$_'\n";
+      }
     }
+  }
 }
