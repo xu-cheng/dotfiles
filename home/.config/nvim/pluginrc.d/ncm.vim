@@ -19,33 +19,14 @@ function! g:Multiple_cursors_after()
 endfunction
 
 " LSP
-if exists('$TMPDIR')
-  let s:tmp_dir = $TMPDIR
-elseif exists('$XDG_CACHE_HOME')
-  let s:tmp_dir = $XDG_CACHE_HOME
-else
-  let s:tmp_dir = '/tmp'
-endif
-let s:cquery_opts = {
-      \ 'cacheDirectory': s:tmp_dir . '/cquery',
-      \ 'extraClangArguments': [
-      \     '-Wall',
-      \     '-Wextra',
-      \     '-Werror',
-      \     '-Wno-long-long',
-      \     '-Wno-variadic-macros',
-      \     '-fexceptions',
-      \     '-DNDEBUG',
-      \   ],
-      \ }
 " install LSP:
-" * c/cpp: `brew install cquery`
+" * c/cpp: `brew install ccls`
 " * python: `pip3 install python-language-server`
 " * rust: See notes/rust.md
 " * sh: `npm install -g bash-language-server`
 let g:LanguageClient_serverCommands = {
-      \ 'c': ['cquery', '--log-all-to-stderr', '--init=' . json_encode(s:cquery_opts)],
-      \ 'cpp': ['cquery', '--log-all-to-stderr', '--init=' . json_encode(s:cquery_opts)],
+      \ 'c': ['ccls'],
+      \ 'cpp': ['ccls'],
       \ 'python': ['pyls'],
       \ 'rust': ['rls'],
       \ 'sh': ['bash-language-server', 'start'],
