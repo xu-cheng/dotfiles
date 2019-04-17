@@ -1,6 +1,6 @@
 # vim: set filetype=ruby:
 
-#plugins list
+# plugins list
 (%w[
   pry-byebug
   pry-coolline
@@ -14,7 +14,7 @@
   begin
     require plugin
   rescue LoadError
-    $stderr.puts "WARNING: fail to install #{plugin}."
+    warn "WARNING: fail to install #{plugin}."
   end
 end
 
