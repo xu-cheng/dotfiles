@@ -1,38 +1,39 @@
 let s:config_home = stdpath('config')
 
-" Set python interpreter path
-function! s:brew_prefix()
-  if !exists('s:brew_prefix')
-    let s:brew_prefix = systemlist('brew --prefix')[0]
-  endif
-  return s:brew_prefix
-endfunction
+" Set python/ruby interpreter path
+
+if has('mac')
+  let s:brew_prefix = '/usr/local'
+elseif executable('brew')
+  let s:brew_prefix = systemlist('brew --prefix')[0]
+endif
 
 if !exists('g:python_host_prog')
-  if has('mac')
-    let g:python_host_prog = '/usr/local/bin/python2'
-  elseif has('win32')
-    let g:python_host_prog = 'C:\Python27\python'
-  else
-    if executable(s:brew_prefix() . '/bin/python2')
-      let g:python_host_prog = s:brew_prefix() . '/bin/python2'
-    else
-      let g:python_host_prog = '/usr/bin/python2'
-    endif
+  if exists('s:brew_prefix') && executable(s:brew_prefix . '/opt/python@2/bin/python2')
+    let g:python_host_prog = s:brew_prefix . '/opt/python@2/bin/python2'
+  elseif executable('/usr/bin/python2')
+    let g:python_host_prog = '/usr/bin/python2'
   endif
 endif
 
 if !exists('g:python3_host_prog')
+  if exists('s:brew_prefix') && executable(s:brew_prefix . '/opt/python/bin/python3')
+    let g:python3_host_prog = s:brew_prefix . '/opt/python/bin/python3'
+  elseif executable('/usr/bin/python3')
+    let g:python3_host_prog = '/usr/bin/python3'
+  endif
+endif
+
+if !exists('g:ruby_host_prog')
   if has('mac')
-    let g:python3_host_prog = '/usr/local/bin/python3'
-  elseif has('win32')
-    let g:python3_host_prog = 'C:\Python36\python'
-  else
-    if executable(s:brew_prefix() . '/bin/python3')
-      let g:python3_host_prog = s:brew_prefix() . '/bin/python3'
-    else
-      let g:python3_host_prog = '/usr/bin/python3'
+    let s:brew_ruby_host = glob(s:brew_prefix . '/lib/ruby/gems/*/bin/neovim-ruby-host', 1, 1)
+    if !empty(s:brew_ruby_host) && executable(s:brew_ruby_host[0])
+      let g:ruby_host_prog = s:brew_ruby_host[0]
     endif
+  elseif exists('s:brew_prefix') && executable(s:brew_prefix . '/bin/neovim-ruby-host')
+    let g:ruby_host_prog = s:brew_prefix . '/bin/neovim-ruby-host'
+  elseif executable('/usr/bin/neovim-ruby-host')
+    let g:ruby_host_prog = '/usr/bin/neovim-ruby-host'
   endif
 endif
 
