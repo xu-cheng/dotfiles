@@ -1,4 +1,7 @@
-dotfiles
-========
+# dotfiles
 
-My configuration on OS X.
+My dotfiles.
+
+## License
+
+MIT
