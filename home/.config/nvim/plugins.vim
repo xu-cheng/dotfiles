@@ -57,7 +57,6 @@ Plug 'farmergreg/vim-lastplace'
 " Writing
 Plug 'reedes/vim-litecorrect'
 Plug 'reedes/vim-wordy'
-Plug 'rhysd/vim-grammarous'
 Plug 'beloglazov/vim-online-thesaurus'
 
 " General Programming
