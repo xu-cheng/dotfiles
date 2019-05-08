@@ -12,7 +12,6 @@ endif
 call plug#begin(stdpath('data') . '/plugged')
 
 " Deps
-Plug 'Shougo/unite.vim'
 Plug 'MarcWeber/vim-addon-mw-utils'
 Plug 'tomtom/tlib_vim'
 Plug 'mileszs/ack.vim'
@@ -23,7 +22,8 @@ end
 
 " General
 Plug 'editorconfig/editorconfig-vim'
-Plug 'Shougo/vimfiler.vim'
+Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'kristijanhusak/defx-icons'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 Plug 'junegunn/fzf'
