@@ -135,7 +135,6 @@ Plug 'tyru/open-browser.vim'
 Plug 'henrik/vim-reveal-in-finder'
 
 " Other
-Plug 'edkolev/tmuxline.vim'
 Plug 'tmux-plugins/vim-tmux-focus-events'
 
 " Require to be loaded as the very last one
