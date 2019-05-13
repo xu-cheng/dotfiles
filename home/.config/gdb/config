@@ -54,8 +54,8 @@ dashboard -layout source expressions history stack threads
 python
 if os.path.exists(os.path.expanduser('~/usr/opt/gcc/lib')):
     gdb.execute('add-auto-load-safe-path ~/usr/opt/gcc/lib/')
-if os.path.exists(os.path.expanduser('~/usr/opt/gcc@8/lib')):
-    gdb.execute('add-auto-load-safe-path ~/usr/opt/gcc@8/lib/')
+if os.path.exists(os.path.expanduser('~/usr/opt/gcc@9/lib')):
+    gdb.execute('add-auto-load-safe-path ~/usr/opt/gcc@9/lib/')
 end
 
 # == mac config ==
