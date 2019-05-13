@@ -53,6 +53,7 @@ end
 link_files(DOTFILES_HOME, HOME)
 link_files(DOTFILES_HOME/".config", HOME/".config", skip_directory: false)
 link_files(DOTFILES_HOME/".local/bin", HOME/".local/bin")
+link_files(DOTFILES_HOME/".local/share/cargo", HOME/".local/share/cargo")
 
 if csr?
   link_files(DOTFILES_HOME_CSR, HOME)
