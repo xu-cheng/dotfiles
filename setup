@@ -1,4 +1,5 @@
 #!/usr/bin/env ruby
+# rubocop:disable Layout/SpaceAroundOperators, Style/MixinUsage, Style/NumericLiteralPrefix
 
 require "fileutils"
 require "pathname"
@@ -6,13 +7,13 @@ require "shellwords"
 include FileUtils::Verbose
 
 class Pathname
-  alias_method :/, :+ unless method_defined?(:/)
-  alias_method :to_str, :to_s unless method_defined?(:to_str)
+  alias / + unless method_defined?(:/)
+  alias to_str to_s unless method_defined?(:to_str)
 end
 
 OS = RUBY_PLATFORM =~ /darwin/ ? :osx : :linux
 HOSTNAME = `hostname`.chomp
-ROOT = Pathname.new(__FILE__).parent.expand_path
+ROOT = Pathname.new(__dir__).expand_path
 DOTFILES_HOME = ROOT/"home"
 DOTFILES_HOME_CSR = ROOT/"home_csr"
 HOME = Pathname.new(Dir.home)
@@ -27,6 +28,7 @@ def link_files(src_dir, dst_dir, skip_directory: true)
   src_dir.children.sort.each do |file|
     next if skip_directory && file.directory?
     next if file.basename.to_s == ".DS_Store"
+
     ln_sf file, dst_dir
   end
 end
@@ -35,9 +37,8 @@ def clean(dir)
   dir.children.sort.each do |file|
     next if file.exist?
     next unless file.symlink?
-    if file.readlink.to_s.start_with? ROOT.to_s
-      rm file
-    end
+
+    rm file if file.readlink.to_s.start_with? ROOT.to_s
   end
 end
 
@@ -81,4 +82,3 @@ chmod 0700, HOME/".gnupg"
 
 ENV["LESSKEY"] = "#{ENV["HOME"]}/.local/share/less/lesskey"
 system "lesskey", HOME/".config/less/lesskey"
-
