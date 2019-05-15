@@ -26,6 +26,9 @@ export MANPATH="$HOME/usr/share/man:$MANPATH"
 export INFOPATH="$HOME/usr/share/info:$INFOPATH"
 export CMAKE_PREFIX_PATH="$HOMEBREW_PREFIX"
 export SHELL="$HOMEBREW_PREFIX/bin/zsh"
+# get the effective arch for `gcc -march=native`:
+#   gcc -march=native -Q --help=target | grep march | awk '{ print $2 }'
+export HOMEBREW_ARCH="nehalem"
 export HOMEBREW_FORCE_VENDOR_RUBY=true
 export HOMEBREW_FORCE_BREWED_GIT=true
 export HOMEBREW_DEVELOPER=true
