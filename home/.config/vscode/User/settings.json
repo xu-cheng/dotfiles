@@ -1,0 +1,222 @@
+{
+  "editor.fontFamily": "Monaco, monospace",
+  "editor.fontSize": 13,
+  "editor.wordWrap": "on",
+  "editor.minimap.enabled": false,
+  "editor.renderWhitespace": "boundary",
+  "terminal.integrated.macOptionIsMeta": true,
+  "terminal.integrated.fontFamily": "Monaco, Hack Nerd Font, monospace",
+  "terminal.external.osxExec": "iTerm.app",
+  "telemetry.enableTelemetry": false,
+  // Vim Mode
+  "vim.leader": ",",
+  "vim.easymotion": true,
+  "vim.hlsearch": true,
+  "vim.enableNeovim": true,
+  "vim.neovimPath": "/usr/local/bin/nvim",
+  "vim.useSystemClipboard": true,
+  "vim.normalModeKeyBindingsNonRecursive": [
+    {
+      "before": [
+        "<leader>",
+        "d"
+      ],
+      "after": [
+        "\"",
+        "_",
+        "d"
+      ]
+    },
+    {
+      "before": [
+        "<leader>",
+        "D"
+      ],
+      "after": [
+        "\"",
+        "_",
+        "D"
+      ]
+    },
+    {
+      "before": [
+        "<leader>",
+        "x"
+      ],
+      "after": [
+        "\"",
+        "_",
+        "x"
+      ]
+    },
+    {
+      "before": [
+        "<leader>",
+        "v"
+      ],
+      "after": [
+        "V",
+        "`",
+        "]"
+      ]
+    },
+    {
+      "before": [
+        "j"
+      ],
+      "after": [
+        "g",
+        "j"
+      ]
+    },
+    {
+      "before": [
+        "k"
+      ],
+      "after": [
+        "g",
+        "k"
+      ]
+    },
+    {
+      "before": [
+        "Y"
+      ],
+      "after": [
+        "y",
+        "$"
+      ]
+    },
+    {
+      "before": [
+        "<space>"
+      ],
+      "commands": [
+        ":nohl"
+      ]
+    },
+  ],
+  "vim.visualModeKeyBindingsNonRecursive": [
+    {
+      "before": [
+        "<leader>",
+        "d"
+      ],
+      "after": [
+        "\"",
+        "_",
+        "d"
+      ]
+    },
+    {
+      "before": [
+        "<leader>",
+        "D"
+      ],
+      "after": [
+        "\"",
+        "_",
+        "D"
+      ]
+    },
+    {
+      "before": [
+        "<leader>",
+        "x"
+      ],
+      "after": [
+        "\"",
+        "_",
+        "x"
+      ]
+    },
+    {
+      "before": [
+        "j"
+      ],
+      "after": [
+        "g",
+        "j"
+      ]
+    },
+    {
+      "before": [
+        "k"
+      ],
+      "after": [
+        "g",
+        "k"
+      ]
+    },
+    {
+      "before": [
+        "<"
+      ],
+      "after": [
+        "<",
+        "g",
+        "v"
+      ]
+    },
+    {
+      "before": [
+        ">"
+      ],
+      "after": [
+        ">",
+        "g",
+        "v"
+      ]
+    },
+    {
+      "before": [
+        "<space>"
+      ],
+      "commands": [
+        ":nohl"
+      ]
+    },
+  ],
+  // Git
+  "git.autofetch": true,
+  "gitlens.blame.avatars": false,
+  "gitlens.hovers.avatars": false,
+  "gitlens.views.compare.avatars": false,
+  "gitlens.views.fileHistory.avatars": false,
+  "gitlens.views.lineHistory.avatars": false,
+  "gitlens.views.repositories.avatars": false,
+  "gitlens.views.search.avatars": false,
+  "gitlens.currentLine.enabled": false,
+  // Path Autocomplete
+  "path-autocomplete.triggerOutsideStrings": true,
+  // LaTeX
+  "latex-workshop.view.pdf.viewer": "tab",
+  "latex-workshop.chktex.enabled": true,
+  "latex-workshop.latex.tools": [
+    {
+      "name": "latexmk",
+      "command": "latexmk",
+      "args": [
+        "-synctex=1",
+        "-interaction=nonstopmode",
+        "-file-line-error",
+        "-outdir=%OUTDIR%",
+        "%DOC%"
+      ],
+      "env": {}
+    },
+  ],
+  // Rust
+  "rust-client.rustupPath": "/Users/chengxu/.local/share/cargo/bin/rustup",
+  "rust.all_features": true,
+  "rust.clippy_preference": "on",
+  // cSpell
+  "cSpell.languageSettings": [
+    {
+      "languageId": "latex",
+      "ignoreRegExpList": [
+        "\\\\\\w+([ %\\{])?"
+      ]
+    }
+  ],
+}

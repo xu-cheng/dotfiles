@@ -1,0 +1,12 @@
+// Place your key bindings in this file to override the defaults
+[
+  {
+    "key": "tab",
+    "command": "selectNextSuggestion",
+    "when": "editorTextFocus && suggestWidgetMultipleSuggestions && suggestWidgetVisible",
+  },
+  {
+    "key": "ctrl+s",
+    "command": "workbench.action.files.save",
+  }
+]
