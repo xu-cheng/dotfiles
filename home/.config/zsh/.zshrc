@@ -38,7 +38,6 @@ if [[ -n "$HOMEBREW_PREFIX" ]]; then
     export HOMEBREW_DEVELOPER=true
     export HOMEBREW_NO_ANALYTICS=true
     export HOMEBREW_NO_AUTO_UPDATE=true
-    export HOMEBREW_SANDBOX=true
 
     export PYENV_ROOT="$HOMEBREW_PREFIX/var/pyenv"
     export RBENV_ROOT="$HOMEBREW_PREFIX/var/rbenv"
