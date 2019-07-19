@@ -7,7 +7,6 @@ let g:ale_lint_delay = 500
 " Install linters
 " markdownlint: npm install -g markdownlint-cli
 " languagetool: brew install languagetool
-" write-good: brew install write-good
 
 if !exists('g:ale_linters')
     let g:ale_linters = {}
@@ -18,5 +17,5 @@ let g:ale_linters.c = ['clang-format']
 let g:ale_linters.cpp = ['clang-format']
 
 " LaTeX linter
-let g:ale_linters.tex = ['chktex', 'write-good']
+let g:ale_linters.tex = ['chktex']
 
