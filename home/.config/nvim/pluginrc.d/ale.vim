@@ -12,10 +12,14 @@ if !exists('g:ale_linters')
     let g:ale_linters = {}
 endif
 
+if !exists('g:ale_linters_ignore')
+    let g:ale_linters_ignore = {}
+endif
+
 " C/C++ linter
 let g:ale_linters.c = ['clang-format']
 let g:ale_linters.cpp = ['clang-format']
 
 " LaTeX linter
-let g:ale_linters.tex = ['chktex']
+let g:ale_linters_ignore.tex = ['lacheck']
 
