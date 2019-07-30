@@ -60,7 +60,7 @@ Plug 'reedes/vim-wordy'
 Plug 'beloglazov/vim-online-thesaurus'
 
 " General Programming
-Plug 'ludovicchabant/vim-gutentags'
+" Plug 'ludovicchabant/vim-gutentags'
 Plug 'w0rp/ale'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
