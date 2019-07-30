@@ -1,0 +1,23 @@
+#!/usr/bin/env ruby
+
+$LOAD_PATH.unshift ENV["HOMEBREW_LIBRARY_PATH"]
+require "global"
+require "cask/all"
+require "formula"
+require "keg"
+require "pry"
+
+class Symbol
+  def f(*args)
+    Formulary.factory(to_s, *args)
+  end
+end
+class String
+  def f(*args)
+    Formulary.factory(self, *args)
+  end
+end
+
+ohai "Interactive Homebrew Shell"
+Pry.config.prompt_name = "brew"
+Pry.start
