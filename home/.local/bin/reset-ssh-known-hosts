@@ -13,7 +13,6 @@ hosts = %w[
 ]
 
 servers = %w[
-  haibo
   db
 ]
 hosts += servers.map { |s| "#{s}.server.xuc.me" }
@@ -24,7 +23,7 @@ hosts += comp_hosts if csr?
 hosts += comp_hosts.map { |h| "#{h}.comp.hkbu.edu.hk" }
 
 hashes = hosts.map do |host|
-  hash, _ = Open3.capture2("ssh-keyscan", "-H", host)
+  hash, = Open3.capture2("ssh-keyscan", "-H", host)
   hash.strip!
   hash unless hash.empty?
 end.compact.join("\n") + "\n"
