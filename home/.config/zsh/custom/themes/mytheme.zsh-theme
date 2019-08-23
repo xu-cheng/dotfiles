@@ -27,15 +27,6 @@ function prompt_git(){
     git_prompt_info
 }
 
-# Mercurial info
-function prompt_hg(){
-    ZSH_THEME_HG_PROMPT_PREFIX="hg:%{$fg[cyan]%}"
-    ZSH_THEME_HG_PROMPT_SUFFIX="%{$reset_color%}"
-    ZSH_THEME_HG_PROMPT_DIRTY=" %{$fg[red]%}$x_mark"
-    ZSH_THEME_HG_PROMPT_CLEAN=" %{$fg[green]%}$check_mark"
-    hg_prompt_info
-}
-
 # Pyenv info
 function prompt_pyenv(){
     if (( ${+commands[pyenv]} )); then
@@ -68,7 +59,6 @@ function prompt_additional(){
     local -a array
     array=( \
         "$(prompt_git)" \
-        "$(prompt_hg)" \
         "$(prompt_pyenv)" \
         "$(prompt_venv)" \
         "$(prompt_rbenv)" \
