@@ -8,14 +8,6 @@ elseif executable('brew')
   let s:brew_prefix = systemlist('brew --prefix')[0]
 endif
 
-if !exists('g:python_host_prog')
-  if exists('s:brew_prefix') && executable(s:brew_prefix . '/opt/python@2/bin/python2')
-    let g:python_host_prog = s:brew_prefix . '/opt/python@2/bin/python2'
-  elseif executable('/usr/bin/python2')
-    let g:python_host_prog = '/usr/bin/python2'
-  endif
-endif
-
 if !exists('g:python3_host_prog')
   if exists('s:brew_prefix') && executable(s:brew_prefix . '/opt/python/bin/python3')
     let g:python3_host_prog = s:brew_prefix . '/opt/python/bin/python3'
