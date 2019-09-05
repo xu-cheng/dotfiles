@@ -38,6 +38,11 @@ export HOMEBREW_CACHE="$XDG_CACHE_HOME/homebrew"
 export HOMEBREW_LOGS="$XDG_CACHE_HOME/homebrew/logs"
 export MAKEFLAGS="-j$(nproc)"
 
+[[ -n "$ftp_proxy" ]] || export ftp_proxy=http://proxy.comp.hkbu.edu.hk:8080
+[[ -n "$http_proxy" ]] || export http_proxy=http://proxy.comp.hkbu.edu.hk:8080
+[[ -n "$https_proxy" ]] || export https_proxy=http://proxy.comp.hkbu.edu.hk:8080
+[[ -n "$no_proxy" ]] || export no_proxy=localhost,127.0.0.1
+
 HISTFILE="$XDG_CACHE_HOME/bash_history"
 
 [[ -d "$XDG_CACHE_HOME" ]] || mkdir -p "$XDG_CACHE_HOME"
