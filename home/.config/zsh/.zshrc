@@ -14,10 +14,18 @@ HISTFILE="$ZSH_CACHE_DIR/history"
 [[ -d "$ZSH_CACHE_DIR" ]] || mkdir -p "$ZSH_CACHE_DIR"
 
 ZSH_THEME="mytheme"
-plugins=(colored-man-pages docker docker-compose git \
-         git-flow-avh gitignore osx ssh-gpg-agent svn vagrant \
-         xdg-base-dir)
-
+plugins=( \
+  colored-man-pages \
+  docker \
+  docker-compose \
+  git \
+  git-flow-avh \
+  gitignore \
+  osx \
+  ssh-gpg-agent \
+  vagrant \
+  xdg-base-dir \
+)
 
 if [[ "$OSTYPE" == darwin* ]]; then # macOS
     export HOMEBREW_PREFIX="/usr/local"
