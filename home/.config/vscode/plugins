@@ -1,6 +1,7 @@
 alefragnani.Bookmarks
 bungcip.better-toml
 CoenraadS.bracket-pair-colorizer
+DavidAnson.vscode-markdownlint
 eamodio.gitlens
 EditorConfig.EditorConfig
 ionutvmi.path-autocomplete
@@ -13,6 +14,7 @@ ms-vscode-remote.remote-ssh-explorer
 ms-vscode-remote.remote-wsl
 ms-vscode-remote.vscode-remote-extensionpack
 rust-lang.rust
+shd101wyy.markdown-preview-enhanced
 streetsidesoftware.code-spell-checker
 vadimcn.vscode-lldb
 vscodevim.vim
