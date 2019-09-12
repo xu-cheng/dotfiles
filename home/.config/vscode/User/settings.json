@@ -211,6 +211,7 @@
   "rust.all_features": true,
   "rust.clippy_preference": "on",
   // cSpell
+  "cSpell.language": "en,en-US",
   "cSpell.languageSettings": [
     {
       "languageId": "latex",
