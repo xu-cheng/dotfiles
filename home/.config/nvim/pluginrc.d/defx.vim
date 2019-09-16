@@ -76,8 +76,8 @@ endfunction
 " https://github.com/Shougo/vimfiler.vim/blob/edbb2f2e6baa66c51f73a82afa2bb740415a64ea/plugin/vimfiler.vim#L72
 " https://github.com/Shougo/defx.nvim/issues/121
 function! s:browse() abort
-  let a:path = expand('<amatch>')
-  if a:path ==# '' || bufnr('%') != expand('<abuf>')
+  let l:path = expand('<amatch>')
+  if l:path ==# '' || bufnr('%') != expand('<abuf>')
     return
   endif
 
@@ -85,12 +85,12 @@ function! s:browse() abort
     return
   endif
 
-  if !isdirectory(a:path)
+  if !isdirectory(l:path)
     return
   endif
 
   bd
-  exe ':Defx -split=no -columns=mark:indent:icons:filename:type:size:time ' . a:path
+  exe ':Defx -split=no -columns=mark:indent:icons:filename:type:size:time ' . l:path
 endfunction
 
 " disable netrw.
