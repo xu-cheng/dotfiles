@@ -14,6 +14,7 @@ hosts = %w[
 
 servers = %w[
   db
+  portal
 ]
 hosts += servers.map { |s| "#{s}.server.xuc.me" }
 
