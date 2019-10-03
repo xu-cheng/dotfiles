@@ -1,12 +1,19 @@
 " Load vim-plug
+
+let s:plugin_update = stdpath('data') . '/plugin_update'
+
 if empty(glob(stdpath('config') . '/autoload/plug.vim'))
+  call writefile([], s:plugin_update)
   execute '!curl -fL --create-dirs'
         \ . ' -o ' . shellescape(stdpath('config') . '/autoload/plug.vim')
         \ . ' https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
-  augroup vim_plug
-    autocmd!
-    autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
-  augroup END
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+elseif !empty(nvim_list_uis()) " make sure neovim is not started in headless
+  let s:last_update = getftime(s:plugin_update)
+  if s:last_update == -1 || (localtime() - s:last_update > 1209600)
+    call writefile([], s:plugin_update)
+    autocmd VimEnter * PlugUpgrade | PlugUpdate --sync | source $MYVIMRC
+  endif
 endif
 
 call plug#begin(stdpath('data') . '/plugged')
