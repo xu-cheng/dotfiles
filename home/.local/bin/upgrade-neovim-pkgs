@@ -10,3 +10,4 @@ echo ''
 nvim --headless -c PlugClean! +qall
 echo ''
 nvim --headless -c PlugUpdate! +qall
+touch "${XDG_DATA_HOME:-"$HOME/.local/share"}/nvim/plugin_update"
