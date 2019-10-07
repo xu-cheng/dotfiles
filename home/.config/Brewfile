@@ -135,6 +135,7 @@ mas "Archiver", id: 619437121
 mas "Clear Day", id: 411543336
 mas "Dropshelf", id: 540404405
 mas "GarageBand", id: 682658836
+mas "GoodNotes", id: 1480793815
 mas "iMovie", id: 408981434
 mas "Keynote", id: 409183694
 mas "LimeChat", id: 414030210
@@ -142,7 +143,6 @@ mas "Mate Translate", id: 1005088137
 mas "MathStudio", id: 829912893
 mas "Moom", id: 419330170
 mas "Noizio", id: 928871589
-mas "Notability", id: 736189492
 mas "Numbers", id: 409203825
 mas "Orangered Notifier", id: 468366517
 mas "Pages", id: 409201541
