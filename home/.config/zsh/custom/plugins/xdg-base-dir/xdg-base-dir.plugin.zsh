@@ -51,7 +51,8 @@ export NPM_CONFIG_DEVDIR="$XDG_CACHE_HOME/node-gyp"
 export RANDFILE="$XDG_CACHE_HOME/openssl-rnd"
 
 # perl/cpanm
-# https://github.com/miyagawa/cpanminus#how-does-cpanm-getparseupdate-the-cpan-index
+# https://metacpan.org/pod/local::lib
+# https://github.com/miyagawa/cpanminus/tree/devel/App-cpanminus#how-does-cpanm-getparseupdate-the-cpan-index
 # Install `local::lib` by `cpanm local::lib`
 export PERL_CPANM_HOME="$XDG_CACHE_HOME/cpanm"
 export PERL5LIB="$XDG_DATA_HOME/perl5/lib/perl5"
