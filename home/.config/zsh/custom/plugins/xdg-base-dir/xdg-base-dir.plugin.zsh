@@ -27,6 +27,10 @@ export CP_TEMPLATES_DIR="$XDG_DATA_HOME/cocoapods/templates"
 # https://github.com/facebook/PathPicker/pull/231
 export FPP_DIR="$XDG_CACHE_HOME/fpp"
 
+# httpie
+# https://github.com/jakubroztocil/httpie#config-file-location
+export HTTPIE_CONFIG_DIR="$XDG_CONFIG_HOME/httpie"
+
 # jupyter/ipython
 export JUPYTER_CONFIG_DIR="$XDG_CONFIG_HOME/jupyter"
 export IPYTHONDIR="$XDG_CONFIG_HOME/ipython"
