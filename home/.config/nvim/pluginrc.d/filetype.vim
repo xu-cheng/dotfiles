@@ -19,6 +19,9 @@ augroup filetype_group
     autocmd Syntax brew setlocal nospell
     autocmd BufNewFile,BufRead .gitignore,.Brewfile,Brewfile setlocal nospell
 
+    " Wrap long lines at word boundaries
+    autocmd FileType markdown,tex setlocal linebreak
+
     " Misc
     autocmd BufNewFile,BufRead *.coffee set filetype=coffee
     autocmd BufNewFile,BufRead *.html.twig set filetype=html.twig
