@@ -134,7 +134,6 @@ Plug 'tomlion/vim-solidity'
 
 " Markdown
 Plug 'plasticboy/vim-markdown'
-Plug 'dhruvasagar/vim-table-mode'
 Plug 'kannokanno/previm'
 
 " Misc
