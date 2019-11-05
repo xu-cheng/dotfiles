@@ -8,6 +8,7 @@
   "terminal.integrated.fontFamily": "Monaco, Hack Nerd Font, monospace",
   "terminal.external.osxExec": "iTerm.app",
   "telemetry.enableTelemetry": false,
+  "telemetry.enableCrashReporter": false,
   // Vim Mode
   "vim.leader": ",",
   "vim.easymotion": true,
@@ -187,6 +188,7 @@
   "gitlens.views.repositories.avatars": false,
   "gitlens.views.search.avatars": false,
   "gitlens.currentLine.enabled": false,
+  "gitlens.advanced.telemetry.enabled": false,
   // Path Autocomplete
   "path-autocomplete.triggerOutsideStrings": true,
   // LaTeX
