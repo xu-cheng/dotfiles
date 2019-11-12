@@ -129,6 +129,7 @@ Plug 'rust-lang/rust.vim'
 Plug 'xu-cheng/brew.vim'
 Plug 'bfontaine/Brewfile.vim'
 Plug 'tmux-plugins/vim-tmux'
+Plug 'cespare/vim-toml'
 Plug 'tomlion/vim-solidity'
 
 " Markdown
