@@ -3,3 +3,9 @@
 [cargo-new]
 name = "Cheng XU"
 email = "rust@xuc.me"
+
+[alias]
+b = "build"
+t = "test"
+r = "run"
+rr = "run --release"
