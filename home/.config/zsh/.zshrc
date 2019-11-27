@@ -125,7 +125,11 @@ alias tl='tmux list-sessions'
 alias ts='tmux new-session -s'
 alias tkss='tmux kill-session -t'
 alias tksv='tmux kill-server'
-alias tm='tmuxinator'
+alias tx='tmuxinator'
+alias txa='tmuxinator start'
+alias txl='tmuxinator list'
+alias txn='tmuxinator new'
+alias txe='tmuxinator edit'
 
 if (( ${+commands[exa]} )); then
   alias ls='exa'
