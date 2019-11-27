@@ -130,6 +130,9 @@ alias txa='tmuxinator start'
 alias txl='tmuxinator list'
 alias txn='tmuxinator new'
 alias txe='tmuxinator edit'
+if [[ -d "$HOMEBREW_PREFIX/opt/tmuxinator" ]]; then
+  . "$HOMEBREW_PREFIX/opt/tmuxinator/share/zsh/site-functions/_tmuxinator"
+fi
 
 if (( ${+commands[exa]} )); then
   alias ls='exa'
