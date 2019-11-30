@@ -8,7 +8,7 @@ signingkey = 3FCDEDF75EF78E84584BFBCEB19F15830AB4E690
 [core]
 autocrlf = input
 editor = nvim
-pager = less -F -X
+pager = delta --width=variable --theme=OneHalfDark --file-style=plain --hunk-style=plain | less -F -X
 
 [commit]
 gpgsign = true
@@ -28,11 +28,6 @@ interactive = auto
 showbranch = auto
 status = auto
 ui = auto
-
-[pager]
-diff = diff-highlight | less -F -X
-log = diff-highlight | less -F -X
-show = diff-highlight | less -F -X
 
 [interactive]
 diffFilter = diff-highlight
