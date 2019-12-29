@@ -23,3 +23,8 @@ let g:ale_linters.cpp = ['clang-format']
 " LaTeX linter
 let g:ale_linters_ignore.tex = ['lacheck']
 
+" Disable linters used by LSP
+let g:ale_linters_ignore.c = ['ccls']
+let g:ale_linters_ignore.cpp = ['ccls']
+let g:ale_linters_ignore.rust = ['cargo']
+let g:ale_linters_ignore.bash = ['language-server']
