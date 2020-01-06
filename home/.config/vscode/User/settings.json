@@ -226,6 +226,7 @@
   "cSpell.userWords": [
     "Ethereum",
     "MHT",
+    "MHTs",
     "Merkle",
     "blockchain",
     "blockchains",
@@ -233,5 +234,7 @@
     "cryptocurrency",
     "homomorphic",
     "multiset",
+    "subtrees",
+    "untrusted"
   ],
 }
