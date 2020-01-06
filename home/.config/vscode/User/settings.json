@@ -208,6 +208,7 @@
       "env": {}
     },
   ],
+  "latex-workshop.message.badbox.show": false,
   // Rust
   "rust-client.rustupPath": "/Users/chengxu/.local/share/cargo/bin/rustup",
   "rust.all_features": true,
@@ -221,5 +222,16 @@
         "\\\\\\w+([ %\\{])?"
       ]
     }
+  ],
+  "cSpell.userWords": [
+    "Ethereum",
+    "MHT",
+    "Merkle",
+    "blockchain",
+    "blockchains",
+    "cryptocurrencies",
+    "cryptocurrency",
+    "homomorphic",
+    "multiset",
   ],
 }
