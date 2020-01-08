@@ -86,7 +86,7 @@ if (( ${+commands[direnv]} )); then
     [[ -n "$TMUX" && -f "$PWD/.envrc" ]] && direnv reload
 fi
 if (( ${+commands[nvim]} )); then
-    export EDITOR='nvim'
+    export EDITOR='nvim -p'
     alias vim='nvim -p'
     alias vimdiff='nvim -d'
 fi
