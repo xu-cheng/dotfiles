@@ -9,6 +9,9 @@
   "terminal.external.osxExec": "iTerm.app",
   "telemetry.enableTelemetry": false,
   "telemetry.enableCrashReporter": false,
+  "files.watcherExclude": {
+    "**/target/**": true
+  },
   // Vim Mode
   "vim.leader": ",",
   "vim.easymotion": true,
