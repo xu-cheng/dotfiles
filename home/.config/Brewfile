@@ -4,7 +4,6 @@ tap "homebrew/cask-drivers"
 tap "homebrew/cask-fonts"
 tap "homebrew/command-not-found"
 tap "homebrew/core"
-cask "adoptopenjdk"
 brew "aria2"
 brew "atool"
 brew "autojump"
@@ -81,6 +80,7 @@ brew "you-get"
 brew "youtube-dl"
 brew "zsh-syntax-highlighting"
 cask "1password"
+cask "adoptopenjdk"
 cask "alfred"
 cask "bartender"
 cask "cheatsheet"
@@ -131,7 +131,6 @@ cask "vmware-fusion"
 cask "webpquicklook"
 mas "Amphetamine", id: 937984704
 mas "Archiver", id: 619437121
-mas "Clear Day", id: 411543336
 mas "Dropshelf", id: 540404405
 mas "GarageBand", id: 682658836
 mas "GoodNotes", id: 1480793815
