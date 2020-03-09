@@ -7,12 +7,12 @@ EditorConfig.EditorConfig
 ionutvmi.path-autocomplete
 James-Yu.latex-workshop
 jbhannah.autopairs-code
+matklad.rust-analyzer
 ms-vscode-remote.remote-containers
 ms-vscode-remote.remote-ssh
 ms-vscode-remote.remote-ssh-edit
 ms-vscode-remote.remote-wsl
 ms-vscode-remote.vscode-remote-extensionpack
-rust-lang.rust
 shd101wyy.markdown-preview-enhanced
 streetsidesoftware.code-spell-checker
 vadimcn.vscode-lldb

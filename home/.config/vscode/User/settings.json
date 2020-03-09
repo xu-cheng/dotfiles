@@ -213,9 +213,8 @@
   ],
   "latex-workshop.message.badbox.show": false,
   // Rust
-  "rust-client.rustupPath": "/Users/chengxu/.local/share/cargo/bin/rustup",
-  "rust.all_features": true,
-  "rust.clippy_preference": "on",
+  "rust-analyzer.highlightingOn": true,
+  "rust-analyzer.highlighting.semanticTokens": true,
   // cSpell
   "cSpell.language": "en,en-US",
   "cSpell.languageSettings": [
