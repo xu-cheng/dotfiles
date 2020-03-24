@@ -213,8 +213,9 @@
   ],
   "latex-workshop.message.badbox.show": false,
   // Rust
+  "rust-analyzer.cargo-watch.command": "clippy",
   "rust-analyzer.highlightingOn": true,
-  "rust-analyzer.highlighting.semanticTokens": true,
+  "rust-analyzer.updates.askBeforeDownload": false,
   // cSpell
   "cSpell.language": "en,en-US",
   "cSpell.languageSettings": [
