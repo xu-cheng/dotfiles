@@ -1,0 +1,54 @@
+
+[aws]
+symbol = " "
+
+[battery]
+full_symbol = ""
+charging_symbol = ""
+discharging_symbol = ""
+
+[conda]
+symbol = " "
+
+[directory]
+truncate_to_repo = false
+fish_style_pwd_dir_length = 1
+
+[git_branch]
+symbol = " "
+
+[git_status]
+ahead = ""
+behind = ""
+diverged = ""
+stashed = ""
+
+[golang]
+symbol = " "
+
+[hg_branch]
+symbol = " "
+
+[java]
+symbol = " "
+
+[memory_usage]
+symbol = " "
+
+[nodejs]
+symbol = " "
+
+[package]
+symbol = " "
+
+[php]
+symbol = " "
+
+[python]
+symbol = " "
+
+[ruby]
+symbol = " "
+
+[rust]
+symbol = " "

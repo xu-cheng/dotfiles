@@ -13,7 +13,6 @@ HISTFILE="$ZSH_CACHE_DIR/history"
 [[ -d "$ZSH" ]] || git clone --depth=1 https://github.com/robbyrussell/oh-my-zsh "$ZSH"
 [[ -d "$ZSH_CACHE_DIR" ]] || mkdir -p "$ZSH_CACHE_DIR"
 
-ZSH_THEME="mytheme"
 plugins=( \
   colored-man-pages \
   docker \
@@ -56,12 +55,14 @@ if [[ -n "$HOMEBREW_PREFIX" ]]; then
     AUTOJUMP_PATH="$HOMEBREW_PREFIX/share/autojump/autojump.zsh"
     ZSH_HIGHLIGHT_PATH="$HOMEBREW_PREFIX/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
     FZF_SHELL_PATH="$HOMEBREW_PREFIX/opt/fzf/shell"
+    STARSHIP_PATH="$HOMEBREW_PREFIX/opt/starship/bin/starship"
 
     alias bubo='brew update && brew outdated'
     alias bubu='brew update && brew upgrade && brew cleanup'
 else
     AUTOJUMP_PATH="/usr/share/autojump/autojump.zsh"
     ZSH_HIGHLIGHT_PATH="/usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
+    STARSHIP_PATH="starship"
 
     if [[ -s "/etc/zsh_command_not_found" ]]; then
         source "/etc/zsh_command_not_found"
@@ -95,6 +96,8 @@ ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets)
 [[ -s "$ZSH_HIGHLIGHT_PATH" ]] && . "$ZSH_HIGHLIGHT_PATH"
 
 . "$ZSH/oh-my-zsh.sh"
+
+eval $("$STARSHIP_PATH" init zsh)
 
 if [[ -d "$FZF_SHELL_PATH" ]]; then
     [[ $- =~ i ]] && . "$FZF_SHELL_PATH/completion.zsh" 2> /dev/null
