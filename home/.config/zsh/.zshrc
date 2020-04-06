@@ -18,9 +18,7 @@ plugins=( \
   docker \
   docker-compose \
   git \
-  git-flow-avh \
   gitignore \
-  osx \
   ssh-gpg-agent \
   vagrant \
   xdg-base-dir \
