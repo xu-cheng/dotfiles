@@ -73,7 +73,6 @@ else
 fi
 
 export VIRTUAL_ENV_DISABLE_PROMPT=true
-export CHEATCOLORS=true
 
 if (( ${+commands[pyenv]} )); then eval "$(pyenv init - zsh)"; fi
 if (( ${+commands[rbenv]} )); then eval "$(rbenv init - zsh)"; fi
