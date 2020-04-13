@@ -11,6 +11,7 @@ discharging_symbol = ""
 symbol = " "
 
 [directory]
+truncation_length = 10
 truncate_to_repo = false
 fish_style_pwd_dir_length = 1
 
