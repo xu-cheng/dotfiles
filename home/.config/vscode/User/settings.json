@@ -280,8 +280,8 @@
   ],
   "latex-workshop.message.badbox.show": false,
   // Rust
-  "rust-analyzer.cargo-watch.command": "clippy",
-  "rust-analyzer.highlightingOn": true,
+  "rust-analyzer.procMacro.enable": true,
+  "rust-analyzer.cargo.loadOutDirsFromCheck": true,
   "rust-analyzer.updates.askBeforeDownload": false,
   // cSpell
   "cSpell.language": "en,en-US",
