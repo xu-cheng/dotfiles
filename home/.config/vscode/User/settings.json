@@ -293,18 +293,13 @@
       ]
     }
   ],
-  "cSpell.userWords": [
-    "Ethereum",
-    "MHT",
-    "MHTs",
-    "Merkle",
-    "blockchain",
-    "blockchains",
-    "cryptocurrencies",
-    "cryptocurrency",
-    "homomorphic",
-    "multiset",
-    "serializability",
-    "untrusted"
+  "cSpell.dictionaries": [
+    "userWords",
+  ],
+  "cSpell.dictionaryDefinitions": [
+    {
+      "name": "userWords",
+      "path": "/Users/chengxu/.config/nvim/spell/en.utf-8.add"
+    }
   ],
 }
