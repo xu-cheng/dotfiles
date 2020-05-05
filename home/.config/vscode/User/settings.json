@@ -302,4 +302,6 @@
       "path": "/Users/chengxu/.config/nvim/spell/en.utf-8.add"
     }
   ],
+  // Grammarly
+  "grammarly.autoActivate": false,
 }
