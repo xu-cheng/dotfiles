@@ -11,7 +11,6 @@ class Pathname
   alias to_str to_s unless method_defined?(:to_str)
 end
 
-OS = RUBY_PLATFORM =~ /darwin/ ? :osx : :linux
 HOSTNAME = `hostname`.chomp
 ROOT = Pathname.new(__dir__).expand_path
 DOTFILES_HOME = ROOT/"home"
