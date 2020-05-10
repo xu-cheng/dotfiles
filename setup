@@ -65,7 +65,7 @@ end
 if mac?
   link_files(DOTFILES_HOME/".gnupg", HOME/".gnupg")
   mkdir_p HOME/"Library/Application Support/Code"
-  ln_sf DOTFILES_HOME/".config/vscode/User",
+  ln_sf DOTFILES_HOME/".config/Code/User",
         HOME/"Library/Application Support/Code"
 else
   mkdir_p HOME/".gnupg"
