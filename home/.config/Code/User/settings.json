@@ -17,8 +17,6 @@
   "vim.leader": ",",
   "vim.easymotion": true,
   "vim.hlsearch": true,
-  "vim.enableNeovim": true,
-  "vim.neovimPath": "/usr/local/bin/nvim",
   "vim.useSystemClipboard": true,
   "vim.normalModeKeyBindingsNonRecursive": [
     {
