@@ -8,6 +8,7 @@ ZSH="$XDG_DATA_HOME/zsh/oh-my-zsh"
 ZSH_CUSTOM="$XDG_CONFIG_HOME/zsh/custom"
 ZSH_CACHE_DIR="$XDG_CACHE_HOME/zsh"
 ZSH_COMPDUMP="$ZSH_CACHE_DIR/zcompdump-${HOST}-${ZSH_VERSION}"
+DISABLE_UPDATE_PROMPT=true
 HISTFILE="$ZSH_CACHE_DIR/history"
 
 [[ -d "$ZSH" ]] || git clone --depth=1 https://github.com/robbyrussell/oh-my-zsh "$ZSH"
