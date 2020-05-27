@@ -22,13 +22,13 @@ endfunction
 " install LSP:
 " * c/cpp: `brew install ccls`
 " * python: `pip3 install python-language-server`
-" * rust: See notes/rust.md
+" * rust: https://github.com/rust-analyzer/rust-analyzer/releases
 " * sh: `npm install -g bash-language-server`
 let g:LanguageClient_serverCommands = {
       \ 'c': ['ccls'],
       \ 'cpp': ['ccls'],
       \ 'python': ['pyls'],
-      \ 'rust': ['rustup', 'run', 'nightly', 'rls'],
+      \ 'rust': ['rust-analyzer'],
       \ 'sh': ['bash-language-server', 'start'],
       \ }
 let g:LanguageClient_diagnosticsDisplay = {
