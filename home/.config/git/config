@@ -14,6 +14,9 @@ pager = delta --width=variable --theme=OneHalfDark --file-style=plain --hunk-sty
 gpgsign = true
 verbose = true
 
+[pull]
+rebase = false
+
 [push]
 default = simple
 
