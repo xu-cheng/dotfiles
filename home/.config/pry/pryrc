@@ -3,7 +3,6 @@
 # plugins list
 (%w[
   pry-byebug
-  pry-coolline
   pry-doc
   pry-theme
   pry-toys
@@ -36,4 +35,4 @@ if defined?(PryTheme)
   Pry.config.theme = "pry-classic-256"
 end
 
-Pry.config.history.file = "#{ENV["XDG_CACHE_HOME"] || "#{ENV["HOME"]}/.cache"}/pry/history"
+Pry.config.history_file = "#{ENV["XDG_CACHE_HOME"] || "#{ENV["HOME"]}/.cache"}/pry/history"
