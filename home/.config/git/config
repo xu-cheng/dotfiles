@@ -8,7 +8,7 @@ signingkey = 3FCDEDF75EF78E84584BFBCEB19F15830AB4E690
 [core]
 autocrlf = input
 editor = nvim
-pager = delta --width=variable --theme=OneHalfDark --file-style=plain --hunk-style=plain | less -F -X
+pager = diff-highlight | less -F -X
 
 [commit]
 gpgsign = true
