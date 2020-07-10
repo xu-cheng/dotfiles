@@ -4,6 +4,11 @@
   "editor.wordWrap": "on",
   "editor.minimap.enabled": false,
   "editor.renderWhitespace": "boundary",
+  "editor.quickSuggestions": {
+    "other": true,
+    "comments": true,
+    "strings": true
+  },
   "workbench.editor.enablePreviewFromQuickOpen": false,
   "terminal.integrated.macOptionIsMeta": true,
   "terminal.integrated.fontFamily": "Monaco, Hack Nerd Font, monospace",
