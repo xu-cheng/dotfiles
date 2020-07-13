@@ -58,7 +58,6 @@ Plug 'terryma/vim-expand-region'
 Plug 'farmergreg/vim-lastplace'
 
 " Writing
-Plug 'reedes/vim-litecorrect'
 Plug 'reedes/vim-wordy'
 Plug 'beloglazov/vim-online-thesaurus'
 
