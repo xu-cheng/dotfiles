@@ -28,7 +28,7 @@ let g:LanguageClient_serverCommands = {
       \ 'c': ['ccls'],
       \ 'cpp': ['ccls'],
       \ 'python': ['pyls'],
-      \ 'rust': ['rust-analyzer'],
+      \ 'rust': ['rust', 'run', 'nightly', 'rust-analyzer'],
       \ 'sh': ['bash-language-server', 'start'],
       \ }
 let g:LanguageClient_diagnosticsDisplay = {
