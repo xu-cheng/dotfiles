@@ -33,7 +33,7 @@ def outdated?(cask)
   true
 end
 
-casks = Open3.capture2("brew", "cask", "list").first.split("\n")
+casks = Open3.capture2("brew", "list", "--cask").first.split("\n")
 casks.select! { |cask| outdated?(cask) }
 casks.each do |cask|
   version = $cask_versions[cask]
