@@ -286,6 +286,8 @@
     "rust-analyzer.procMacro.enable": true,
     "rust-analyzer.cargo.loadOutDirsFromCheck": true,
     "rust-analyzer.updates.askBeforeDownload": false,
+    // Ruby
+    "ruby.format": "rubocop",
     // cSpell
     "cSpell.language": "en,en-US",
     "cSpell.languageSettings": [
