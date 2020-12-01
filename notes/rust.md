@@ -10,3 +10,12 @@ rustup component add rustfmt clippy rust-src
 rustup install nightly
 rustup component add --toolchain nightly rustfmt clippy rust-src rust-analyzer-preview
 ```
+
+## Tools
+
+```bash
+cargo install cargo-cache
+cargo install cargo-edit
+cargo install cargo-expand
+cargo install flamegraph
+```
