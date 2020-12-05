@@ -119,7 +119,7 @@ cask "terminology"
 cask "vagrant"
 cask "visual-studio-code"
 cask "vmware-fusion"
-cask "zoomus"
+cask "zoom"
 mas "Amphetamine", id: 937984704
 mas "Archiver", id: 619437121
 mas "Dropshelf", id: 540404405
