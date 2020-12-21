@@ -5,7 +5,7 @@ require "open3"
 $cask_versions = {}
 
 def outdated?(cask)
-  info, _ = Open3.capture2("brew", "cask", "info", cask)
+  info, _ = Open3.capture2("brew", "info", "--cask", cask)
   latest_version = info.lines.first[/#{Regexp.escape(cask)}: ([^ \n]+)/, 1]
   return false if latest_version == "latest"
   app = info[/Artifacts\n([^\n]+\.app) \(App\)\n/m, 1]
