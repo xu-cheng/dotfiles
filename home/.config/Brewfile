@@ -10,7 +10,6 @@ brew "bat"
 brew "boost"
 brew "fontconfig"
 brew "sqlite"
-brew "python@3.8"
 brew "ckan"
 brew "clang-format"
 brew "cmake"
@@ -34,6 +33,7 @@ brew "git"
 brew "gnu-sed"
 brew "gnupg"
 brew "gnuplot"
+brew "librsvg"
 brew "graphviz"
 brew "hexyl"
 brew "htop"
@@ -43,7 +43,6 @@ brew "imagemagick"
 brew "jq"
 brew "languagetool"
 brew "less"
-brew "librsvg"
 brew "mas"
 brew "mitmproxy"
 brew "mupdf-tools"
@@ -72,7 +71,6 @@ brew "tmux"
 brew "tmuxinator"
 brew "tokei"
 brew "tor"
-brew "unrar"
 brew "xsv"
 brew "yarn"
 brew "you-get"
@@ -138,9 +136,7 @@ mas "Noizio", id: 928871589
 mas "Numbers", id: 409203825
 mas "Orangered Notifier", id: 468366517
 mas "Pages", id: 409201541
-mas "PiPifier", id: 1160374471
 mas "PopClip", id: 445189367
-mas "QQ", id: 451108668
 mas "ReadKit", id: 588726889
 mas "Roadblock", id: 1051436753
 mas "Scan", id: 722364523
