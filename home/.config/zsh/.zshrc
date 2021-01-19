@@ -89,7 +89,8 @@ if (( ${+commands[nvim]} )); then
 fi
 if [[ -s "$Z_PATH" ]]; then
   _Z_CMD=j
-  _Z_DATA="$XDG_DATA_HOME/z.txt"
+  [[ -d "$XDG_DATA_HOME/z" ]] || mkdir -p "$XDG_DATA_HOME/z"
+  _Z_DATA="$XDG_DATA_HOME/z/z.txt"
   . "$Z_PATH"
 fi
 ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets)
