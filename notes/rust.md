@@ -15,6 +15,7 @@ rustup component add --toolchain nightly rustfmt clippy rust-src rust-analyzer-p
 
 ```bash
 cargo install cargo-cache
+cargo install cargo-criterion
 cargo install cargo-edit
 cargo install cargo-expand
 cargo install flamegraph
