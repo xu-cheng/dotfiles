@@ -255,13 +255,10 @@
     "git.autofetch": true,
     "gitlens.blame.avatars": false,
     "gitlens.hovers.avatars": false,
-    "gitlens.views.compare.avatars": false,
     "gitlens.views.fileHistory.avatars": false,
     "gitlens.views.lineHistory.avatars": false,
     "gitlens.views.repositories.avatars": false,
-    "gitlens.views.search.avatars": false,
     "gitlens.currentLine.enabled": false,
-    "gitlens.advanced.telemetry.enabled": false,
     // Path Autocomplete
     "path-autocomplete.triggerOutsideStrings": true,
     // LaTeX
