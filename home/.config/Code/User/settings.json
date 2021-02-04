@@ -304,7 +304,7 @@
     "cSpell.dictionaryDefinitions": [
         {
             "name": "userWords",
-            "path": "/Users/chengxu/.config/nvim/spell/en.utf-8.add"
+            "path": "~/.config/nvim/spell/en.utf-8.add"
         }
     ],
     // Error Lens
