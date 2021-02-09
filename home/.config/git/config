@@ -20,9 +20,6 @@ rebase = false
 [push]
 default = simple
 
-[submodule]
-recurse = true
-
 [grep]
 lineNumber = true
 
