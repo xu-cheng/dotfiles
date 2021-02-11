@@ -10,6 +10,9 @@ autocrlf = input
 editor = nvim
 pager = diff-highlight | less -F -X
 
+[init]
+defaultBranch = master
+
 [commit]
 gpgsign = true
 verbose = true
