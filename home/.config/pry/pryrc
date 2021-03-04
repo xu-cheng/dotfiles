@@ -1,19 +1,25 @@
 # vim: set filetype=ruby:
 
 # plugins list
-(%w[
+%w[
   pry-byebug
   pry-doc
   pry-theme
   pry-toys
-] - Pry.plugins.values.map(&:gem_name)).each do |plugin|
-  puts "Installing #{plugin}..."
-  Gem.install plugin
-  Gem.refresh
+].each do |plugin|
+  install_attempted = false
   begin
     require plugin
   rescue LoadError
-    warn "WARNING: fail to install #{plugin}."
+    if install_attempted
+      warn "WARNING: fail to install #{plugin}."
+    else
+      install_attempted = true
+      puts "Installing #{plugin}..."
+      Gem.install plugin
+      Gem.refresh
+      retry
+    end
   end
 end
 
