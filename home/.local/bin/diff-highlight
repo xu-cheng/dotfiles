@@ -7,6 +7,11 @@ then
     exec "/usr/local/$DIFF_HIGHLIGHT"
 fi
 
+if [[ -x "/opt/homebrew/$DIFF_HIGHLIGHT" ]]
+then
+    exec "/opt/homebrew/$DIFF_HIGHLIGHT"
+fi
+
 if [[ -z "$HOMEBREW_PREFIX" ]] && which brew >/dev/null 2>&1
 then
     HOMEBREW_PREFIX="$(brew --prefix)"

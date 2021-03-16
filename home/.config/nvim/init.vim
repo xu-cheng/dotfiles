@@ -3,7 +3,11 @@ let s:config_home = stdpath('config')
 " Set python/ruby interpreter path
 
 if has('mac')
-  let s:brew_prefix = '/usr/local'
+  if filereadable('/opt/homebrew/bin/brew')
+    let s:brew_prefix = '/opt/homebrew'
+  else
+    let s:brew_prefix = '/usr/local'
+  endif
 elseif executable('brew')
   let s:brew_prefix = systemlist('brew --prefix')[0]
 endif
