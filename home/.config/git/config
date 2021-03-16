@@ -83,6 +83,3 @@ sync-upstream = !CUR_BRANCH=$(git current-branch) && git checkout master && git 
 unstage = reset HEAD --
 up = !git fetch origin && git rebase origin/master
 wip = !git add -u && git commit -m "wip"
-
-[include]
-path = ~/.gitconfig-csr

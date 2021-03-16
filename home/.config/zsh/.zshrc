@@ -31,11 +31,6 @@ if [[ "$OSTYPE" == darwin* ]]; then # macOS
     RUBY_API_VERSION="$(/usr/local/opt/ruby/bin/ruby -e 'print Gem.ruby_api_version')"
     export PATH="$XDG_BIN_HOME:/usr/local/lib/ruby/gems/$RUBY_API_VERSION/bin:/usr/local/opt/ruby/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin:/Library/TeX/texbin"
     unset RUBY_API_VERSION
-elif [[ -n "$CSR" ]] then # Linux on CSR
-    export HOMEBREW_PREFIX="$HOME/usr"
-    export HOMEBREW_REPOSITORY="$HOMEBREW_PREFIX"
-    # do not load ssh-gpg-agent on CSR
-    plugins[${plugins[(i)ssh-gpg-agent]}]=()
 else # Linux
     export PATH="$XDG_BIN_HOME:$PATH"
 fi
