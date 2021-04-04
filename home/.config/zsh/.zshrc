@@ -136,7 +136,7 @@ alias txe='tmuxinator edit'
 
 if (( ${+commands[exa]} )); then
   alias ls='exa'
-  alias l='exa --all --long --header --git'
+  alias l='exa --all --long --header --git --icons'
 fi
 
 if (( ! ${+commands[sha1sum]} && ${+commands[gsha1sum]} )); then
