@@ -62,7 +62,6 @@ Plug 'reedes/vim-wordy'
 Plug 'beloglazov/vim-online-thesaurus'
 
 " General Programming
-Plug 'ludovicchabant/vim-gutentags'
 Plug 'w0rp/ale'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
@@ -76,7 +75,6 @@ Plug 'MattesGroeger/vim-bookmarks'
 Plug 'chrisbra/NrrwRgn'
 Plug 'junegunn/vim-easy-align'
 Plug 'Valloric/MatchTagAlways'
-"Plug 'tpope/vim-endwise'
 
 " Snippets & AutoComplete & Semantic Highlight
 Plug 'ncm2/ncm2'
