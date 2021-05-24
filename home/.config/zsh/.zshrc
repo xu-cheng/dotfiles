@@ -73,7 +73,11 @@ fi
 
 export VIRTUAL_ENV_DISABLE_PROMPT=true
 
-if (( ${+commands[pyenv]} )); then eval "$(pyenv init - zsh)"; fi
+if (( ${+commands[pyenv]} )); then
+    export PATH="$PYENV_ROOT/bin::$PATH"
+    eval "$(pyenv init --path)"
+    eval "$(pyenv init - zsh)"
+fi
 if (( ${+commands[rbenv]} )); then eval "$(rbenv init - zsh)"; fi
 if (( ${+commands[safe-rm]} )); then alias rm='safe-rm'; fi
 if (( ${+commands[bat]} )); then alias cat=bat; fi
