@@ -10,6 +10,7 @@ hosts = %w[
 
 servers = %w[
   portal
+  bot
   sgx1
 ]
 hosts += servers.map { |s| "#{s}.server.xuc.me" }
