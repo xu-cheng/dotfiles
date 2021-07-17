@@ -17,12 +17,15 @@ line = args.line
 def list_neovim_addrs():
     sockaddrs = []
     for proc in psutil.process_iter():
-        if proc.name() == "nvim":
-            for conn in proc.connections("inet4"):
-                sockaddrs.insert(0, ":".join(map(str, conn.laddr)))
-            for conn in proc.connections("unix"):
-                if conn.laddr:
-                    sockaddrs.insert(0, conn.laddr)
+        try:
+            if proc.name() == "nvim":
+                for conn in proc.connections("inet4"):
+                    sockaddrs.insert(0, ":".join(map(str, conn.laddr)))
+                for conn in proc.connections("unix"):
+                    if conn.laddr:
+                        sockaddrs.insert(0, conn.laddr)
+        except:
+            pass
     return sockaddrs
 
 
