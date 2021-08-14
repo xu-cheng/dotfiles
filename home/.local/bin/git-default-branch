@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+set -eo pipefail
+
+try() {
+    local branch
+    branch="$1"
+    if [[ -n "$branch" ]]; then
+        echo "$branch"
+        exit 0
+    fi
+}
+
+try "$(git symbolic-ref --short refs/remotes/origin/HEAD 2>/dev/null | sed 's/^origin\///')"
+try "$(git remote show origin 2>/dev/null | grep 'HEAD branch' | cut -d' ' -f5)"
+echo "master"

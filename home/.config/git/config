@@ -72,14 +72,14 @@ lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s
 push-current-branch = !git push --set-upstream origin $(git current-branch)
 ra = rebase --abort
 rc = rebase --continue
-ri = rebase -i origin/master
-ris = rebase -i --autosquash origin/master
+ri = !git rebase -i origin/$(git default-branch)
+ris = !git rebase -i --autosquash origin/$(git default-branch)
 rpo = remote prune origin
 sign = cherry-pick --signoff
 ssh-instead-of-https = !git config url.git@github.com:.insteadOf https://github.com/
 st = status
 staged = diff --staged
-sync-upstream = !CUR_BRANCH=$(git current-branch) && git checkout master && git pull upstream master && git push origin master && git checkout $CUR_BRANCH
+sync-upstream = !CUR_BRANCH=$(git current-branch) && DEF_BRANCH=$(git default-branch) && git checkout $DEF_BRANCH && git pull upstream $DEF_BRANCH && git push origin $DEF_BRANCH && git checkout $CUR_BRANCH
 unstage = reset HEAD --
-up = !git fetch origin && git rebase origin/master
+up = !git fetch origin && git rebase origin/$(git default-branch)
 wip = !git add -u && git commit -m "wip"
