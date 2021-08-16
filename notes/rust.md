@@ -20,5 +20,6 @@ cargo install cargo-edit
 cargo install cargo-expand
 cargo install cargo-fuzz
 cargo install cargo-release
+cargo install cargo-sweep
 cargo install flamegraph
 ```
