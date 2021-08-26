@@ -80,6 +80,6 @@ ssh-instead-of-https = !git config url.git@github.com:.insteadOf https://github.
 st = status
 staged = diff --staged
 sync-upstream = !CUR_BRANCH=$(git current-branch) && DEF_BRANCH=$(git default-branch) && git checkout $DEF_BRANCH && git pull upstream $DEF_BRANCH && git push origin $DEF_BRANCH && git checkout $CUR_BRANCH
-unstage = reset HEAD --
+unstage = restore --staged
 up = !git fetch origin && git rebase origin/$(git default-branch)
 wip = !git add -u && git commit -m "wip"
