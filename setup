@@ -71,7 +71,3 @@ clean(HOME/".gnupg")
 chmod 0700, HOME/".ssh"
 chmod 0600, (HOME/".ssh/config").realpath
 chmod 0700, HOME/".gnupg"
-
-ENV["LESSKEY"] = "#{ENV["HOME"]}/.local/share/less/lesskey"
-mkdir_p HOME/".local/share/less"
-system "lesskey", HOME/".config/less/lesskey"

@@ -13,10 +13,6 @@ export CARGO_HOME="$XDG_DATA_HOME/cargo"
 export RUSTUP_HOME="$XDG_DATA_HOME/rustup"
 export PATH="$CARGO_HOME/bin:$PATH"
 
-# cheat
-# https://github.com/chrisallenlane/cheat#setting-a-default_cheat_dir
-export DEFAULT_CHEAT_DIR="$XDG_CONFIG_HOME/cheat"
-
 # cocoapods
 # https://github.com/CocoaPods/CocoaPods/blob/master/lib/cocoapods/config.rb
 export CP_HOME_DIR="$XDG_CONFIG_HOME/cocoapods"
@@ -36,12 +32,8 @@ export JUPYTER_CONFIG_DIR="$XDG_CONFIG_HOME/jupyter"
 export IPYTHONDIR="$XDG_CONFIG_HOME/ipython"
 
 # less
-export LESSKEY="$XDG_DATA_HOME/less/lesskey"
+export LESSKEYIN="$XDG_CONFIG_HOME/less/lesskey"
 export LESSHISTFILE="$XDG_CACHE_HOME/less/history"
-if [[ ! -f "$LESSKEY" ]]; then
-    mkdir -p "$XDG_DATA_HOME/less"
-    lesskey "$XDG_CONFIG_HOME/less/lesskey"
-fi
 
 # npm
 # https://github.com/npm/npm/issues/6675
