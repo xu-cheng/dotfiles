@@ -40,7 +40,6 @@ else # Linux
 fi
 
 if [[ -n "$HOMEBREW_PREFIX" ]]; then
-    export HOMEBREW_DEVELOPER=true
     export HOMEBREW_NO_ANALYTICS=true
     export HOMEBREW_NO_AUTO_UPDATE=true
 
