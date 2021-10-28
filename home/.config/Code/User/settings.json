@@ -9,12 +9,12 @@
         "comments": true,
         "strings": true
     },
+    "editor.inlineSuggest.enabled": true,
     "workbench.editor.enablePreviewFromQuickOpen": false,
     "terminal.integrated.macOptionIsMeta": true,
     "terminal.integrated.fontFamily": "Monaco, Hack Nerd Font, monospace",
     "terminal.external.osxExec": "iTerm.app",
-    "telemetry.enableTelemetry": false,
-    "telemetry.enableCrashReporter": false,
+    "telemetry.telemetryLevel": "off",
     "files.watcherExclude": {
         "**/target/**": true
     },
