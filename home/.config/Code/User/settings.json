@@ -259,8 +259,37 @@
     "gitlens.views.lineHistory.avatars": false,
     "gitlens.views.repositories.avatars": false,
     "gitlens.currentLine.enabled": false,
+    // Error Lens
+    "errorLens.exclude": [
+        "^\"[^\"]*\": Unknown word\\.$",
+    ],
+    // cSpell
+    "cSpell.language": "en,en-US",
+    "cSpell.languageSettings": [
+        {
+            "languageId": "latex",
+            "ignoreRegExpList": [
+                "\\\\\\w+([ %\\{])?"
+            ]
+        }
+    ],
+    "cSpell.dictionaries": [
+        "userWords",
+    ],
+    "cSpell.dictionaryDefinitions": [
+        {
+            "name": "userWords",
+            "path": "~/.config/nvim/spell/en.utf-8.add"
+        }
+    ],
+    // Grammarly
+    "grammarly.autoActivate": false,
     // Path Autocomplete
     "path-autocomplete.triggerOutsideStrings": true,
+    // Github Copilot
+    "github.copilot.enable": {
+        "*": false,
+    },
     // LaTeX
     "latex-workshop.view.pdf.viewer": "tab",
     "latex-workshop.chktex.enabled": true,
@@ -284,31 +313,6 @@
     "rust-analyzer.updates.askBeforeDownload": false,
     // Ruby
     "ruby.format": "rubocop",
-    // cSpell
-    "cSpell.language": "en,en-US",
-    "cSpell.languageSettings": [
-        {
-            "languageId": "latex",
-            "ignoreRegExpList": [
-                "\\\\\\w+([ %\\{])?"
-            ]
-        }
-    ],
-    "cSpell.dictionaries": [
-        "userWords",
-    ],
-    "cSpell.dictionaryDefinitions": [
-        {
-            "name": "userWords",
-            "path": "~/.config/nvim/spell/en.utf-8.add"
-        }
-    ],
-    // Error Lens
-    "errorLens.exclude": [
-        "^\"[^\"]*\": Unknown word\\.$",
-    ],
-    // Grammarly
-    "grammarly.autoActivate": false,
     // Json
     "[jsonc]": {
         "editor.defaultFormatter": "vscode.json-language-features"
