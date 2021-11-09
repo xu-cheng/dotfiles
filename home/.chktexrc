@@ -3,6 +3,7 @@ CmdLine
   -q
   -v2
   -wall
+  -n8
   -n21
   -n22
   -n30
