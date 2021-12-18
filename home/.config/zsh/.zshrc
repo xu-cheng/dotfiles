@@ -110,7 +110,7 @@ if [[ -d "$FZF_SHELL_PATH" ]]; then
     if (( ${+commands[fd]} )); then
         export FZF_DEFAULT_COMMAND='fd --hidden --exclude ".git"'
     else
-        export FZF_DEFAULT_COMMAND='find . -not -path  "*/.git/*"'
+        export FZF_DEFAULT_COMMAND='find . -not -path "*/.git/*"'
     fi
     export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
