@@ -74,7 +74,7 @@ fi
 export VIRTUAL_ENV_DISABLE_PROMPT=true
 
 if (( ${+commands[pyenv]} )); then
-    export PATH="$PYENV_ROOT/bin::$PATH"
+    export PATH="$PYENV_ROOT/bin:$PATH"
     eval "$(pyenv init --path)"
     eval "$(pyenv init - zsh)"
 fi
