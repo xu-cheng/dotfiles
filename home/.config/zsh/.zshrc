@@ -67,6 +67,8 @@ else
     if [[ -d "$HOME/.fzf" ]]; then
         export PATH="$HOME/.fzf/bin:$PATH"
         FZF_SHELL_PATH="$HOME/.fzf/shell"
+    elif [[ -d "/usr/share/doc/fzf/examples" ]]; then
+        FZF_SHELL_PATH="/usr/share/doc/fzf/examples"
     fi
 fi
 
@@ -105,20 +107,36 @@ eval $("$STARSHIP_PATH" init zsh)
 if [[ -d "$FZF_SHELL_PATH" ]]; then
     [[ $- =~ i ]] && . "$FZF_SHELL_PATH/completion.zsh" 2> /dev/null
     . "$FZF_SHELL_PATH/key-bindings.zsh"
-    export FZF_DEFAULT_COMMAND='fd --hidden --exclude ".git"'
+    if (( ${+commands[fd]} )); then
+        export FZF_DEFAULT_COMMAND='fd --hidden --exclude ".git"'
+    else
+        export FZF_DEFAULT_COMMAND='find . -not -path  "*/.git/*"'
+    fi
     export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
     # If current selection is a text file shows its content,
     # if it's a directory shows its content, the rest is ignored
     # Ref: https://github.com/silvanocerza/dotfiles/blob/d3cf4ed770f18ba81a9059f7dd93dc3a97381239/zsh/zshrc#L44-L55
+    if (( ${+commands[bat]} )); then
+        FZF_CAT_CMD="bat --color always"
+    else
+        FZF_CAT_CMD="cat"
+    fi
+    if (( ${+commands[exa]} )); then
+        FZF_LS_CMD="exa -l --all --color always"
+    else
+        FZF_LS_CMD="ls -l --all --color always"
+    fi
     export FZF_CTRL_T_OPTS="--preview-window wrap --preview '
     if [[ -f {} ]]; then
-        file --mime {} | grep -q \"text\/.*;\" && bat --color \"always\" {} || (tput setaf 1; file --mime {})
+        file --mime {} | grep -q \"text\/.*;\" && $FZF_CAT_CMD {} || (tput setaf 1; file --mime {})
     elif [[ -d {} ]]; then
-        exa -l --all --color always {}
-    else;
+        $FZF_LS_CMD {}
+    else
         tput setaf 1; echo YOU ARE NOT SUPPOSED TO SEE THIS!
     fi'"
+    unset FZF_CAT_CMD
+    unset FZF_LS_CMD
 
     bindkey -r '^T'
     bindkey '^P' fzf-file-widget # use <Ctrl-P> instead of <Ctrl-T>
