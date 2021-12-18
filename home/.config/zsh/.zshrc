@@ -49,7 +49,6 @@ if [[ -n "$HOMEBREW_PREFIX" ]]; then
     BREW_COMMAND_NOT_FOUND_PATH="$HOMEBREW_REPOSITORY/Library/Taps/homebrew/homebrew-command-not-found/handler.sh"
     [[ -s "$BREW_COMMAND_NOT_FOUND_PATH" ]] && . "$BREW_COMMAND_NOT_FOUND_PATH"
 
-    Z_PATH="$HOMEBREW_PREFIX/etc/profile.d/z.sh"
     ZSH_HIGHLIGHT_PATH="$HOMEBREW_PREFIX/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
     FZF_SHELL_PATH="$HOMEBREW_PREFIX/opt/fzf/shell"
     STARSHIP_PATH="$HOMEBREW_PREFIX/opt/starship/bin/starship"
@@ -91,11 +90,11 @@ if (( ${+commands[nvim]} )); then
     alias vim='nvim -p'
     alias vimdiff='nvim -d'
 fi
-if [[ -s "$Z_PATH" ]]; then
+if [[ -s "$ZSH/plugins/z/z.sh" ]]; then
   _Z_CMD=j
   [[ -d "$XDG_DATA_HOME/z" ]] || mkdir -p "$XDG_DATA_HOME/z"
   _Z_DATA="$XDG_DATA_HOME/z/z.txt"
-  . "$Z_PATH"
+  . "$ZSH/plugins/z/z.sh"
 fi
 ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets)
 [[ -s "$ZSH_HIGHLIGHT_PATH" ]] && . "$ZSH_HIGHLIGHT_PATH"
