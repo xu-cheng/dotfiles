@@ -49,16 +49,13 @@ link_files(DOTFILES_HOME, HOME)
 link_files(DOTFILES_HOME/".config", HOME/".config", skip_directory: false)
 link_files(DOTFILES_HOME/".local/bin", HOME/".local/bin")
 link_files(DOTFILES_HOME/".local/share/cargo", HOME/".local/share/cargo")
-link_files(DOTFILES_HOME/".ssh", HOME/".ssh")
 
 if mac?
+  link_files(DOTFILES_HOME/".ssh", HOME/".ssh")
   link_files(DOTFILES_HOME/".gnupg", HOME/".gnupg")
   mkdir_p HOME/"Library/Application Support/Code"
   ln_sf DOTFILES_HOME/".config/Code/User",
         HOME/"Library/Application Support/Code"
-else
-  mkdir_p HOME/".gnupg"
-  ln_sf DOTFILES_HOME/".gnupg/gpg.conf", HOME/".gnupg"
 end
 
 # Cleanup broken symlinks
@@ -66,6 +63,7 @@ clean(HOME)
 clean(HOME/".config")
 clean(HOME/".ssh")
 clean(HOME/".gnupg")
+clean(HOME/".local/bin")
 
 # Post linking
 chmod 0700, HOME/".ssh"
