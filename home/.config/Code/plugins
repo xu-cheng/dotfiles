@@ -2,7 +2,6 @@ alefragnani.Bookmarks
 bungcip.better-toml
 castwide.solargraph
 chrislajoie.vscode-modelines
-CoenraadS.bracket-pair-colorizer
 DavidAnson.vscode-markdownlint
 eamodio.gitlens
 EditorConfig.EditorConfig
@@ -14,6 +13,7 @@ James-Yu.latex-workshop
 jbhannah.autopairs-code
 JuanBlanco.solidity
 matklad.rust-analyzer
+mechatroner.rainbow-csv
 ms-azuretools.vscode-docker
 ms-python.python
 ms-python.vscode-pylance
