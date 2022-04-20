@@ -43,15 +43,14 @@ if [[ -n "$HOMEBREW_PREFIX" ]]; then
     export HOMEBREW_NO_ANALYTICS=true
     export HOMEBREW_NO_AUTO_UPDATE=true
 
-    export PYENV_ROOT="$HOMEBREW_PREFIX/var/pyenv"
-    export RBENV_ROOT="$HOMEBREW_PREFIX/var/rbenv"
-
     BREW_COMMAND_NOT_FOUND_PATH="$HOMEBREW_REPOSITORY/Library/Taps/homebrew/homebrew-command-not-found/handler.sh"
     [[ -s "$BREW_COMMAND_NOT_FOUND_PATH" ]] && . "$BREW_COMMAND_NOT_FOUND_PATH"
 
     ZSH_HIGHLIGHT_PATH="$HOMEBREW_PREFIX/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
     FZF_SHELL_PATH="$HOMEBREW_PREFIX/opt/fzf/shell"
     STARSHIP_PATH="$HOMEBREW_PREFIX/opt/starship/bin/starship"
+
+    . "$HOMEBREW_PREFIX/opt/asdf/libexec/asdf.sh"
 
     alias bubo='brew update && brew outdated'
     alias bubu='brew update && brew upgrade --formulae && brew cleanup'
@@ -71,14 +70,6 @@ else
     fi
 fi
 
-export VIRTUAL_ENV_DISABLE_PROMPT=true
-
-if (( ${+commands[pyenv]} )); then
-    export PATH="$PYENV_ROOT/bin:$PATH"
-    eval "$(pyenv init --path)"
-    eval "$(pyenv init - zsh)"
-fi
-if (( ${+commands[rbenv]} )); then eval "$(rbenv init - zsh)"; fi
 if (( ${+commands[safe-rm]} )); then alias rm='safe-rm'; fi
 if (( ${+commands[bat]} )); then alias cat=bat; fi
 if (( ${+commands[direnv]} )); then
