@@ -20,6 +20,7 @@ plugins=( \
   docker-compose \
   git \
   gitignore \
+  kubectl \
   ssh-gpg-agent \
   vagrant \
   xdg-base-dir \
