@@ -22,6 +22,7 @@ plugins=( \
   gitignore \
   kubectl \
   ssh-gpg-agent \
+  terraform \
   vagrant \
   xdg-base-dir \
 )
