@@ -283,7 +283,11 @@
         }
     ],
     // Grammarly
-    "grammarly.autoActivate": false,
+    "grammarly.patterns": [
+        "**/*.md",
+        "**/*.tex",
+        "**/*.txt"
+    ],
     // Path Autocomplete
     "path-autocomplete.triggerOutsideStrings": true,
     // Github Copilot
