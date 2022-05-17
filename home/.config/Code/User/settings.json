@@ -254,11 +254,13 @@
     // Git
     "git.autofetch": true,
     "gitlens.blame.avatars": false,
+    "gitlens.codeLens.authors.enabled": false,
+    "gitlens.codeLens.recentChange.enabled": false,
+    "gitlens.currentLine.enabled": false,
     "gitlens.hovers.avatars": false,
     "gitlens.views.fileHistory.avatars": false,
     "gitlens.views.lineHistory.avatars": false,
     "gitlens.views.repositories.avatars": false,
-    "gitlens.currentLine.enabled": false,
     // Error Lens
     "errorLens.exclude": [
         "^\"[^\"]*\": Unknown word\\.$",
@@ -316,7 +318,6 @@
     "latex-workshop.message.badbox.show": false,
     // Rust
     "rust-analyzer.procMacro.enable": true,
-    "rust-analyzer.updates.askBeforeDownload": false,
     // Ruby
     "ruby.format": "rubocop",
     // Json
