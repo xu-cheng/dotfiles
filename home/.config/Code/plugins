@@ -12,7 +12,6 @@ ionutvmi.path-autocomplete
 James-Yu.latex-workshop
 jbhannah.autopairs-code
 JuanBlanco.solidity
-matklad.rust-analyzer
 mechatroner.rainbow-csv
 ms-azuretools.vscode-docker
 ms-python.python
@@ -26,6 +25,7 @@ ms-vscode-remote.remote-ssh-edit
 ms-vscode-remote.remote-wsl
 ms-vscode-remote.vscode-remote-extensionpack
 rebornix.ruby
+rust-lang.rust-analyzer
 streetsidesoftware.code-spell-checker
 usernamehw.errorlens
 vadimcn.vscode-lldb
