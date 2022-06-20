@@ -285,7 +285,7 @@
         }
     ],
     // Grammarly
-    "grammarly.patterns": [
+    "grammarly.files.include": [
         "**/*.md",
         "**/*.tex",
         "**/*.txt"
@@ -299,8 +299,7 @@
     // LaTeX
     "latex-workshop.view.pdf.viewer": "tab",
     "latex-workshop.chktex.enabled": true,
-    "latex-workshop.chktex.args.root": ["--globalrc"],
-    "latex-workshop.chktex.args.active": ["--globalrc"],
+    "latex-workshop.chktex.exec.args": ["--globalrc"],
     "latex-workshop.latex.tools": [
         {
             "name": "latexmk",
