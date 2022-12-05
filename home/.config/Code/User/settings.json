@@ -18,6 +18,7 @@
     "files.watcherExclude": {
         "**/target/**": true
     },
+    "extensions.ignoreRecommendations": true,
     // Vim Mode
     "vim.leader": ",",
     "vim.easymotion": true,
@@ -298,8 +299,8 @@
     },
     // LaTeX
     "latex-workshop.view.pdf.viewer": "tab",
-    "latex-workshop.chktex.enabled": true,
-    "latex-workshop.chktex.exec.args": ["--globalrc"],
+    "latex-workshop.linting.chktex.enabled": true,
+    "latex-workshop.linting.chktex.exec.args": ["--globalrc"],
     "latex-workshop.latex.tools": [
         {
             "name": "latexmk",
@@ -319,6 +320,12 @@
     "rust-analyzer.procMacro.enable": true,
     // Ruby
     "ruby.format": "rubocop",
+    // Python
+    "python.analysis.autoImportCompletions": true,
+    "python.analysis.inlayHints.functionReturnTypes": true,
+    "python.analysis.inlayHints.variableTypes": true,
+    "python.formatting.provider": "black",
+    "jupyter.askForKernelRestart": false,
     // Json
     "[jsonc]": {
         "editor.defaultFormatter": "vscode.json-language-features"
