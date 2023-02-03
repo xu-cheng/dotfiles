@@ -28,7 +28,7 @@ plugins=( \
 )
 
 if [[ "$OSTYPE" == darwin* ]]; then # macOS
-    if [[ "$MACHTYPE" == x86_64 ]]; then
+    if [[ "$(uname -m)" == x86_64 ]]; then
         export HOMEBREW_PREFIX="/usr/local"
     else
         export HOMEBREW_PREFIX="/opt/homebrew"
@@ -83,11 +83,11 @@ if (( ${+commands[nvim]} )); then
     alias vim='nvim -p'
     alias vimdiff='nvim -d'
 fi
-if [[ -s "$ZSH/plugins/z/z.sh" ]]; then
+if [[ -s "$ZSH/plugins/z/z.plugin.zsh" ]]; then
   _Z_CMD=j
   [[ -d "$XDG_DATA_HOME/z" ]] || mkdir -p "$XDG_DATA_HOME/z"
   _Z_DATA="$XDG_DATA_HOME/z/z.txt"
-  . "$ZSH/plugins/z/z.sh"
+  . "$ZSH/plugins/z/z.plugin.zsh"
 fi
 ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets)
 [[ -s "$ZSH_HIGHLIGHT_PATH" ]] && . "$ZSH_HIGHLIGHT_PATH"
