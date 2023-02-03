@@ -44,6 +44,7 @@ fi
 if [[ -n "$HOMEBREW_PREFIX" ]]; then
     export HOMEBREW_NO_ANALYTICS=true
     export HOMEBREW_NO_AUTO_UPDATE=true
+    export HOMEBREW_NO_ENV_HINTS=true
 
     BREW_COMMAND_NOT_FOUND_PATH="$HOMEBREW_REPOSITORY/Library/Taps/homebrew/homebrew-command-not-found/handler.sh"
     [[ -s "$BREW_COMMAND_NOT_FOUND_PATH" ]] && . "$BREW_COMMAND_NOT_FOUND_PATH"
