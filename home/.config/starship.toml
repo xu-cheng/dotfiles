@@ -33,6 +33,9 @@ symbol = " "
 [java]
 symbol = " "
 
+[lua]
+symbol = " "
+
 [memory_usage]
 symbol = " "
 
