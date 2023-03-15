@@ -35,7 +35,7 @@ if [[ "$OSTYPE" == darwin* ]]; then # macOS
     fi
     export HOMEBREW_REPOSITORY="$HOMEBREW_PREFIX/Homebrew"
     RUBY_API_VERSION="$("$HOMEBREW_PREFIX/opt/ruby/bin/ruby" -e 'print Gem.ruby_api_version')"
-    export PATH="$XDG_BIN_HOME:$HOMEBREW_PREFIX/lib/ruby/gems/$RUBY_API_VERSION/bin:$HOMEBREW_PREFIX/opt/ruby/bin:$HOMEBREW_PREFIX/bin:$HOMEBREW_PREFIX/sbin:/usr/bin:/usr/sbin:/bin:/sbin:/Library/TeX/texbin"
+    export PATH="$XDG_BIN_HOME:$HOMEBREW_PREFIX/lib/ruby/gems/$RUBY_API_VERSION/bin:$HOMEBREW_PREFIX/opt/ruby/bin:$HOMEBREW_PREFIX/bin:$HOMEBREW_PREFIX/sbin:/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin:/Library/TeX/texbin"
     unset RUBY_API_VERSION
 else # Linux
     export PATH="$XDG_BIN_HOME:$PATH"
