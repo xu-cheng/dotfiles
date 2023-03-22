@@ -323,6 +323,7 @@
     // Python
     "python.analysis.autoImportCompletions": true,
     "python.analysis.inlayHints.functionReturnTypes": true,
+    "python.analysis.inlayHints.pytestParameters": true,
     "python.analysis.inlayHints.variableTypes": true,
     "python.formatting.provider": "black",
     "jupyter.askForKernelRestart": false,
