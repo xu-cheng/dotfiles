@@ -15,6 +15,9 @@ truncation_length = 10
 truncate_to_repo = false
 fish_style_pwd_dir_length = 1
 
+[docker_context]
+symbol = "󰡨 "
+
 [git_branch]
 symbol = " "
 
