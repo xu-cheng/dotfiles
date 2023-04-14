@@ -10,6 +10,7 @@
         "strings": true
     },
     "editor.inlineSuggest.enabled": true,
+    "editor.stickyScroll.enabled": true,
     "workbench.editor.enablePreviewFromQuickOpen": false,
     "terminal.integrated.macOptionIsMeta": true,
     "terminal.integrated.fontFamily": "Monaco, Hack Nerd Font, monospace",
