@@ -1,4 +1,6 @@
 {
+    "workbench.colorTheme": "Catppuccin Frappé",
+    "workbench.iconTheme": "catppuccin-frappe",
     "editor.fontFamily": "Monaco, monospace",
     "editor.fontSize": 13,
     "editor.wordWrap": "on",
