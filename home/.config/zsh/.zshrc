@@ -89,8 +89,12 @@ if [[ -s "$ZSH/plugins/z/z.plugin.zsh" ]]; then
   _Z_DATA="$XDG_DATA_HOME/z/z.txt"
   . "$ZSH/plugins/z/z.plugin.zsh"
 fi
-ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets)
-[[ -s "$ZSH_HIGHLIGHT_PATH" ]] && . "$ZSH_HIGHLIGHT_PATH"
+if [[ -s "$ZSH_HIGHLIGHT_PATH" ]]; then
+  # From https://github.com/catppuccin/zsh-syntax-highlighting/
+  . "$XDG_CONFIG_HOME/zsh/catppuccin_frappe-zsh-syntax-highlighting.zsh"
+  ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets)
+  . "$ZSH_HIGHLIGHT_PATH"
+fi
 
 . "$ZSH/oh-my-zsh.sh"
 
