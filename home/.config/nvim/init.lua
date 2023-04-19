@@ -31,7 +31,7 @@ require("lazy").setup("plugins", {
     },
     change_detection = {
         enabled = true,
-        notify = not vim.g.vscode,
+        notify = false,
     }
 })
 
