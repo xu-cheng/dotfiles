@@ -77,7 +77,9 @@
     // LaTeX
     "latex-workshop.view.pdf.viewer": "tab",
     "latex-workshop.linting.chktex.enabled": true,
-    "latex-workshop.linting.chktex.exec.args": ["--globalrc"],
+    "latex-workshop.linting.chktex.exec.args": [
+        "--globalrc"
+    ],
     "latex-workshop.latex.tools": [
         {
             "name": "latexmk",
@@ -102,6 +104,7 @@
     "python.analysis.inlayHints.functionReturnTypes": true,
     "python.analysis.inlayHints.pytestParameters": true,
     "python.analysis.inlayHints.variableTypes": true,
+    "python.terminal.activateEnvironment": false,
     "python.formatting.provider": "black",
     "jupyter.askForKernelRestart": false,
     // Json
