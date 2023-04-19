@@ -32,7 +32,7 @@ stashed = ""
 symbol = " "
 
 [hostname]
-ssh_symbol = "󰣀 "
+ssh_symbol = ""
 
 [hg_branch]
 symbol = " "
