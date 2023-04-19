@@ -92,6 +92,9 @@ fi
 if [[ -s "$ZSH_HIGHLIGHT_PATH" ]]; then
   # From https://github.com/catppuccin/zsh-syntax-highlighting/
   . "$XDG_CONFIG_HOME/zsh/catppuccin_frappe-zsh-syntax-highlighting.zsh"
+  # tweak the colortheme
+  ZSH_HIGHLIGHT_STYLES[path_pathseparator]="${ZSH_HIGHLIGHT_STYLES[path]}"
+  ZSH_HIGHLIGHT_STYLES[path_prefix_pathseparator]="${ZSH_HIGHLIGHT_STYLES[path_prefix]}"
   ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets)
   . "$ZSH_HIGHLIGHT_PATH"
 fi
