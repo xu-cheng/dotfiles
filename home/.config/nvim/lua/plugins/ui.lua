@@ -28,7 +28,7 @@ return {
         config = true,
     },
 
-    -- notify
+    -- notify and ui
     {
         "rcarriga/nvim-notify",
         enabled = not_vscode,
