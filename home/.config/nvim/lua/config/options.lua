@@ -67,6 +67,8 @@ if not vim.g.vscode then
     opt.winblend = 10 -- make floating windows slightly transparent
     opt.scrolljump = 5 -- lines to scroll when cursor leaves screen
     opt.scrolloff = 3 -- minimum lines to keep above and below cursor
+    opt.timeout = true
+    opt.timeoutlen = 300 -- used by which-key
 
     opt.conceallevel = 2
 

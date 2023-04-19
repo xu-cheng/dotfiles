@@ -13,18 +13,26 @@ return {
             show_end_of_buffer = false,
             dim_inactive = { enable = true },
             ntegrations = {
-                -- TODO:
                 cmp = true,
                 gitsigns = true,
-                nvimtree = true,
+                mini = true,
+                noice = true,
                 telescope = true,
-                notify = true,
-                ts_rainbow2 = true,
                 treesitter = true,
                 treesitter_context = true,
+                ts_rainbow2 = true,
+                which_key = true,
             },
         },
         main = "catppuccin",
+        config = true,
+    },
+
+    -- which key
+    {
+        "folke/which-key.nvim",
+        enabled = not_vscode,
+        main = "which-key",
         config = true,
     },
 }

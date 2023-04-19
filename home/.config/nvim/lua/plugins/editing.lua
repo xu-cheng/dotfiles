@@ -1,3 +1,5 @@
+local not_vscode = not vim.g.vscode
+
 return {
     -- comments
     {
@@ -71,6 +73,85 @@ return {
         end,
         main = "mini.ai",
         config = true,
-    }
+        init = function()
+            if not_vscode then
+                local i = {
+                    [" "] = "Whitespace",
+                    ['"'] = 'Balanced "',
+                    ["'"] = "Balanced '",
+                    ["`"] = "Balanced `",
+                    ["("] = "Balanced (",
+                    [")"] = "Balanced ) including white-space",
+                    [">"] = "Balanced > including white-space",
+                    ["<lt>"] = "Balanced <",
+                    ["]"] = "Balanced ] including white-space",
+                    ["["] = "Balanced [",
+                    ["}"] = "Balanced } including white-space",
+                    ["{"] = "Balanced {",
+                    ["?"] = "User Prompt",
+                    _ = "Underscore",
+                    a = "Argument",
+                    b = "Balanced ), ], }",
+                    c = "Class",
+                    f = "Function",
+                    o = "Block, conditional, loop",
+                    q = "Quote `, \", '",
+                    t = "Tag",
+                }
+                local a = vim.deepcopy(i)
+                for k, v in pairs(a) do
+                    a[k] = v:gsub(" including.*", "")
+                end
+
+                local ic = vim.deepcopy(i)
+                local ac = vim.deepcopy(a)
+                for key, name in pairs({ n = "Next", l = "Last" }) do
+                    i[key] = vim.tbl_extend("force", { name = "Inside " .. name .. " textobject" }, ic)
+                    a[key] = vim.tbl_extend("force", { name = "Around " .. name .. " textobject" }, ac)
+                end
+                require("which-key").register({
+                    mode = { "o", "x" },
+                    i = i,
+                    a = a,
+                })
+            end
+        end
+    },
+
+    -- indentscope
+    {
+        "echasnovski/mini.indentscope",
+        version = false,
+        event = "VeryLazy",
+        opts = {
+            symbol = "▏",
+            options = {
+                try_as_border = true
+            },
+        },
+        config = function(_, opts)
+            if vim.g.vscode then
+                opts.symbol = ""
+            end
+            require("mini.indentscope").setup(opts)
+        end,
+        init = function()
+            vim.api.nvim_create_autocmd("FileType", {
+                pattern = {
+                    "Trouble",
+                    "alpha",
+                    "dashboard",
+                    "help",
+                    "lazy",
+                    "mason",
+                    "neo-tree",
+                },
+                group = vim.api.nvim_create_augroup("disable_mini_indentscope_on_filetype", { clear = true }),
+                callback = function()
+                    vim.b.miniindentscope_disable = true
+                end
+            })
+        end
+    },
 
 }
