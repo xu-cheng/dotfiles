@@ -1,4 +1,5 @@
 alefragnani.Bookmarks
+asvetliakov.vscode-neovim
 bungcip.better-toml
 castwide.solargraph
 Catppuccin.catppuccin-vsc
@@ -12,7 +13,6 @@ GitHub.copilot
 hediet.debug-visualizer
 ionutvmi.path-autocomplete
 James-Yu.latex-workshop
-jbhannah.autopairs-code
 mechatroner.rainbow-csv
 ms-azuretools.vscode-docker
 ms-python.isort
@@ -29,12 +29,12 @@ ms-vscode-remote.remote-ssh-edit
 ms-vscode-remote.remote-wsl
 ms-vscode-remote.vscode-remote-extensionpack
 ms-vscode.remote-explorer
+ms-vscode.remote-server
 rebornix.ruby
 rust-lang.rust-analyzer
 streetsidesoftware.code-spell-checker
 usernamehw.errorlens
 vadimcn.vscode-lldb
-vscodevim.vim
 wayou.vscode-todo-highlight
 wingrunr21.vscode-ruby
 yinfei.luahelper

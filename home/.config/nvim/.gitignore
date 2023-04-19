@@ -1,5 +1,3 @@
-*.pyc
+lazy-lock.json
 
-/autoload/plug.vim
-/autoload/plug.vim.old
 /spell/*.spl

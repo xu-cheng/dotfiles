@@ -8,5 +8,11 @@
   {
     "key": "ctrl+s",
     "command": "workbench.action.files.save",
-  }
+  },
+  {
+    "key": "ctrl+space",
+    "command": "vscode-neovim.send",
+    "when": "editorTextFocus && neovim.mode != insert",
+    "args": "<C-space>"
+}
 ]

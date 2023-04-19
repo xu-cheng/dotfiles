@@ -5,9 +5,4 @@ trap '{ echo "Quit by Ctrl-C." >&2; exit 130; }' INT
 pip3 install --upgrade pynvim
 pip3 install --upgrade neovim-remote
 gem install neovim && gem cleanup neovim
-nvim --headless -c PlugUpgrade +q
-echo ''
-nvim --headless -c PlugClean! +qall
-echo ''
-nvim --headless -c PlugUpdate! +qall
-touch "${XDG_DATA_HOME:-"$HOME/.local/share"}/nvim/plugin_update"
+nvim --headless "+Lazy! sync" +qa
