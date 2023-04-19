@@ -12,7 +12,7 @@ return {
             flavour = "frappe",
             show_end_of_buffer = false,
             dim_inactive = { enable = true },
-            ntegrations = {
+            integrations = {
                 cmp = true,
                 gitsigns = true,
                 mini = true,
