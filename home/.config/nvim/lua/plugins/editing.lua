@@ -1,5 +1,3 @@
-local not_vscode = not vim.g.vscode
-
 return {
     -- comments
     {
@@ -74,7 +72,7 @@ return {
         main = "mini.ai",
         config = true,
         init = function()
-            if not_vscode then
+            if not vim.g.vscode then
                 local i = {
                     [" "] = "Whitespace",
                     ['"'] = 'Balanced "',
