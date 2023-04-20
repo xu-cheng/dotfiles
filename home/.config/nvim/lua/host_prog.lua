@@ -1,5 +1,7 @@
-local is_mac = vim.fn.has("mac")
-local executable = vim.fn.executable
+local is_mac = vim.fn.has("mac") == 1
+local function executable(prog)
+    return vim.fn.executable(prog) == 1
+end
 
 -- get homebrew prefix
 local brew_prefix
