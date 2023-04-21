@@ -102,12 +102,11 @@ if not vim.g.vscode then
     map("c", "<M-b>", "<S-Left>")
     map("c", "<M-f>", "<S-Right>")
 
-    -- command line keymap which only expands in the first column of the command line
+    -- command line abbreviation which only expands in the begining of the command line
     -- ref: https://stackoverflow.com/a/30837427
     local function cmd_abbrev(abbrev, expansion)
-        local expansion = "getcmdtype()==#':' && getcmdpos()==1 ? '" .. expansion .. "' : '" .. abbrev .. "'"
-        local cmd = "cnoreabbrev " .. abbrev .. " <c-r>=(" .. expansion .. ")<cr>"
-        vim.cmd(cmd)
+        local expansion = "<c-r>=(getcmdtype()==#':' && getcmdpos()==1 ? '" .. expansion .. "' : '" .. abbrev .. "')<cr>"
+        vim.cmd { cmd = "cnoreabbrev", args = { abbrev, expansion } }
     end
 
     -- shortcuts to change working directory to that of the current file
