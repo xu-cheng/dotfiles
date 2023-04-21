@@ -102,23 +102,21 @@ if not vim.g.vscode then
     map("c", "<M-b>", "<S-Left>")
     map("c", "<M-f>", "<S-Right>")
 
-    -- TODO: turn these to command instead of keymap
-    -- -- shortcuts to change working directory to that of the current file
-    -- map("c", "cwd", "lcd %:p:h", {
-    --     remap = true,
-    --     desc = "Change working directory to the current file"
-    -- })
-    -- map("c", "cd.", "lcd %:p:h", {
-    --     remap = true,
-    --     desc = "Change working directory to the current file"
-    -- })
-    --
-    -- -- for when you forget to sudo.. really write the file.
-    -- map("c", "w!!", "w !sudo tee % >/dev/null", {
-    --     remap = true,
-    --     desc = "Write file using sudo"
-    -- })
-    --
+    -- command line keymap which only expands in the first column of the command line
+    -- ref: https://stackoverflow.com/a/30837427
+    local function cmd_abbrev(abbrev, expansion)
+        local expansion = "getcmdtype()==#':' && getcmdpos()==1 ? '" .. expansion .. "' : '" .. abbrev .. "'"
+        local cmd = "cnoreabbrev " .. abbrev .. " <c-r>=(" .. expansion .. ")<cr>"
+        vim.cmd(cmd)
+    end
+
+    -- shortcuts to change working directory to that of the current file
+    cmd_abbrev("cwd", "lcd %:p:h")
+    cmd_abbrev("cd.", "lcd %:p:h")
+
+    -- for when you forget to sudo.. really write the file.
+    cmd_abbrev("w!!", "w !sudo tee % >/dev/null")
+
     -- some helpers to edit mode
     -- http://vimcasts.org/e/14
     map("", "<leader>ew", ":e <C-R>=fnameescape(expand('%:h')).'/'<cr>", {
