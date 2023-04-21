@@ -119,8 +119,14 @@ return {
     {
         "folke/which-key.nvim",
         enabled = not_vscode,
-        main = "which-key",
-        config = true,
+        config = function(_, opts)
+            local wk = require("which-key")
+            wk.setup(opts)
+            wk.register({
+                mode = { "n", "x" },
+                ["<leader>sn"] = { name = "+noice" },
+            })
+        end
     },
 
     -- dependencies
