@@ -77,8 +77,8 @@ return {
             },
             cmdline = {
                 format = {
-                    search_down = { icon = " " },
-                    search_up = { icon = " " },
+                    search_down = { icon = " ", opts = { win_options = { winblend = 0 } } },
+                    search_up = { icon = " ", opts = { win_options = { winblend = 0 } } },
                 },
             },
         },
