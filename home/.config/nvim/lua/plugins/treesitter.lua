@@ -105,7 +105,7 @@ return {
     },
     -- nvim-treesitter-textobjects used by mini.ai
     {
-        "nvim-treesitter-textobjects",
+        "nvim-treesitter/nvim-treesitter-textobjects",
         version = false,
         lazy = true,
     }

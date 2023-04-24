@@ -54,7 +54,7 @@ return {
         "echasnovski/mini.ai",
         version = false,
         event = "VeryLazy",
-        dependencies = { "nvim-treesitter-textobjects" },
+        dependencies = { "nvim-treesitter/nvim-treesitter-textobjects" },
         opts = function()
             local ai = require("mini.ai")
             return {
