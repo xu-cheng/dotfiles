@@ -17,7 +17,6 @@ return {
         opts = {
             char = "│",
             filetype_exclude = excluded_filetypes,
-            show_trailing_blankline_indent = false,
             show_current_context = true,
         },
         main = "indent_blankline",
