@@ -116,6 +116,46 @@ return {
         },
     },
 
+    -- bufferline
+    {
+        "akinsho/bufferline.nvim",
+        enabled = not_vscode,
+        event = "VeryLazy",
+        opts = {
+            -- TODO
+            options = {
+                always_show_bufferline = false,
+            }
+        },
+        main = "bufferline",
+        config = true,
+    },
+
+    -- statusline
+    {
+        "nvim-lualine/lualine.nvim",
+        version = false,
+        enabled = not_vscode,
+        event = "VeryLazy",
+        opts = {
+            -- TODO
+            options = {
+                globalstatus = true,
+            },
+            sessions = {
+
+            },
+            extensions = {
+                "lazy",
+                "neo-tree",
+                "quickfix",
+                "trouble",
+            },
+        },
+        main = "lualine",
+        config = true,
+    },
+
     -- which key
     {
         "folke/which-key.nvim",
