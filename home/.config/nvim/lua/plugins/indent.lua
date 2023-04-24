@@ -1,9 +1,12 @@
 local excluded_filetypes = {
     "Trouble",
     "alpha",
+    "checkhealth",
     "dashboard",
     "help",
     "lazy",
+    "lspinfo",
+    "man",
     "mason",
     "neo-tree",
 }
@@ -13,7 +16,7 @@ return {
     {
         "lukas-reineke/indent-blankline.nvim",
         enabled = not vim.g.vscode,
-        event = { "BufReadPost", "BufNewFile" },
+        event = "VeryLazy",
         opts = {
             char = "│",
             filetype_exclude = excluded_filetypes,
