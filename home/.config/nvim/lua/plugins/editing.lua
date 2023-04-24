@@ -116,40 +116,4 @@ return {
         end
     },
 
-    -- indentscope
-    {
-        "echasnovski/mini.indentscope",
-        version = false,
-        event = "VeryLazy",
-        opts = {
-            symbol = "▏",
-            options = {
-                try_as_border = true
-            },
-        },
-        config = function(_, opts)
-            if vim.g.vscode then
-                opts.symbol = ""
-            end
-            require("mini.indentscope").setup(opts)
-        end,
-        init = function()
-            vim.api.nvim_create_autocmd("FileType", {
-                pattern = {
-                    "Trouble",
-                    "alpha",
-                    "dashboard",
-                    "help",
-                    "lazy",
-                    "mason",
-                    "neo-tree",
-                },
-                group = vim.api.nvim_create_augroup("disable_mini_indentscope_on_filetype", { clear = true }),
-                callback = function()
-                    vim.b.miniindentscope_disable = true
-                end
-            })
-        end
-    },
-
 }
