@@ -38,6 +38,7 @@ return {
     {
         "rcarriga/nvim-notify",
         enabled = not_vscode,
+        lazy = true,
         opts = {
             timeout = 3000,
             max_height = function()
