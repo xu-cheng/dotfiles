@@ -29,8 +29,29 @@ return {
         "echasnovski/mini.surround",
         version = false,
         event = "VeryLazy",
-        main = "mini.surround",
-        config = true,
+        -- mimic tpope/vim-surround's keymap
+        -- Ref: *MiniSurround-vim-surround-config*
+        opts = {
+            mappings = {
+                add = "ys",
+                delete = "ds",
+                replace = "cs",
+
+                find = "",
+                find_left = "",
+                highlight = "",
+                update_n_lines = "",
+            },
+            search_method = "cover_or_next",
+        },
+        config = function(_, opts)
+            require("mini.surround").setup(opts)
+            -- remap adding surrounding to Visual mode selection
+            vim.keymap.del('x', 'ys')
+            vim.keymap.set('x', 'S', [[:<C-u>lua MiniSurround.add('visual')<CR>]], { silent = true })
+            -- make special mapping for "add surrounding for line"
+            vim.keymap.set('n', 'yss', 'ys_', { remap = true })
+        end,
     },
 
     -- splitjoin
