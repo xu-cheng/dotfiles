@@ -47,10 +47,10 @@ return {
         config = function(_, opts)
             require("mini.surround").setup(opts)
             -- remap adding surrounding to Visual mode selection
-            vim.keymap.del('x', 'ys')
-            vim.keymap.set('x', 'S', [[:<C-u>lua MiniSurround.add('visual')<CR>]], { silent = true })
+            vim.keymap.del("x", "ys")
+            vim.keymap.set("x", "S", [[:<C-u>lua MiniSurround.add("visual")<CR>]], { silent = true })
             -- make special mapping for "add surrounding for line"
-            vim.keymap.set('n', 'yss', 'ys_', { remap = true })
+            vim.keymap.set("n", "yss", "ys_", { remap = true })
         end,
     },
 
