@@ -1,7 +1,7 @@
 {
     "workbench.colorTheme": "Catppuccin Frappé",
     "workbench.iconTheme": "catppuccin-frappe",
-    "editor.fontFamily": "Monaco, monospace",
+    "editor.fontFamily": "Monaco, Hack Nerd Font, monospace",
     "editor.fontSize": 13,
     "editor.wordWrap": "on",
     "editor.minimap.enabled": false,
