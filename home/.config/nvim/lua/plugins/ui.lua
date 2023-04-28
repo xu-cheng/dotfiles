@@ -137,21 +137,87 @@ return {
         version = false,
         enabled = not_vscode,
         event = "VeryLazy",
-        opts = {
-            -- TODO
-            options = {
-                globalstatus = true,
-            },
-            sessions = {
-
-            },
-            extensions = {
-                "lazy",
-                "neo-tree",
-                "quickfix",
-                "trouble",
-            },
+        dependencies = {
+            "folke/noice.nvim",
         },
+        opts = function()
+            local icons = require("config/icons")
+            local function fg(name)
+                local hl = vim.api.nvim_get_hl(0, { name = name })
+                local fg = hl and hl.fg
+                return fg and { fg = string.format("#%06x", fg) }
+            end
+            local opts = {
+                options = {
+                    theme = "catppuccin",
+                    globalstatus = true,
+                    disabled_filetypes = { statusline = { "alpha" } },
+                },
+                sections = {
+                    lualine_a = { "mode" },
+                    lualine_b = {
+                        "branch",
+                        {
+                            "diff",
+                            symbols = {
+                              added = icons.git.added,
+                              modified = icons.git.modified,
+                              removed = icons.git.removed,
+                            },
+                        },
+                        {
+                            "diagnostics",
+                            symbols = {
+                                error = icons.diagnostics.Error,
+                                warn = icons.diagnostics.Warn,
+                                info = icons.diagnostics.Info,
+                                hint = icons.diagnostics.Hint,
+                            },
+                        },
+                    },
+                    lualine_c = {
+                        { "filetype", icon_only = true, separator = "", padding = { left = 1, right = 0 } },
+                        { "filename", path = 1, symbols = { modified = "  ", readonly = "  ", unnamed = "" } },
+                        -- {
+                        --     require("nvim-navic").get_location,
+                        --     cond = rquire("nvim-navic").is_available.
+                        -- },
+                    },
+                    lualine_x = {
+                        {
+                            require("noice").api.status.command.get,
+                            cond = require("noice").api.status.command.has,
+                            color = fg("Statement"),
+                        },
+                        -- {
+                        --     function() return "  " .. require("dap").status() end,
+                        --     cond = function () return package.loaded["dap"] and require("dap").status() ~= "" end,
+                        --     color = fg("Debug"),
+                        -- },
+                        {
+                            require("lazy.status").updates,
+                            cond = require("lazy.status").has_updates,
+                            color = fg("Special")
+                        },
+                    },
+                    lualine_y = {
+                        { "encoding", separator = " ", padding = { left = 1, right = 0 } },
+                        { "fileformat", padding = { left = 0, right = 1 } },
+                    },
+                    lualine_z = {
+                        { "progress", separator = " ", padding = { left = 1, right = 0 } },
+                        { "location", padding = { left = 0, right = 1 } },
+                    },
+                },
+                extensions = {
+                    "lazy",
+                    "neo-tree",
+                    "quickfix",
+                    "trouble",
+                },
+            }
+            return opts
+        end,
         main = "lualine",
         config = true,
     },

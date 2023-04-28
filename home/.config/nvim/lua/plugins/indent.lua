@@ -2,7 +2,6 @@ local excluded_filetypes = {
     "Trouble",
     "alpha",
     "checkhealth",
-    "dashboard",
     "help",
     "lazy",
     "lspinfo",
