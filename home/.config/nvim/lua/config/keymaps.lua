@@ -136,14 +136,43 @@ if not vim.g.vscode then
     })
 
     -- tab management
-    -- nnoremap tt :tabnew<Space>
-    -- nnoremap tw :tabclose<CR>
-    -- nnoremap tm :tabmove<Space>
-    -- nnoremap tn :tabnext<Space>
-    -- nnoremap th :tabfirst<CR>
-    -- nnoremap tj :tabnext<CR>
-    -- nnoremap tk :tabprev<CR>
-    -- nnoremap tl :tablast<CR>
+    map("n", "tt", ":tabnew<space>", {
+        desc = "Open new tab",
+    })
+    map("n", "tw", ":tabclose<cr>", {
+        silent = true,
+        desc = "Close tab",
+    })
+    map("n", "tm", ":tabmove<space>", {
+        desc = "Move tab",
+    })
+    map("n", "tn", ":tabnext<space>", {
+        desc = "Next tab",
+    })
+    map("n", "th", ":tabfirst<cr>", {
+        silent = true,
+        desc = "First tab",
+    })
+    map("n", "tj", ":tabnext<cr>", {
+        silent = true,
+        desc = "Next tab",
+    })
+    map("n", "tk", ":tabprev<cr>", {
+        silent = true,
+        desc = "Previous tab",
+    })
+    map("n", "tl", ":tablast<cr>", {
+        silent = true,
+        desc = "Last tab",
+    })
+    map("n", "tmj", ":tabmove -1<cr>", {
+        silent = true,
+        desc = "Move tab left",
+    })
+    map("n", "tmk", ":tabmove +1<cr>", {
+        silent = true,
+        desc = "Move tab right",
+    })
 
     -- windows management
     map("n", "<C-w>|", ":vsplit<CR>", {

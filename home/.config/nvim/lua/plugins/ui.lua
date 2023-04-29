@@ -122,9 +122,25 @@ return {
         enabled = not_vscode,
         event = "VeryLazy",
         opts = {
-            -- TODO
             options = {
+                mode = "tabs",
                 always_show_bufferline = false,
+                color_icons = true,
+                diagnostics = "nvim_lsp",
+                diagnostics_indicator = function(_, _, diag)
+                    local icons = require("config/icons").diagnostics
+                    local ret = (diag.error and icons.Error .. diag.error .. " " or "")
+                      .. (diag.warning and icons.Warn .. diag.warning or "")
+                    return vim.trim(ret)
+                  end,
+                offsets = {
+                    {
+                        filetype = "neo-tree",
+                        text = "File Explorer",
+                        highlight = "Directory",
+                        text_align = "left",
+                    },
+                },
             }
         },
         main = "bufferline",
