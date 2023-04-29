@@ -213,15 +213,16 @@ return {
                         {
                             require("lazy.status").updates,
                             cond = require("lazy.status").has_updates,
-                            color = fg("Special")
+                            color = fg("Special"),
+                            on_click = function(_, _, _) require("lazy").update() end,
                         },
                     },
                     lualine_y = {
-                        { "encoding", separator = " ", padding = { left = 1, right = 0 } },
+                        { "encoding", separator = " ", padding = { left = 1, right = 0 }, draw_empty = true },
                         { "fileformat", padding = { left = 0, right = 1 } },
                     },
                     lualine_z = {
-                        { "progress", separator = " ", padding = { left = 1, right = 0 } },
+                        { "progress", separator = " ", padding = { left = 1, right = 0 }, draw_empty = true },
                         { "location", icon = "", padding = { left = 0, right = 1 } },
                     },
                 },
