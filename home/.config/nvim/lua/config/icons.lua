@@ -10,7 +10,8 @@ local icons = {
         Error = " ",
         Warn = " ",
         Hint = " ",
-        Info = " "
+        Info = " ",
+        Other = " ",
     },
     git = {
         added = " ",
