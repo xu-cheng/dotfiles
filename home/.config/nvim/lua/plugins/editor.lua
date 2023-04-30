@@ -71,5 +71,6 @@ return {
         end,
     },
 
+    -- telescope
 
 }

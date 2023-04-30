@@ -1,6 +1,14 @@
 local not_vscode = not vim.g.vscode
 
 return {
+    -- cmp
+
+    -- lsp
+
+    -- mason
+
+    -- snip
+
     -- diagnostics
     {
         "folke/trouble.nvim",
@@ -54,4 +62,6 @@ return {
         main = "trouble",
         config = true,
       },
+
+      -- format
 }
