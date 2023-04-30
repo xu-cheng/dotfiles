@@ -70,6 +70,15 @@ return {
         config = true,
     },
 
+    -- align
+    {
+        "echasnovski/mini.align",
+        version = false,
+        event = "VeryLazy",
+        main = "mini.align",
+        config = true,
+    },
+
     -- a/i textobjects
     {
         "echasnovski/mini.ai",
