@@ -63,7 +63,7 @@ return {
                 vim.keymap.set("n", l, r, { silent = true, desc = desc })
             end
 
-            map("<leader>gd", ":Git diff<CR>", "Git diff")
+            map("<leader>gd", ":Git diff<CR>", "Preview diff")
             map("<leader>gl", ":Git log<CR>", "Git log")
             map("<leader>gB", ":Git blame<CR>", "Git blame")
             map("<leader>gc", ":Git commit<CR>", "Git commit")

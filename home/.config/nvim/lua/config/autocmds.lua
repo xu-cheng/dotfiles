@@ -117,10 +117,10 @@ vim.api.nvim_create_autocmd("FileType", {
     desc = "Close some filetypes with <q>",
     group = augroup("close_with_q"),
     pattern = {
-        -- TODO:
         "PlenaryTestPopup",
         "checkhealth",
         "fugitiveblame",
+        "git",
         "help",
         "lspinfo",
         "man",
