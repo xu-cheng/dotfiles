@@ -35,9 +35,10 @@ return {
         main = "mini.indentscope",
         config = ture,
         init = function()
+            local augroup = require("utils").augroup
             vim.api.nvim_create_autocmd("FileType", {
                 pattern = excluded_filetypes,
-                group = vim.api.nvim_create_augroup("disable_mini_indentscope_on_filetype", { clear = true }),
+                group = augroup("disable_mini_indentscope_on_filetype"),
                 callback = function()
                     vim.b.miniindentscope_disable = true
                 end
