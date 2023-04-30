@@ -19,7 +19,7 @@ return {
     {
         "lewis6991/gitsigns.nvim",
         enabled = not_vscode,
-        event = "VeryLazy",
+        event = { "BufReadPre", "BufNewFile" },
         opts = {
             signs = {
                 add = { text = "▎" },
@@ -45,14 +45,31 @@ return {
                 map("n", "<leader>gR", gs.reset_buffer, "Reset Buffer")
                 map("n", "<leader>gp", gs.preview_hunk, "Preview Hunk")
                 map("n", "<leader>gb", function() gs.blame_line({ full = true }) end, "Blame Line")
-                map("n", "<leader>gd", gs.diffthis, "Diff This")
-                map("n", "<leader>gD", function() gs.diffthis("~") end, "Diff This ~")
+                map("n", "<leader>gD", gs.diffthis, "Diff This")
+
                 map({ "o", "x" }, "ih", ":<C-U>Gitsigns select_hunk<CR>", "GitSigns Select Hunk")
             end,
         },
         main = "gitsigns",
         config = true,
-    }
+    },
+    {
+        "tpope/vim-fugitive",
+        version = false,
+        enabled = not_vscode,
+        event = { "BufReadPre", "BufNewFile" },
+        init = function()
+            local function map(l, r, desc)
+                vim.keymap.set("n", l, r, { silent = true, desc = desc })
+            end
+
+            map("<leader>gd", ":Git diff<CR>", "Git diff")
+            map("<leader>gl", ":Git log<CR>", "Git log")
+            map("<leader>gB", ":Git blame<CR>", "Git blame")
+            map("<leader>gc", ":Git commit<CR>", "Git commit")
+            map("<leader>gP", ":Git push<CR>", "Git push")
+        end,
+    },
 
 
 }

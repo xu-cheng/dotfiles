@@ -120,6 +120,7 @@ vim.api.nvim_create_autocmd("FileType", {
         -- TODO:
         "PlenaryTestPopup",
         "checkhealth",
+        "fugitiveblame",
         "help",
         "lspinfo",
         "man",
