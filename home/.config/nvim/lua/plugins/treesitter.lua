@@ -75,6 +75,7 @@ return {
                 "vimdoc",
                 "yaml",
             },
+            auto_install = true,
         },
         main = "nvim-treesitter.configs",
         config = true,
