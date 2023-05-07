@@ -1,7 +1,7 @@
 {
     "workbench.colorTheme": "Catppuccin Frappé",
     "workbench.iconTheme": "catppuccin-frappe",
-    "editor.fontFamily": "Monaco, Hack Nerd Font, monospace",
+    "editor.fontFamily": "Monaco, SymbolsNFM, monospace",
     "editor.fontSize": 13,
     "editor.wordWrap": "on",
     "editor.minimap.enabled": false,
@@ -15,7 +15,7 @@
     "editor.stickyScroll.enabled": true,
     "workbench.editor.enablePreviewFromQuickOpen": false,
     "terminal.integrated.macOptionIsMeta": true,
-    "terminal.integrated.fontFamily": "Monaco, Hack Nerd Font, monospace",
+    "terminal.integrated.fontFamily": "Monaco, SymbolsNFM, monospace",
     "terminal.external.osxExec": "iTerm.app",
     "telemetry.telemetryLevel": "off",
     "files.watcherExclude": {

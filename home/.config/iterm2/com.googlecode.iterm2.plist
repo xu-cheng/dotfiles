@@ -1104,7 +1104,7 @@
 			<key>Name</key>
 			<string>catppuccin-frappe</string>
 			<key>Non Ascii Font</key>
-			<string>HackNerdFontComplete-Regular 14</string>
+			<string>SymbolsNFM 14</string>
 			<key>Non-ASCII Anti Aliased</key>
 			<true/>
 			<key>Normal Font</key>
