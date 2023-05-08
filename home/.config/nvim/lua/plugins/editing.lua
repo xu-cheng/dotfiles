@@ -150,6 +150,7 @@ return {
     {
         "mg979/vim-visual-multi",
         version = false,
+        enabled = not vim.g.vscode,
         event = "VeryLazy",
         init = function()
             vim.g.VM_maps = {
