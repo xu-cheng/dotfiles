@@ -1,23 +1,44 @@
 palette = "catppuccin_frappe"
 
 [aws]
-symbol = " "
+symbol = " "
 
 [battery]
-full_symbol = ""
-charging_symbol = ""
-discharging_symbol = ""
+full_symbol = "󰁹 "
+charging_symbol = "󰂄 "
+discharging_symbol = "󱟞 "
+unknown_symbol = "󰂃 "
+empty_symbol = "󰂎 "
+
+[c]
+symbol = " "
+
+[cmake]
+symbol = "󰔶 "
 
 [conda]
 symbol = " "
+
+[dart]
+symbol = " "
 
 [directory]
 truncation_length = 10
 truncate_to_repo = false
 fish_style_pwd_dir_length = 1
+read_only = " "
 
 [docker_context]
 symbol = "󰡨 "
+
+[elixir]
+symbol = " "
+
+[elm]
+symbol = " "
+
+[fossil_branch]
+symbol = " "
 
 [git_branch]
 symbol = " "
@@ -31,6 +52,9 @@ stashed = ""
 [golang]
 symbol = " "
 
+[haskell]
+symbol = " "
+
 [hostname]
 ssh_symbol = ""
 
@@ -40,17 +64,26 @@ symbol = " "
 [java]
 symbol = " "
 
+[julia]
+symbol = " "
+
 [lua]
 symbol = " "
 
 [memory_usage]
-symbol = " "
+symbol = "󰍛 "
+
+[nix_shell]
+symbol = " "
 
 [nodejs]
-symbol = " "
+symbol = " "
 
 [package]
-symbol = " "
+symbol = "󰏗 "
+
+[perl]
+symbol = " "
 
 [php]
 symbol = " "
@@ -59,10 +92,19 @@ symbol = " "
 symbol = " "
 
 [ruby]
-symbol = " "
+symbol = " "
 
 [rust]
-symbol = " "
+symbol = " "
+
+[scala]
+symbol = " "
+
+[spack]
+symbol = "🅢 "
+
+[terraform]
+symbol = "󱁢 "
 
 # https://github.com/catppuccin/starship
 [palettes.catppuccin_frappe]
