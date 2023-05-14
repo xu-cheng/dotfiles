@@ -79,5 +79,30 @@ if not vim.g.vscode then
     opt.winminwidth = 3 -- minimum window width
     opt.tabpagemax = 15 -- only show 15 tabs
     opt.switchbuf = "usetab,newtab" -- switching to the existing tab or creating new one
+
+    -- Diagnostic
+    for name, icon in pairs(require("config/icons").diagnostics) do
+        name = "DiagnosticSign" .. name
+        vim.fn.sign_define(name, { text = icon, texthl = name, numhl = "" })
+    end
+    vim.diagnostic.config({
+        severity_sort = true,
+        signs = false,
+        underline = true,
+        update_in_insert = false,
+        virtual_text = {
+            severity = { min = vim.diagnostic.severity.WARN },
+            spacing = 4,
+            source = "if_many",
+            prefix = vim.fn.has("nvim-0.10.0") == 0 and "●" or function(diagnostic)
+                local icons = require("config/icons").diagnostics
+                for d, icon in pairs(icons) do
+                    if diagnostic.severity == vim.diagnostic.severity[d:upper()] then
+                        return icon
+                    end
+                end
+            end,
+        },
+    })
 end
 

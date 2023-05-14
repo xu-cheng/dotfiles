@@ -27,6 +27,8 @@ return {
             ensure_installed = {
                 "bash-language-server",
                 "black",
+                "cspell",
+                "editorconfig-checker",
                 "isort",
                 "json-lsp",
                 "lua-language-server",
@@ -37,6 +39,7 @@ return {
                 "ruff",
                 "rust-analyzer",
                 "shellcheck",
+                "shfmt",
                 "solargraph",
                 "stylua",
                 "taplo",
@@ -45,6 +48,14 @@ return {
             run_on_start = true,
         },
         main = "mason-tool-installer",
+        config = true,
+    },
+
+    {
+        "williamboman/mason-lspconfig.nvim",
+        enabled = not_vscode,
+        lazy = true,
+        main = "mason-lspconfig",
         config = true,
     },
 }

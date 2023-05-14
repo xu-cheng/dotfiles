@@ -21,7 +21,21 @@ return {
                 markdown = true,
                 mason = true,
                 mini = true,
-                native_lsp = { enabled = true },
+                native_lsp = {
+                    enabled = true,
+                    virtual_text = {
+                        errors = {},
+                        warnings = {},
+                        hints = {},
+                        information = {},
+                    },
+                    underlines = {
+                        errors = { "undercurl" },
+                        hints = { "undercurl" },
+                        warnings = { "undercurl" },
+                        information = { "undercurl" },
+                    },
+                },
                 navic = { enabled = true },
                 neotree = true,
                 noice = true,
@@ -210,6 +224,7 @@ return {
                                 info = icons.diagnostics.Info,
                                 hint = icons.diagnostics.Hint,
                             },
+                            on_click = function(_, _, _) vim.cmd("TroubleToggle") end,
                         },
                     },
                     lualine_c = {
