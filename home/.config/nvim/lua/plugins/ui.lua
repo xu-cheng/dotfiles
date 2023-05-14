@@ -13,6 +13,7 @@ return {
             show_end_of_buffer = false,
             dim_inactive = { enable = true },
             integrations = {
+                alpha = true,
                 cmp = true,
                 gitsigns = true,
                 leap = true,
@@ -20,6 +21,8 @@ return {
                 markdown = true,
                 mason = true,
                 mini = true,
+                native_lsp = { enabled = true },
+                navic = { enabled = true },
                 neotree = true,
                 noice = true,
                 notify = true,
@@ -159,8 +162,10 @@ return {
                 },
             }
         },
-        main = "bufferline",
-        config = true,
+        config = function(_, opts)
+            opts.highlights = require("catppuccin.groups.integrations.bufferline").get()
+            require("bufferline").setup(opts)
+        end,
     },
 
     -- statusline
@@ -298,6 +303,14 @@ return {
                 dashboard.button("l", "󰒲 " .. " Lazy", ":Lazy<CR>"),
                 dashboard.button("q", " " .. " Quit", ":qa<CR>"),
             }
+
+            for _, button in ipairs(dashboard.section.buttons.val) do
+                button.opts.hl = "AlphaButtons"
+                button.opts.hl_shortcut = "AlphaShortcut"
+            end
+            dashboard.section.header.opts.hl = "AlphaHeader"
+            dashboard.section.buttons.opts.hl = "AlphaButtons"
+            dashboard.section.footer.opts.hl = "AlphaFooter"
 
             require("alpha").setup(dashboard.config)
 
