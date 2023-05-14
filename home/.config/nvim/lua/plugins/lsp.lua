@@ -196,6 +196,7 @@ return {
                 "prettier",
                 "pyright",
                 "rubocop",
+                "ruff",
                 "rust-analyzer",
                 "shellcheck",
                 "solargraph",
