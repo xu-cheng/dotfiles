@@ -136,6 +136,7 @@ return {
         "L3MON4D3/LuaSnip",
         enabled = not_vscode,
         build = "make install_jsregexp",
+        lazy = true,
         dependencies = {
             {
                 "rafamadriz/friendly-snippets",
