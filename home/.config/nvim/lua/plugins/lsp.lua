@@ -9,6 +9,11 @@ return {
         event = "InsertEnter",
         dependencies = {
             {
+                "hrsh7th/cmp-nvim-lsp",
+                version = false,
+                enabled = not_vscode,
+            },
+            {
                 "hrsh7th/cmp-buffer",
                 version = false,
                 enabled = not_vscode,
@@ -85,7 +90,7 @@ return {
                     end, { "i", "s" }),
                 }),
                 sources = cmp.config.sources({
-                    -- { name = "nvim_lsp" },
+                    { name = "nvim_lsp" },
                     { name = "luasnip" },
                     { name = "buffer" },
                     { name = "path" },
