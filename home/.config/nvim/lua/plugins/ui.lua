@@ -46,6 +46,14 @@ return {
                 ts_rainbow2 = true,
                 which_key = true,
             },
+            custom_highlights = function(colors)
+                return {
+                    SpellBad = { sp = colors.teal, style = { "undercurl" } },
+                    SpellCap = { sp = colors.teal, style = { "undercurl" } },
+                    SpellLocal = { sp = colors.teal, style = { "undercurl" } },
+                    SpellRare = { sp = colors.teal, style = { "undercurl" } },
+                }
+            end,
         },
         main = "catppuccin",
         config = true,

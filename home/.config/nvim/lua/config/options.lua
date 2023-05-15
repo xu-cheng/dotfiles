@@ -47,7 +47,7 @@ if not vim.g.vscode then
     opt.wrap = false -- by default, only display long lines as just one line
 
     opt.spell = true -- spell check on
-    opt.spelllang = {"en_us"} -- spell checking language
+    opt.spelllang = { "en_us","en_gb","en_ca" } -- spell checking language
     local spellfile = vim.fn.stdpath("config") .. "/spell/en.utf-8.add"
     if not vim.loop.fs_stat(spellfile .. ".spl") then
         vim.cmd.mkspell { spellfile, mods = { silent = true } }
