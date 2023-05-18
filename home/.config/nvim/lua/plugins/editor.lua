@@ -71,6 +71,19 @@ return {
         end,
     },
 
+    -- reference
+    {
+        "RRethy/vim-illuminate",
+        version = false,
+        enabled = not_vscode,
+        event = { "BufReadPost", "BufNewFile" },
+        opts = {
+            delay = 200,
+        },
+        config = function(_, opts)
+            require("illuminate").configure(opts)
+        end,
+    },
     -- telescope
 
 }
