@@ -42,7 +42,7 @@ map("n", "Y", "y$", {
 })
 
 -- delete without overwriting last yank.
-local delete_ops = {"d", "s", "x"}
+local delete_ops = {"d", "x"}
 for _, k in ipairs(delete_ops) do
     map({"n", "x"}, "<leader>" .. k, '"_' .. k, {
         desc = "Delete without overwriting last yank"
