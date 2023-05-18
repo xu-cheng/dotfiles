@@ -11,27 +11,26 @@ return {
             {
                 "hrsh7th/cmp-nvim-lsp",
                 version = false,
-                enabled = not_vscode,
+            },
+            {
+                "hrsh7th/cmp-nvim-lsp-signature-help",
+                version = false,
             },
             {
                 "hrsh7th/cmp-buffer",
                 version = false,
-                enabled = not_vscode,
             },
             {
                 "hrsh7th/cmp-path",
                 version = false,
-                enabled = not_vscode,
             },
             {
                 "saadparwaiz1/cmp_luasnip",
                 version = false,
-                enabled = not_vscode,
             },
             {
                 "petertriho/cmp-git",
                 version = false,
-                enabled = not_vscode,
                 dependencies = { "nvim-lua/plenary.nvim" },
                 main = "cmp_git",
                 config = true,
@@ -39,7 +38,6 @@ return {
             {
                 "octaltree/cmp-look",
                 version = false,
-                enabled = not_vscode,
             },
         },
         config = function()
@@ -91,6 +89,7 @@ return {
                 }),
                 sources = cmp.config.sources({
                     { name = "nvim_lsp" },
+                    { name = "nvim_lsp_signature_help" },
                     { name = "luasnip" },
                     { name = "buffer" },
                     { name = "path" },
@@ -170,8 +169,69 @@ return {
             "williamboman/mason.nvim",
             "williamboman/mason-lspconfig.nvim",
             "hrsh7th/nvim-cmp",
+            {
+                "folke/neoconf.nvim",
+                config = true,
+                main = "neoconf",
+            },
+            {
+                "folke/neodev.nvim",
+                config = true,
+                main = "neodev",
+            },
         },
         config = function()
+            local lspconfig = require("lspconfig")
+            local lsp_defaults = lspconfig.util.default_config
+            local utils = require("utils")
+
+            lsp_defaults.capabilities = vim.tbl_deep_extend(
+                "force",
+                lsp_defaults.capabilities,
+                require("cmp_nvim_lsp").default_capabilities()
+            )
+
+            vim.api.nvim_create_autocmd("LspAttach", {
+                desc = "LSP actions",
+                group = utils.augroup("UserLspConfig"),
+                callback = function(event)
+                    local buffer = event.buf
+                    local client = vim.lsp.get_client_by_id(event.data.client_id)
+
+                    local function map(m, lhs, rhs, desc)
+                        local opts = { buffer = buffer , desc = desc }
+                        vim.keymap.set(m, lhs, rhs, opts)
+                    end
+
+                    -- LSP actions
+                    map("n", "K", vim.lsp.buf.hover, "Hover")
+                    map("n", "gK", vim.lsp.buf.signature_help, "Signature Help")
+                    -- map("n", "gd", "<cmd>lua vim.lsp.buf.definition()<cr>")
+                    map("n", "gD", vim.lsp.buf.declaration, "Goto Declaration")
+                    -- map("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<cr>")
+                    -- map("n", "go", "<cmd>lua vim.lsp.buf.type_definition()<cr>")
+                    -- map("n", "gr", "<cmd>lua vim.lsp.buf.references()<cr>")
+                    -- map("n", "gs", "<cmd>lua vim.lsp.buf.signature_help()<cr>")
+                    -- map("n", "<F2>", "<cmd>lua vim.lsp.buf.rename()<cr>")
+                    -- map({"n", "x"}, "<F3>", "<cmd>lua vim.lsp.buf.format({async = true})<cr>")
+                    -- map("n", "<F4>", "<cmd>lua vim.lsp.buf.code_action()<cr>")
+                    -- map("x", "<F4>", "<cmd>lua vim.lsp.buf.range_code_action()<cr>")
+                    --
+                    -- Diagnostics
+                    map("n", "<leader>cd", vim.diagnostic.open_float, "Line Diagnostics")
+                    map("n", "[d", vim.diagnostic.goto_prev, "Prev Diagnostic")
+                    map("n", "]d", vim.diagnostic.goto_next, "Next Diagnostic")
+                    map("n", "[e", function() vim.diagnostic.goto_prev({ severity = "ERROR" }) end, "Prev Error")
+                    map("n", "]e", function() vim.diagnostic.goto_next({ severity = "ERROR" }) end, "Next Error")
+                    map("n", "[w", function() vim.diagnostic.goto_prev({ severity = "WARN" }) end, "Prev Warning")
+                    map("n", "]w", function() vim.diagnostic.goto_next({ severity = "WARN" }) end, "Next Warning")
+              end
+            })
+
+            local get_servers = require("mason-lspconfig").get_installed_servers
+            for _, server_name in ipairs(get_servers()) do
+                require("lspconfig")[server_name].setup({})
+            end
         end,
     },
 
