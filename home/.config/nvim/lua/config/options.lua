@@ -63,7 +63,7 @@ if not vim.g.vscode then
     opt.list = true
     -- highlight problematic whitespace
     opt.listchars = {
-        tab = "› ",
+        tab = "  ›",
         trail = "•",
         extends = "…",
         precedes = "…",
