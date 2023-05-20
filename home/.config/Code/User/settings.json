@@ -22,6 +22,8 @@
         "**/target/**": true
     },
     "extensions.ignoreRecommendations": true,
+    "update.showReleaseNotes": false,
+    "workbench.welcomePage.walkthroughs.openOnInstall": false,
     // Neovim Mode
     "extensions.experimental.affinity": {
         "asvetliakov.vscode-neovim": 1
@@ -39,6 +41,9 @@
     "gitlens.views.fileHistory.avatars": false,
     "gitlens.views.lineHistory.avatars": false,
     "gitlens.views.repositories.avatars": false,
+    "gitlens.telemetry.enabled": false,
+    "gitlens.showWelcomeOnInstall": false,
+    "gitlens.showWhatsNewAfterUpgrades": false,
     // Error Lens
     "errorLens.exclude": [
         "^\"[^\"]*\": Unknown word\\.$",
@@ -107,6 +112,8 @@
     "python.terminal.activateEnvironment": false,
     "python.formatting.provider": "black",
     "jupyter.askForKernelRestart": false,
+    // Lua
+    "Lua.telemetry.enable": false,
     // Json
     "[jsonc]": {
         "editor.defaultFormatter": "vscode.json-language-features"

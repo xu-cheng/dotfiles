@@ -30,14 +30,15 @@ ms-vscode-remote.remote-wsl
 ms-vscode-remote.vscode-remote-extensionpack
 ms-vscode.remote-explorer
 ms-vscode.remote-server
+ms-vsliveshare.vsliveshare
 rebornix.ruby
 rust-lang.rust-analyzer
 streetsidesoftware.code-spell-checker
+sumneko.lua
 usernamehw.errorlens
 vadimcn.vscode-lldb
 wayou.vscode-todo-highlight
 wingrunr21.vscode-ruby
-yinfei.luahelper
 yzhang.dictionary-completion
 yzhang.markdown-all-in-one
 znck.grammarly
