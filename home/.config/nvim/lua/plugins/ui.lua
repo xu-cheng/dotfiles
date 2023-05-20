@@ -149,10 +149,12 @@ return {
         enabled = not_vscode,
         lazy = true,
         init = function()
+            ---@diagnostic disable-next-line: duplicate-set-field
             vim.ui.select = function(...)
                 require("lazy").load({ plugins = { "dressing.nvim" } })
                 return vim.ui.select(...)
             end
+            ---@diagnostic disable-next-line: duplicate-set-field
             vim.ui.input = function(...)
                 require("lazy").load({ plugins = { "dressing.nvim" } })
                 return vim.ui.input(...)
@@ -174,9 +176,9 @@ return {
                 diagnostics_indicator = function(_, _, diag)
                     local icons = require("config/icons").diagnostics
                     local ret = (diag.error and icons.Error .. diag.error .. " " or "")
-                      .. (diag.warning and icons.Warn .. diag.warning or "")
+                        .. (diag.warning and icons.Warn .. diag.warning or "")
                     return vim.trim(ret)
-                  end,
+                end,
                 offsets = {
                     {
                         filetype = "neo-tree",
@@ -222,9 +224,9 @@ return {
                         {
                             "diff",
                             symbols = {
-                              added = icons.git.added,
-                              modified = icons.git.modified,
-                              removed = icons.git.removed,
+                                added = icons.git.added,
+                                modified = icons.git.modified,
+                                removed = icons.git.removed,
                             },
                         },
                         {

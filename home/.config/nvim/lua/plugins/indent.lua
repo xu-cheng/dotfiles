@@ -22,7 +22,7 @@ return {
             show_current_context = true,
         },
         main = "indent_blankline",
-        config = ture,
+        config = true,
     },
     -- provide text object
     {
@@ -33,7 +33,7 @@ return {
             symbol = "", -- disable drawing
         },
         main = "mini.indentscope",
-        config = ture,
+        config = true,
         init = function()
             local augroup = require("utils").augroup
             vim.api.nvim_create_autocmd("FileType", {

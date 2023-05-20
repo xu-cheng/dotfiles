@@ -49,7 +49,7 @@ vim.api.nvim_create_autocmd("BufReadPost", {
     callback = function(event)
         -- set cursor to the first line when editing a git commit message
         if vim.bo.filetype == "gitcommit" and
-           vim.fn.fnamemodify(event.file, ":t") == "COMMIT_EDITMSG" then
+            vim.fn.fnamemodify(event.file, ":t") == "COMMIT_EDITMSG" then
             pcall(vim.api.nvim_win_set_cursor, 0, {1, 0})
         else
             local mark = vim.api.nvim_buf_get_mark(0, '"')

@@ -21,9 +21,9 @@ opt.ignorecase = true -- ignore case when searching (use `\C` to force not doing
 opt.smartcase = true -- don't ignore case when searching if pattern has upper case
 opt.smartindent = true -- make indenting smart
 opt.expandtab = true -- use spaces instead of tabs
-opt.shiftwidth = 2 -- size of an indent
-opt.tabstop = 2 -- number of spaces tabs count for
-opt.softtabstop = 2 -- let backspace delete indent
+opt.shiftwidth = 4 -- size of an indent
+opt.tabstop = 4 -- number of spaces tabs count for
+opt.softtabstop = 4 -- let backspace delete indent
 opt.virtualedit = "block" -- allow going past the end of line in visual block mode
 
 if not vim.g.vscode then
@@ -61,7 +61,14 @@ if not vim.g.vscode then
     opt.signcolumn = "yes" -- Always show sign column (otherwise it will shift text)
     opt.cursorline = true -- highlight current line
     opt.list = true
-    opt.listchars = "tab:› ,trail:•,extends:…,precedes:…,nbsp:␣" -- highlight problematic whitespace
+    -- highlight problematic whitespace
+    opt.listchars = {
+        tab = "› ",
+        trail = "•",
+        extends = "…",
+        precedes = "…",
+        nbsp = "␣",
+    }
     opt.pumblend = 10 -- make builtin completion menus slightly transparent
     opt.pumheight = 10 -- make popup menu smaller
     opt.winblend = 10 -- make floating windows slightly transparent

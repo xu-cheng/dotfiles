@@ -25,7 +25,7 @@ end
 -- set ruby interpreter
 if not vim.g.ruby_host_prog then
     if is_mac then
-        local brew_ruby_host = vim.fn.glob(brew_prefix .. "/lib/ruby/gems/*/bin/neovim-ruby-host", 1, 1)
+        local brew_ruby_host = vim.fn.glob(brew_prefix .. "/lib/ruby/gems/*/bin/neovim-ruby-host", true, true)
         if brew_ruby_host[1] and executable(brew_ruby_host[1]) then
             vim.g.ruby_host_prog = brew_ruby_host[1]
         end
