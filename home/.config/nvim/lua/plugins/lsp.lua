@@ -184,6 +184,7 @@ return {
             local utils = require("utils")
             local navic = require("nvim-navic")
             local lspconfig = require("lspconfig")
+            local mason_lspconfig = require("mason-lspconfig")
             local lsp_defaults = lspconfig.util.default_config
 
             lsp_defaults.capabilities = vim.tbl_deep_extend(
@@ -233,9 +234,9 @@ return {
               end
             })
 
-            local get_servers = require("mason-lspconfig").get_installed_servers
-            for _, server_name in ipairs(get_servers()) do
-                require("lspconfig")[server_name].setup({})
+            local servers = mason_lspconfig.get_installed_servers()
+            for _, server_name in ipairs(servers) do
+                lspconfig[server_name].setup({})
             end
         end,
     },
