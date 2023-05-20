@@ -103,6 +103,7 @@ return {
         config = true,
         init = function()
             if not vim.g.vscode then
+                ---@type table<string, string|table>
                 local i = {
                     [" "] = "Whitespace",
                     ['"'] = 'Balanced "',
@@ -128,6 +129,7 @@ return {
                 }
                 local a = vim.deepcopy(i)
                 for k, v in pairs(a) do
+                    ---@diagnostic disable-next-line: param-type-mismatch
                     a[k] = v:gsub(" including.*", "")
                 end
 
