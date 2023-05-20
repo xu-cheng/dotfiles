@@ -36,7 +36,10 @@ return {
                         information = { "undercurl" },
                     },
                 },
-                navic = { enabled = true },
+                navic = {
+                    enabled = true,
+                    custom_bg = "NONE",
+                },
                 neotree = true,
                 noice = true,
                 notify = true,
@@ -238,10 +241,10 @@ return {
                     lualine_c = {
                         { "filetype", icon_only = true, separator = "", padding = { left = 1, right = 0 } },
                         { "filename", path = 1, symbols = { modified = "  ", readonly = "  ", unnamed = "" } },
-                        -- {
-                        --     require("nvim-navic").get_location,
-                        --     cond = rquire("nvim-navic").is_available.
-                        -- },
+                        {
+                            function() return require("nvim-navic").get_location() end,
+                            cond = function() return package.loaded["nvim-navic"] and require("nvim-navic").is_available() end,
+                        },
                     },
                     lualine_x = {
                         {

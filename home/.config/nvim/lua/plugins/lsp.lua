@@ -181,9 +181,10 @@ return {
             },
         },
         config = function()
+            local utils = require("utils")
+            local navic = require("nvim-navic")
             local lspconfig = require("lspconfig")
             local lsp_defaults = lspconfig.util.default_config
-            local utils = require("utils")
 
             lsp_defaults.capabilities = vim.tbl_deep_extend(
                 "force",
@@ -197,6 +198,10 @@ return {
                 callback = function(event)
                     local buffer = event.buf
                     local client = vim.lsp.get_client_by_id(event.data.client_id)
+
+                    if client.server_capabilities.documentSymbolProvider then
+                        navic.attach(client, buffer)
+                    end
 
                     local function map(m, lhs, rhs, desc)
                         local opts = { buffer = buffer , desc = desc }
@@ -328,5 +333,22 @@ return {
         },
         main = "trouble",
         config = true,
-      },
+    },
+
+    {
+        "SmiteshP/nvim-navic",
+        version = false,
+        enabled = not_vscode,
+        lazy = true,
+        opts = function()
+            return {
+                separator = " ",
+                highlight = true,
+                depth_limit = 5,
+                icons = require("config/icons").kinds,
+            }
+        end,
+        main = "nvim-navic",
+        config = true,
+   }
 }
