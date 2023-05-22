@@ -116,6 +116,13 @@ return {
                     search_up = { icon = " ", opts = { win_options = { winblend = 0 } } },
                 },
             },
+            routes = {
+                -- stop builin spelling suggestion view, use which-key instead
+                {
+                    filter = { event = "msg_show", find = "Type number and <Enter> or click with the mouse" },
+                    opts = { skip = true }
+                },
+            },
         },
         keys = {
             { "<S-Enter>", function() require("noice").redirect(vim.fn.getcmdline()) end, mode = "c", desc = "Redirect Cmdline" },
@@ -297,7 +304,7 @@ return {
             plugins = {
                 spelling = {
                     enabled = true,
-                    suggestions = 30,
+                    suggestions = 26,
                 }
             }
         },
