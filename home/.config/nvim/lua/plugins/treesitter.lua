@@ -6,6 +6,7 @@ return {
         "nvim-treesitter/nvim-treesitter",
         version = false,
         build = ":TSUpdate",
+        cmd = { "TSInstall", "TSUpdate", "TSBufEnable", "TSBufDisable", "TSBufToggle", "TSModuleInfo" },
         event = { "BufReadPost", "BufNewFile" },
         keys = {
             { "<C-space>", desc = "Increment selection" },

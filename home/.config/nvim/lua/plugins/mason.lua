@@ -5,7 +5,7 @@ return {
         "williamboman/mason.nvim",
         enabled = not_vscode,
         build = ":MasonUpdate",
-        cmd = { "Mason", "MasonUpdate", "MasonInstall", "MasonUninstall" },
+        cmd = { "Mason", "MasonUpdate", "MasonInstall", "MasonUninstall", "MasonLog" },
         opts = {
             ui = {
                 icons = {
