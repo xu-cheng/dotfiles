@@ -1,7 +1,7 @@
 local augroup = require("utils").augroup
 
 -- check if we need to reload the file when it changed
-vim.api.nvim_create_autocmd({"FocusGained", "TermClose", "TermLeave"}, {
+vim.api.nvim_create_autocmd({ "FocusGained", "TermClose", "TermLeave" }, {
     desc = "Check if we need to reload the file when it changed",
     group = augroup("checktime"),
     command = "checktime"
@@ -50,7 +50,7 @@ vim.api.nvim_create_autocmd("BufReadPost", {
         -- set cursor to the first line when editing a git commit message
         if vim.bo.filetype == "gitcommit" and
             vim.fn.fnamemodify(event.file, ":t") == "COMMIT_EDITMSG" then
-            pcall(vim.api.nvim_win_set_cursor, 0, {1, 0})
+            pcall(vim.api.nvim_win_set_cursor, 0, { 1, 0 })
         else
             local mark = vim.api.nvim_buf_get_mark(0, '"')
             local lcount = vim.api.nvim_buf_line_count(0)
@@ -89,7 +89,7 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 })
 
 -- automatically give executable permission to new scripts starting with a shebang (#!)
-vim.api.nvim_create_autocmd({"BufWritePre", "BufWritePost"}, {
+vim.api.nvim_create_autocmd({ "BufWritePre", "BufWritePost" }, {
     desc = "Auto give executable permission to new scripts with shebang",
     group = augroup("auto_executable"),
     callback = function(event)
@@ -103,7 +103,7 @@ vim.api.nvim_create_autocmd({"BufWritePre", "BufWritePost"}, {
             if vim.b.is_new and vim.bo.filetype ~= "rust" then
                 local first_line = vim.api.nvim_buf_get_lines(0, 0, 1, true)[1]
                 if first_line:match("^#!") and vim.fn.executable("chmod") == 1 then
-                    vim.fn.system({"chmod", "a+x", file})
+                    vim.fn.system({ "chmod", "a+x", file })
                 end
             end
         end
