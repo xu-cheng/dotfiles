@@ -4,7 +4,7 @@ local map = vim.keymap.set
 map("n", "Q", "<nop>")
 
 -- ctrl-c as esc
-map({"n", "i"}, "<C-c>", "<Esc>", {
+map({ "n", "i" }, "<C-c>", "<Esc>", {
     remap = true,
     desc = "Ctrl-c as Esc"
 })
@@ -42,12 +42,12 @@ map("n", "Y", "y$", {
 })
 
 -- delete without overwriting last yank.
-local delete_ops = {"d", "x"}
+local delete_ops = { "d", "x" }
 for _, k in ipairs(delete_ops) do
-    map({"n", "x"}, "<leader>" .. k, '"_' .. k, {
+    map({ "n", "x" }, "<leader>" .. k, '"_' .. k, {
         desc = "Delete without overwriting last yank"
     })
-    map({"n", "x"}, "<leader>" .. string.upper(k), '"_' .. string.upper(k), {
+    map({ "n", "x" }, "<leader>" .. string.upper(k), '"_' .. string.upper(k), {
         desc = "Delete without overwriting last yank"
     })
 end
@@ -71,7 +71,7 @@ map("x", "g/", "<esc>/\\%V", {
 })
 
 -- clear normal/visual mode highlighting
-map({"n", "x"}, "<space>", ":<c-u>noh<CR>:echo<CR>", {
+map({ "n", "x" }, "<space>", ":<c-u>noh<CR>:echo<CR>", {
     desc = "Clear normal/visual mode highlighting"
 })
 
@@ -181,5 +181,4 @@ if not vim.g.vscode then
     map("n", "<C-w>-", ":split<CR>", {
         desc = "Split window horizontally"
     })
-
 end
