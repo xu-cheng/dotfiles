@@ -150,3 +150,19 @@ vim.api.nvim_create_autocmd("FileType", {
         vim.opt_local.wrap = true
     end
 })
+
+-- set indent size for ruby scripts without ext name
+vim.api.nvim_create_autocmd("FileType", {
+    desc = "Set indent size for ruby scripts with ext name",
+    group = augroup("indent_size_ruby_script"),
+    pattern = { "ruby" },
+    callback = function(event)
+        local ext_name = vim.fn.fnamemodify(event.file, ":e")
+        if ext_name ~= "rb" then
+            vim.b.editorconfig = false -- disable editorconfig
+            vim.opt_local.shiftwidth = 2
+            vim.opt_local.tabstop = 2
+            vim.opt_local.softtabstop = 2
+        end
+    end
+})
