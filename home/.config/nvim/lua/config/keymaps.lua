@@ -1,3 +1,4 @@
+local vscode = vim.g.vscode
 local map = vim.keymap.set
 
 -- disable ex-mode
@@ -10,36 +11,24 @@ map({ "n", "i" }, "<C-c>", "<Esc>", {
 })
 
 -- ctrl-s to quick save
-map("n", "<C-s>", ":update<CR>", {
-    desc = "Quick save"
-})
-map("i", "<C-s>", "<C-o>:update<CR>", {
-    desc = "Quick save"
-})
-map("x", "<C-s>", "<C-c>:update<CR>gv", {
-    desc = "Quick save"
-})
+map("n", "<C-s>", ":update<CR>", { desc = "Quick save" })
+map("i", "<C-s>", "<C-o>:update<CR>", { desc = "Quick save" })
+map("x", "<C-s>", "<C-c>:update<CR>gv", { desc = "Quick save" })
 
 -- wrapped lines goes down/up to next row, rather than next line in file.
-map("", "j", "gj")
-map("", "k", "gk")
+map("", "j", "gj", { remap = vscode })
+map("", "k", "gk", { remap = vscode })
 
 -- easier horizontal scrolling
-map("", "zl", "zL", {
-    remap = true
-})
-map("", "zh", "zH", {
-    remap = true
-})
+map("", "zl", "zL", { remap = true })
+map("", "zh", "zH", { remap = true })
 
 -- visual shifting (does not exit Visual mode)
 map("v", "<", "<gv")
 map("v", ">", ">gv")
 
 -- yank from the cursor to the end of the line, to be consistent with C and D.
-map("n", "Y", "y$", {
-    desc = "Yank from the cursor to the end of the line"
-})
+map("n", "Y", "y$", { desc = "Yank from the cursor to the end of the line" })
 
 -- delete without overwriting last yank.
 local delete_ops = { "d", "x" }
@@ -86,7 +75,7 @@ map("i", ",", ",<c-g>u")
 map("i", ".", ".<c-g>u")
 map("i", ";", ";<c-g>u")
 
-if not vim.g.vscode then
+if not vscode then
     -- open location list/quickfix list
     map("n", "<leader>xl", "<cmd>lopen<cr>", { desc = "Location List" })
     map("n", "<leader>xq", "<cmd>copen<cr>", { desc = "Quickfix List" })
@@ -136,49 +125,18 @@ if not vim.g.vscode then
     })
 
     -- tab management
-    map("n", "tt", ":tabnew<space>", {
-        desc = "Open new tab",
-    })
-    map("n", "tw", ":tabclose<cr>", {
-        silent = true,
-        desc = "Close tab",
-    })
-    map("n", "tm", ":tabmove<space>", {
-        desc = "Move tab",
-    })
-    map("n", "tn", ":tabnext<space>", {
-        desc = "Next tab",
-    })
-    map("n", "th", ":tabfirst<cr>", {
-        silent = true,
-        desc = "First tab",
-    })
-    map("n", "tj", ":tabnext<cr>", {
-        silent = true,
-        desc = "Next tab",
-    })
-    map("n", "tk", ":tabprev<cr>", {
-        silent = true,
-        desc = "Previous tab",
-    })
-    map("n", "tl", ":tablast<cr>", {
-        silent = true,
-        desc = "Last tab",
-    })
-    map("n", "tmj", ":tabmove -1<cr>", {
-        silent = true,
-        desc = "Move tab left",
-    })
-    map("n", "tmk", ":tabmove +1<cr>", {
-        silent = true,
-        desc = "Move tab right",
-    })
+    map("n", "tt", ":tabnew<space>", { desc = "Open new tab" })
+    map("n", "tw", ":tabclose<cr>", { silent = true, desc = "Close tab" })
+    map("n", "tm", ":tabmove<space>", { desc = "Move tab" })
+    map("n", "tn", ":tabnext<space>", { desc = "Next tab" })
+    map("n", "th", ":tabfirst<cr>", { silent = true, desc = "First tab" })
+    map("n", "tj", ":tabnext<cr>", { silent = true, desc = "Next tab" })
+    map("n", "tk", ":tabprev<cr>", { silent = true, desc = "Previous tab" })
+    map("n", "tl", ":tablast<cr>", { silent = true, desc = "Last tab" })
+    map("n", "tmj", ":tabmove -1<cr>", { silent = true, desc = "Move tab left" })
+    map("n", "tmk", ":tabmove +1<cr>", { silent = true, desc = "Move tab right" })
 
     -- windows management
-    map("n", "<C-w>|", ":vsplit<CR>", {
-        desc = "Split window vertically"
-    })
-    map("n", "<C-w>-", ":split<CR>", {
-        desc = "Split window horizontally"
-    })
+    map("n", "<C-w>|", ":vsplit<CR>", { desc = "Split window vertically" })
+    map("n", "<C-w>-", ":split<CR>", { desc = "Split window horizontally" })
 end
