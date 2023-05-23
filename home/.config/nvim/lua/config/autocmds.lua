@@ -157,9 +157,9 @@ vim.api.nvim_create_autocmd("FileType", {
     group = augroup("indent_size_ruby"),
     pattern = { "ruby" },
     callback = function(event)
-        local ext_name = vim.fn.fnamemodify(event.file, ":e")
         -- disable editorconfig for ruby scripts without ext_name
-        if ext_name ~= "rb" then
+        local ext_name = vim.fn.fnamemodify(event.file, ":e")
+        if ext_name == "" then
             vim.b.editorconfig = false
         end
         vim.opt_local.shiftwidth = 2

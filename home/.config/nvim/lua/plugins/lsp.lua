@@ -210,6 +210,7 @@ return {
                     end
 
                     -- LSP actions
+                    map("n", "<leader>cl", "<cmd>LspInfo<cr>", "Lsp Info")
                     map("n", "K", vim.lsp.buf.hover, "Hover")
                     map("n", "gK", vim.lsp.buf.signature_help, "Signature Help")
                     -- map("n", "gd", "<cmd>lua vim.lsp.buf.definition()<cr>")
@@ -220,6 +221,7 @@ return {
                     -- map("n", "gs", "<cmd>lua vim.lsp.buf.signature_help()<cr>")
                     -- map("n", "<F2>", "<cmd>lua vim.lsp.buf.rename()<cr>")
                     -- map({"n", "x"}, "<F3>", "<cmd>lua vim.lsp.buf.format({async = true})<cr>")
+                    map({"n", "x"}, "<leader>ca", vim.lsp.buf.code_action, "Code Action")
                     -- map("n", "<F4>", "<cmd>lua vim.lsp.buf.code_action()<cr>")
                     -- map("x", "<F4>", "<cmd>lua vim.lsp.buf.range_code_action()<cr>")
                     --
