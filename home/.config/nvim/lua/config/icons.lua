@@ -1,6 +1,6 @@
 local icons = {
     dap = {
-        Stopped = { " ", "DiagnosticWarn", "DapStoppedLine" },
+        Stopped = { "󰁕 ", "DiagnosticWarn", "DapStoppedLine" },
         Breakpoint = " ",
         BreakpointCondition = " ",
         BreakpointRejected = { " ", "DiagnosticError" },
