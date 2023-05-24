@@ -244,7 +244,11 @@ return {
         },
         opts = function()
             local icons = require("config/icons")
-            local fg = require("utils").fg
+            local function fg(name)
+                local hl = vim.api.nvim_get_hl(0, { name = name })
+                local fg = hl and hl.fg
+                return fg and { fg = string.format("#%06x", fg) }
+            end
             local opts = {
                 options = {
                     theme = "catppuccin",
