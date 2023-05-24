@@ -337,21 +337,4 @@ return {
         main = "trouble",
         config = true,
     },
-
-    {
-        "SmiteshP/nvim-navic",
-        version = false,
-        enabled = not_vscode,
-        lazy = true,
-        opts = function()
-            return {
-                separator = " ",
-                highlight = true,
-                depth_limit = 5,
-                icons = require("config/icons").kinds,
-            }
-        end,
-        main = "nvim-navic",
-        config = true,
-   }
 }

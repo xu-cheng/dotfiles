@@ -202,6 +202,37 @@ return {
         end,
     },
 
+    -- navic + barbecue
+    {
+        "SmiteshP/nvim-navic",
+        version = false,
+        enabled = not_vscode,
+        lazy = true,
+        opts = function()
+            return {
+                highlight = true,
+                depth_limit = 5,
+                icons = require("config/icons").kinds,
+            }
+        end,
+        main = "nvim-navic",
+        config = true,
+    },
+    {
+        "utilyre/barbecue.nvim",
+        enabled = not_vscode,
+        dependencies = {
+            "SmiteshP/nvim-navic",
+            "nvim-tree/nvim-web-devicons",
+        },
+        opts = {
+            attach_navic = false,
+            theme = "catppuccin",
+        },
+        config = true,
+        main = "barbecue",
+    },
+
     -- statusline
     {
         "nvim-lualine/lualine.nvim",
@@ -250,10 +281,6 @@ return {
                     lualine_c = {
                         { "filetype", icon_only = true, separator = "", padding = { left = 1, right = 0 } },
                         { "filename", path = 1, symbols = { modified = "  ", readonly = "  ", unnamed = "" } },
-                        {
-                            function() return require("nvim-navic").get_location() end,
-                            cond = function() return package.loaded["nvim-navic"] and require("nvim-navic").is_available() end,
-                        },
                     },
                     lualine_x = {
                         {
