@@ -1,5 +1,6 @@
 #!/usr/bin/env ruby
-# rubocop:disable Layout/SpaceAroundOperators, Style/MixinUsage, Style/NumericLiteralPrefix
+# rubocop:disable Layout/SpaceAroundOperators, Style/MixinUsage, Style/NumericLiteralPrefix, Lint/MissingCopEnableDirective
+# frozen_string_literal: true
 
 require "fileutils"
 require "pathname"
