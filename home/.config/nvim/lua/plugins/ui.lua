@@ -242,7 +242,6 @@ return {
                 attach_navic = false,
                 theme = "catppuccin",
                 symbols = {
-                    modified = "",
                     ellipsis = "…",
                     separator = "",
                 },
