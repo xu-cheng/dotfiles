@@ -245,6 +245,7 @@ return {
 
     {
         "jose-elias-alvarez/null-ls.nvim",
+        version = false,
         enabled = not_vscode,
         event = { "BufReadPre", "BufNewFile" },
         dependencies = {
