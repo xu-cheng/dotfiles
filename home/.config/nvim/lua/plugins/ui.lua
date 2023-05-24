@@ -14,6 +14,11 @@ return {
             dim_inactive = { enable = true },
             integrations = {
                 alpha = true,
+                barbecue = {
+                    dim_dirname = true,
+                    bold_basename = true,
+                    dim_context = false,
+                },
                 cmp = true,
                 gitsigns = true,
                 leap = true,
@@ -212,7 +217,10 @@ return {
             return {
                 highlight = true,
                 depth_limit = 5,
+                depth_limit_indicator = "…",
+                separator = "",
                 icons = require("config/icons").kinds,
+                click = true,
             }
         end,
         main = "nvim-navic",
@@ -225,10 +233,22 @@ return {
             "SmiteshP/nvim-navic",
             "nvim-tree/nvim-web-devicons",
         },
-        opts = {
-            attach_navic = false,
-            theme = "catppuccin",
-        },
+        opts = function()
+            local kinds = vim.deepcopy(require("config/icons").kinds)
+            for key, value in pairs(kinds) do
+                kinds[key] = value:sub(1, -2)
+            end
+            return {
+                attach_navic = false,
+                theme = "catppuccin",
+                symbols = {
+                    modified = "",
+                    ellipsis = "…",
+                    separator = "",
+                },
+                kinds = kinds,
+            }
+        end,
         config = true,
         main = "barbecue",
     },
