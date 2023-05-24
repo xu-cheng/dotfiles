@@ -21,3 +21,9 @@ indent_size = 2
 
 [{COMMIT_EDITMSG,*.diff,*.patch}]
 trim_trailing_whitespace = false
+
+[/setup]
+indent_size = 2
+
+[/home/.local/bin/{v,ssh-proxy-helper,reset-ssh-known-hosts,profile-zsh-startup,outdated-casks}]
+indent_size = 2
