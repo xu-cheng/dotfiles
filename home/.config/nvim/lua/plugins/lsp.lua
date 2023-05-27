@@ -227,12 +227,6 @@ return {
                     --
                     -- Diagnostics
                     map("n", "<leader>cd", vim.diagnostic.open_float, "Line Diagnostics")
-                    map("n", "[d", vim.diagnostic.goto_prev, "Prev Diagnostic")
-                    map("n", "]d", vim.diagnostic.goto_next, "Next Diagnostic")
-                    map("n", "[e", function() vim.diagnostic.goto_prev({ severity = "ERROR" }) end, "Prev Error")
-                    map("n", "]e", function() vim.diagnostic.goto_next({ severity = "ERROR" }) end, "Next Error")
-                    map("n", "[w", function() vim.diagnostic.goto_prev({ severity = "WARN" }) end, "Prev Warning")
-                    map("n", "]w", function() vim.diagnostic.goto_next({ severity = "WARN" }) end, "Next Warning")
               end
             })
 

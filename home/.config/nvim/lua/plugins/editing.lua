@@ -148,6 +148,26 @@ return {
         end
     },
 
+    -- jump
+    {
+        "echasnovski/mini.bracketed",
+        version = false,
+        event = "VeryLazy",
+        opts = {
+            -- disable unwanted mappings
+            quickfix = { suffix = "" },
+        },
+        main = "mini.bracketed",
+        config = true,
+    },
+    {
+        "echasnovski/mini.jump",
+        version = false,
+        event = "VeryLazy",
+        main = "mini.jump",
+        config = true,
+    },
+
     -- multi cursors
     {
         "mg979/vim-visual-multi",

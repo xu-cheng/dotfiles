@@ -64,12 +64,6 @@ map({ "n", "x" }, "<space>", ":<c-u>noh<CR>:echo<CR>", {
     desc = "Clear normal/visual mode highlighting"
 })
 
--- find merge conflict markers
-map("", "<leader>fc", "/\\v^[<|=>]{7}( .*|$)<CR>", {
-    remap = true,
-    desc = "Find merge conflict markers"
-})
-
 -- add undo break-points
 map("i", ",", ",<c-g>u")
 map("i", ".", ".<c-g>u")
