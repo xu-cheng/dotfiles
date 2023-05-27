@@ -207,7 +207,7 @@ return {
         end,
     },
 
-    -- navic + barbecue
+    -- winbar
     {
         "SmiteshP/nvim-navic",
         version = false,

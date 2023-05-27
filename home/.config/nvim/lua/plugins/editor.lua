@@ -84,6 +84,7 @@ return {
             require("illuminate").configure(opts)
         end,
     },
+
     -- telescope
 
 }
