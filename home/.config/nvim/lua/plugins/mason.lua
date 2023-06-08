@@ -29,7 +29,6 @@ return {
                 "black",
                 "cspell",
                 "editorconfig-checker",
-                "isort",
                 "json-lsp",
                 "lua-language-server",
                 "markdownlint",

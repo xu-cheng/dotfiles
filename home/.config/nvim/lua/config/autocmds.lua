@@ -143,6 +143,7 @@ vim.api.nvim_create_autocmd("FileType", {
     group = augroup("wrap_filetype"),
     pattern = {
         "markdown",
+        "plaintex",
         "tex",
         "text",
     },
