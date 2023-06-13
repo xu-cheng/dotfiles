@@ -217,7 +217,7 @@ return {
                     -- map("n", "gr", "<cmd>lua vim.lsp.buf.references()<cr>")
                     -- map("n", "gs", "<cmd>lua vim.lsp.buf.signature_help()<cr>")
                     -- map("n", "<F2>", "<cmd>lua vim.lsp.buf.rename()<cr>")
-                    -- map({"n", "x"}, "<F3>", "<cmd>lua vim.lsp.buf.format({async = true})<cr>")
+                    map({"n", "x"}, "<leader>cf", "<cmd>lua vim.lsp.buf.format({async = true})<cr>", "Format")
                     map({"n", "x"}, "<leader>ca", vim.lsp.buf.code_action, "Code Action")
                     -- map("n", "<F4>", "<cmd>lua vim.lsp.buf.code_action()<cr>")
                     -- map("x", "<F4>", "<cmd>lua vim.lsp.buf.range_code_action()<cr>")
