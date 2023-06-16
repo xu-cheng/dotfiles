@@ -47,7 +47,7 @@ return {
             cmp.setup({
                 snippet = {
                     expand = function(args)
-                        require('luasnip').lsp_expand(args.body)
+                        require("luasnip").lsp_expand(args.body)
                     end,
                 },
                 mapping = cmp.mapping.preset.insert({
@@ -96,7 +96,7 @@ return {
                         option = {
                             convert_case = true,
                             loud = true,
-                        }
+                        },
                     },
                 }),
                 formatting = {
@@ -125,9 +125,9 @@ return {
                         option = {
                             convert_case = true,
                             loud = true,
-                        }
+                        },
                     },
-                })
+                }),
             })
         end,
     },
@@ -146,7 +146,7 @@ return {
                 config = function()
                     require("luasnip.loaders.from_vscode").lazy_load()
                 end,
-            }
+            },
         },
         opts = {
             history = true,
@@ -184,11 +184,8 @@ return {
             local mason_lspconfig = require("mason-lspconfig")
             local lsp_defaults = lspconfig.util.default_config
 
-            lsp_defaults.capabilities = vim.tbl_deep_extend(
-                "force",
-                lsp_defaults.capabilities,
-                require("cmp_nvim_lsp").default_capabilities()
-            )
+            lsp_defaults.capabilities =
+                vim.tbl_deep_extend("force", lsp_defaults.capabilities, require("cmp_nvim_lsp").default_capabilities())
 
             vim.api.nvim_create_autocmd("LspAttach", {
                 desc = "LSP actions",
@@ -202,7 +199,7 @@ return {
                     end
 
                     local function map(m, lhs, rhs, desc)
-                        local opts = { buffer = buffer , desc = desc }
+                        local opts = { buffer = buffer, desc = desc }
                         vim.keymap.set(m, lhs, rhs, opts)
                     end
 
@@ -217,14 +214,14 @@ return {
                     -- map("n", "gr", "<cmd>lua vim.lsp.buf.references()<cr>")
                     -- map("n", "gs", "<cmd>lua vim.lsp.buf.signature_help()<cr>")
                     -- map("n", "<F2>", "<cmd>lua vim.lsp.buf.rename()<cr>")
-                    map({"n", "x"}, "<leader>cf", "<cmd>lua vim.lsp.buf.format({async = true})<cr>", "Format")
-                    map({"n", "x"}, "<leader>ca", vim.lsp.buf.code_action, "Code Action")
+                    map({ "n", "x" }, "<leader>cf", "<cmd>lua vim.lsp.buf.format({async = true})<cr>", "Format")
+                    map({ "n", "x" }, "<leader>ca", vim.lsp.buf.code_action, "Code Action")
                     -- map("n", "<F4>", "<cmd>lua vim.lsp.buf.code_action()<cr>")
                     -- map("x", "<F4>", "<cmd>lua vim.lsp.buf.range_code_action()<cr>")
                     --
                     -- Diagnostics
                     map("n", "<leader>cd", vim.diagnostic.open_float, "Line Diagnostics")
-              end
+                end,
             })
 
             local servers = mason_lspconfig.get_installed_servers()
@@ -295,10 +292,10 @@ return {
         },
         cmd = { "TroubleToggle", "Trouble" },
         keys = {
-            { "<leader>xx", "<cmd>TroubleToggle document_diagnostics<cr>", desc = "Document Diagnostics (Trouble)" },
+            { "<leader>xx", "<cmd>TroubleToggle document_diagnostics<cr>",  desc = "Document Diagnostics (Trouble)" },
             { "<leader>xX", "<cmd>TroubleToggle workspace_diagnostics<cr>", desc = "Workspace Diagnostics (Trouble)" },
-            { "<leader>xL", "<cmd>TroubleToggle loclist<cr>", desc = "Location List (Trouble)" },
-            { "<leader>xQ", "<cmd>TroubleToggle quickfix<cr>", desc = "Quickfix List (Trouble)" },
+            { "<leader>xL", "<cmd>TroubleToggle loclist<cr>",               desc = "Location List (Trouble)" },
+            { "<leader>xQ", "<cmd>TroubleToggle quickfix<cr>",              desc = "Quickfix List (Trouble)" },
             {
                 "[q",
                 function()

@@ -7,7 +7,8 @@ return {
         opts = {
             options = {
                 custom_commentstring = function()
-                    return require("ts_context_commentstring.internal").calculate_commentstring() or vim.bo.commentstring
+                    return require("ts_context_commentstring.internal").calculate_commentstring()
+                        or vim.bo.commentstring
                 end,
             },
         },
@@ -145,7 +146,7 @@ return {
                     a = a,
                 })
             end
-        end
+        end,
     },
 
     -- jump
@@ -176,12 +177,12 @@ return {
         event = "VeryLazy",
         init = function()
             vim.g.VM_maps = {
-                ["Find Under"]         = "<C-d>",
+                ["Find Under"] = "<C-d>",
                 ["Find Subword Under"] = "<C-d>",
                 ["Select Cursor Down"] = "<M-C-Down>",
-                ["Select Cursor Up"]   = "<M-C-Up>",
+                ["Select Cursor Up"] = "<M-C-Up>",
             }
             vim.g.VM_highlight_matches = "red"
-        end
+        end,
     },
 }

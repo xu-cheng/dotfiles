@@ -1,7 +1,7 @@
 local opt = vim.opt
 
 -- General
-opt.clipboard = {"unnamed", "unnamedplus"} -- sync with system clipboard
+opt.clipboard = { "unnamed", "unnamedplus" } -- sync with system clipboard
 
 opt.mouse = "a" -- automatically enable mouse usage
 opt.mousehide = true -- hide the mouse cursor while typing
@@ -47,14 +47,14 @@ if not vim.g.vscode then
     opt.wrap = false -- by default, only display long lines as just one line
 
     opt.spell = true -- spell check on
-    opt.spelllang = { "en_us","en_gb","en_ca" } -- spell checking language
+    opt.spelllang = { "en_us", "en_gb", "en_ca" } -- spell checking language
     local spellfile = vim.fn.stdpath("config") .. "/spell/en.utf-8.add"
     if not vim.loop.fs_stat(spellfile .. ".spl") then
-        vim.cmd.mkspell { spellfile, mods = { silent = true } }
+        vim.cmd.mkspell({ spellfile, mods = { silent = true } })
     end
 
     -- Appearance
-    vim.cmd.colorscheme "catppuccin"
+    vim.cmd.colorscheme("catppuccin")
 
     opt.termguicolors = true -- true color support
     opt.number = true -- show line numbers
@@ -112,4 +112,3 @@ if not vim.g.vscode then
         },
     })
 end
-

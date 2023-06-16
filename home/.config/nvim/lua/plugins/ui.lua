@@ -86,7 +86,9 @@ return {
         keys = {
             {
                 "<leader>un",
-                function() require("notify").dismiss({ silent = true, pending = true }) end,
+                function()
+                    require("notify").dismiss({ silent = true, pending = true })
+                end,
                 desc = "Delete all Notifications",
             },
         },
@@ -125,16 +127,47 @@ return {
                 -- stop builin spelling suggestion view, use which-key instead
                 {
                     filter = { event = "msg_show", find = "Type number and <Enter> or click with the mouse" },
-                    opts = { skip = true }
+                    opts = { skip = true },
                 },
             },
         },
         keys = {
-            { "<S-Enter>", function() require("noice").redirect(vim.fn.getcmdline()) end, mode = "c", desc = "Redirect Cmdline" },
-            { "<leader>snl", function() require("noice").cmd("last") end, desc = "Noice Last Message" },
-            { "<leader>snh", function() require("noice").cmd("history") end, desc = "Noice History" },
-            { "<leader>sna", function() require("noice").cmd("all") end, desc = "Noice All" },
-            { "<leader>snd", function() require("noice").cmd("dismiss") end, desc = "Dismiss All" },
+            {
+                "<S-Enter>",
+                function()
+                    require("noice").redirect(vim.fn.getcmdline())
+                end,
+                mode = "c",
+                desc = "Redirect Cmdline",
+            },
+            {
+                "<leader>snl",
+                function()
+                    require("noice").cmd("last")
+                end,
+                desc = "Noice Last Message",
+            },
+            {
+                "<leader>snh",
+                function()
+                    require("noice").cmd("history")
+                end,
+                desc = "Noice History",
+            },
+            {
+                "<leader>sna",
+                function()
+                    require("noice").cmd("all")
+                end,
+                desc = "Noice All",
+            },
+            {
+                "<leader>snd",
+                function()
+                    require("noice").cmd("dismiss")
+                end,
+                desc = "Dismiss All",
+            },
             {
                 "<C-f>",
                 function()
@@ -142,7 +175,10 @@ return {
                         return "<C-f>"
                     end
                 end,
-                silent = true, expr = true, desc = "Scroll forward", mode = {"i", "n", "s"}
+                silent = true,
+                expr = true,
+                desc = "Scroll forward",
+                mode = { "i", "n", "s" },
             },
             {
                 "<C-b>",
@@ -151,7 +187,10 @@ return {
                         return "<C-b>"
                     end
                 end,
-                silent = true, expr = true, desc = "Scroll backward", mode = {"i", "n", "s"}
+                silent = true,
+                expr = true,
+                desc = "Scroll backward",
+                mode = { "i", "n", "s" },
             },
         },
     },
@@ -199,7 +238,7 @@ return {
                         text_align = "left",
                     },
                 },
-            }
+            },
         },
         config = function(_, opts)
             opts.highlights = require("catppuccin.groups.integrations.bufferline").get()
@@ -294,12 +333,26 @@ return {
                                 info = icons.diagnostics.Info,
                                 hint = icons.diagnostics.Hint,
                             },
-                            on_click = function(_, _, _) vim.cmd("TroubleToggle") end,
+                            on_click = function(_, _, _)
+                                vim.cmd("TroubleToggle")
+                            end,
                         },
                     },
                     lualine_c = {
-                        { "filetype", icon_only = true, separator = "", padding = { left = 1, right = 0 } },
-                        { "filename", path = 1, symbols = { modified = "  ", readonly = "  ", unnamed = "" } },
+                        {
+                            "filetype",
+                            icon_only = true,
+                            separator = "",
+                            padding = {
+                                left = 1,
+                                right = 0,
+                            },
+                        },
+                        {
+                            "filename",
+                            path = 1,
+                            symbols = { modified = "  ", readonly = "  ", unnamed = "" },
+                        },
                     },
                     lualine_x = {
                         {
@@ -316,11 +369,18 @@ return {
                             require("lazy.status").updates,
                             cond = require("lazy.status").has_updates,
                             color = fg("Special"),
-                            on_click = function(_, _, _) require("lazy").update() end,
+                            on_click = function(_, _, _)
+                                require("lazy").update()
+                            end,
                         },
                     },
                     lualine_y = {
-                        { "encoding", separator = " ", padding = { left = 1, right = 0 }, draw_empty = true },
+                        {
+                            "encoding",
+                            separator = " ",
+                            padding = { left = 1, right = 0 },
+                            draw_empty = true,
+                        },
                         { "fileformat", padding = { left = 0, right = 1 } },
                     },
                     lualine_z = {
@@ -351,8 +411,8 @@ return {
                 spelling = {
                     enabled = true,
                     suggestions = 26,
-                }
-            }
+                },
+            },
         },
         config = function(_, opts)
             local wk = require("which-key")
@@ -361,7 +421,7 @@ return {
                 mode = { "n", "x" },
                 ["<leader>sn"] = { name = "+noice" },
             })
-        end
+        end,
     },
 
     -- dashboard
@@ -427,6 +487,6 @@ return {
         "MunifTanjim/nui.nvim",
         version = false,
         enabled = not_vscode,
-        lazy = true
+        lazy = true,
     },
 }

@@ -41,8 +41,8 @@ return {
                 group = augroup("disable_mini_indentscope_on_filetype"),
                 callback = function()
                     vim.b.miniindentscope_disable = true
-                end
+                end,
             })
-        end
+        end,
     },
 }

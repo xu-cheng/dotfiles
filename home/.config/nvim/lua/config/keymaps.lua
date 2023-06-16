@@ -7,7 +7,7 @@ map("n", "Q", "<nop>")
 -- ctrl-c as esc
 map({ "n", "i" }, "<C-c>", "<Esc>", {
     remap = true,
-    desc = "Ctrl-c as Esc"
+    desc = "Ctrl-c as Esc",
 })
 
 -- ctrl-s to quick save
@@ -34,34 +34,34 @@ map("n", "Y", "y$", { desc = "Yank from the cursor to the end of the line" })
 local delete_ops = { "d", "x" }
 for _, k in ipairs(delete_ops) do
     map({ "n", "x" }, "<leader>" .. k, '"_' .. k, {
-        desc = "Delete without overwriting last yank"
+        desc = "Delete without overwriting last yank",
     })
     map({ "n", "x" }, "<leader>" .. string.upper(k), '"_' .. string.upper(k), {
-        desc = "Delete without overwriting last yank"
+        desc = "Delete without overwriting last yank",
     })
 end
 
 -- switch to paste mode, paste text, and unset paste mode
 map("", "gP", ":set paste<CR>gp<CR>:set nopaste<CR>", {
-    desc = "Switch to paste mode, paste text, and unset paste mode"
+    desc = "Switch to paste mode, paste text, and unset paste mode",
 })
 
 -- visually select changed text
 -- https://vim.fandom.com/wiki/Selecting_your_pasted_text
 map("n", "gV", '"`[" . strpart(getregtype(), 0, 1) . "`]"', {
     expr = true,
-    desc = "Visually select changed text"
+    desc = "Visually select changed text",
 })
 
 -- search inside visually highlighted text.
 map("x", "g/", "<esc>/\\%V", {
     silent = false,
-    desc = "Search inside visual selection"
+    desc = "Search inside visual selection",
 })
 
 -- clear normal/visual mode highlighting
 map({ "n", "x" }, "<space>", ":<c-u>noh<CR>:echo<CR>", {
-    desc = "Clear normal/visual mode highlighting"
+    desc = "Clear normal/visual mode highlighting",
 })
 
 -- add undo break-points
@@ -88,8 +88,12 @@ if not vscode then
     -- command line abbreviation which only expands in the begining of the command line
     -- ref: https://stackoverflow.com/a/30837427
     local function cmd_abbrev(abbrev, expansion)
-        local expansion = "<c-r>=(getcmdtype()==#':' && getcmdpos()==1 ? '" .. expansion .. "' : '" .. abbrev .. "')<cr>"
-        vim.cmd { cmd = "cnoreabbrev", args = { abbrev, expansion } }
+        local expansion = "<c-r>=(getcmdtype()==#':' && getcmdpos()==1 ? '"
+            .. expansion
+            .. "' : '"
+            .. abbrev
+            .. "')<cr>"
+        vim.cmd({ cmd = "cnoreabbrev", args = { abbrev, expansion } })
     end
 
     -- shortcuts to change working directory to that of the current file
@@ -103,19 +107,19 @@ if not vscode then
     -- http://vimcasts.org/e/14
     map("", "<leader>ew", ":e <C-R>=fnameescape(expand('%:h')).'/'<cr>", {
         remap = true,
-        desc = "Open file in new window"
+        desc = "Open file in new window",
     })
     map("", "<leader>es", ":sp <C-R>=fnameescape(expand('%:h')).'/'<cr>", {
         remap = true,
-        desc = "Open file in new split"
+        desc = "Open file in new split",
     })
     map("", "<leader>ev", ":vsp <C-R>=fnameescape(expand('%:h')).'/'<cr>", {
         remap = true,
-        desc = "Open file in new vertical split"
+        desc = "Open file in new vertical split",
     })
     map("", "<leader>et", ":tabe <C-R>=fnameescape(expand('%:h')).'/'<cr>", {
         remap = true,
-        desc = "Open file in new tab"
+        desc = "Open file in new tab",
     })
 
     -- tab management

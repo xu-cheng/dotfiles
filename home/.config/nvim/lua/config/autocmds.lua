@@ -4,7 +4,7 @@ local augroup = require("utils").augroup
 vim.api.nvim_create_autocmd({ "FocusGained", "TermClose", "TermLeave" }, {
     desc = "Check if we need to reload the file when it changed",
     group = augroup("checktime"),
-    command = "checktime"
+    command = "checktime",
 })
 
 -- highlight on yank
@@ -13,21 +13,21 @@ vim.api.nvim_create_autocmd("TextYankPost", {
     group = augroup("highlight_yank"),
     callback = function()
         vim.highlight.on_yank()
-    end
+    end,
 })
 
 -- start builtin terminal in insert mode
 vim.api.nvim_create_autocmd("TermOpen", {
     desc = "Start builtin terminal in insert mode",
     group = augroup("terminal_insert"),
-    command = "startinsert"
+    command = "startinsert",
 })
 
 -- resize splits if window got resized
 vim.api.nvim_create_autocmd("VimResized", {
     desc = "Resize splits if window got resized",
     group = augroup("resize_splits"),
-    command = "tabdo wincmd ="
+    command = "tabdo wincmd =",
 })
 
 -- automatically quit if quickfix window is the last
@@ -39,7 +39,7 @@ vim.api.nvim_create_autocmd("BufEnter", {
         if vim.bo.buftype == "quickfix" and vim.fn.winbufnr(2) == -1 then
             vim.cmd("quit!")
         end
-    end
+    end,
 })
 
 -- go to last loc when opening a buffer
@@ -48,8 +48,7 @@ vim.api.nvim_create_autocmd("BufReadPost", {
     group = augroup("last_loc"),
     callback = function(event)
         -- set cursor to the first line when editing a git commit message
-        if vim.bo.filetype == "gitcommit" and
-            vim.fn.fnamemodify(event.file, ":t") == "COMMIT_EDITMSG" then
+        if vim.bo.filetype == "gitcommit" and vim.fn.fnamemodify(event.file, ":t") == "COMMIT_EDITMSG" then
             pcall(vim.api.nvim_win_set_cursor, 0, { 1, 0 })
         else
             local mark = vim.api.nvim_buf_get_mark(0, '"')
@@ -58,7 +57,7 @@ vim.api.nvim_create_autocmd("BufReadPost", {
                 pcall(vim.api.nvim_win_set_cursor, 0, mark)
             end
         end
-    end
+    end,
 })
 
 -- auto detect filetype if unset
@@ -69,7 +68,7 @@ vim.api.nvim_create_autocmd("BufWritePost", {
         if not vim.bo.filetype then
             vim.cmd("filetype detect")
         end
-    end
+    end,
 })
 
 -- auto create dir when saving a file, in case some intermediate directory does not exist
@@ -85,7 +84,7 @@ vim.api.nvim_create_autocmd("BufWritePre", {
         if not vim.loop.fs_stat(dir) then
             vim.fn.mkdir(dir, "p")
         end
-    end
+    end,
 })
 
 -- automatically give executable permission to new scripts starting with a shebang (#!)
@@ -107,7 +106,7 @@ vim.api.nvim_create_autocmd({ "BufWritePre", "BufWritePost" }, {
                 end
             end
         end
-    end
+    end,
 })
 
 -- close some filetypes with <q>
@@ -132,9 +131,9 @@ vim.api.nvim_create_autocmd("FileType", {
         vim.bo[event.buf].buflisted = false
         vim.keymap.set("n", "q", "<cmd>close<cr>", {
             buffer = event.buf,
-            silent = true
+            silent = true,
         })
-    end
+    end,
 })
 
 -- wrap long lines at word boundaries for some filtypes
@@ -149,7 +148,7 @@ vim.api.nvim_create_autocmd("FileType", {
     },
     callback = function()
         vim.opt_local.wrap = true
-    end
+    end,
 })
 
 -- set indent size for ruby
@@ -166,7 +165,7 @@ vim.api.nvim_create_autocmd("FileType", {
         vim.opt_local.shiftwidth = 2
         vim.opt_local.tabstop = 2
         vim.opt_local.softtabstop = 2
-    end
+    end,
 })
 
 -- set indent size for yaml
@@ -178,5 +177,5 @@ vim.api.nvim_create_autocmd("FileType", {
         vim.opt_local.shiftwidth = 2
         vim.opt_local.tabstop = 2
         vim.opt_local.softtabstop = 2
-    end
+    end,
 })

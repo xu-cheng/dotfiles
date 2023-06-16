@@ -8,8 +8,20 @@ return {
         enabled = not_vscode,
         event = "VeryLazy",
         keys = {
-            { "<leader>bd", function() require("mini.bufremove").delete(0, false) end, desc = "Delete Buffer" },
-            { "<leader>bD", function() require("mini.bufremove").delete(0, true) end, desc = "Delete Buffer (Force)" },
+            {
+                "<leader>bd",
+                function()
+                    require("mini.bufremove").delete(0, false)
+                end,
+                desc = "Delete Buffer",
+            },
+            {
+                "<leader>bD",
+                function()
+                    require("mini.bufremove").delete(0, true)
+                end,
+                desc = "Delete Buffer (Force)",
+            },
         },
         main = "mini.bufremove",
         config = true,
@@ -44,7 +56,9 @@ return {
                 map("n", "<leader>gu", gs.undo_stage_hunk, "Undo Stage Hunk")
                 map("n", "<leader>gR", gs.reset_buffer, "Reset Buffer")
                 map("n", "<leader>gp", gs.preview_hunk, "Preview Hunk")
-                map("n", "<leader>gb", function() gs.blame_line({ full = true }) end, "Blame Line")
+                map("n", "<leader>gb", function()
+                    gs.blame_line({ full = true })
+                end, "Blame Line")
                 map("n", "<leader>gD", gs.diffthis, "Diff This")
 
                 map({ "o", "x" }, "ih", ":<C-U>Gitsigns select_hunk<CR>", "GitSigns Select Hunk")
@@ -86,5 +100,4 @@ return {
     },
 
     -- telescope
-
 }

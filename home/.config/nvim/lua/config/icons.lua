@@ -4,7 +4,7 @@ local icons = {
         Breakpoint = " ",
         BreakpointCondition = " ",
         BreakpointRejected = { " ", "DiagnosticError" },
-        LogPoint = ".>"
+        LogPoint = ".>",
     },
     diagnostics = {
         Error = " ",
@@ -16,7 +16,7 @@ local icons = {
     git = {
         added = " ",
         modified = " ",
-        removed = " "
+        removed = " ",
     },
     kinds = {
         Array = " ",
@@ -53,8 +53,8 @@ local icons = {
         TypeParameter = " ",
         Unit = " ",
         Value = " ",
-        Variable = " "
-    }
+        Variable = " ",
+    },
 }
 
 return icons

@@ -21,7 +21,7 @@ return {
                 init = function()
                     -- PERF: no need to load the plugin, we only need its queries for mini.ai
                     require("lazy.core.loader").disable_rtp_plugin("nvim-treesitter-textobjects")
-                end
+                end,
             },
         },
         opts = {
@@ -111,5 +111,5 @@ return {
         "nvim-treesitter/nvim-treesitter-textobjects",
         version = false,
         lazy = true,
-    }
+    },
 }
