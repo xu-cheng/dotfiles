@@ -30,8 +30,7 @@ require("lazy").setup("plugins", {
         notify = false,
     },
     change_detection = {
-        enabled = true,
-        notify = false,
+        enabled = false,
     }
 })
 
