@@ -11,9 +11,9 @@ map({ "n", "i" }, "<C-c>", "<Esc>", {
 })
 
 -- ctrl-s to quick save
-map("n", "<C-s>", ":update<CR>", { desc = "Quick save" })
-map("i", "<C-s>", "<C-o>:update<CR>", { desc = "Quick save" })
-map("x", "<C-s>", "<C-c>:update<CR>gv", { desc = "Quick save" })
+map("n", "<C-s>", ":update<CR>", { silent = true, desc = "Quick save" })
+map("i", "<C-s>", "<C-o>:update<CR>", { silent = true, desc = "Quick save" })
+map("x", "<C-s>", "<C-c>:update<CR>gv", { silent = true, desc = "Quick save" })
 
 -- wrapped lines goes down/up to next row, rather than next line in file.
 map("", "j", "gj", { remap = vscode })
@@ -61,6 +61,7 @@ map("x", "g/", "<esc>/\\%V", {
 
 -- clear normal/visual mode highlighting
 map({ "n", "x" }, "<space>", ":<c-u>noh<CR>:echo<CR>", {
+    silent = true,
     desc = "Clear normal/visual mode highlighting",
 })
 
@@ -135,6 +136,6 @@ if not vscode then
     map("n", "tmk", ":tabmove +1<cr>", { silent = true, desc = "Move tab right" })
 
     -- windows management
-    map("n", "<C-w>|", ":vsplit<CR>", { desc = "Split window vertically" })
-    map("n", "<C-w>-", ":split<CR>", { desc = "Split window horizontally" })
+    map("n", "<C-w>|", ":vsplit<CR>", { silent = true, desc = "Split window vertically" })
+    map("n", "<C-w>-", ":split<CR>", { silent = true, desc = "Split window horizontally" })
 end
