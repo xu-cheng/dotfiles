@@ -136,21 +136,6 @@ vim.api.nvim_create_autocmd("FileType", {
     end,
 })
 
--- wrap long lines at word boundaries for some filtypes
-vim.api.nvim_create_autocmd("FileType", {
-    desc = "Wrap long lines at word boundaries for some filtypes",
-    group = augroup("wrap_filetype"),
-    pattern = {
-        "markdown",
-        "plaintex",
-        "tex",
-        "text",
-    },
-    callback = function()
-        vim.opt_local.wrap = true
-    end,
-})
-
 -- set indent size for ruby
 vim.api.nvim_create_autocmd("FileType", {
     desc = "Set indent size for ruby",

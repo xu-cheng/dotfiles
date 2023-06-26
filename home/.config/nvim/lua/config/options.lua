@@ -59,7 +59,7 @@ if not vim.g.vscode then
     opt.fileformats = "unix,dos"                  -- default file line ending
     opt.linebreak = true                          -- wrap long lines at 'breakat' (if 'wrap' is set)
     opt.breakindent = true                        -- indent wrapped lines to match line start
-    opt.wrap = false                              -- by default, only display long lines as just one line
+    opt.wrap = true                               -- by default, always wrap
 
     opt.spell = true                              -- spell check on
     opt.spelllang = { "en_us", "en_gb", "en_ca" } -- spell checking language
