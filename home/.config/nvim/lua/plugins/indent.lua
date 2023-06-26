@@ -8,6 +8,8 @@ local excluded_filetypes = {
     "man",
     "mason",
     "neo-tree",
+    "noice",
+    "notify",
 }
 
 return {
