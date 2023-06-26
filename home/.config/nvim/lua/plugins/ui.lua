@@ -389,6 +389,7 @@ return {
                     },
                 },
                 extensions = {
+                    "fugitive",
                     "lazy",
                     "neo-tree",
                     "quickfix",
