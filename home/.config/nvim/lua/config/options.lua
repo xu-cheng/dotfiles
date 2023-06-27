@@ -69,7 +69,6 @@ if not vim.g.vscode then
     end
 
     -- Appearance
-    vim.cmd.colorscheme("catppuccin")
 
     opt.termguicolors = true -- true color support
     opt.number = true        -- show line numbers
