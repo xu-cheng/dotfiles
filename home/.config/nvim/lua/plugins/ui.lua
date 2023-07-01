@@ -40,6 +40,9 @@ return {
                         warnings = { "undercurl" },
                         information = { "undercurl" },
                     },
+                    inlay_hints = {
+                        background = true,
+                    },
                 },
                 navic = {
                     enabled = true,
@@ -65,7 +68,7 @@ return {
         },
         config = function(_, opts)
             require("catppuccin").setup(opts)
-            vim.cmd.colorscheme "catppuccin"
+            vim.cmd.colorscheme("catppuccin")
         end,
     },
 
@@ -98,6 +101,7 @@ return {
     {
         "folke/noice.nvim",
         enabled = not_vscode,
+        version = false, -- TODO: remove after new release
         event = "VeryLazy",
         dependencies = {
             "MunifTanjim/nui.nvim",
