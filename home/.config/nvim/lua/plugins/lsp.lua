@@ -176,6 +176,12 @@ return {
                 config = true,
                 main = "neodev",
             },
+            {
+                "smjonas/inc-rename.nvim",
+                version = false,
+                config = true,
+                main = "inc_rename",
+            },
         },
         config = function()
             local utils = require("utils")
@@ -202,29 +208,43 @@ return {
                         vim.lsp.inlay_hint(buffer, true)
                     end
 
-                    local function map(m, lhs, rhs, desc)
-                        local opts = { buffer = buffer, desc = desc }
+                    local function map(m, lhs, rhs, desc, opts)
+                        local opts = opts or {}
+                        if opts.has then
+                            if not client.server_capabilities[opts.has .. "Provider"] then
+                                return
+                            end
+                            opts.has = nil
+                        end
+                        opts.buffer = buffer
+                        opts.silent = opts.silent ~= false
+                        opts.desc = desc
                         vim.keymap.set(m, lhs, rhs, opts)
                     end
 
                     -- LSP actions
-                    map("n", "<leader>cl", "<cmd>LspInfo<cr>", "Lsp Info")
-                    map("n", "K", vim.lsp.buf.hover, "Hover")
-                    map("n", "gK", vim.lsp.buf.signature_help, "Signature Help")
-                    -- map("n", "gd", "<cmd>lua vim.lsp.buf.definition()<cr>")
-                    map("n", "gD", vim.lsp.buf.declaration, "Goto Declaration")
-                    -- map("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<cr>")
-                    -- map("n", "go", "<cmd>lua vim.lsp.buf.type_definition()<cr>")
-                    -- map("n", "gr", "<cmd>lua vim.lsp.buf.references()<cr>")
-                    -- map("n", "gs", "<cmd>lua vim.lsp.buf.signature_help()<cr>")
-                    -- map("n", "<F2>", "<cmd>lua vim.lsp.buf.rename()<cr>")
-                    map({ "n", "x" }, "<leader>cf", "<cmd>lua vim.lsp.buf.format({async = true})<cr>", "Format")
-                    map({ "n", "x" }, "<leader>ca", vim.lsp.buf.code_action, "Code Action")
-                    -- map("n", "<F4>", "<cmd>lua vim.lsp.buf.code_action()<cr>")
-                    -- map("x", "<F4>", "<cmd>lua vim.lsp.buf.range_code_action()<cr>")
-                    --
-                    -- Diagnostics
+                    map({ "n", "x" }, "<leader>ca", vim.lsp.buf.code_action, "Code Action", { has = "codeAction" })
                     map("n", "<leader>cd", vim.diagnostic.open_float, "Line Diagnostics")
+                    map(
+                        { "n", "x" },
+                        "<leader>cf",
+                        "<cmd>lua vim.lsp.buf.format({async = true})<cr>",
+                        "Format",
+                        { has = "documentFormatting" }
+                    )
+                    map("n", "<leader>cl", "<cmd>LspInfo<cr>", "Lsp Info")
+                    map("n", "<leader>cr", function()
+                        return ":IncRename " .. vim.fn.expand("<cword>")
+                    end, "Rename", { expr = true, has = "rename" })
+
+                    map("n", "gd", "<cmd>Telescope lsp_definitions<cr>", "Goto Definition", { has = "definition" })
+                    map("n", "gr", "<cmd>Telescope lsp_references<cr>", "References")
+                    map("n", "gD", vim.lsp.buf.declaration, "Goto Declaration")
+                    map("n", "gI", "<cmd>Telescope lsp_implementations<cr>", "Goto Implementation")
+                    map("n", "gy", "<cmd>Telescope lsp_type_definitions<cr>", "Goto Type Definitio")
+                    map("n", "K", vim.lsp.buf.hover, "Hover")
+                    map("n", "gK", vim.lsp.buf.signature_help, "Signature Help", { has = "signatureHelp" })
+                    map("i", "<c-k>", vim.lsp.buf.signature_help, "Signature Help", { has = "signatureHelp" })
                 end,
             })
 
