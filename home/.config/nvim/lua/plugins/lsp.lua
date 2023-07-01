@@ -198,6 +198,10 @@ return {
                         navic.attach(client, buffer)
                     end
 
+                    if vim.fn.has("nvim-0.10.0") == 1 and client.server_capabilities.inlayHintProvider then
+                        vim.lsp.inlay_hint(buffer, true)
+                    end
+
                     local function map(m, lhs, rhs, desc)
                         local opts = { buffer = buffer, desc = desc }
                         vim.keymap.set(m, lhs, rhs, opts)
