@@ -100,4 +100,22 @@ return {
     },
 
     -- telescope
+    {
+        "nvim-telescope/telescope.nvim",
+        version = false,
+        enabled = not_vscode,
+        dependencies = {
+            "nvim-tree/nvim-web-devicons",
+            "nvim-lua/plenary.nvim",
+        },
+        cmd = { "Telescope" },
+        opts = {
+            defaults = {
+                prompt_prefix = " ",
+                selection_caret = " ",
+            }
+        },
+        main = "telescope",
+        config = true,
+    }
 }
