@@ -241,7 +241,7 @@ return {
                     map("n", "gr", "<cmd>Telescope lsp_references<cr>", "References")
                     map("n", "gD", vim.lsp.buf.declaration, "Goto Declaration")
                     map("n", "gI", "<cmd>Telescope lsp_implementations<cr>", "Goto Implementation")
-                    map("n", "gy", "<cmd>Telescope lsp_type_definitions<cr>", "Goto Type Definitio")
+                    map("n", "gT", "<cmd>Telescope lsp_type_definitions<cr>", "Goto Type Definition")
                     map("n", "K", vim.lsp.buf.hover, "Hover")
                     map("n", "gK", vim.lsp.buf.signature_help, "Signature Help", { has = "signatureHelp" })
                     map("i", "<c-k>", vim.lsp.buf.signature_help, "Signature Help", { has = "signatureHelp" })
