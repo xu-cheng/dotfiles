@@ -101,7 +101,6 @@ return {
     {
         "folke/noice.nvim",
         enabled = not_vscode,
-        version = false, -- TODO: remove after new release
         event = "VeryLazy",
         dependencies = {
             "MunifTanjim/nui.nvim",
