@@ -3,4 +3,4 @@ h left-scroll
 l right-scroll
 i toggle-option i
 #env
-LESS= -i -R
+LESS= -i -R --mouse --wheel-lines=3
