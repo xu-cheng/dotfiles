@@ -21,7 +21,10 @@ return {
                 },
                 cmp = true,
                 gitsigns = true,
-                leap = true,
+                indent_blankline = {
+                    enabled = true,
+                    colored_indent_levels = false,
+                },
                 lsp_trouble = true,
                 markdown = true,
                 mason = true,
@@ -52,7 +55,9 @@ return {
                 noice = true,
                 notify = true,
                 rainbow_delimiters = true,
-                telescope = true,
+                telescope = {
+                    enabled = true,
+                },
                 treesitter = true,
                 treesitter_context = true,
                 which_key = true,

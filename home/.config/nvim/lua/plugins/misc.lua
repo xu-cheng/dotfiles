@@ -43,7 +43,7 @@ return {
         lazy = true,
     },
 
-    -- makes some plugins dot-repeatable like leap
+    -- makes some plugins dot-repeatable
     {
         "tpope/vim-repeat",
         version = false,
