@@ -51,10 +51,10 @@ return {
                 neotree = true,
                 noice = true,
                 notify = true,
+                rainbow_delimiters = true,
                 telescope = true,
                 treesitter = true,
                 treesitter_context = true,
-                ts_rainbow2 = true,
                 which_key = true,
             },
             custom_highlights = function(colors)

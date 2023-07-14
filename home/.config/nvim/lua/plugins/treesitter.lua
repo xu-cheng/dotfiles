@@ -13,7 +13,6 @@ return {
             { "<bs>", desc = "Decrement selection", mode = "x" },
         },
         dependencies = {
-            "HiPhish/nvim-ts-rainbow2",
             "JoosepAlviste/nvim-ts-context-commentstring",
             "nvim-treesitter/nvim-treesitter-context",
             {
@@ -40,7 +39,6 @@ return {
                 },
             },
             context_commentstring = { enable = true, enable_autocmd = false },
-            rainbow = { enable = not_vscode },
             ensure_installed = {
                 "bash",
                 "bibtex",
@@ -91,8 +89,10 @@ return {
     },
     -- rainbow
     {
-        "HiPhish/nvim-ts-rainbow2",
-        lazy = true,
+        "HiPhish/rainbow-delimiters.nvim",
+        enable = not_vscode,
+        version = false,
+        event = { "BufReadPost", "BufNewFile" },
     },
     -- treesitter-context
     {
