@@ -90,7 +90,7 @@ return {
     -- rainbow
     {
         "HiPhish/rainbow-delimiters.nvim",
-        enable = not_vscode,
+        enabled = not_vscode,
         version = false,
         event = { "BufReadPost", "BufNewFile" },
     },
