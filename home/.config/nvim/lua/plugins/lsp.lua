@@ -169,7 +169,7 @@ return {
                 }, {
                     d(1, function()
                         local uuid, _ = vim.fn.system("uuidgen"):gsub("\n", ""):lower()
-                        return sn(nil, i(1, uuid))
+                        return sn(nil, i(nil, uuid))
                     end),
                 }),
             })
