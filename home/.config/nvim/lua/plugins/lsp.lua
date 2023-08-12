@@ -153,8 +153,27 @@ return {
             update_events = { "TextChanged", "TextChangedI" },
             delete_check_events = "TextChanged",
         },
-        main = "luasnip",
-        config = true,
+        config = function(_, opts)
+            local ls = require("luasnip")
+            local s = ls.snippet
+            local sn = ls.snippet_node
+            local i = ls.insert_node
+            local d = ls.dynamic_node
+
+            ls.setup(opts)
+            ls.add_snippets("all", {
+                s({
+                    trig = "uuid",
+                    name = "UUID",
+                    dscr = "Generate a unique UUID",
+                }, {
+                    d(1, function()
+                        local uuid, _ = vim.fn.system("uuidgen"):gsub("\n", ""):lower()
+                        return sn(nil, i(1, uuid))
+                    end),
+                }),
+            })
+        end,
     },
 
     -- lsp
