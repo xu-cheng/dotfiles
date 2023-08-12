@@ -1358,6 +1358,8 @@
 	<integer>8</integer>
 	<key>RightOption</key>
 	<integer>3</integer>
+	<key>RunJobsInServers</key>
+	<false/>
 	<key>SavePasteHistory</key>
 	<false/>
 	<key>ShortLivedSessionDuration</key>
