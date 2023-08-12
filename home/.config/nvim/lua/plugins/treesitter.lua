@@ -14,7 +14,6 @@ return {
         },
         dependencies = {
             "JoosepAlviste/nvim-ts-context-commentstring",
-            "nvim-treesitter/nvim-treesitter-context",
             {
                 "nvim-treesitter/nvim-treesitter-textobjects",
                 init = function()
@@ -97,10 +96,10 @@ return {
     -- treesitter-context
     {
         "nvim-treesitter/nvim-treesitter-context",
+        enabled = not_vscode,
         version = false,
-        lazy = true,
+        event = { "BufReadPost", "BufNewFile" },
         opts = {
-            enable = not_vscode,
             mode = "topline",
         },
         main = "treesitter-context",
