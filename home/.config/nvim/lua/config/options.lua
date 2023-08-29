@@ -19,7 +19,6 @@ if vim.fn.has("wsl") == 1 then
 end
 
 opt.mouse = "a"        -- automatically enable mouse usage
-opt.mousehide = true   -- hide the mouse cursor while typing
 
 opt.undofile = true    -- enable persistent undo (see also `:h undodir`)
 opt.undolevels = 10000 -- maximum number of changes that can be undone
