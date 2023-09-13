@@ -1,6 +1,5 @@
 alefragnani.Bookmarks
 asvetliakov.vscode-neovim
-bungcip.better-toml
 castwide.solargraph
 Catppuccin.catppuccin-vsc
 Catppuccin.catppuccin-vsc-icons
@@ -35,6 +34,7 @@ rebornix.ruby
 rust-lang.rust-analyzer
 streetsidesoftware.code-spell-checker
 sumneko.lua
+tamasfe.even-better-toml
 usernamehw.errorlens
 vadimcn.vscode-lldb
 wayou.vscode-todo-highlight
