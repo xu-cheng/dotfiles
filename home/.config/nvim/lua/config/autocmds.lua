@@ -136,31 +136,3 @@ vim.api.nvim_create_autocmd("FileType", {
     end,
 })
 
--- set indent size for ruby
-vim.api.nvim_create_autocmd("FileType", {
-    desc = "Set indent size for ruby",
-    group = augroup("indent_size_ruby"),
-    pattern = { "ruby" },
-    callback = function(event)
-        -- disable editorconfig for ruby scripts without ext_name
-        local ext_name = vim.fn.fnamemodify(event.file, ":e")
-        if ext_name == "" then
-            vim.b.editorconfig = false
-        end
-        vim.opt_local.shiftwidth = 2
-        vim.opt_local.tabstop = 2
-        vim.opt_local.softtabstop = 2
-    end,
-})
-
--- set indent size for yaml
-vim.api.nvim_create_autocmd("FileType", {
-    desc = "Set indent size for yaml",
-    group = augroup("indent_size_yaml"),
-    pattern = { "yaml" },
-    callback = function()
-        vim.opt_local.shiftwidth = 2
-        vim.opt_local.tabstop = 2
-        vim.opt_local.softtabstop = 2
-    end,
-})
