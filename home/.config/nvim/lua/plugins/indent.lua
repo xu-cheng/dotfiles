@@ -1,7 +1,11 @@
 local excluded_filetypes = {
+    "",
+    "TelescopePrompt",
+    "TelescopeResults",
     "Trouble",
     "alpha",
     "checkhealth",
+    "gitcommit",
     "help",
     "lazy",
     "lspinfo",
@@ -19,11 +23,10 @@ return {
         enabled = not vim.g.vscode,
         event = "VeryLazy",
         opts = {
-            char = "│",
-            filetype_exclude = excluded_filetypes,
-            show_current_context = true,
+            indent = { char = "│" },
+            exclude = { filetypes = excluded_filetypes },
         },
-        main = "indent_blankline",
+        main = "ibl",
         config = true,
     },
     -- provide text object
