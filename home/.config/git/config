@@ -83,3 +83,6 @@ sync-upstream = !CUR_BRANCH=$(git current-branch) && DEF_BRANCH=$(git default-br
 unstage = restore --staged
 up = !git fetch origin && git rebase origin/$(git default-branch)
 wip = !git add -u && git commit -m "wip"
+
+[include]
+path = ~/.config/git-overwrite
