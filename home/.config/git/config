@@ -11,7 +11,7 @@ editor = nvim
 pager = diff-highlight | less -F -X
 
 [init]
-defaultBranch = master
+defaultBranch = main
 
 [commit]
 gpgsign = true
