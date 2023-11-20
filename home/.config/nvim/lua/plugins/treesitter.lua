@@ -37,7 +37,6 @@ return {
                     node_decremental = "<bs>",
                 },
             },
-            context_commentstring = { enable = true, enable_autocmd = false },
             ensure_installed = {
                 "bash",
                 "bibtex",
@@ -83,8 +82,13 @@ return {
     -- context_commentstring used by mini.comment
     {
         "JoosepAlviste/nvim-ts-context-commentstring",
+        enabled = not_vscode,
         version = false,
-        lazy = true,
+        opts = {
+            enable_autocmd = false,
+        },
+        main = "ts_context_commentstring",
+        config = true,
     },
     -- rainbow
     {
