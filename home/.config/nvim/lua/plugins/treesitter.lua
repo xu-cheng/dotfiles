@@ -13,7 +13,6 @@ return {
             { "<bs>", desc = "Decrement selection", mode = "x" },
         },
         dependencies = {
-            "JoosepAlviste/nvim-ts-context-commentstring",
             {
                 "nvim-treesitter/nvim-treesitter-textobjects",
                 init = function()
@@ -84,11 +83,14 @@ return {
         "JoosepAlviste/nvim-ts-context-commentstring",
         enabled = not_vscode,
         version = false,
+        event = { "BufReadPost", "BufNewFile" },
         opts = {
             enable_autocmd = false,
         },
-        main = "ts_context_commentstring",
-        config = true,
+        config = function(_, opts)
+            vim.g.skip_ts_context_commentstring_module = true
+            require("ts_context_commentstring").setup(opts)
+        end,
     },
     -- rainbow
     {
