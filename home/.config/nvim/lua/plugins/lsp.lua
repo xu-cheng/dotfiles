@@ -224,7 +224,7 @@ return {
                     end
 
                     if vim.fn.has("nvim-0.10.0") == 1 and client.server_capabilities.inlayHintProvider then
-                        vim.lsp.inlay_hint(buffer, true)
+                        vim.lsp.inlay_hint.enable(buffer)
                     end
 
                     local function map(m, lhs, rhs, desc, opts)
