@@ -81,9 +81,8 @@ return {
     -- context_commentstring used by mini.comment
     {
         "JoosepAlviste/nvim-ts-context-commentstring",
-        enabled = not_vscode,
         version = false,
-        event = { "BufReadPost", "BufNewFile" },
+        lazy = true,
         opts = {
             enable_autocmd = false,
         },
