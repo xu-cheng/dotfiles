@@ -102,7 +102,7 @@ fi
 
 . "$ZSH/oh-my-zsh.sh"
 
-eval $("$STARSHIP_PATH" init zsh)
+eval "$("$STARSHIP_PATH" init zsh)"
 
 if [[ -d "$FZF_SHELL_PATH" ]]; then
     [[ $- =~ i ]] && . "$FZF_SHELL_PATH/completion.zsh" 2> /dev/null
