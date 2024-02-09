@@ -122,8 +122,8 @@ if [[ -d "$FZF_SHELL_PATH" ]]; then
     else
         FZF_CAT_CMD="cat"
     fi
-    if (( ${+commands[exa]} )); then
-        FZF_LS_CMD="exa -l --all --color always"
+    if (( ${+commands[eza]} )); then
+        FZF_LS_CMD="eza -l --all --color always"
     else
         FZF_LS_CMD="ls -l --all --color always"
     fi
@@ -155,9 +155,9 @@ alias txl='tmuxinator list'
 alias txn='tmuxinator new'
 alias txe='tmuxinator edit'
 
-if (( ${+commands[exa]} )); then
-  alias ls='exa'
-  alias l='exa --all --long --header --git --icons'
+if (( ${+commands[eza]} )); then
+  alias ls='eza'
+  alias l='eza --all --long --header --git --icons'
 fi
 
 if (( ! ${+commands[sha1sum]} && ${+commands[gsha1sum]} )); then
