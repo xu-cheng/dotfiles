@@ -275,59 +275,6 @@ return {
     },
 
     {
-        "nvimtools/none-ls.nvim",
-        version = false,
-        enabled = not_vscode,
-        event = { "BufReadPre", "BufNewFile" },
-        dependencies = {
-            "davidmh/cspell.nvim",
-            "williamboman/mason.nvim",
-            "nvim-lua/plenary.nvim",
-        },
-        opts = function()
-            local null_ls = require("null-ls")
-            local cspell = require("cspell")
-            return {
-                sources = {
-                    cspell.code_actions,
-                    cspell.diagnostics.with({
-                        diagnostics_postprocess = function(diagnostic)
-                            diagnostic.severity = vim.diagnostic.severity.HINT
-                        end,
-                    }),
-                    null_ls.builtins.code_actions.shellcheck,
-                    null_ls.builtins.diagnostics.chktex,
-                    null_ls.builtins.diagnostics.dotenv_linter,
-                    null_ls.builtins.diagnostics.editorconfig_checker.with({
-                        diagnostics_postprocess = function(diagnostic)
-                            diagnostic.severity = vim.diagnostic.severity.INFO
-                        end,
-                    }),
-                    null_ls.builtins.diagnostics.markdownlint,
-                    null_ls.builtins.diagnostics.rubocop,
-                    null_ls.builtins.diagnostics.ruff,
-                    null_ls.builtins.diagnostics.shellcheck,
-                    null_ls.builtins.formatting.black,
-                    null_ls.builtins.formatting.clang_format,
-                    null_ls.builtins.formatting.jq,
-                    null_ls.builtins.formatting.latexindent,
-                    null_ls.builtins.formatting.prettier,
-                    null_ls.builtins.formatting.rubocop,
-                    null_ls.builtins.formatting.ruff,
-                    null_ls.builtins.formatting.rustfmt,
-                    null_ls.builtins.formatting.shfmt,
-                    null_ls.builtins.formatting.stylua,
-                    null_ls.builtins.formatting.taplo,
-                    null_ls.builtins.formatting.terraform_fmt,
-                    null_ls.builtins.hover.printenv,
-                },
-            }
-        end,
-        main = "null-ls",
-        config = true,
-    },
-
-    {
         "folke/trouble.nvim",
         enabled = not_vscode,
         dependencies = {
