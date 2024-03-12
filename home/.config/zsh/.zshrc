@@ -21,6 +21,7 @@ plugins=( \
   git \
   gitignore \
   kubectl \
+  rake-fast \
   ssh-gpg-agent \
   terraform \
   vagrant \
