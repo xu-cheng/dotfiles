@@ -84,7 +84,7 @@ if not vim.g.vscode then
     }
     opt.pumblend = 10    -- make builtin completion menus slightly transparent
     opt.pumheight = 10   -- make popup menu smaller
-    opt.winblend = 10    -- make floating windows slightly transparent
+    opt.winblend = 0     -- we don't want transparent floating windows
     opt.scrolljump = 5   -- lines to scroll when cursor leaves screen
     opt.scrolloff = 3    -- minimum lines to keep above and below cursor
     opt.timeout = true
