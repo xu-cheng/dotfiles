@@ -1,0 +1,55 @@
+version: 2
+root-markers:
+  - .git/
+
+tools:
+  prettier: &prettier
+    format-command: >
+      prettier --stdin \
+        --stdin-filepath ${INPUT} \
+        ${--range-start=charStart} \
+        ${--range-end=charEnd} \
+        ${--use-tabs:insertSpaces} \
+        ${--tab-width=tabSize}
+    format-stdin: true
+    format-can-range: true
+    root-markers:
+      - .prettierrc
+      - .prettierrc.json
+
+  python-black: &python-black
+    format-command: >
+      black --stdin-filename ${INPUT} --quiet -
+    format-stdin: true
+    root-markers:
+      - pyproject.toml
+
+  sh-shellcheck: &sh-shellcheck
+    lint-command: >
+      shellcheck -f gcc -x
+    lint-source: shellcheck
+    lint-formats:
+      - '%f:%l:%c: %trror: %m'
+      - '%f:%l:%c: %tarning: %m'
+      - '%f:%l:%c: %tote: %m'
+
+  sh-shfmt: &sh-shfmt
+    format-command: >
+      shfmt \
+        --filename ${INPUT} \
+        ${--indent=tabSize} \
+        --binary-next-line \
+        --case-indent \
+        --simplify
+    format-stdin: true
+
+languages:
+  javascript:
+    - <<: *prettier
+
+  python:
+    - <<: *python-black
+
+  sh:
+    - <<: *sh-shellcheck
+    - <<: *sh-shfmt
