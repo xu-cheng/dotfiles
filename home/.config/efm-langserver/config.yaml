@@ -29,6 +29,11 @@ tools:
       - "%f:%l:%c MD%n/%*[^ ] %m"
       - "%f:%l MD%n/%*[^ ] %m"
 
+  mdformat: &mdformat
+    format-command: >
+      mdformat --number -
+    format-stdin: true
+
   prettier: &prettier
     format-command: >
       prettier \
@@ -85,7 +90,7 @@ languages:
 
   markdown:
     - <<: *markdownlint
-    - <<: *prettier
+    - <<: *mdformat
 
   python:
     - <<: *python-black

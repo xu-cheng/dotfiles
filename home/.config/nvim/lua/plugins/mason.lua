@@ -28,6 +28,7 @@ return {
                 "black",
                 "cspell",
                 "editorconfig-checker",
+                "mdformat",
                 "prettier",
                 "rubocop",
                 "ruff",
