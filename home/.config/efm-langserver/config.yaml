@@ -3,6 +3,23 @@ root-markers:
   - .git/
 
 tools:
+  cspell: &cspell
+    lint-source: cspell
+    lint-command: >
+      cspell lint \
+        --no-progress \
+        --no-summary \
+        --no-color \
+        --locale en,en-US \
+        stdin://${INPUT}
+    lint-stdin: true
+    lint-formats:
+      - '%f:%l:%c - %m'
+      - '%f:%l:%c %m'
+    lint-severity: 4
+    root-markers:
+      - cspell.json
+
   prettier: &prettier
     format-command: >
       prettier \
@@ -54,3 +71,6 @@ languages:
   sh:
     - <<: *sh-shellcheck
     - <<: *sh-shfmt
+
+  =:
+    - <<: *cspell
