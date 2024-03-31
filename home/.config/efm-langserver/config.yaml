@@ -20,6 +20,17 @@ tools:
     root-markers:
       - cspell.json
 
+  editorconfig-checker: &editorconfig-checker
+    lint-source: editorconfig-checker
+    lint-command: >
+      editorconfig-checker -format gcc -no-color ${INPUT}
+    lint-on-save: true
+    lint-formats:
+      - "%f:%l:%c: error: %m"
+    lint-severity: 3
+    root-markers:
+      - .editorconfig
+
   markdownlint: &markdownlint
     lint-source: markdownlint
     lint-command: >
@@ -107,3 +118,4 @@ languages:
 
   =:
     - <<: *cspell
+    - <<: *editorconfig-checker

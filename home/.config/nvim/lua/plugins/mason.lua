@@ -37,6 +37,7 @@ return {
             linux_ensure_installed = {
                 "bash-language-server",
                 "css-lsp",
+                "editorconfig-checker",
                 "efm",
                 "eslint-lsp",
                 "html-lsp",
