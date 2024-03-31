@@ -14,8 +14,8 @@ tools:
         stdin://${INPUT}
     lint-stdin: true
     lint-formats:
-      - '%f:%l:%c - %m'
-      - '%f:%l:%c %m'
+      - "%f:%l:%c - %m"
+      - "%f:%l:%c %m"
     lint-severity: 4
     root-markers:
       - cspell.json
@@ -47,9 +47,9 @@ tools:
     lint-command: >
       shellcheck -f gcc -x
     lint-formats:
-      - '%f:%l:%c: %trror: %m'
-      - '%f:%l:%c: %tarning: %m'
-      - '%f:%l:%c: %tote: %m'
+      - "%f:%l:%c: %trror: %m"
+      - "%f:%l:%c: %tarning: %m"
+      - "%f:%l:%c: %tote: %m"
 
   sh-shfmt: &sh-shfmt
     format-command: >
@@ -62,7 +62,19 @@ tools:
     format-stdin: true
 
 languages:
+  css:
+    - <<: *prettier
+
+  html:
+    - <<: *prettier
+
   javascript:
+    - <<: *prettier
+
+  json:
+    - <<: *prettier
+
+  markdown:
     - <<: *prettier
 
   python:
@@ -71,6 +83,12 @@ languages:
   sh:
     - <<: *sh-shellcheck
     - <<: *sh-shfmt
+
+  typescript:
+    - <<: *prettier
+
+  yaml:
+    - <<: *prettier
 
   =:
     - <<: *cspell
