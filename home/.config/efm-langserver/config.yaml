@@ -20,6 +20,15 @@ tools:
     root-markers:
       - cspell.json
 
+  markdownlint: &markdownlint
+    lint-source: markdownlint
+    lint-command: >
+      markdownlint --stdin
+    lint-stdin: true
+    lint-formats:
+      - "%f:%l:%c MD%n/%*[^ ] %m"
+      - "%f:%l MD%n/%*[^ ] %m"
+
   prettier: &prettier
     format-command: >
       prettier \
@@ -75,6 +84,7 @@ languages:
     - <<: *prettier
 
   markdown:
+    - <<: *markdownlint
     - <<: *prettier
 
   python:
