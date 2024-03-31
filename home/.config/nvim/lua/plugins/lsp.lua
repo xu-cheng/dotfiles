@@ -202,7 +202,22 @@ return {
                 main = "inc_rename",
             },
         },
-        config = function()
+        opts = {
+            servers = {
+                bashls = {},
+                cssls = {},
+                efm = {},
+                eslint = {},
+                html = {},
+                jsonls = {},
+                lua_ls = {},
+                pyright = {},
+                rust_analyzer = {},
+                solargraph = {},
+                taplo = {},
+            },
+        },
+        config = function(_, opts)
             local utils = require("utils")
             local navic = require("nvim-navic")
             local lspconfig = require("lspconfig")
@@ -267,9 +282,14 @@ return {
                 end,
             })
 
+            for server_name, server_opts in pairs(opts.servers) do
+                lspconfig[server_name].setup(server_opts)
+            end
             local servers = mason_lspconfig.get_installed_servers()
             for _, server_name in ipairs(servers) do
-                lspconfig[server_name].setup({})
+                if opts.servers[server_name] == nil then
+                    lspconfig[server_name].setup({})
+                end
             end
         end,
     },
@@ -282,10 +302,10 @@ return {
         },
         cmd = { "TroubleToggle", "Trouble" },
         keys = {
-            { "<leader>xx", "<cmd>TroubleToggle document_diagnostics<cr>", desc = "Document Diagnostics (Trouble)" },
+            { "<leader>xx", "<cmd>TroubleToggle document_diagnostics<cr>",  desc = "Document Diagnostics (Trouble)" },
             { "<leader>xX", "<cmd>TroubleToggle workspace_diagnostics<cr>", desc = "Workspace Diagnostics (Trouble)" },
-            { "<leader>xL", "<cmd>TroubleToggle loclist<cr>", desc = "Location List (Trouble)" },
-            { "<leader>xQ", "<cmd>TroubleToggle quickfix<cr>", desc = "Quickfix List (Trouble)" },
+            { "<leader>xL", "<cmd>TroubleToggle loclist<cr>",               desc = "Location List (Trouble)" },
+            { "<leader>xQ", "<cmd>TroubleToggle quickfix<cr>",              desc = "Quickfix List (Trouble)" },
             {
                 "[q",
                 function()

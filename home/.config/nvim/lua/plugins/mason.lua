@@ -25,29 +25,42 @@ return {
         enabled = not_vscode,
         opts = {
             ensure_installed = {
-                "bash-language-server",
                 "black",
                 "cspell",
                 "editorconfig-checker",
+                "prettier",
+                "rubocop",
+                "ruff",
+                "stylua",
+            },
+            linux_ensure_installed = {
+                "bash-language-server",
+                "css-lsp",
+                "efm",
+                "eslint-lsp",
+                "html-lsp",
                 "json-lsp",
                 "lua-language-server",
                 "markdownlint",
-                "prettier",
                 "pyright",
-                "rubocop",
-                "ruff",
-                "rust-analyzer",
                 "shellcheck",
                 "shfmt",
                 "solargraph",
-                "stylua",
                 "taplo",
             },
             auto_update = true,
             run_on_start = true,
+            debounce_hours = 168,
         },
-        main = "mason-tool-installer",
-        config = true,
+        config = function(_, opts)
+            if vim.fn.has("mac") == 0 then
+                for _, entry in ipairs(opts["linux_ensure_installed"]) do
+                    table.insert(opts["ensure_installed"], entry)
+                end
+            end
+            opts["linux_ensure_installed"] = nil
+            require("mason-tool-installer").setup(opts)
+        end,
     },
 
     {
