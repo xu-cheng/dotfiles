@@ -5,7 +5,8 @@ root-markers:
 tools:
   prettier: &prettier
     format-command: >
-      prettier --stdin \
+      prettier \
+        --stdin \
         --stdin-filepath ${INPUT} \
         ${--range-start=charStart} \
         ${--range-end=charEnd} \
@@ -25,9 +26,9 @@ tools:
       - pyproject.toml
 
   sh-shellcheck: &sh-shellcheck
+    lint-source: shellcheck
     lint-command: >
       shellcheck -f gcc -x
-    lint-source: shellcheck
     lint-formats:
       - '%f:%l:%c: %trror: %m'
       - '%f:%l:%c: %tarning: %m'
