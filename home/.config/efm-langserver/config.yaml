@@ -90,6 +90,24 @@ tools:
         --simplify
     format-stdin: true
 
+  tex-chktex: &tex-chktex
+    lint-source: chktex
+    lint-command: >-
+      chktex --globalrc --quiet --format $'%f:%l:%c:%k:%n:%m\n'
+    lint-stdin: true
+    lint-ignore-exit-code: true
+    lint-formats:
+      - "%f:%l:%c:%trror:%n:%m"
+      - "%f:%l:%c:%tarning:%n:%m"
+      - "%f:%l:%c:%tessage:%n:%m"
+    lint-category-map:
+      E: E
+      W: W
+      M: N
+    root-markers:
+      - .chktexrc
+      - .latexmkrc
+
 languages:
   css:
     - <<: *prettier
@@ -113,6 +131,9 @@ languages:
   sh:
     - <<: *sh-shellcheck
     - <<: *sh-shfmt
+
+  tex:
+    - <<: *tex-chktex
 
   typescript:
     - <<: *prettier
