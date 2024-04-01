@@ -1382,6 +1382,8 @@
 	<integer>4</integer>
 	<key>SwitchWindowModifier</key>
 	<integer>6</integer>
+	<key>SynchronizeQueryWithFindPasteboard</key>
+	<false/>
 	<key>TabViewType</key>
 	<integer>0</integer>
 	<key>ThreeFingerEmulates</key>
