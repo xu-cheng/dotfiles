@@ -145,6 +145,15 @@ tools:
       - .chktexrc
       - .latexmkrc
 
+  tex-latexindent: &tex-latexindent
+    format-command: >-
+      latexindent -
+    format-stdin: true
+    root-markers:
+      - latexindent.yaml
+      - .latexindent.yaml
+      - .latexmkrc
+
 languages:
   c:
     - <<: *clang-format
@@ -184,6 +193,7 @@ languages:
 
   tex:
     - <<: *tex-chktex
+    - <<: *tex-latexindent
 
   typescript:
     - <<: *prettier
