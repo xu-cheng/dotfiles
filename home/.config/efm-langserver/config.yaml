@@ -70,6 +70,20 @@ tools:
     root-markers:
       - pyproject.toml
 
+  python-ruff: &python-ruff
+    lint-source: ruff
+    lint-command: >-
+      ruff check --quiet --stdin-filename ${INPUT}
+    lint-stdin: true
+    lint-ignore-exit-code: true
+    lint-formats:
+      - "%f:%l:%c: %m"
+    lint-severity: 3
+    root-markers:
+      - pyproject.toml
+      - ruff.toml
+      - .ruff.toml
+
   sh-shellcheck: &sh-shellcheck
     lint-source: shellcheck
     lint-command: >-
@@ -127,6 +141,7 @@ languages:
 
   python:
     - <<: *python-black
+    - <<: *python-ruff
 
   sh:
     - <<: *sh-shellcheck
