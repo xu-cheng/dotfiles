@@ -5,7 +5,7 @@ root-markers:
 tools:
   cspell: &cspell
     lint-source: cspell
-    lint-command: >
+    lint-command: >-
       cspell lint \
         --no-progress \
         --no-summary \
@@ -13,6 +13,7 @@ tools:
         --locale en,en-US \
         stdin://${INPUT}
     lint-stdin: true
+    lint-ignore-exit-code: true
     lint-formats:
       - "%f:%l:%c - %m"
       - "%f:%l:%c %m"
@@ -22,31 +23,33 @@ tools:
 
   editorconfig-checker: &editorconfig-checker
     lint-source: editorconfig-checker
-    lint-command: >
+    lint-command: >-
       editorconfig-checker -format gcc -no-color ${INPUT}
     lint-on-save: true
+    lint-ignore-exit-code: true
     lint-formats:
       - "%f:%l:%c: error: %m"
     lint-severity: 3
     root-markers:
       - .editorconfig
 
-  markdownlint: &markdownlint
+  md-markdownlint: &md-markdownlint
     lint-source: markdownlint
-    lint-command: >
+    lint-command: >-
       markdownlint --stdin
     lint-stdin: true
+    lint-ignore-exit-code: true
     lint-formats:
       - "%f:%l:%c MD%n/%*[^ ] %m"
       - "%f:%l MD%n/%*[^ ] %m"
 
-  mdformat: &mdformat
+  md-mdformat: &md-mdformat
     format-command: >
       mdformat --number -
     format-stdin: true
 
   prettier: &prettier
-    format-command: >
+    format-command: >-
       prettier \
         --stdin \
         --stdin-filepath ${INPUT} \
@@ -61,7 +64,7 @@ tools:
       - .prettierrc.json
 
   python-black: &python-black
-    format-command: >
+    format-command: >-
       black --stdin-filename ${INPUT} --quiet -
     format-stdin: true
     root-markers:
@@ -69,15 +72,16 @@ tools:
 
   sh-shellcheck: &sh-shellcheck
     lint-source: shellcheck
-    lint-command: >
+    lint-command: >-
       shellcheck -f gcc -x
+    lint-ignore-exit-code: true
     lint-formats:
       - "%f:%l:%c: %trror: %m"
       - "%f:%l:%c: %tarning: %m"
       - "%f:%l:%c: %tote: %m"
 
   sh-shfmt: &sh-shfmt
-    format-command: >
+    format-command: >-
       shfmt \
         --filename ${INPUT} \
         ${--indent=tabSize} \
@@ -100,8 +104,8 @@ languages:
     - <<: *prettier
 
   markdown:
-    - <<: *markdownlint
-    - <<: *mdformat
+    - <<: *md-markdownlint
+    - <<: *md-mdformat
 
   python:
     - <<: *python-black
