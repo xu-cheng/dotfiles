@@ -25,15 +25,13 @@ return {
         enabled = not_vscode,
         opts = {
             ensure_installed = {
-                "black",
                 "cspell",
-                "editorconfig-checker",
                 "mdformat",
-                "prettier",
                 "rubocop",
             },
             linux_ensure_installed = {
                 "bash-language-server",
+                "black",
                 "css-lsp",
                 "editorconfig-checker",
                 "efm",
@@ -42,6 +40,7 @@ return {
                 "json-lsp",
                 "lua-language-server",
                 "markdownlint",
+                "prettier",
                 "pyright",
                 "ruff",
                 "shellcheck",
