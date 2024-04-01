@@ -104,6 +104,11 @@ tools:
         --simplify
     format-stdin: true
 
+  terraform-fmt: &terraform-fmt
+    format-command: >-
+      terraform fmt -
+    format-stdin: true
+
   tex-chktex: &tex-chktex
     lint-source: chktex
     lint-command: >-
@@ -146,6 +151,9 @@ languages:
   sh:
     - <<: *sh-shellcheck
     - <<: *sh-shfmt
+
+  terraform:
+    - <<: *terraform-fmt
 
   tex:
     - <<: *tex-chktex
