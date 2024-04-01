@@ -3,6 +3,11 @@ root-markers:
   - .git/
 
 tools:
+  clang-format: &clang-format
+    format-command: >
+      clang-format --assume-filename=${INPUT}
+    format-stdin: true
+
   cspell: &cspell
     lint-source: cspell
     lint-command: >-
@@ -32,6 +37,19 @@ tools:
     lint-severity: 3
     root-markers:
       - .editorconfig
+
+  lua-stylua: &lua-stylua
+    format-command: >-
+      stylua \
+        --color Never \
+        ${--range-start:charStart} \
+        ${--range-end:charEnd} \
+        -
+    format-stdin: true
+    format-can-range: true
+    root-markers:
+      - stylua.toml
+      - .stylua.toml
 
   md-markdownlint: &md-markdownlint
     lint-source: markdownlint
@@ -128,6 +146,12 @@ tools:
       - .latexmkrc
 
 languages:
+  c:
+    - <<: *clang-format
+
+  cpp:
+    - <<: *clang-format
+
   css:
     - <<: *prettier
 
@@ -139,6 +163,9 @@ languages:
 
   json:
     - <<: *prettier
+
+  lua:
+    - <<: *lua-stylua
 
   markdown:
     - <<: *md-markdownlint
