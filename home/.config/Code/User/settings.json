@@ -49,23 +49,8 @@
         "^\"[^\"]*\": Unknown word\\.$",
     ],
     // cSpell
-    "cSpell.language": "en,en-US",
-    "cSpell.languageSettings": [
-        {
-            "languageId": "latex",
-            "ignoreRegExpList": [
-                "\\\\\\w+([ %\\{])?"
-            ]
-        }
-    ],
-    "cSpell.dictionaries": [
-        "userWords",
-    ],
-    "cSpell.dictionaryDefinitions": [
-        {
-            "name": "userWords",
-            "path": "~/.config/nvim/spell/en.utf-8.add"
-        }
+    "cSpell.import": [
+        "~/.config/cspell.json"
     ],
     // Grammarly
     "grammarly.files.include": [

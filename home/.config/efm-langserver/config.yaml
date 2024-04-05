@@ -12,10 +12,10 @@ tools:
     lint-source: cspell
     lint-command: >-
       cspell lint \
+        --config ~/.config/cspell.json
         --no-progress \
         --no-summary \
         --no-color \
-        --locale en,en-US \
         stdin://${INPUT}
     lint-stdin: true
     lint-ignore-exit-code: true
@@ -23,8 +23,6 @@ tools:
       - "%f:%l:%c - %m"
       - "%f:%l:%c %m"
     lint-severity: 4
-    root-markers:
-      - cspell.json
 
   editorconfig-checker: &editorconfig-checker
     lint-source: editorconfig-checker
