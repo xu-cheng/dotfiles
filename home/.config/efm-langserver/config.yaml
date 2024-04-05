@@ -73,7 +73,7 @@ tools:
         --stdin-filepath ${INPUT} \
         ${--range-start=charStart} \
         ${--range-end=charEnd} \
-        ${--use-tabs:insertSpaces} \
+        ${--use-tabs:!insertSpaces} \
         ${--tab-width=tabSize}
     format-stdin: true
     format-can-range: true
