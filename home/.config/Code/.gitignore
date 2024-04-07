@@ -1,7 +1,4 @@
-/*
-!/.gitignore
-!/plugins
-!/README.md
+/User/*
 !/User/keybindings.json
 !/User/settings.json
 !/User/snippets
