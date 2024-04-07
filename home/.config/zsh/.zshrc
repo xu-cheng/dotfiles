@@ -109,7 +109,7 @@ if [[ -d "$FZF_SHELL_PATH" ]]; then
     [[ $- =~ i ]] && . "$FZF_SHELL_PATH/completion.zsh" 2> /dev/null
     . "$FZF_SHELL_PATH/key-bindings.zsh"
     if (( ${+commands[fd]} )); then
-        export FZF_DEFAULT_COMMAND='fd --hidden --exclude ".git"'
+        export FZF_DEFAULT_COMMAND='fd --hidden --follow --exclude ".git"'
     else
         export FZF_DEFAULT_COMMAND='find . -not -path "*/.git/*"'
     fi
