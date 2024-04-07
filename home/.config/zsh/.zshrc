@@ -85,12 +85,6 @@ if (( ${+commands[nvim]} )); then
     alias vim='nvim -p'
     alias vimdiff='nvim -d'
 fi
-if [[ -s "$ZSH/plugins/z/z.plugin.zsh" ]]; then
-  _Z_CMD=j
-  [[ -d "$XDG_DATA_HOME/z" ]] || mkdir -p "$XDG_DATA_HOME/z"
-  _Z_DATA="$XDG_DATA_HOME/z/z.txt"
-  . "$ZSH/plugins/z/z.plugin.zsh"
-fi
 if [[ -s "$ZSH_HIGHLIGHT_PATH" ]]; then
   # From https://github.com/catppuccin/zsh-syntax-highlighting/
   . "$XDG_CONFIG_HOME/zsh/catppuccin_frappe-zsh-syntax-highlighting.zsh"
@@ -104,6 +98,12 @@ fi
 . "$ZSH/oh-my-zsh.sh"
 
 eval "$("$STARSHIP_PATH" init zsh)"
+
+if (( ${+commands[zoxide]} )) then
+    export _ZO_DATA_DIR="$XDG_DATA_HOME/zoxide"
+    export _ZO_EXCLUDE_DIRS="/tmp/*;/private/tmp/*"
+    eval "$(zoxide init zsh --cmd j)"
+fi
 
 if [[ -d "$FZF_SHELL_PATH" ]]; then
     [[ $- =~ i ]] && . "$FZF_SHELL_PATH/completion.zsh" 2> /dev/null
