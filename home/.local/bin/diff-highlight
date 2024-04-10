@@ -27,9 +27,9 @@ then
     exec "$HOMEBREW_PREFIX/$DIFF_HIGHLIGHT"
 fi
 
-if [[ -x "/usr/share/doc/git/contrib/diff-highlight/diff-highlight" ]]
+if [[ -f "/usr/share/doc/git/contrib/diff-highlight/diff-highlight" ]]
 then
-    exec perl "/usr/share/doc/git/contrib/diff-hightlight/diff-highlight"
+    exec perl "/usr/share/doc/git/contrib/diff-highlight/diff-highlight"
 fi
 
 exec /bin/cat
