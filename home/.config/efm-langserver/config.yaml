@@ -4,7 +4,7 @@ root-markers:
 
 tools:
   clang-format: &clang-format
-    format-command: >
+    format-command: >-
       clang-format --assume-filename=${INPUT}
     format-stdin: true
 
