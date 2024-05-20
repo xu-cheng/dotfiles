@@ -1,5 +1,4 @@
 tap "homebrew/bundle"
-tap "homebrew/cask-fonts"
 tap "homebrew/command-not-found"
 brew "sqlite"
 brew "aria2"
