@@ -210,7 +210,14 @@ return {
                 eslint = {},
                 html = {},
                 jsonls = {},
-                lua_ls = {},
+                lua_ls = {
+                    settings = {
+                        Lua = {
+                            ["hint.enable"] = true,
+                            ["hint.arrayIndex"] = "Disable",
+                        },
+                    },
+                },
                 pyright = {},
                 rust_analyzer = {},
                 solargraph = {},
@@ -238,8 +245,8 @@ return {
                         navic.attach(client, buffer)
                     end
 
-                    if vim.fn.has("nvim-0.10.0") == 1 and client.server_capabilities.inlayHintProvider then
-                        vim.lsp.inlay_hint.enable(buffer)
+                    if client.server_capabilities.inlayHintProvider then
+                        vim.lsp.inlay_hint.enable(true, { bufnr = buffer })
                     end
 
                     local function map(m, lhs, rhs, desc, opts)
@@ -302,10 +309,10 @@ return {
         },
         cmd = { "TroubleToggle", "Trouble" },
         keys = {
-            { "<leader>xx", "<cmd>TroubleToggle document_diagnostics<cr>",  desc = "Document Diagnostics (Trouble)" },
+            { "<leader>xx", "<cmd>TroubleToggle document_diagnostics<cr>", desc = "Document Diagnostics (Trouble)" },
             { "<leader>xX", "<cmd>TroubleToggle workspace_diagnostics<cr>", desc = "Workspace Diagnostics (Trouble)" },
-            { "<leader>xL", "<cmd>TroubleToggle loclist<cr>",               desc = "Location List (Trouble)" },
-            { "<leader>xQ", "<cmd>TroubleToggle quickfix<cr>",              desc = "Quickfix List (Trouble)" },
+            { "<leader>xL", "<cmd>TroubleToggle loclist<cr>", desc = "Location List (Trouble)" },
+            { "<leader>xQ", "<cmd>TroubleToggle quickfix<cr>", desc = "Quickfix List (Trouble)" },
             {
                 "[q",
                 function()
