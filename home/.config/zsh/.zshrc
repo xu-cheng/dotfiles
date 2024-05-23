@@ -58,6 +58,8 @@ if [[ -n "$HOMEBREW_PREFIX" ]]; then
 
     alias bubo='brew update && brew outdated'
     alias bubu='brew update && brew upgrade --formulae && brew cleanup'
+
+    FPATH="$HOMEBREW_PREFIX/share/zsh/site-functions:${FPATH}"
 else
     ZSH_HIGHLIGHT_PATH="/usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
     STARSHIP_PATH="starship"
