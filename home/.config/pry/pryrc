@@ -41,4 +41,4 @@ if defined?(PryTheme)
   Pry.config.theme = "pry-classic-256"
 end
 
-Pry.config.history_file = "#{ENV["XDG_CACHE_HOME"] || "#{ENV["HOME"]}/.cache"}/pry/history"
+Pry.config.history_file = "#{ENV["XDG_STATE_HOME"] || "#{ENV["HOME"]}/.local/state"}/pry/history".freeze

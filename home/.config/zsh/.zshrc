@@ -7,12 +7,14 @@ fi
 ZSH="$XDG_DATA_HOME/zsh/oh-my-zsh"
 ZSH_CUSTOM="$XDG_CONFIG_HOME/zsh/custom"
 ZSH_CACHE_DIR="$XDG_CACHE_HOME/zsh"
+ZSH_STATE_DIR="$XDG_STATE_HOME/zsh"
 ZSH_COMPDUMP="$ZSH_CACHE_DIR/zcompdump-${HOST}-${ZSH_VERSION}"
 DISABLE_UPDATE_PROMPT=true
-HISTFILE="$ZSH_CACHE_DIR/history"
+HISTFILE="$ZSH_STATE_DIR/history"
 
 [[ -d "$ZSH" ]] || git clone --depth=1 https://github.com/robbyrussell/oh-my-zsh "$ZSH"
 [[ -d "$ZSH_CACHE_DIR" ]] || mkdir -p "$ZSH_CACHE_DIR"
+[[ -d "$ZSH_STATE_DIR" ]] || mkdir -p "$ZSH_STATE_DIR"
 
 plugins=( \
   colored-man-pages \
@@ -59,7 +61,7 @@ if [[ -n "$HOMEBREW_PREFIX" ]]; then
     alias bubo='brew update && brew outdated'
     alias bubu='brew update && brew upgrade --formulae && brew cleanup'
 
-    FPATH="$HOMEBREW_PREFIX/share/zsh/site-functions:${FPATH}"
+    fpath+="$HOMEBREW_PREFIX/share/zsh/site-functions"
 else
     ZSH_HIGHLIGHT_PATH="/usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
     STARSHIP_PATH="starship"

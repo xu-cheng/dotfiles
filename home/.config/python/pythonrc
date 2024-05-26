@@ -4,33 +4,36 @@ try:
     get_ipython()
     # do nothing if it is in ipython
 except NameError:
+
     def register_readline():
         import os
         import atexit
+
         try:
             import readline
             import rlcompleter
         except ImportError:
             return
 
-        readline_doc = getattr(readline, '__doc__', '')
-        if readline_doc is not None and 'libedit' in readline_doc:
-            readline.parse_and_bind('bind ^I rl_complete')
+        readline_doc = getattr(readline, "__doc__", "")
+        if readline_doc is not None and "libedit" in readline_doc:
+            readline.parse_and_bind("bind ^I rl_complete")
         else:
-            readline.parse_and_bind('tab: complete')
+            readline.parse_and_bind("tab: complete")
 
         try:
             readline.read_init_file()
         except OSError:
             pass
 
-        cache_dir = os.environ.get('XDG_CACHE_HOME',
-                                   os.path.join(os.environ['HOME'], '.cache'))
-        cache_dir = os.path.join(cache_dir, 'python')
-        histfile = os.path.join(cache_dir, 'history')
+        state_dir = os.environ.get(
+            "XDG_STATE_HOME", os.path.join(os.environ["HOME"], ".local", "state")
+        )
+        state_dir = os.path.join(state_dir, "python")
+        histfile = os.path.join(state_dir, "history")
 
-        if not os.path.exists(cache_dir):
-            os.makedirs(cache_dir)
+        if not os.path.exists(state_dir):
+            os.makedirs(state_dir)
 
         try:
             readline.read_history_file(histfile)
@@ -41,6 +44,6 @@ except NameError:
         atexit.register(readline.write_history_file, histfile)
 
     import sys
+
     sys.__interactivehook__ = register_readline
     del sys, register_readline
-

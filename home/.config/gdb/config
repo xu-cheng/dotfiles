@@ -13,14 +13,14 @@ config_dir = os.environ.get('XDG_CONFIG_HOME', os.path.join(os.environ['HOME'], 
 config_dir = os.path.join(config_dir, 'gdb')
 data_dir = os.environ.get('XDG_DATA_HOME', os.path.join(os.environ['HOME'], '.local', 'share'))
 data_dir = os.path.join(data_dir, 'gdb')
-cache_dir = os.environ.get('XDG_CACHE_HOME', os.path.join(os.environ['HOME'], '.cache'))
-cache_dir = os.path.join(cache_dir, 'gdb')
-if not os.path.exists(cache_dir):
-    os.makedirs(cache_dir)
+state_dir = os.environ.get('XDG_STATE_HOME', os.path.join(os.environ['HOME'], '.local', 'state'))
+state_dir = os.path.join(state_dir, 'gdb')
+if not os.path.exists(state_dir):
+    os.makedirs(state_dir)
 end
 
 # == history configure ==
-python gdb.execute('set history filename ' + os.path.join(cache_dir, 'history'))
+python gdb.execute('set history filename ' + os.path.join(state_dir, 'history'))
 set history remove-duplicates 100
 set history size 10000
 

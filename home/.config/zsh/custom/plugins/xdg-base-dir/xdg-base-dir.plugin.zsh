@@ -41,7 +41,7 @@ export IPYTHONDIR="$XDG_CONFIG_HOME/ipython"
 
 # less
 export LESSKEYIN="$XDG_CONFIG_HOME/less/lesskey"
-export LESSHISTFILE="$XDG_CACHE_HOME/less/history"
+export LESSHISTFILE="$XDG_STATE_HOME/less/history"
 
 # npm
 # https://github.com/npm/npm/issues/6675
@@ -51,8 +51,7 @@ export NPM_CONFIG_CACHE="$XDG_CACHE_HOME/npm"
 export NPM_CONFIG_DEVDIR="$XDG_CACHE_HOME/node-gyp"
 
 # openssl
-# https://www.openssl.org/docs/faq.html
-export RANDFILE="$XDG_CACHE_HOME/openssl-rnd"
+export RANDFILE="$XDG_STATE_HOME/openssl-rnd"
 
 # perl/cpanm
 # https://metacpan.org/pod/local::lib

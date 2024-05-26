@@ -1,5 +1,3 @@
-# vim: set filetype=toml:
-
 [cargo-new]
 name = "Cheng XU"
 email = "rust@xuc.me"
