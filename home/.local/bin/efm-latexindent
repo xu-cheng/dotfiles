@@ -1,0 +1,27 @@
+#!/usr/bin/env ruby
+
+require "optparse"
+
+options = {
+  indent_size: 4,
+}
+OptionParser.new do |opts|
+  opts.banner = "Usage: #{$0} [options]"
+
+  opts.on("--indent-size=SIZE", "The size of the indent") do |size|
+    options[:indent_size] = size.to_i
+  end
+
+  opts.on("--use-tabs", "Use tabs instead of space for indent") do
+    options[:use_tabs] = true
+  end
+end.parse!
+
+if options[:use_tabs]
+  cfg = ""
+else
+  indent = " " * options[:indent_size]
+  cfg = "defaultIndent: '#{indent}'"
+end
+
+exec "latexindent", "-g=/dev/null", "-y=#{cfg}", "-"

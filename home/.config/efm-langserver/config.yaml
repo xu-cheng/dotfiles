@@ -145,7 +145,7 @@ tools:
 
   tex-latexindent: &tex-latexindent
     format-command: >-
-      latexindent -
+      efm-latexindent ${--indent-size=tabSize} ${--use-tabs:!insertSpaces}
     format-stdin: true
     root-markers:
       - latexindent.yaml
