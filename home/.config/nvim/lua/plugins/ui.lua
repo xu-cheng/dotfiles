@@ -347,7 +347,7 @@ return {
                                 hint = icons.diagnostics.Hint,
                             },
                             on_click = function(_, _, _)
-                                vim.cmd("TroubleToggle")
+                                vim.cmd("Trouble diagnostics toggle")
                             end,
                         },
                     },
