@@ -4,6 +4,7 @@ require "optparse"
 
 options = {
   indent_size: 4,
+  use_tabs: false,
 }
 OptionParser.new do |opts|
   opts.banner = "Usage: #{$0} [options]"
@@ -17,9 +18,9 @@ OptionParser.new do |opts|
   end
 end.parse!
 
-if options[:use_tabs]
-  cfg = ""
-else
+cfg = ""
+
+unless options[:use_tabs]
   indent = " " * options[:indent_size]
   cfg = "defaultIndent: '#{indent}'"
 end
