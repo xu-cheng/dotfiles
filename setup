@@ -67,6 +67,7 @@ link_dir DOTFILES_HOME/".ssh", HOME/".ssh"
 if OS == "Darwin"
   link_dir DOTFILES_HOME/".gnupg", HOME/".gnupg"
   link_file DOTFILES_HOME/".config/Code/User", HOME/"Library/Application Support/Code"
+  link_file DOTFILES_HOME/".config/pypoetry/config.toml", HOME/"Library/Application Support/pypoetry"
 end
 
 # Cleanup broken symlinks
