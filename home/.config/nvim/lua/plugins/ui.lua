@@ -431,9 +431,8 @@ return {
         config = function(_, opts)
             local wk = require("which-key")
             wk.setup(opts)
-            wk.register({
-                mode = { "n", "x" },
-                ["<leader>sn"] = { name = "+noice" },
+            wk.add({
+                { "<leader>sn", group = "noice", mode = { "n", "x" } },
             })
         end,
     },
