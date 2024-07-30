@@ -40,7 +40,10 @@ opt.tabstop = 4            -- number of spaces tabs count for
 opt.softtabstop = 4        -- let backspace delete indent
 opt.virtualedit = "block"  -- allow going past the end of line in visual block mode
 
-if not vim.g.vscode then
+if vim.g.vscode then
+    local vscode = require("vscode")
+    vim.notify = vscode.notify
+else
     -- General
     vim.cmd("filetype plugin indent on")      -- automatically detect file types
 
