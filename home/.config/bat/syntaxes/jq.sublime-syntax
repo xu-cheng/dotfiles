@@ -1,0 +1,190 @@
+%YAML 1.2
+---
+# http://www.sublimetext.com/docs/syntax.html
+name: jq
+file_extensions:
+  - jq
+scope: source.jq
+contexts:
+  main:
+    - include: comment
+    - include: array
+    - include: object
+    - include: function
+    - include: string
+    - include: field
+    - include: variable
+    - include: format
+    - include: constant
+    - include: keyword
+    - include: filter
+    - include: number
+    - include: operator
+    - include: punctuation
+  comment:
+    - match: '#'
+      push:
+        - meta_scope: comment.line.number-sign.jq
+        - match: $
+          pop: true
+  array:
+    - match: '\['
+      captures:
+        0: punctuation.definition.bracket.square.begin.jq
+      push:
+        - meta_scope: meta.array.jq
+        - match: '\]'
+          captures:
+            0: punctuation.definition.bracket.square.end.jq
+          pop: true
+        - include: comment
+        - include: string
+        - match: \(
+          captures:
+            0: punctuation.definition.bracket.round.begin.jq
+          push:
+            - match: \)
+              captures:
+                0: punctuation.definition.bracket.round.end.jq
+              pop: true
+            - include: self_in_round_brackets
+        - include: main
+        - match: ','
+          scope: punctuation.separator.jq
+        - match: \S+
+          scope: invalid.illegal.identifier.jq
+  constant:
+    - match: (?<!\.)\b(true|false|null)(?!\s*:)\b
+      scope: constant.language.jq
+  field:
+    - match: '\.[a-zA-Z_]\w*'
+      scope: entity.other.attribute-name.jq
+  filter:
+    - match: '([a-zA-Z_]\w*::)*[a-zA-Z_]\w*'
+      scope: support.function.jq
+  format:
+    - match: '@\w+'
+      scope: constant.other.symbol.jq
+  function:
+    - match: (?<!\.)\bdef(?!\s*:)\b
+      captures:
+        0: storage.type.function.jq
+      push:
+        - meta_scope: meta.function.jq
+        - match: '([a-zA-Z_]\w*::)*[a-zA-Z_]\w*'
+          captures:
+            0: entity.name.function.jq
+          pop: true
+        - include: comment
+        - match: \S+
+          scope: invalid.illegal.identifier.jq
+  keyword:
+    - match: |-
+        (?x)
+        (?<!\.) \b
+        ( and
+        | as
+        | break
+        | catch
+        | elif
+        | else
+        | empty
+        | end
+        | foreach
+        | if
+        | import
+        | include
+        | label
+        | module
+        | or
+        | reduce
+        | then
+        | try
+        ) (?!\s*:) \b
+      scope: keyword.control.jq
+  number:
+    - match: '([0-9.]{2,}|[0-9]+)([eE][+-]?[0-9]+)?'
+      scope: constant.numeric.jq
+  object:
+    - match: '{'
+      captures:
+        0: punctuation.definition.bracket.curly.begin.jq
+      push:
+        - meta_scope: meta.object.jq
+        - match: '}'
+          captures:
+            0: punctuation.definition.bracket.curly.end.jq
+          pop: true
+        - include: comment
+        - include: string
+        - include: variable
+        - match: '([a-zA-Z_]\w*::)*[a-zA-Z_]\w*'
+          scope: entity.other.attribute-name.id.jq
+        - match: \(
+          captures:
+            0: punctuation.definition.bracket.round.begin.jq
+          push:
+            - match: \)
+              captures:
+                0: punctuation.definition.bracket.round.end.jq
+              pop: true
+            - include: self_in_round_brackets
+        - match: ':'
+          captures:
+            0: punctuation.separator.begin.jq
+          push:
+            - match: ',|(?=})'
+              captures:
+                0: punctuation.separator.end.jq
+              pop: true
+            - include: self_in_round_brackets
+        - match: ','
+          scope: punctuation.separator.jq
+        - match: \S+
+          scope: invalid.illegal.identifier.jq
+  operator:
+    - match: (?x) ( \.\.? | \?// | \? | ==? | //=? | \|=? | \+=? | -=? | \*=? | /=? | %=? | != | <=? | >=? )
+      scope: keyword.operator.jq
+  punctuation:
+    - match: \(|\)
+      scope: punctuation.bracket.round.jq
+    - match: '\[|\]'
+      scope: punctuation.bracket.square.jq
+    - match: ',|;|:'
+      scope: punctuation.separator.jq
+  self_in_round_brackets:
+    - match: \(
+      captures:
+        0: punctuation.definition.bracket.round.begin.jq
+      push:
+        - match: \)
+          captures:
+            0: punctuation.definition.bracket.round.end.jq
+          pop: true
+        - include: main
+    - include: main
+  string:
+    - match: '"'
+      push:
+        - meta_scope: string.quoted.double.jq
+        - match: '"'
+          pop: true
+        - match: '\\(["\\/bfnrt]|u[0-9a-fA-F]{4})'
+          scope: constant.character.escape.jq
+        - include: string_interpolation
+        - match: \\.
+          scope: invalid.illegal.unrecognized-string-escape.jq
+  string_interpolation:
+    - match: \\\(
+      captures:
+        0: punctuation.section.embedded.jq.begin.jq
+      push:
+        - meta_scope: source.jq.embedded.source
+        - match: \)
+          captures:
+            0: punctuation.section.embedded.jq.end.jq
+          pop: true
+        - include: self_in_round_brackets
+  variable:
+    - match: '\$([a-zA-Z_]\w*::)*[a-zA-Z_]\w*'
+      scope: variable.other.jq
