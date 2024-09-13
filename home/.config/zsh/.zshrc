@@ -17,17 +17,18 @@ HISTFILE="$ZSH_STATE_DIR/history"
 [[ -d "$ZSH_STATE_DIR" ]] || mkdir -p "$ZSH_STATE_DIR"
 
 plugins=( \
-  colored-man-pages \
-  docker \
-  docker-compose \
-  git \
-  gitignore \
-  kubectl \
-  rake-fast \
-  ssh-gpg-agent \
-  terraform \
-  vagrant \
-  xdg-base-dir \
+    asdf \
+    colored-man-pages \
+    docker \
+    docker-compose \
+    git \
+    gitignore \
+    kubectl \
+    rake-fast \
+    ssh-gpg-agent \
+    terraform \
+    vagrant \
+    xdg-base-dir \
 )
 
 if [[ "$OSTYPE" == darwin* ]]; then # macOS
@@ -55,8 +56,6 @@ if [[ -n "$HOMEBREW_PREFIX" ]]; then
     ZSH_HIGHLIGHT_PATH="$HOMEBREW_PREFIX/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
     FZF_SHELL_PATH="$HOMEBREW_PREFIX/opt/fzf/shell"
     STARSHIP_PATH="$HOMEBREW_PREFIX/opt/starship/bin/starship"
-
-    . "$HOMEBREW_PREFIX/opt/asdf/libexec/asdf.sh"
 
     alias bubo='brew update && brew outdated'
     alias bubu='brew update && brew upgrade --formulae && brew cleanup'
