@@ -17,6 +17,8 @@ HISTFILE="$ZSH_STATE_DIR/history"
 [[ -d "$ZSH_STATE_DIR" ]] || mkdir -p "$ZSH_STATE_DIR"
 
 plugins=( \
+    # NB: xdg-base-dir needs to be the first one to be loaded
+    xdg-base-dir \
     asdf \
     colored-man-pages \
     docker \
@@ -28,7 +30,6 @@ plugins=( \
     ssh-gpg-agent \
     terraform \
     vagrant \
-    xdg-base-dir \
 )
 
 if [[ "$OSTYPE" == darwin* ]]; then # macOS
