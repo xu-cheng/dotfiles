@@ -2,7 +2,6 @@
 
 trap '{ echo "Quit by Ctrl-C." >&2; exit 130; }' INT
 
-pip3 install --upgrade pynvim
-pip3 install --upgrade neovim-remote
+"$XDG_DATA_HOME/nvim/pynvim/bin/pip3" install --upgrade pynvim
 gem install neovim && gem cleanup neovim
 nvim --headless "+Lazy! sync" +qa

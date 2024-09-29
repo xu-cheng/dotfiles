@@ -15,11 +15,21 @@ end
 
 -- set python interpreter
 if not vim.g.python3_host_prog then
-    if brew_prefix and executable(brew_prefix .. "/opt/python/bin/python3") then
-        vim.g.python3_host_prog = brew_prefix .. "/opt/python/bin/python3"
-    elseif executable("/usr/bin/python3") then
-        vim.g.python3_host_prog = "/usr/bin/python3"
+    local pyenv_path = vim.fn.stdpath("data") .. "/pynvim"
+    local pyenv_bin = pyenv_path .. "/bin/python"
+    if not executable(pyenv_bin) then
+        local python_bin
+        if brew_prefix and executable(brew_prefix .. "/opt/python/bin/python3") then
+            python_bin = brew_prefix .. "/opt/python/bin/python3"
+        elseif executable("/usr/bin/python3") then
+            python_bin = "/usr/bin/python3"
+        else
+            python_bin = "python3"
+        end
+        vim.fn.system({ python_bin, "-m", "venv", pyenv_path })
+        vim.fn.system({ pyenv_bin, "-m", "pip", "install", "pynvim" })
     end
+    vim.g.python3_host_prog = pyenv_bin
 end
 
 -- set ruby interpreter
