@@ -137,7 +137,7 @@ return {
                 },
             },
             routes = {
-                -- stop builin spelling suggestion view, use which-key instead
+                -- stop builtin spelling suggestion view, use which-key instead
                 {
                     filter = { event = "msg_show", find = "Type number and <Enter> or click with the mouse" },
                     opts = { skip = true },
