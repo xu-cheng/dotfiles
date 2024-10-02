@@ -103,9 +103,9 @@ vim.api.nvim_create_autocmd({ "BufWritePre", "BufWritePost" }, {
         if event.event == "BufWritePre" then
             vim.b.is_new = not vim.loop.fs_stat(file)
         else -- event.event == "BufWritePost"
-            if vim.b.is_new and vim.bo.filetype ~= "rust" then
+            if vim.b.is_new then
                 local first_line = vim.api.nvim_buf_get_lines(0, 0, 1, true)[1]
-                if first_line:match("^#!") and vim.fn.executable("chmod") == 1 then
+                if first_line:match("^#!/") and vim.fn.executable("chmod") == 1 then
                     vim.fn.system({ "chmod", "a+x", file })
                 end
             end
