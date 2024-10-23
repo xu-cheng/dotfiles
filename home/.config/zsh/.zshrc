@@ -25,6 +25,7 @@ plugins=( \
     docker-compose \
     git \
     gitignore \
+    helm \
     kubectl \
     rake-fast \
     ssh-gpg-agent \
