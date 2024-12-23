@@ -94,6 +94,7 @@ cask "notion"
 cask "numi"
 cask "pdf-expert"
 cask "plex-media-server"
+cask "popclip"
 cask "presentation"
 cask "rwts-pdfwriter"
 cask "steam"
@@ -111,7 +112,6 @@ mas "Noizio", id: 928871589
 mas "Numbers", id: 409203825
 mas "OpenCat", id: 6445999201
 mas "Pages", id: 409201541
-mas "PopClip", id: 445189367
 mas "Roadblock", id: 1037709284
 mas "ServerCat", id: 1501532023
 mas "Spark", id: 1176895641
