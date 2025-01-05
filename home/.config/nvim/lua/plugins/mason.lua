@@ -26,7 +26,6 @@ return {
         opts = {
             ensure_installed = {
                 "cspell",
-                "mdformat",
                 "rubocop",
             },
             linux_ensure_installed = {
@@ -40,6 +39,7 @@ return {
                 "json-lsp",
                 "lua-language-server",
                 "markdownlint",
+                "mdformat",
                 "prettier",
                 "pyright",
                 "ruff",
