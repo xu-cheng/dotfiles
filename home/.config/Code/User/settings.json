@@ -60,10 +60,6 @@
     ],
     // Path Autocomplete
     "path-autocomplete.triggerOutsideStrings": true,
-    // Github Copilot
-    "github.copilot.enable": {
-        "*": false,
-    },
     // LaTeX
     "latex-workshop.view.pdf.viewer": "tab",
     "latex-workshop.linting.chktex.enabled": true,
@@ -84,7 +80,7 @@
             "env": {}
         },
     ],
-    "latex-workshop.message.badbox.show": false,
+    "latex-workshop.message.badbox.show": "none",
     // Rust
     "rust-analyzer.procMacro.enable": true,
     // Ruby
