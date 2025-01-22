@@ -3,7 +3,12 @@
     {
         "key": "tab",
         "command": "selectNextSuggestion",
-        "when": "editorTextFocus && suggestWidgetMultipleSuggestions && suggestWidgetVisible",
+        "when": "editorTextFocus && suggestWidgetVisible && suggestWidgetMultipleSuggestions && !inlineSuggestionVisible",
+    },
+    {
+        "key": "tab",
+        "command": "editor.action.inlineSuggest.commit",
+        "when": "editorTextFocus && inlineSuggestionVisible",
     },
     {
         "key": "ctrl+s",
