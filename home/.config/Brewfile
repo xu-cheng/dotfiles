@@ -78,6 +78,7 @@ cask "1password"
 cask "adobe-acrobat-reader"
 cask "alfred"
 cask "bartender"
+cask "chatgpt"
 cask "discord"
 cask "docker"
 cask "dropbox"
@@ -119,9 +120,9 @@ mas "Spark", id: 1176895641
 mas "Tailscale", id: 1475387142
 mas "Wallpaper Wizard", id: 1266674560
 mas "WeChat", id: 836500024
+mas "WhatsApp", id: 310633997
 mas "WireGuard", id: 1451685025
 mas "Xcode", id: 497799835
-mas "‎WhatsApp", id: 310633997
 vscode "alefragnani.bookmarks"
 vscode "asvetliakov.vscode-neovim"
 vscode "catppuccin.catppuccin-vsc"
