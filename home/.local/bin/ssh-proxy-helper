@@ -1,25 +1,31 @@
 #!/usr/bin/env ruby
+# frozen_string_literal: true
 
-VERSION = "1.1"
+VERSION = "2.0"
 
 require "ipaddr"
 require "optparse"
 require "socket"
 
-OptionParser.new do |opts|
+host = nil
+port = 22
+proxy = nil
+internal_nets = []
+
+opt_parser = OptionParser.new do |opts|
   opts.banner = "Usage: ssh-proxy-helper [options]"
   opts.version = VERSION
-  opts.on("-H", "--host HOST","Host name to connect") do |host|
-    $host = host
+  opts.on("-H", "--host HOST", "Host name to connect") do |h|
+    host = h
   end
-  opts.on("-P", "--port Port", "Port number to connect") do |port|
-    $port = port
+  opts.on("-P", "--port Port", "Port number to connect") do |p|
+    port = p.to_i
   end
-  opts.on("--proxy PROXY", "Proxy host used as `ssh proxy -W %h:%p`") do |proxy|
-    $proxy = proxy
+  opts.on("--proxy PROXY", "Proxy host used as `ssh proxy -W %h:%p`") do |p|
+    proxy = p
   end
   opts.on("--internal-ip IP", "CIDR IP range to indicate when to disable the proxy") do |net|
-    $net = IPAddr.new net
+    internal_nets << IPAddr.new(net)
   end
   opts.on_tail("-h", "--help", "Show this message") do
     puts opts.help
@@ -29,15 +35,22 @@ OptionParser.new do |opts|
     puts opts.ver
     exit
   end
-end.parse!
+end
 
-$localips = Socket.ip_address_list
-  .reject { |addr| addr.ipv4_loopback? || addr.ipv6_loopback? }
-  .map { |addr| IPAddr.new addr.ip_address.sub(/%.*$/, "") }
+opt_parser.parse!
 
-if $localips.any? { |ip| $net.include? ip }
-  exec "nc", $host, $port
+if host.nil? || proxy.nil?
+  warn opt_parser.help
+  exit 1
+end
+
+local_ips = Socket.ip_address_list
+                  .reject { |addr| addr.ipv4_loopback? || addr.ipv6_loopback? }
+                  .map { |addr| IPAddr.new addr.ip_address.sub(/%.*$/, "") }
+
+if local_ips.any? { |ip| internal_nets.any? { |net| net.include? ip } }
+  exec "nc", host, port
 else
-  STDERR.puts "Connect to #{$host} over #{$proxy}."
-  exec "ssh", "-q", $proxy, "-W", "#{$host}:#{$port}"
+  warn "Connect to #{host} via #{proxy}."
+  exec "ssh", "-q", proxy, "-W", "#{host}:#{port}"
 end
