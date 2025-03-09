@@ -1,6 +1,32 @@
 local not_vscode = not vim.g.vscode
 
 return {
+    -- search/replacement
+    {
+        "MagicDuck/grug-far.nvim",
+        enabled = not_vscode,
+        cmd = "GrugFar",
+        keys = {
+            {
+                "<leader>sr",
+                function()
+                    local grug = require("grug-far")
+                    local ext = vim.bo.buftype == "" and vim.fn.expand("%:e")
+                    grug.open({
+                        transient = true,
+                        prefills = {
+                            filesFilter = ext and ext ~= "" and "*." .. ext or nil,
+                        },
+                    })
+                end,
+                mode = { "n", "v" },
+                desc = "Search and Replace",
+            },
+        },
+        main = "grug-far",
+        config = true,
+    },
+
     -- buffer management
     {
         "echasnovski/mini.bufremove",
@@ -113,9 +139,9 @@ return {
             defaults = {
                 prompt_prefix = " ",
                 selection_caret = " ",
-            }
+            },
         },
         main = "telescope",
         config = true,
-    }
+    },
 }
