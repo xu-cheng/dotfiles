@@ -97,6 +97,9 @@ return {
         "tpope/vim-fugitive",
         version = false,
         enabled = not_vscode,
+        dependencies = {
+            "tpope/vim-rhubarb",
+        },
         event = { "BufReadPre", "BufNewFile" },
         init = function()
             local function map(l, r, desc)
@@ -109,6 +112,12 @@ return {
             map("<leader>gc", ":Git commit<CR>", "Git commit")
             map("<leader>gP", ":Git push<CR>", "Git push")
         end,
+    },
+    {
+        "tpope/vim-rhubarb",
+        version = false,
+        enabled = not_vscode,
+        event = "VeryLazy",
     },
 
     -- reference
