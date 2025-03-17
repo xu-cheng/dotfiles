@@ -96,6 +96,7 @@ return {
         "HiPhish/rainbow-delimiters.nvim",
         enabled = not_vscode,
         version = false,
+        submodules = false,
         event = { "BufReadPost", "BufNewFile" },
     },
     -- treesitter-context
