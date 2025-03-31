@@ -116,8 +116,7 @@ tools:
         --filename ${INPUT} \
         ${--indent=tabSize} \
         --binary-next-line \
-        --case-indent \
-        --simplify
+        --case-indent
     format-stdin: true
 
   terraform-fmt: &terraform-fmt
