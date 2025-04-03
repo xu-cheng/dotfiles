@@ -195,9 +195,10 @@ return {
                 main = "neoconf",
             },
             {
-                "folke/neodev.nvim",
+                "folke/lazydev.nvim",
+                ft = "lua",
                 config = true,
-                main = "neodev",
+                main = "lazydev",
             },
             {
                 "smjonas/inc-rename.nvim",
