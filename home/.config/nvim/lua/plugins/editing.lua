@@ -85,9 +85,13 @@ return {
         "echasnovski/mini.ai",
         version = false,
         event = "VeryLazy",
-        dependencies = { "nvim-treesitter/nvim-treesitter-textobjects" },
+        dependencies = {
+            "nvim-treesitter/nvim-treesitter-textobjects",
+             "echasnovski/mini.extra",
+        },
         opts = function()
             local ai = require("mini.ai")
+            local ai_extra = require("mini.extra")
             return {
                 n_lines = 500,
                 custom_textobjects = {
@@ -108,8 +112,11 @@ return {
                         },
                         "^().*()$",
                     },
+                    g = ai_extra.gen_ai_spec.buffer(),
                     u = ai.gen_spec.function_call(), -- u for "Usage"
                     U = ai.gen_spec.function_call({ name_pattern = "[%w_]" }), -- without dot in function name
+                    L = ai_extra.gen_ai_spec.line(),
+                    D = ai_extra.gen_ai_spec.diagnostic(),
                 },
             }
         end,
@@ -126,6 +133,8 @@ return {
                     { "<", desc = "<> block" },
                     { ">", desc = "<> block with ws" },
                     { "?", desc = "user prompt" },
+                    { "D", desc = "dianostic" },
+                    { "L", desc = "entire line" },
                     { "U", desc = "use/call without dot" },
                     { "[", desc = "[] block" },
                     { "]", desc = "[] block with ws" },
@@ -137,6 +146,7 @@ return {
                     { "d", desc = "digit(s)" },
                     { "e", desc = "CamelCase / snake_case" },
                     { "f", desc = "function" },
+                    { "g", desc = "entire file" },
                     { "i", desc = "indent" },
                     { "o", desc = "block, conditional, loop" },
                     { "q", desc = "quote `\"'" },
@@ -208,5 +218,14 @@ return {
             }
             vim.g.VM_highlight_matches = "red"
         end,
+    },
+
+    -- mini.extra
+    {
+        "echasnovski/mini.extra",
+        version = false,
+        event = "VeryLazy",
+        main = "mini.extra",
+        config = true,
     },
 }
