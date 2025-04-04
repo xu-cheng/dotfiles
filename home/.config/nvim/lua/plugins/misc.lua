@@ -1,3 +1,5 @@
+local not_vscode = not vim.g.vscode
+
 return {
     -- measure startuptime
     {
@@ -9,7 +11,7 @@ return {
     {
         "folke/persistence.nvim",
         version = false,
-        enabled = not vim.g.vscode,
+        enabled = not_vscode,
         event = "BufReadPre",
         opts = { options = { "buffers", "curdir", "tabpages", "winsize", "help", "globals" } },
         keys = {
@@ -48,5 +50,18 @@ return {
         "tpope/vim-repeat",
         version = false,
         event = "VeryLazy",
+    },
+
+    -- a collection of small plugins
+    {
+        "folke/snacks.nvim",
+        priority = 1000,
+        lazy = false,
+        enable = not_vscode,
+        ---@type snacks.Config
+        opts = {
+            bigfile = { enabled = true },
+            input = { enabled = true },
+        },
     },
 }

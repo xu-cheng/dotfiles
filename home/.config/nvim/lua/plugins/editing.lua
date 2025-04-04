@@ -224,7 +224,7 @@ return {
     {
         "echasnovski/mini.extra",
         version = false,
-        event = "VeryLazy",
+        lazy = true,
         main = "mini.extra",
         config = true,
     },
