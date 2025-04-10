@@ -103,6 +103,7 @@ return {
     {
         "nvim-treesitter/nvim-treesitter-context",
         enabled = not_vscode,
+        branch = "master",
         version = false,
         event = { "BufReadPost", "BufNewFile" },
         opts = {
