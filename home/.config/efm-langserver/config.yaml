@@ -79,13 +79,6 @@ tools:
       - .prettierrc
       - .prettierrc.json
 
-  python-black: &python-black
-    format-command: >-
-      black --stdin-filename ${INPUT} --quiet -
-    format-stdin: true
-    root-markers:
-      - pyproject.toml
-
   python-ruff: &python-ruff
     lint-source: ruff
     lint-command: >-
@@ -95,6 +88,9 @@ tools:
     lint-formats:
       - "%f:%l:%c: %m"
     lint-severity: 3
+    format-command: >-
+      ruff format --stdin-filename ${INPUT} --quiet -
+    format-stdin: true
     root-markers:
       - pyproject.toml
       - ruff.toml
@@ -178,7 +174,6 @@ languages:
     - <<: *md-mdformat
 
   python:
-    - <<: *python-black
     - <<: *python-ruff
 
   sh:
