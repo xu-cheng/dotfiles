@@ -26,7 +26,7 @@
     "workbench.welcomePage.walkthroughs.openOnInstall": false,
     // Neovim Mode
     "extensions.experimental.affinity": {
-        "asvetliakov.vscode-neovim": 1
+        "asvetliakov.vscode-neovim": 1,
     },
     "vscode-neovim.neovimExecutablePaths.darwin": "/opt/homebrew/bin/nvim",
     "vscode-neovim.mouseSelectionStartVisualMode": true,
@@ -64,7 +64,7 @@
     "latex-workshop.view.pdf.viewer": "tab",
     "latex-workshop.linting.chktex.enabled": true,
     "latex-workshop.linting.chktex.exec.args": [
-        "--globalrc"
+        "--globalrc",
     ],
     "latex-workshop.latex.tools": [
         {
@@ -77,7 +77,7 @@
                 "-outdir=%OUTDIR%",
                 "%DOC%"
             ],
-            "env": {}
+            "env": {},
         },
     ],
     "latex-workshop.message.badbox.show": "none",
@@ -91,12 +91,14 @@
     "python.analysis.inlayHints.pytestParameters": true,
     "python.analysis.inlayHints.variableTypes": true,
     "python.terminal.activateEnvironment": false,
-    "python.formatting.provider": "black",
     "jupyter.askForKernelRestart": false,
+    "[python]": {
+        "editor.defaultFormatter": "charliermarsh.ruff",
+    },
     // Lua
     "Lua.telemetry.enable": false,
     // Json
     "[jsonc]": {
-        "editor.defaultFormatter": "vscode.json-language-features"
+        "editor.defaultFormatter": "vscode.json-language-features",
     },
 }
