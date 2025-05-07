@@ -89,7 +89,7 @@ tools:
       - "%f:%l:%c: %m"
     lint-severity: 3
     format-command: >-
-      ruff format --stdin-filename ${INPUT} --quiet -
+      ruff format --quiet --stdin-filename ${INPUT} -
     format-stdin: true
     root-markers:
       - pyproject.toml
