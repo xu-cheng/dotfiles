@@ -29,7 +29,6 @@ return {
             },
             linux_ensure_installed = {
                 "bash-language-server",
-                "black",
                 "cspell",
                 "css-lsp",
                 "editorconfig-checker",
