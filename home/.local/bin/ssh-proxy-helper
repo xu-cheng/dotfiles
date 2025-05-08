@@ -49,7 +49,7 @@ local_ips = Socket.ip_address_list
                   .map { |addr| IPAddr.new addr.ip_address.sub(/%.*$/, "") }
 
 if local_ips.any? { |ip| internal_nets.any? { |net| net.include? ip } }
-  exec "nc", host, port
+  exec "nc", host, port.to_s
 else
   warn "Connect to #{host} via #{proxy}."
   exec "ssh", "-q", proxy, "-W", "#{host}:#{port}"
