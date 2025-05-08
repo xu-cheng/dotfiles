@@ -1,36 +1,42 @@
 {
-    "workbench.colorTheme": "Catppuccin Frappé",
-    "workbench.iconTheme": "catppuccin-frappe",
     "editor.fontFamily": "Monaco, SymbolsNFM, monospace",
     "editor.fontSize": 13,
-    "editor.wordWrap": "on",
+    "editor.inlineSuggest.enabled": true,
     "editor.minimap.enabled": false,
-    "editor.renderWhitespace": "boundary",
     "editor.quickSuggestions": {
         "other": true,
         "comments": true,
         "strings": true
     },
-    "editor.inlineSuggest.enabled": true,
+    "editor.renderWhitespace": "boundary",
     "editor.stickyScroll.enabled": true,
-    "workbench.editor.enablePreviewFromQuickOpen": false,
-    "terminal.integrated.macOptionIsMeta": true,
-    "terminal.integrated.fontFamily": "Monaco, SymbolsNFM, monospace",
-    "terminal.external.osxExec": "iTerm.app",
-    "telemetry.telemetryLevel": "off",
+    "editor.wordWrap": "on",
+    "extensions.ignoreRecommendations": true,
+    "files.eol": "\n",
     "files.watcherExclude": {
         "**/target/**": true
     },
-    "extensions.ignoreRecommendations": true,
+    "telemetry.feedback.enabled": false,
+    "telemetry.telemetryLevel": "off",
+    "terminal.external.osxExec": "iTerm.app",
+    "terminal.integrated.fontFamily": "Monaco, SymbolsNFM, monospace",
+    "terminal.integrated.macOptionIsMeta": true,
     "update.showReleaseNotes": false,
+    "workbench.colorTheme": "Catppuccin Frappé",
+    "workbench.editor.enablePreviewFromQuickOpen": false,
+    "workbench.iconTheme": "catppuccin-frappe",
     "workbench.welcomePage.walkthroughs.openOnInstall": false,
     // Neovim Mode
     "extensions.experimental.affinity": {
         "asvetliakov.vscode-neovim": 1,
     },
-    "vscode-neovim.neovimExecutablePaths.darwin": "/opt/homebrew/bin/nvim",
-    "vscode-neovim.mouseSelectionStartVisualMode": true,
+    "extensions.supportUntrustedWorkspaces": {
+        "asvetliakov.vscode-neovim": {
+            "supported": true,
+        },
+    },
     "vscode-neovim.logOutputToConsole": true,
+    "vscode-neovim.neovimExecutablePaths.darwin": "/opt/homebrew/bin/nvim",
     // Git
     "git.autofetch": true,
     "gitlens.blame.avatars": false,
@@ -38,15 +44,14 @@
     "gitlens.codeLens.recentChange.enabled": false,
     "gitlens.currentLine.enabled": false,
     "gitlens.hovers.avatars": false,
+    "gitlens.showWhatsNewAfterUpgrades": false,
+    "gitlens.telemetry.enabled": false,
     "gitlens.views.fileHistory.avatars": false,
     "gitlens.views.lineHistory.avatars": false,
     "gitlens.views.repositories.avatars": false,
-    "gitlens.telemetry.enabled": false,
-    "gitlens.showWelcomeOnInstall": false,
-    "gitlens.showWhatsNewAfterUpgrades": false,
     // Error Lens
-    "errorLens.exclude": [
-        "^\"[^\"]*\": Unknown word\\.$",
+    "errorLens.excludeBySource": [
+        "cSpell",
     ],
     // cSpell
     "cSpell.import": [
@@ -83,15 +88,23 @@
     "latex-workshop.message.badbox.show": "none",
     // Rust
     "rust-analyzer.procMacro.enable": true,
+    "rust-analyzer.inlayHints.lifetimeElisionHints.enable": "skip_trivial",
+    "rust-analyzer.inlayHints.lifetimeElisionHints.useParameterNames": true,
+    "[rust]": {
+        "editor.defaultFormatter": "rust-lang.rust-analyzer"
+    },
     // Ruby
-    "ruby.format": "rubocop",
+    "[ruby]": {
+        "editor.defaultFormatter": "Shopify.ruby-lsp"
+    },
     // Python
+    "jupyter.askForKernelRestart": false,
     "python.analysis.autoImportCompletions": true,
     "python.analysis.inlayHints.functionReturnTypes": true,
     "python.analysis.inlayHints.pytestParameters": true,
     "python.analysis.inlayHints.variableTypes": true,
+    "python.languageServer": "Pylance",
     "python.terminal.activateEnvironment": false,
-    "jupyter.askForKernelRestart": false,
     "[python]": {
         "editor.defaultFormatter": "charliermarsh.ruff",
     },
@@ -101,4 +114,6 @@
     "[jsonc]": {
         "editor.defaultFormatter": "vscode.json-language-features",
     },
+    // Docker
+    "docker.lsp.telemetry": "off",
 }
