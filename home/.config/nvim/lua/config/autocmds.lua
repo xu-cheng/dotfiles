@@ -8,7 +8,7 @@ vim.api.nvim_create_autocmd({ "FocusGained", "TermClose", "TermLeave" }, {
         if vim.o.buftype ~= "nofile" then
             vim.cmd("checktime")
         end
-    end
+    end,
 })
 
 -- highlight on yank

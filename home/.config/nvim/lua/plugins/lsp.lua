@@ -315,8 +315,8 @@ return {
         cmd = { "TroubleToggle", "Trouble" },
         keys = {
             { "<leader>xx", "<cmd>Trouble diagnostics toggle<cr>", desc = "Diagnostics (Trouble)" },
-            { "<leader>xL", "<cmd>Trouble loclist toggle<cr>", desc = "Location List (Trouble)" },
-            { "<leader>xQ", "<cmd>Trouble qflist toggle<cr>", desc = "Quickfix List (Trouble)" },
+            { "<leader>xL", "<cmd>Trouble loclist toggle<cr>",     desc = "Location List (Trouble)" },
+            { "<leader>xQ", "<cmd>Trouble qflist toggle<cr>",      desc = "Quickfix List (Trouble)" },
             {
                 "[q",
                 function()
