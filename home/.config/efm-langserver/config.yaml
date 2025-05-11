@@ -176,6 +176,9 @@ languages:
   python:
     - <<: *python-ruff
 
+  scss:
+    - <<: *prettier
+
   sh:
     - <<: *sh-shellcheck
     - <<: *sh-shfmt
