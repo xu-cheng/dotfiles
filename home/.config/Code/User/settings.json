@@ -57,14 +57,46 @@
     "cSpell.import": [
         "~/.config/cspell.json"
     ],
-    // Grammarly
-    "grammarly.files.include": [
-        "**/*.md",
-        "**/*.tex",
-        "**/*.txt"
-    ],
     // Path Autocomplete
     "path-autocomplete.triggerOutsideStrings": true,
+    // Rust
+    "rust-analyzer.procMacro.enable": true,
+    "rust-analyzer.inlayHints.lifetimeElisionHints.enable": "skip_trivial",
+    "rust-analyzer.inlayHints.lifetimeElisionHints.useParameterNames": true,
+    "[rust]": {
+        "editor.defaultFormatter": "rust-lang.rust-analyzer"
+    },
+    // Python
+    "jupyter.askForKernelRestart": false,
+    "python.analysis.autoImportCompletions": true,
+    "python.analysis.inlayHints.functionReturnTypes": true,
+    "python.analysis.inlayHints.pytestParameters": true,
+    "python.analysis.inlayHints.variableTypes": true,
+    "python.languageServer": "Pylance",
+    "python.terminal.activateEnvironment": false,
+    "[python]": {
+        "editor.defaultFormatter": "charliermarsh.ruff",
+    },
+    // Ruby
+    "[ruby]": {
+        "editor.defaultFormatter": "Shopify.ruby-lsp"
+    },
+    // Web
+    "[html]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
+    },
+    "[javascript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
+    },
+    "[typescript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
+    },
+    "[css]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
+    },
+    "[scss]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
+    },
     // LaTeX
     "latex-workshop.view.pdf.viewer": "tab",
     "latex-workshop.linting.chktex.enabled": true,
@@ -86,34 +118,8 @@
         },
     ],
     "latex-workshop.message.badbox.show": "none",
-    // Rust
-    "rust-analyzer.procMacro.enable": true,
-    "rust-analyzer.inlayHints.lifetimeElisionHints.enable": "skip_trivial",
-    "rust-analyzer.inlayHints.lifetimeElisionHints.useParameterNames": true,
-    "[rust]": {
-        "editor.defaultFormatter": "rust-lang.rust-analyzer"
-    },
-    // Ruby
-    "[ruby]": {
-        "editor.defaultFormatter": "Shopify.ruby-lsp"
-    },
-    // Python
-    "jupyter.askForKernelRestart": false,
-    "python.analysis.autoImportCompletions": true,
-    "python.analysis.inlayHints.functionReturnTypes": true,
-    "python.analysis.inlayHints.pytestParameters": true,
-    "python.analysis.inlayHints.variableTypes": true,
-    "python.languageServer": "Pylance",
-    "python.terminal.activateEnvironment": false,
-    "[python]": {
-        "editor.defaultFormatter": "charliermarsh.ruff",
-    },
-    // Lua
-    "Lua.telemetry.enable": false,
     // Json
     "[jsonc]": {
         "editor.defaultFormatter": "vscode.json-language-features",
     },
-    // Docker
-    "docker.lsp.telemetry": "off",
 }
