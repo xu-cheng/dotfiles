@@ -4,6 +4,7 @@
 VERSION = "2.0"
 
 require "ipaddr"
+require "open3"
 require "optparse"
 require "socket"
 
@@ -44,9 +45,17 @@ if host.nil? || proxy.nil?
   exit 1
 end
 
-local_ips = Socket.ip_address_list
-                  .reject { |addr| addr.ipv4_loopback? || addr.ipv6_loopback? }
-                  .map { |addr| IPAddr.new addr.ip_address.sub(/%.*$/, "") }
+ips = Socket.ip_address_list
+            .map { |addr| IPAddr.new addr.ip_address.sub(/%.*$/, "") }
+
+if File.exist?("/proc/sys/fs/binfmt_misc/WSLInterop")
+  wsl_ips, status = Open3.capture2("/mnt/c/Windows/System32/WindowsPowerShell/v1.0/powershell.exe",
+                                   "-Command",
+                                   "Get-NetIPAddress | Select-Object -ExpandProperty IPAddress")
+  ips += wsl_ips.split("\n").map(&:strip).reject(&:empty?).map { |addr| IPAddr.new(addr) } if status.success?
+end
+
+local_ips = ips.reject(&:loopback?)
 
 if local_ips.any? { |ip| internal_nets.any? { |net| net.include? ip } }
   exec "nc", host, port.to_s
