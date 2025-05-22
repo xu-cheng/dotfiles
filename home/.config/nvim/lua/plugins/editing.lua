@@ -94,6 +94,21 @@ return {
             local ai_extra = require("mini.extra")
             return {
                 n_lines = 500,
+                mappings = {
+                    -- Main textobject prefixes
+                    around = "a",
+                    inside = "i",
+
+                    -- Next/last variants
+                    around_next = "an",
+                    inside_next = "in",
+                    around_last = "al",
+                    inside_last = "il",
+
+                    -- Move cursor to corresponding edge of `a` textobject
+                    goto_left = "g[",
+                    goto_right = "g]",
+                },
                 custom_textobjects = {
                     o = ai.gen_spec.treesitter({ -- code block
                         a = { "@block.outer", "@conditional.outer", "@loop.outer" },
@@ -124,6 +139,7 @@ return {
         config = true,
         init = function()
             if not vim.g.vscode then
+                local wk = require("which-key")
                 local objects = {
                     { " ", desc = "whitespace" },
                     { '"', desc = '" string' },
@@ -153,32 +169,36 @@ return {
                     { "t", desc = "tag" },
                     { "u", desc = "use/call" },
                     { "{", desc = "{} block" },
-                    { "}", desc = "{} with ws" },
+                    { "}", desc = "{} block with ws" },
                 }
 
-                local ret = { mode = { "o", "x" } }
-                ---@type table<string, string>
+                ---@type wk.Spec[]
+                local ret = {
+
+                }
+                ---@type table<string, { prefix: string, mode: string[] }>
                 local mappings = {
-                    around = "a",
-                    inside = "i",
-                    around_next = "an",
-                    inside_next = "in",
-                    around_last = "al",
-                    inside_last = "il",
+                    around = { prefix = "a", mode = { "o", "x" } },
+                    inside = { prefix = "i", mode = { "o", "x" } },
+                    around_next = { prefix = "an", mode = { "o", "x" } },
+                    inside_next = { prefix = "in", mode = { "o", "x" } },
+                    around_last = { prefix = "al", mode = { "o", "x" } },
+                    inside_last = { prefix = "il", mode = { "o", "x" } },
+                    goto_left = { prefix = "g[", mode = { "n", "o", "x" } },
+                    goto_right = { prefix = "g]", mode = { "n", "o", "x" } },
                 }
 
-                for name, prefix in pairs(mappings) do
-                    name = name:gsub("^around_", ""):gsub("^inside_", "")
-                    ret[#ret + 1] = { prefix, group = name }
+                for name, spec in pairs(mappings) do
+                    ret[#ret + 1] = { spec.prefix, mode = spec.mode, group = name }
                     for _, obj in ipairs(objects) do
                         local desc = obj.desc
-                        if prefix:sub(1, 1) == "i" then
+                        if spec.prefix:sub(1, 1) ~= "i" then
                             desc = desc:gsub(" with ws", "")
                         end
-                        ret[#ret + 1] = { prefix .. obj[1], desc = obj.desc }
+                        ret[#ret + 1] = { spec.prefix .. obj[1], mode = spec.mode, desc = desc }
                     end
                 end
-                require("which-key").add(ret, { notify = false })
+                wk.add(ret, { notify = false })
             end
         end,
     },

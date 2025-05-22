@@ -414,6 +414,7 @@ return {
             local wk = require("which-key")
             wk.setup(opts)
             wk.add({
+                { "<leader>c", group = "LSP", mode = { "n", "x" } },
                 { "<leader>sn", group = "noice", mode = { "n", "x" } },
             })
         end,
