@@ -28,7 +28,7 @@ return {
             snippets = { preset = "luasnip" },
             signature = { enabled = true },
             completion = {
-                ghost_text = { enabled = true },
+                ghost_text = { enabled = true, show_without_selection = true },
                 list = { selection = { preselect = false, auto_insert = true } },
                 documentation = { auto_show = true },
                 menu = {
@@ -67,6 +67,8 @@ return {
                     ["<CR>"] = { "accept_and_enter", "fallback" },
                 },
                 completion = {
+                    ghost_text = { enabled = true },
+                    list = { selection = { preselect = false, auto_insert = true } },
                     menu = { auto_show = true },
                 },
             },
