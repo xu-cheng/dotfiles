@@ -62,12 +62,4 @@ return {
             require("mason-tool-installer").setup(opts)
         end,
     },
-
-    {
-        "williamboman/mason-lspconfig.nvim",
-        enabled = not_vscode,
-        lazy = true,
-        main = "mason-lspconfig",
-        config = true,
-    },
 }
