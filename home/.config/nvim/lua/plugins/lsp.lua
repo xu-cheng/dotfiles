@@ -3,137 +3,78 @@ local not_vscode = not vim.g.vscode
 return {
     -- auto-completion
     {
-        "hrsh7th/nvim-cmp",
-        version = false,
+        "saghen/blink.cmp",
+        version = "1.*",
         enabled = not_vscode,
         event = "InsertEnter",
         dependencies = {
-            {
-                "hrsh7th/cmp-nvim-lsp",
-                version = false,
-            },
-            {
-                "hrsh7th/cmp-nvim-lsp-signature-help",
-                version = false,
-            },
-            {
-                "hrsh7th/cmp-buffer",
-                version = false,
-            },
-            {
-                "hrsh7th/cmp-path",
-                version = false,
-            },
-            {
-                "saadparwaiz1/cmp_luasnip",
-                version = false,
-            },
-            {
-                "petertriho/cmp-git",
-                version = false,
-                dependencies = { "nvim-lua/plenary.nvim" },
-                main = "cmp_git",
-                config = true,
-            },
-            {
-                "octaltree/cmp-look",
-                version = false,
-            },
+            "L3MON4D3/LuaSnip",
+            "Kaiser-Yang/blink-cmp-dictionary",
+            "Kaiser-Yang/blink-cmp-git",
+            "xzbdmw/colorful-menu.nvim",
         },
-        config = function()
-            local cmp = require("cmp")
-            local luasnip = require("luasnip")
-
-            cmp.setup({
-                snippet = {
-                    expand = function(args)
-                        require("luasnip").lsp_expand(args.body)
-                    end,
-                },
-                mapping = cmp.mapping.preset.insert({
-                    ["<C-b>"] = cmp.mapping.scroll_docs(-4),
-                    ["<C-f>"] = cmp.mapping.scroll_docs(4),
-                    ["<C-Space>"] = cmp.mapping.complete(),
-                    ["<C-e>"] = cmp.mapping.abort(),
-                    ["<CR>"] = function(fallback)
-                        if cmp.visible() then
-                            if luasnip.expandable() then
-                                luasnip.expand()
-                            else
-                                cmp.confirm({ select = true })
-                            end
-                        else
-                            fallback()
-                        end
-                    end,
-                    ["<S-CR>"] = cmp.mapping.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = true }),
-                    -- Ref: https://github.com/hrsh7th/nvim-cmp/wiki/Example-mappings#luasnip
-                    -- Remove using tab to trigger auto-complete
-                    ["<Tab>"] = cmp.mapping(function(fallback)
-                        if cmp.visible() then
-                            cmp.select_next_item()
-                        elseif luasnip.locally_jumpable(1) then
-                            luasnip.jump(1)
-                        else
-                            fallback()
-                        end
-                    end, { "i", "s" }),
-                    ["<S-Tab>"] = cmp.mapping(function(fallback)
-                        if cmp.visible() then
-                            cmp.select_prev_item()
-                        elseif luasnip.locally_jumpable(-1) then
-                            luasnip.jump(-1)
-                        else
-                            fallback()
-                        end
-                    end, { "i", "s" }),
-                }),
-                sources = cmp.config.sources({
-                    { name = "nvim_lsp" },
-                    { name = "nvim_lsp_signature_help" },
-                    { name = "luasnip" },
-                    { name = "buffer" },
-                    { name = "path" },
-                    {
-                        name = "look",
-                        keyword_length = 2,
-                        option = {
-                            convert_case = true,
-                            loud = true,
+        ---@module 'blink.cmp'
+        ---@type blink.cmp.Config
+        opts = {
+            keymap = {
+                preset = "super-tab",
+                ["<CR>"] = { "accept", "fallback" },
+                ["<Tab>"] = { "select_next", "snippet_forward", "fallback" },
+                ["<S-Tab>"] = { "select_prev", "snippet_backward", "fallback" },
+            },
+            appearance = {
+                nerd_font_variant = "mono",
+            },
+            snippets = { preset = "luasnip" },
+            signature = { enabled = true },
+            completion = {
+                ghost_text = { enabled = true },
+                list = { selection = { preselect = false, auto_insert = true } },
+                documentation = { auto_show = true },
+                menu = {
+                    draw = {
+                        columns = { { "kind_icon" }, { "label", gap = 1 } },
+                        components = {
+                            label = {
+                                text = function(ctx)
+                                    return require("colorful-menu").blink_components_text(ctx)
+                                end,
+                                highlight = function(ctx)
+                                    return require("colorful-menu").blink_components_highlight(ctx)
+                                end,
+                            },
                         },
                     },
-                }),
-                formatting = {
-                    format = function(_, item)
-                        local icons = require("config/icons").kinds
-                        if icons[item.kind] then
-                            item.kind = icons[item.kind] .. item.kind
-                        end
-                        return item
-                    end,
                 },
-                experimental = {
-                    ghost_text = { hl_group = "LspCodeLens" },
-                },
-            })
-
-            cmp.setup.filetype("gitcommit", {
-                sources = cmp.config.sources({
-                    { name = "git" },
-                }, {
-                    { name = "buffer" },
-                    { name = "path" },
-                    {
-                        name = "look",
-                        keyword_length = 2,
-                        option = {
-                            convert_case = true,
-                            loud = true,
-                        },
+            },
+            sources = {
+                default = { "lsp", "path", "snippets", "buffer", "git", "dictionary" },
+                providers = {
+                    git = {
+                        name = "Git",
+                        module = "blink-cmp-git",
                     },
-                }),
-            })
-        end,
+                    dictionary = {
+                        name = "Dict",
+                        module = "blink-cmp-dictionary",
+                        min_keyword_length = 3,
+                    },
+                },
+            },
+            cmdline = {
+                keymap = {
+                    preset = "inherit",
+                    ["<CR>"] = { "accept_and_enter", "fallback" },
+                },
+                completion = {
+                    menu = { auto_show = true },
+                },
+            },
+            fuzzy = { implementation = "prefer_rust" },
+        },
+        opts_extend = { "sources.default" },
+        config = true,
+        main = "blink.cmp",
     },
 
     -- snippets
@@ -188,7 +129,7 @@ return {
         dependencies = {
             "williamboman/mason.nvim",
             "williamboman/mason-lspconfig.nvim",
-            "hrsh7th/nvim-cmp",
+            "saghen/blink.cmp",
             {
                 "folke/neoconf.nvim",
                 config = true,
@@ -237,7 +178,7 @@ return {
             local lsp_defaults = lspconfig.util.default_config
 
             lsp_defaults.capabilities =
-                vim.tbl_deep_extend("force", lsp_defaults.capabilities, require("cmp_nvim_lsp").default_capabilities())
+                vim.tbl_deep_extend("force", lsp_defaults.capabilities, require("blink.cmp").get_lsp_capabilities())
 
             vim.api.nvim_create_autocmd("LspAttach", {
                 desc = "LSP actions",
