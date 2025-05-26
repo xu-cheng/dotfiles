@@ -70,6 +70,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
     end,
 })
 
+vim.lsp.enable("basedpyright")
 vim.lsp.enable("bashls")
 vim.lsp.enable("cssls")
 vim.lsp.enable("efm")
@@ -77,7 +78,6 @@ vim.lsp.enable("eslint")
 vim.lsp.enable("html")
 vim.lsp.enable("jsonls")
 vim.lsp.enable("lua_ls")
-vim.lsp.enable("pyright")
 vim.lsp.enable("rust_analyzer")
 vim.lsp.enable("solargraph")
 vim.lsp.enable("taplo")

@@ -28,6 +28,7 @@ return {
                 "rubocop",
             },
             linux_ensure_installed = {
+                "basedpyright",
                 "bash-language-server",
                 "cspell",
                 "css-lsp",
@@ -40,7 +41,6 @@ return {
                 "markdownlint",
                 "mdformat",
                 "prettier",
-                "pyright",
                 "ruff",
                 "shellcheck",
                 "shfmt",
