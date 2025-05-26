@@ -173,9 +173,7 @@ return {
                 }
 
                 ---@type wk.Spec[]
-                local ret = {
-
-                }
+                local ret = {}
                 ---@type table<string, { prefix: string, mode: string[] }>
                 local mappings = {
                     around = { prefix = "a", mode = { "o", "x" } },

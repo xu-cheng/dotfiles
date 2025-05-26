@@ -124,6 +124,7 @@ else
                         return icon
                     end
                 end
+                return "  "
             end,
         },
     })
