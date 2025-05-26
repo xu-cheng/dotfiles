@@ -139,7 +139,7 @@ return {
     {
         "smjonas/inc-rename.nvim",
         version = false,
-        event = "IncRename",
+        event = "VeryLazy",
         config = true,
         main = "inc_rename",
     },
