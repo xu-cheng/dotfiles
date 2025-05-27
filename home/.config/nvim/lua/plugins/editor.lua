@@ -146,6 +146,9 @@ return {
                 "nvim-telescope/telescope-fzf-native.nvim",
                 build = "make",
             },
+            {
+                "nvim-telescope/telescope-ui-select.nvim",
+            },
         },
         cmd = { "Telescope" },
         keys = {
@@ -243,10 +246,18 @@ return {
                         hidden = true,
                     },
                 },
+                extensions = {
+                    ["ui-select"] = {
+                        require("telescope.themes").get_dropdown({}),
+                    },
+                },
             }
         end,
-        main = "telescope",
-        config = true,
+        config = function(_, opts)
+            local telescope = require("telescope")
+            telescope.setup(opts)
+            telescope.load_extension("ui-select")
+        end,
     },
 
     -- code action
