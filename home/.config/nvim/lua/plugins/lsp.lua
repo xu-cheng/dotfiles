@@ -67,7 +67,7 @@ return {
                     ["<CR>"] = { "accept_and_enter", "fallback" },
                 },
                 completion = {
-                    ghost_text = { enabled = true },
+                    ghost_text = { enabled = false },
                     list = { selection = { preselect = false, auto_insert = true } },
                     menu = { auto_show = true },
                 },
