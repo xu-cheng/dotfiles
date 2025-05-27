@@ -8,9 +8,10 @@ return {
         enabled = not_vscode,
         event = "InsertEnter",
         dependencies = {
-            "L3MON4D3/LuaSnip",
+            "Kaiser-Yang/blink-cmp-avante",
             "Kaiser-Yang/blink-cmp-dictionary",
             "Kaiser-Yang/blink-cmp-git",
+            "L3MON4D3/LuaSnip",
             "xzbdmw/colorful-menu.nvim",
         },
         ---@module "blink.cmp"
@@ -48,8 +49,12 @@ return {
                 },
             },
             sources = {
-                default = { "lsp", "path", "snippets", "buffer", "git", "dictionary" },
+                default = { "avante", "lsp", "path", "snippets", "buffer", "git", "dictionary" },
                 providers = {
+                    avante = {
+                        module = "blink-cmp-avante",
+                        name = "Avante",
+                    },
                     git = {
                         name = "Git",
                         module = "blink-cmp-git",
