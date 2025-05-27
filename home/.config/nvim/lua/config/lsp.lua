@@ -43,7 +43,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
         end
 
         -- LSP actions
-        map({ "n", "x" }, "<leader>ca", vim.lsp.buf.code_action, "Code Action", { has = "codeAction" })
+        map({ "n", "x" }, "<leader>ca", require("actions-preview").code_actions, "Code Action", { has = "codeAction" })
         map("n", "<leader>cd", vim.diagnostic.open_float, "Line Diagnostics")
         map(
             { "n", "x" },
