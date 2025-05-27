@@ -13,7 +13,7 @@ return {
             "Kaiser-Yang/blink-cmp-git",
             "xzbdmw/colorful-menu.nvim",
         },
-        ---@module 'blink.cmp'
+        ---@module "blink.cmp"
         ---@type blink.cmp.Config
         opts = {
             keymap = {
