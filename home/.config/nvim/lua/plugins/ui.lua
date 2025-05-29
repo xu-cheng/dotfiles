@@ -266,6 +266,7 @@ return {
             "SmiteshP/nvim-navic",
             "nvim-tree/nvim-web-devicons",
         },
+        event = "VeryLazy",
         opts = function()
             local kinds = vim.deepcopy(require("config/icons").kinds)
             for key, value in pairs(kinds) do
