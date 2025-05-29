@@ -47,9 +47,6 @@ return {
         },
         config = function(_, opts)
             require("mini.surround").setup(opts)
-            -- remap adding surrounding to Visual mode selection
-            vim.keymap.del("x", "ys")
-            vim.keymap.set("x", "S", [[:<C-u>lua MiniSurround.add("visual")<CR>]], { silent = true })
             -- make special mapping for "add surrounding for line"
             vim.keymap.set("n", "yss", "ys_", { remap = true })
         end,
@@ -115,10 +112,10 @@ return {
                         i = { "@block.inner", "@conditional.inner", "@loop.inner" },
                     }),
                     f = ai.gen_spec.treesitter({ a = "@function.outer", i = "@function.inner" }), -- function
-                    c = ai.gen_spec.treesitter({ a = "@class.outer", i = "@class.inner" }), -- class
-                    t = { "<([%p%w]-)%f[^<%w][^<>]->.-</%1>", "^<.->().*()</[^/]->$" }, -- tags
-                    d = { "%f[%d]%d+" }, -- digits
-                    e = { -- Word with case
+                    c = ai.gen_spec.treesitter({ a = "@class.outer", i = "@class.inner" }),       -- class
+                    t = { "<([%p%w]-)%f[^<%w][^<>]->.-</%1>", "^<.->().*()</[^/]->$" },           -- tags
+                    d = { "%f[%d]%d+" },                                                          -- digits
+                    e = {                                                                         -- Word with case
                         {
                             "%u[%l%d]+%f[^%l%d]",
                             "%f[%S][%l%d]+%f[^%l%d]",
@@ -128,7 +125,7 @@ return {
                         "^().*()$",
                     },
                     g = ai_extra.gen_ai_spec.buffer(),
-                    u = ai.gen_spec.function_call(), -- u for "Usage"
+                    u = ai.gen_spec.function_call(),                           -- u for "Usage"
                     U = ai.gen_spec.function_call({ name_pattern = "[%w_]" }), -- without dot in function name
                     L = ai_extra.gen_ai_spec.line(),
                     D = ai_extra.gen_ai_spec.diagnostic(),
@@ -245,5 +242,21 @@ return {
         lazy = true,
         main = "mini.extra",
         config = true,
+    },
+
+    -- flash
+    {
+        "folke/flash.nvim",
+        event = "VeryLazy",
+        ---@type Flash.Config
+        opts = {},
+        -- stylua: ignore
+        keys = {
+            { "s",     mode = { "n", "x", "o" }, function() require("flash").jump() end,              desc = "Flash" },
+            { "S",     mode = { "n", "x", "o" }, function() require("flash").treesitter() end,        desc = "Flash Treesitter" },
+            { "r",     mode = "o",               function() require("flash").remote() end,            desc = "Remote Flash" },
+            { "R",     mode = { "o", "x" },      function() require("flash").treesitter_search() end, desc = "Treesitter Search" },
+            { "<c-s>", mode = { "c" },           function() require("flash").toggle() end,            desc = "Toggle Flash Search" },
+        },
     },
 }
