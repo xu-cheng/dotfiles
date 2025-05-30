@@ -79,23 +79,6 @@ tools:
       - .prettierrc
       - .prettierrc.json
 
-  python-ruff: &python-ruff
-    lint-source: ruff
-    lint-command: >-
-      ruff check --quiet --stdin-filename ${INPUT}
-    lint-stdin: true
-    lint-ignore-exit-code: true
-    lint-formats:
-      - "%f:%l:%c: %m"
-    lint-severity: 3
-    format-command: >-
-      ruff format --quiet --stdin-filename ${INPUT} -
-    format-stdin: true
-    root-markers:
-      - pyproject.toml
-      - ruff.toml
-      - .ruff.toml
-
   sh-shellcheck: &sh-shellcheck
     lint-source: shellcheck
     lint-command: >-
@@ -172,9 +155,6 @@ languages:
   markdown:
     - <<: *md-markdownlint
     - <<: *md-mdformat
-
-  python:
-    - <<: *python-ruff
 
   scss:
     - <<: *prettier
