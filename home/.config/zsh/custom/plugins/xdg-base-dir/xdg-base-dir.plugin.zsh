@@ -27,10 +27,6 @@ export CP_HOME_DIR="$XDG_CONFIG_HOME/cocoapods"
 export CP_REPOS_DIR="$XDG_CACHE_HOME/cocoapods/repos"
 export CP_TEMPLATES_DIR="$XDG_DATA_HOME/cocoapods/templates"
 
-# fpp
-# https://github.com/facebook/PathPicker/pull/231
-export FPP_DIR="$XDG_CACHE_HOME/fpp"
-
 # httpie
 # https://github.com/jakubroztocil/httpie#config-file-location
 export HTTPIE_CONFIG_DIR="$XDG_CONFIG_HOME/httpie"
@@ -45,10 +41,8 @@ export LESSHISTFILE="$XDG_STATE_HOME/less/history"
 
 # npm
 # https://github.com/npm/npm/issues/6675
-# https://github.com/nodejs/node-gyp/issues/21
 export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME/npm/npmrc"
 export NPM_CONFIG_CACHE="$XDG_CACHE_HOME/npm"
-export NPM_CONFIG_DEVDIR="$XDG_CACHE_HOME/node-gyp"
 
 # openssl
 export RANDFILE="$XDG_STATE_HOME/openssl-rnd"
