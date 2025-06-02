@@ -77,6 +77,11 @@ return {
         main = "nvim-treesitter.configs",
         config = true,
     },
+    {
+        "bezhermoso/tree-sitter-ghostty",
+        ft = "ghostty",
+        build = "make nvim_install",
+    },
 
     -- context_commentstring used by mini.comment
     {
