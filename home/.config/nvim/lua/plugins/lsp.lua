@@ -9,10 +9,13 @@ return {
         event = "InsertEnter",
         dependencies = {
             "Kaiser-Yang/blink-cmp-avante",
-            "Kaiser-Yang/blink-cmp-dictionary",
             "Kaiser-Yang/blink-cmp-git",
             "L3MON4D3/LuaSnip",
             "xzbdmw/colorful-menu.nvim",
+            {
+                "Kaiser-Yang/blink-cmp-dictionary",
+                dependencies = { "nvim-lua/plenary.nvim" },
+            },
         },
         ---@module "blink.cmp"
         ---@type blink.cmp.Config
@@ -49,20 +52,36 @@ return {
                 },
             },
             sources = {
-                default = { "avante", "lsp", "path", "snippets", "buffer", "git", "dictionary" },
+                default = { "avante", "lsp", "lazydev", "path", "snippets", "buffer", "git", "dictionary" },
                 providers = {
                     avante = {
-                        module = "blink-cmp-avante",
                         name = "Avante",
-                    },
-                    git = {
-                        name = "Git",
-                        module = "blink-cmp-git",
+                        module = "blink-cmp-avante",
                     },
                     dictionary = {
                         name = "Dict",
                         module = "blink-cmp-dictionary",
                         min_keyword_length = 3,
+                        opts = {
+                            dictionary_files = {
+                                "/usr/share/dict/words",
+                                vim.fn.expand("~/.config/nvim/spell/en.utf-8.add"),
+                            },
+                        },
+                    },
+                    git = {
+                        name = "Git",
+                        module = "blink-cmp-git",
+                    },
+                    lazydev = {
+                        name = "Lazydev",
+                        module = "lazydev.integrations.blink",
+                        score_offset = 100,
+                    },
+                    path = {
+                        opts = {
+                            show_hidden_files_by_default = true,
+                        },
                     },
                 },
             },
