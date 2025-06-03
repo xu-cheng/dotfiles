@@ -1,0 +1,7 @@
+{
+    "Generate UUID": {
+        "prefix": "uuid",
+        "body": ["${UUID}"],
+        "description": "Generate UUID",
+    },
+}
