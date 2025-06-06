@@ -1,0 +1,7 @@
+# frozen_string_literal: true
+
+require "fileutils"
+
+irb_state_dir = "#{ENV["XDG_STATE_HOME"] || "#{ENV["HOME"]}/.local/state"}/irb".freeze
+FileUtils.mkdir_p irb_state_dir
+IRB.conf[:HISTORY_FILE] = "#{irb_state_dir}/history".freeze
