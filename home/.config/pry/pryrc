@@ -1,4 +1,4 @@
-# vim: set filetype=ruby:
+# vim: set ft=ruby:
 
 # plugins list
 %w[

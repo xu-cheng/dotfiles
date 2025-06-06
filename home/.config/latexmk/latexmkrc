@@ -1,4 +1,4 @@
-# vim: set filetype=perl:
+# vim: set ft=perl:
 
 # Use lualatex
 $pdf_mode = 4;
