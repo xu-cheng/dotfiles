@@ -1,3 +1,4 @@
+// vim: set ft=jsonc:
 {
     "editor.fontFamily": "Monaco, Symbols Nerd Font Mono, monospace",
     "editor.fontSize": 13,
@@ -125,5 +126,10 @@
     // Json
     "[jsonc]": {
         "editor.defaultFormatter": "vscode.json-language-features",
+    },
+    // Yaml
+    "redhat.telemetry.enabled": false,
+    "[yaml]": {
+        "editor.defaultFormatter": "redhat.vscode-yaml",
     },
 }
