@@ -1,5 +1,5 @@
 {
-    "editor.fontFamily": "Monaco, SymbolsNFM, monospace",
+    "editor.fontFamily": "Monaco, Symbols Nerd Font Mono, monospace",
     "editor.fontSize": 13,
     "editor.inlineSuggest.enabled": true,
     "editor.minimap.enabled": false,
@@ -18,7 +18,7 @@
     },
     "telemetry.feedback.enabled": false,
     "telemetry.telemetryLevel": "off",
-    "terminal.external.osxExec": "iTerm.app",
+    "terminal.external.osxExec": "Ghostty.app",
     "terminal.integrated.fontFamily": "Monaco, SymbolsNFM, monospace",
     "terminal.integrated.macOptionIsMeta": true,
     "update.showReleaseNotes": false,
