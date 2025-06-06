@@ -1,11 +1,17 @@
 {
-  "default": true,
-  "fenced-code-language": false,
-  "first-line-h1": false,
-  "line_length": false,
-  "ul-start-left": false,
-  "ul-indent": false,
-  "no-inline-html": false,
-  "no-bare-urls": false,
-  "whitespace": false
+    "default": true,
+    "fenced-code-language": false,
+    "first-line-heading": false,
+    "line-length": false,
+    "no-bare-urls": false,
+    "no-inline-html": false,
+    "no-duplicate-heading": {
+        "siblings_only": true
+    },
+    "strong-style": {
+        "style": "asterisk"
+    },
+    "ul-style": {
+        "style": "dash"
+    }
 }
