@@ -163,20 +163,29 @@ return {
     {
         "smjonas/inc-rename.nvim",
         version = false,
+        enabled = not_vscode,
         event = "VeryLazy",
         config = true,
         main = "inc_rename",
     },
     {
         "folke/lazydev.nvim",
+        enabled = not_vscode,
         ft = "lua",
         config = true,
         main = "lazydev",
     },
     {
         "folke/neoconf.nvim",
+        enabled = not_vscode,
         event = { "BufReadPre", "BufNewFile" },
         config = true,
         main = "neoconf",
+    },
+    {
+        "b0o/schemastore.nvim",
+        version = false,
+        enabled = not_vscode,
+        lazy = true,
     },
 }

@@ -47,6 +47,7 @@ return {
                 "solargraph",
                 "stylua",
                 "taplo",
+                "yaml-language-server",
             },
             auto_update = true,
             run_on_start = true,
