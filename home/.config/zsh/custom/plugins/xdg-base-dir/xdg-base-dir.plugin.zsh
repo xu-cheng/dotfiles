@@ -23,6 +23,10 @@ export BUNDLE_USER_CACHE="$XDG_CACHE_HOME/bundle"
 export BUNDLE_USER_CONFIG="$XDG_CONFIG_HOME/bundle/config"
 export BUNDLE_USER_PLUGIN="$XDG_DATA_HOME/bundle/plugin"
 
+# solargraph
+# https://github.com/castwide/solargraph/#the-documentation-cache
+export SOLARGRAPH_CACHE="$XDG_CACHE_HOME/solargraph"
+
 # cargo and rustup
 # https://doc.rust-lang.org/cargo/reference/environment-variables.html
 # https://github.com/rust-lang-nursery/rustup.rs#choosing-where-to-install
