@@ -97,16 +97,6 @@ map("i", ",", ",<c-g>u")
 map("i", ".", ".<c-g>u")
 map("i", ";", ";<c-g>u")
 
--- windows management
-map("n", "<C-w>|", ":vsplit<CR>", { silent = true, desc = "Split window vertically" })
-map("n", "<C-w>-", ":split<CR>", { silent = true, desc = "Split window horizontally" })
-
--- move to window using the <ctrl> hjkl keys
-map("n", "<C-h>", "<C-w>h", { desc = "Go to Left Window", remap = true })
-map("n", "<C-j>", "<C-w>j", { desc = "Go to Lower Window", remap = true })
-map("n", "<C-k>", "<C-w>k", { desc = "Go to Upper Window", remap = true })
-map("n", "<C-l>", "<C-w>l", { desc = "Go to Right Window", remap = true })
-
 --keywordprg
 map("n", "<leader>K", "<cmd>norm! K<cr>", { desc = "Keywordprg" })
 
@@ -224,4 +214,14 @@ else
     map("n", "tl", ":tablast<cr>", { silent = true, desc = "Last tab" })
     map("n", "tmj", ":tabmove -1<cr>", { silent = true, desc = "Move tab left" })
     map("n", "tmk", ":tabmove +1<cr>", { silent = true, desc = "Move tab right" })
+
+    -- windows management
+    map("n", "<C-w>|", ":vsplit<CR>", { silent = true, desc = "Split window vertically" })
+    map("n", "<C-w>-", ":split<CR>", { silent = true, desc = "Split window horizontally" })
+
+    -- move to window using the <ctrl> hjkl keys
+    map("n", "<C-h>", "<C-w>h", { desc = "Go to Left Window", remap = true })
+    map("n", "<C-j>", "<C-w>j", { desc = "Go to Lower Window", remap = true })
+    map("n", "<C-k>", "<C-w>k", { desc = "Go to Upper Window", remap = true })
+    map("n", "<C-l>", "<C-w>l", { desc = "Go to Right Window", remap = true })
 end
