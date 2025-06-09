@@ -112,6 +112,9 @@ if vscode then
     map("i", "<c-k>", function()
         vscode_neovim.action("editor.action.triggerParameterHints")
     end)
+    map("n", "gx", function()
+        vscode_neovim.action("editor.action.openLink")
+    end)
 else
     -- open location list/quickfix list
     map("n", "<leader>xl", "<cmd>lopen<cr>", { desc = "Location List" })
