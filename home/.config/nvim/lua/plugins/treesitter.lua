@@ -9,8 +9,18 @@ return {
         cmd = { "TSInstall", "TSUpdate", "TSBufEnable", "TSBufDisable", "TSBufToggle", "TSModuleInfo" },
         event = { "BufReadPost", "BufNewFile" },
         keys = {
-            { "<C-space>", desc = "Increment selection" },
-            { "<bs>",      desc = "Decrement selection", mode = "x" },
+            { "<C-space>",  desc = "Increment selection" },
+            { "<bs>",       desc = "Decrement selection", mode = "x" },
+            { "<leader>ui", vim.show_pos,                 desc = "Inspect Pos", mode = "n" },
+            {
+                "<leader>uI",
+                function()
+                    vim.treesitter.inspect_tree()
+                    vim.api.nvim_input("I")
+                end,
+                desc = "Inspect Tree",
+                mode = "n",
+            },
         },
         dependencies = {
             {

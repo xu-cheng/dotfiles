@@ -308,8 +308,8 @@ return {
                 "<cmd>Trouble lsp toggle<cr>",
                 desc = "LSP references/definitions/... (Trouble)",
             },
-            { "<leader>xL", "<cmd>Trouble loclist toggle<cr>", desc = "Location List (Trouble)" },
-            { "<leader>xQ", "<cmd>Trouble qflist toggle<cr>",  desc = "Quickfix List (Trouble)" },
+            { "<leader>xl", "<cmd>Trouble loclist toggle<cr>", desc = "Location list" },
+            { "<leader>xq", "<cmd>Trouble qflist toggle<cr>",  desc = "Quickfix list" },
             {
                 "[q",
                 function()
