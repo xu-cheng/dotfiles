@@ -37,6 +37,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
                 opts.has = nil
             end
             opts.buffer = buffer
+            opts.silent = opts.silent ~= false
             opts.desc = desc
             vim.keymap.set(m, lhs, rhs, opts)
         end
