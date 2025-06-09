@@ -9,3 +9,4 @@ theme = catppuccin-frappe
 macos-option-as-alt = true
 quit-after-last-window-closed = true
 shell-integration = zsh
+unfocused-split-opacity = 1
