@@ -37,13 +37,14 @@ vim.api.nvim_create_autocmd("LspAttach", {
                 opts.has = nil
             end
             opts.buffer = buffer
-            opts.silent = opts.silent ~= false
             opts.desc = desc
             vim.keymap.set(m, lhs, rhs, opts)
         end
 
-        -- LSP actions
+        map("n", "<leader>cl", "<cmd>LspInfo<cr>", "Lsp Info")
         map({ "n", "x" }, "<leader>ca", require("actions-preview").code_actions, "Code Action", { has = "codeAction" })
+        map({ "n", "x" }, "<leader>cc", vim.lsp.codelens.run, "Run Codelens", { has = "codeLens" })
+        map("n", "<leader>cC", vim.lsp.codelens.refresh, "Rerfesh & Display Codelens", { has = "codeLens" })
         map("n", "<leader>cd", vim.diagnostic.open_float, "Line Diagnostics")
         map(
             { "n", "x" },
@@ -52,18 +53,21 @@ vim.api.nvim_create_autocmd("LspAttach", {
             "Format",
             { has = "documentFormatting" }
         )
-        map({ "n", "x" }, "<leader>cc", vim.lsp.codelens.run, "Run Codelens", { has = "codeLens" })
-        map("n", "<leader>cC", vim.lsp.codelens.refresh, "Rerfesh & Display Codelens", { has = "codeLens" })
-        map("n", "<leader>cl", "<cmd>LspInfo<cr>", "Lsp Info")
         map("n", "<leader>cr", function()
             return ":IncRename " .. vim.fn.expand("<cword>")
         end, "Rename", { expr = true, has = "rename" })
 
-        map("n", "gd", "<cmd>Telescope lsp_definitions<cr>", "Goto Definition", { has = "definition" })
-        map("n", "gr", "<cmd>Telescope lsp_references<cr>", "References")
+        map("n", "gd", function()
+            require("telescope.builtin").lsp_definitions({ reuse_win = true })
+        end, "Goto Definition", { has = "definition" })
+        map("n", "gr", "<cmd>Telescope lsp_references<cr>", "References", { nowait = true })
         map("n", "gD", vim.lsp.buf.declaration, "Goto Declaration")
-        map("n", "gI", "<cmd>Telescope lsp_implementations<cr>", "Goto Implementation")
-        map("n", "gT", "<cmd>Telescope lsp_type_definitions<cr>", "Goto Type Definition")
+        map("n", "gI", function()
+            require("telescope.builtin").lsp_implementations({ reuse_win = true })
+        end, "Goto Implementation")
+        map("n", "gT", function()
+            require("telescope.builtin").lsp_type_definitions({ reuse_win = true })
+        end, "Goto Type Definition")
         map("n", "K", vim.lsp.buf.hover, "Hover")
         map("n", "gK", vim.lsp.buf.signature_help, "Signature Help", { has = "signatureHelp" })
         map("i", "<c-k>", vim.lsp.buf.signature_help, "Signature Help", { has = "signatureHelp" })

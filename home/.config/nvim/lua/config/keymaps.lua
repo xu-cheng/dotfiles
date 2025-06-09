@@ -73,7 +73,7 @@ map("i", ";", ";<c-g>u")
 if vscode then
     local vscode_neovim = require("vscode")
     map({ "n", "x" }, "<leader>ca", function()
-        vscode_neovim.action("editor.action.quickFix")
+        vscode_neovim.action("editor.action.codeAction")
     end)
     map("n", "<leader>cd", function()
         vscode_neovim.action("editor.action.marker.next")
