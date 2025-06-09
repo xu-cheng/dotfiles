@@ -414,8 +414,19 @@ return {
             local wk = require("which-key")
             wk.setup(opts)
             wk.add({
+                { "<leader>a", group = "avante", mode = { "n", "x" } },
+                { "<leader>b", group = "buff", mode = { "n", "x" } },
                 { "<leader>c", group = "LSP", mode = { "n", "x" } },
+                { "<leader>e", group = "open file", mode = { "n", "x" } },
+                { "<leader>f", group = "telescope", mode = { "n", "x" } },
+                { "<leader>fg", group = "telescope git", mode = { "n", "x" } },
+                { "<leader>g", group = "git", mode = { "n", "x" } },
+                { "<leader>gh", group = "git hunk", mode = { "n", "x" } },
+                { "<leader>q", group = "section", mode = { "n", "x" } },
+                { "<leader>s", group = "telescope search", mode = { "n", "x" } },
                 { "<leader>sn", group = "noice", mode = { "n", "x" } },
+                { "<leader>u", group = "notify", mode = { "n", "x" } },
+                { "<leader>x", group = "diagnostics", mode = { "n", "x" } },
             })
         end,
     },
