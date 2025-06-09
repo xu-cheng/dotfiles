@@ -71,6 +71,11 @@ vim.api.nvim_create_autocmd("LspAttach", {
         map("n", "K", vim.lsp.buf.hover, "Hover")
         map("n", "gK", vim.lsp.buf.signature_help, "Signature Help", { has = "signatureHelp" })
         map("i", "<c-k>", vim.lsp.buf.signature_help, "Signature Help", { has = "signatureHelp" })
+
+        -- Not supported natively by neovim yet. Using a plugin.
+        -- https://github.com/neovim/neovim/issues/33497
+        local lsplinks = require("lsplinks")
+        map("n", "gx", lsplinks.gx, "Goto document link", { has = "documentLink" })
     end,
 })
 

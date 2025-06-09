@@ -188,4 +188,11 @@ return {
         enabled = not_vscode,
         lazy = true,
     },
+    {
+        "icholy/lsplinks.nvim",
+        enabled = not_vscode,
+        lazy = true,
+        config = true,
+        main = "lsplinks",
+    },
 }
