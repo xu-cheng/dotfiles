@@ -409,26 +409,62 @@ return {
                     suggestions = 26,
                 },
             },
+            spec = {
+                {
+                    mode = { "n", "v" },
+                    { "<leader><tab>", group = "tabs" },
+                    { "<leader>a", group = "avante" },
+                    { "<leader>c", group = "code" },
+                    { "<leader>e", group = "open" },
+                    { "<leader>f", group = "find" },
+                    { "<leader>fg", group = "find git" },
+                    { "<leader>g", group = "git" },
+                    { "<leader>gh", group = "hunks" },
+                    { "<leader>q", group = "session" },
+                    { "<leader>s", group = "search" },
+                    { "<leader>sn", group = "noice" },
+                    { "<leader>u", group = "ui", icon = { icon = "󰙵 ", color = "cyan" } },
+                    { "<leader>x", group = "diagnostics/quickfix", icon = { icon = "󱖫 ", color = "green" } },
+                    { "[", group = "prev" },
+                    { "]", group = "next" },
+                    { "g", group = "goto" },
+                    { "z", group = "fold" },
+                    {
+                        "<leader>b",
+                        group = "buffer",
+                        expand = function()
+                            return require("which-key.extras").expand.buf()
+                        end,
+                    },
+                    {
+                        "<leader>w",
+                        group = "windows",
+                        proxy = "<c-w>",
+                        expand = function()
+                            return require("which-key.extras").expand.win()
+                        end,
+                    },
+                },
+            },
         },
-        config = function(_, opts)
-            local wk = require("which-key")
-            wk.setup(opts)
-            wk.add({
-                { "<leader>a", group = "avante", mode = { "n", "x" } },
-                { "<leader>b", group = "buff", mode = { "n", "x" } },
-                { "<leader>c", group = "LSP", mode = { "n", "x" } },
-                { "<leader>e", group = "open file", mode = { "n", "x" } },
-                { "<leader>f", group = "telescope", mode = { "n", "x" } },
-                { "<leader>fg", group = "telescope git", mode = { "n", "x" } },
-                { "<leader>g", group = "git", mode = { "n", "x" } },
-                { "<leader>gh", group = "git hunk", mode = { "n", "x" } },
-                { "<leader>q", group = "session", mode = { "n", "x" } },
-                { "<leader>s", group = "telescope search", mode = { "n", "x" } },
-                { "<leader>sn", group = "noice", mode = { "n", "x" } },
-                { "<leader>u", group = "notifications", mode = { "n", "x" } },
-                { "<leader>x", group = "diagnostics", mode = { "n", "x" } },
-            })
-        end,
+        keys = {
+            {
+                "<leader>?",
+                function()
+                    require("which-key").show({ global = false })
+                end,
+                desc = "Buffer Keymaps (which-key)",
+            },
+            {
+                "<c-w><space>",
+                function()
+                    require("which-key").show({ keys = "<c-w>", loop = true })
+                end,
+                desc = "Window Hydra Mode (which-key)",
+            },
+        },
+        config = true,
+        main = "which-key",
     },
 
     -- dashboard
