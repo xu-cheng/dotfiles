@@ -33,10 +33,10 @@ map("n", "Y", "y$", { desc = "Yank from the cursor to the end of the line" })
 -- delete without overwriting last yank.
 local delete_ops = { "d", "x" }
 for _, k in ipairs(delete_ops) do
-    map({ "n", "x" }, "<leader>" .. k, '"_' .. k, {
+    map({ "n", "x" }, "<localleader>" .. k, '"_' .. k, {
         desc = "Delete without overwriting last yank",
     })
-    map({ "n", "x" }, "<leader>" .. string.upper(k), '"_' .. string.upper(k), {
+    map({ "n", "x" }, "<localleader>" .. string.upper(k), '"_' .. string.upper(k), {
         desc = "Delete without overwriting last yank",
     })
 end

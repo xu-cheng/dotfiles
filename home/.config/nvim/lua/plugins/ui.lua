@@ -415,6 +415,8 @@ return {
                     { "<leader><tab>", group = "tabs" },
                     { "<leader>a", group = "avante" },
                     { "<leader>c", group = "code" },
+                    { "<leader>d", group = "debug" },
+                    { "<leader>dp", group = "profiler" },
                     { "<leader>e", group = "open" },
                     { "<leader>f", group = "find" },
                     { "<leader>fg", group = "find git" },
