@@ -1,7 +1,9 @@
 local opt = vim.opt
 
 -- General
-opt.clipboard = { "unnamed", "unnamedplus" } -- sync with system clipboard
+
+-- only set clipboard if not in ssh, to make sure the OSC 52 integration works automatically.
+opt.clipboard = vim.env.SSH_TTY and "" or { "unnamed", "unnamedplus" } -- sync with system clipboard
 if vim.fn.has("wsl") == 1 then
     -- https://github.com/neovim/neovim/wiki/FAQ#how-to-use-the-windows-clipboard-from-wsl
     vim.g.clipboard = {
@@ -35,10 +37,15 @@ opt.ignorecase = true      -- ignore case when searching (use `\C` to force not 
 opt.smartcase = true       -- don't ignore case when searching if pattern has upper case
 opt.smartindent = true     -- make indenting smart
 opt.expandtab = true       -- use spaces instead of tabs
+opt.shiftround = true      -- round indent
 opt.shiftwidth = 4         -- size of an indent
 opt.tabstop = 4            -- number of spaces tabs count for
 opt.softtabstop = 4        -- let backspace delete indent
 opt.virtualedit = "block"  -- allow going past the end of line in visual block mode
+
+opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+opt.foldmethod = "expr"
+opt.foldtext = ""
 
 if vim.g.vscode then
     local vscode = require("vscode")
@@ -50,11 +57,13 @@ else
     opt.autowrite = true                      -- enable auto write
     opt.backup = true                         -- enable backup
     opt.backupdir:remove(".")                 -- don't create filename~ backup file in the same directory
+    opt.updatetime = 200                      -- save swap file and trigger CursorHold
     opt.confirm = true                        -- confirm to save changes before exiting modified buffer
     opt.completeopt = "menu,menuone,noselect" -- customize completions
     opt.wildmode = "list:longest,full"        -- command <Tab> completion, list matches, then longest common part, then all.
     opt.shortmess:append("cCIW")              -- reduce command line messages
-    opt.splitkeep = "screen"                  -- reduce scroll during window split
+    opt.jumpoptions = "view"
+    opt.sessionoptions = { "buffers", "curdir", "tabpages", "winsize", "help", "globals", "skiprtp", "folds" }
 
     -- Editing
     opt.encoding = "utf-8"                        -- default file encoding
@@ -73,10 +82,13 @@ else
     -- Appearance
 
     opt.termguicolors = true -- true color support
+    opt.smoothscroll = true
     opt.number = true        -- show line numbers
-    opt.signcolumn = "yes"   -- Always show sign column (otherwise it will shift text)
+    opt.ruler = false        -- disable the default ruler
+    opt.showmode = false     -- don't show mode since we have a statusline
+    opt.signcolumn = "yes"   -- always show sign column (otherwise it will shift text)
     opt.cursorline = true    -- highlight current line
-    opt.list = true
+    opt.list = true          -- show some invisible characters
     -- highlight problematic whitespace
     opt.listchars = {
         tab = "  ›",
@@ -85,18 +97,31 @@ else
         precedes = "…",
         nbsp = "␣",
     }
-    opt.pumblend = 10    -- make builtin completion menus slightly transparent
-    opt.pumheight = 10   -- make popup menu smaller
-    opt.winblend = 0     -- we don't want transparent floating windows
-    opt.scrolljump = 5   -- lines to scroll when cursor leaves screen
-    opt.scrolloff = 3    -- minimum lines to keep above and below cursor
+    opt.pumblend = 10     -- make builtin completion menus slightly transparent
+    opt.pumheight = 10    -- make popup menu smaller
+    opt.winblend = 0      -- we don't want transparent floating windows
+    opt.scrolljump = 5    -- lines to scroll when cursor leaves screen
+    opt.scrolloff = 4     -- lines of context
+    opt.sidescrolloff = 8 -- columns of context
     opt.timeout = true
-    opt.timeoutlen = 300 -- used by which-key
+    opt.timeoutlen = 300  -- used by which-key
+    opt.laststatus = 3    -- global statusline
 
     opt.conceallevel = 2
 
+    opt.fillchars = {
+        foldopen = "",
+        foldclose = "",
+        fold = " ",
+        foldsep = " ",
+        diff = "╱",
+        eob = " ",
+    }
+    opt.foldlevel = 99
+
     -- Window/Tab Management
     opt.splitbelow = true           -- horizontal splits will be below
+    opt.splitkeep = "screen"        -- reduce scroll during window split
     opt.splitright = true           -- vertical splits will be to the right
     opt.winminheight = 0            -- windows can be 0 line high
     opt.winminwidth = 3             -- minimum window width
