@@ -200,6 +200,12 @@ TRAPUSR1() {
     fi
 }
 
+# ghostty shell integration
+# N.B. needed for zsh run inside tmux
+if [[ -n "${GHOSTTY_RESOURCES_DIR}" ]]; then
+    builtin source "${GHOSTTY_RESOURCES_DIR}/shell-integration/zsh/ghostty-integration"
+fi
+
 # Load confidential information
 if [[ -s "$XDG_CONFIG_HOME/tokens" ]]; then
     . "$XDG_CONFIG_HOME/tokens"
