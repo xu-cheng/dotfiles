@@ -422,10 +422,10 @@ return {
                 { "<leader>fg", group = "telescope git", mode = { "n", "x" } },
                 { "<leader>g", group = "git", mode = { "n", "x" } },
                 { "<leader>gh", group = "git hunk", mode = { "n", "x" } },
-                { "<leader>q", group = "section", mode = { "n", "x" } },
+                { "<leader>q", group = "session", mode = { "n", "x" } },
                 { "<leader>s", group = "telescope search", mode = { "n", "x" } },
                 { "<leader>sn", group = "noice", mode = { "n", "x" } },
-                { "<leader>u", group = "notify", mode = { "n", "x" } },
+                { "<leader>u", group = "notifications", mode = { "n", "x" } },
                 { "<leader>x", group = "diagnostics", mode = { "n", "x" } },
             })
         end,
