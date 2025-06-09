@@ -358,4 +358,19 @@ return {
         main = "quicker",
         config = true,
     },
+
+    -- terminal
+    {
+        "akinsho/toggleterm.nvim",
+        enabled = not_vscode,
+        event = "VeryLazy",
+        version = "*",
+        opts = {
+            open_mapping = [[<C-\>]],
+            insert_mappings = false,
+        },
+        main = "toggleterm",
+        config = true,
+    }
+
 }

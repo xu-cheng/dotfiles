@@ -14,6 +14,7 @@ local excluded_filetypes = {
     "neo-tree",
     "noice",
     "notify",
+    "toggleterm",
 }
 
 return {
