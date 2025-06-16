@@ -27,6 +27,7 @@ plugins=( \
     gitignore \
     helm \
     kubectl \
+    podman \
     rake-fast \
     ssh-gpg-agent \
     terraform \
