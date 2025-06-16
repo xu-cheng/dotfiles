@@ -56,7 +56,7 @@ vim.api.nvim_create_autocmd("BufReadPost", {
     group = augroup("last_loc"),
     callback = function(event)
         -- set cursor to the first line when editing a git commit message
-        if vim.bo.filetype == "gitcommit" and vim.fn.fnamemodify(event.file, ":t") == "COMMIT_EDITMSG" then
+        if vim.bo.filetype == "gitcommit" and vim.fs.basename(event.file) == "COMMIT_EDITMSG" then
             pcall(vim.api.nvim_win_set_cursor, 0, { 1, 0 })
         else
             local mark = vim.api.nvim_buf_get_mark(0, '"')
@@ -88,7 +88,7 @@ vim.api.nvim_create_autocmd("BufWritePre", {
             return
         end
         local file = vim.loop.fs_realpath(event.file) or event.file
-        local dir = vim.fn.fnamemodify(file, ":p:h")
+        local dir = vim.fs.dirname(file)
         if not vim.loop.fs_stat(dir) then
             vim.fn.mkdir(dir, "p")
         end
@@ -152,4 +152,3 @@ vim.api.nvim_create_autocmd("FileType", {
         vim.bo[event.buf].buflisted = false
     end,
 })
-
