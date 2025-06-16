@@ -79,16 +79,6 @@ tools:
       - .prettierrc
       - .prettierrc.json
 
-  sh-shellcheck: &sh-shellcheck
-    lint-source: shellcheck
-    lint-command: >-
-      shellcheck -f gcc -x
-    lint-ignore-exit-code: true
-    lint-formats:
-      - "%f:%l:%c: %trror: %m"
-      - "%f:%l:%c: %tarning: %m"
-      - "%f:%l:%c: %tote: %m"
-
   sh-shfmt: &sh-shfmt
     format-command: >-
       shfmt \
@@ -160,7 +150,6 @@ languages:
     - <<: *prettier
 
   sh:
-    - <<: *sh-shellcheck
     - <<: *sh-shfmt
 
   terraform:
