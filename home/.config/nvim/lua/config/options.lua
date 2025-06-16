@@ -75,7 +75,7 @@ else
     opt.spell = true                              -- spell check on
     opt.spelllang = { "en_us", "en_gb", "en_ca" } -- spell checking language
     local spellfile = vim.fn.stdpath("config") .. "/spell/en.utf-8.add"
-    if not vim.loop.fs_stat(spellfile .. ".spl") then
+    if not vim.uv.fs_stat(spellfile .. ".spl") then
         vim.cmd.mkspell({ spellfile, mods = { silent = true } })
     end
 

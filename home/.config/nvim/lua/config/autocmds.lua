@@ -87,9 +87,9 @@ vim.api.nvim_create_autocmd("BufWritePre", {
         if event.file:match("^%w%w+://") then
             return
         end
-        local file = vim.loop.fs_realpath(event.file) or event.file
+        local file = vim.uv.fs_realpath(event.file) or event.file
         local dir = vim.fs.dirname(file)
-        if not vim.loop.fs_stat(dir) then
+        if not vim.uv.fs_stat(dir) then
             vim.fn.mkdir(dir, "p")
         end
     end,
@@ -103,9 +103,9 @@ vim.api.nvim_create_autocmd({ "BufWritePre", "BufWritePost" }, {
         if event.file:match("^%w%w+://") then
             return
         end
-        local file = vim.loop.fs_realpath(event.file) or event.file
+        local file = vim.uv.fs_realpath(event.file) or event.file
         if event.event == "BufWritePre" then
-            vim.b.is_new = not vim.loop.fs_stat(file)
+            vim.b.is_new = not vim.uv.fs_stat(file)
         else -- event.event == "BufWritePost"
             if vim.b.is_new then
                 local first_line = vim.api.nvim_buf_get_lines(0, 0, 1, true)[1]
