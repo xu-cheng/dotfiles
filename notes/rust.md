@@ -15,6 +15,7 @@ rustup component add rustfmt clippy rust-analyzer rust-src
 ```bash
 cargo install cargo-cache
 cargo install cargo-criterion
+cargo install cargo-deny
 cargo install cargo-edit
 cargo install cargo-expand
 cargo install cargo-fuzz
