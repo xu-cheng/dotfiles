@@ -210,13 +210,6 @@ return {
         main = "mini.bracketed",
         config = true,
     },
-    {
-        "echasnovski/mini.jump",
-        version = false,
-        event = "VeryLazy",
-        main = "mini.jump",
-        config = true,
-    },
 
     -- multi cursors
     {
