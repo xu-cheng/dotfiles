@@ -204,20 +204,16 @@ else
     })
 
     -- tab management
-    map("n", "tt", ":tabnew<space>", { desc = "Open new tab" })
-    map("n", "tw", ":tabclose<cr>", { silent = true, desc = "Close tab" })
-    map("n", "tm", ":tabmove<space>", { desc = "Move tab" })
-    map("n", "tn", ":tabnext<space>", { desc = "Next tab" })
-    map("n", "th", ":tabfirst<cr>", { silent = true, desc = "First tab" })
-    map("n", "tj", ":tabnext<cr>", { silent = true, desc = "Next tab" })
-    map("n", "tk", ":tabprev<cr>", { silent = true, desc = "Previous tab" })
-    map("n", "tl", ":tablast<cr>", { silent = true, desc = "Last tab" })
-    map("n", "tmj", ":tabmove -1<cr>", { silent = true, desc = "Move tab left" })
-    map("n", "tmk", ":tabmove +1<cr>", { silent = true, desc = "Move tab right" })
+    map("n", "<leader><tab>t", "<cmd>tabnew<cr>", { desc = "New Tab" })
+    map("n", "<leader><tab>w", "<cmd>tabclose<cr>", { desc = "Close tab" })
+    map("n", "<leader><tab>j", "<cmd>tabmove -1<cr>", { desc = "Move tab left" })
+    map("n", "<leader><tab>k", "<cmd>tabmove +1<cr>", { desc = "Move tab right" })
+    map("n", "<leader><tab>]", "<cmd>tabnext<cr>", { desc = "Next Tab" })
+    map("n", "<leader><tab>[", "<cmd>tabprevious<cr>", { desc = "Previous Tab" })
 
     -- windows management
-    map("n", "<C-w>|", ":vsplit<CR>", { silent = true, desc = "Split window vertically" })
-    map("n", "<C-w>-", ":split<CR>", { silent = true, desc = "Split window horizontally" })
+    map("n", "<C-w>|", "<cmd>vsplit<cr>", { desc = "Split window vertically" })
+    map("n", "<C-w>-", "<cmd>split<cr>", { desc = "Split window horizontally" })
 
     -- move to window using the <ctrl> hjkl keys
     map("n", "<C-h>", "<C-w>h", { desc = "Go to Left Window", remap = true })
