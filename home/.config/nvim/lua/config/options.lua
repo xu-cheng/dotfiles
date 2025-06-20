@@ -1,9 +1,7 @@
 local opt = vim.opt
 
 -- General
-
--- only set clipboard if not in ssh, to make sure the OSC 52 integration works automatically.
-opt.clipboard = vim.env.SSH_TTY and "" or { "unnamed", "unnamedplus" } -- sync with system clipboard
+opt.clipboard = { "unnamed", "unnamedplus" } -- sync with system clipboard
 if vim.fn.has("wsl") == 1 then
     -- https://github.com/neovim/neovim/wiki/FAQ#how-to-use-the-windows-clipboard-from-wsl
     vim.g.clipboard = {
