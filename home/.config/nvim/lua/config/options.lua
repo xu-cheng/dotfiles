@@ -2,7 +2,7 @@ local opt = vim.opt
 
 -- General
 opt.clipboard = { "unnamed", "unnamedplus" } -- sync with system clipboard
-if vim.fn.has("wsl") == 1 then
+if vim.fn.has("wsl") == 1 and not vim.env.TMUX then
     -- https://github.com/neovim/neovim/wiki/FAQ#how-to-use-the-windows-clipboard-from-wsl
     vim.g.clipboard = {
         name = "WslClipboard",
