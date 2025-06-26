@@ -180,6 +180,22 @@ return {
         config = true,
     },
     {
+        "rachartier/tiny-inline-diagnostic.nvim",
+        priority = 1000,
+        event = "LspAttach",
+        opts = {
+            preset = "modern",
+            options = {
+                show_source = { enabled = true, if_many = true },
+                multilines = { enabled = true },
+                set_arrow_to_diag_color = true,
+                -- use_icons_from_diagnostic = true,
+            },
+        },
+        main = "tiny-inline-diagnostic",
+        config = true,
+    },
+    {
         "folke/lazydev.nvim",
         enabled = not_vscode,
         ft = "lua",
