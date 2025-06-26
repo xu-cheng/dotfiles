@@ -43,7 +43,13 @@ vim.api.nvim_create_autocmd("LspAttach", {
         end
 
         map("n", "<leader>cl", "<cmd>LspInfo<cr>", "Lsp Info")
-        map({ "n", "x" }, "<leader>ca", require("actions-preview").code_actions, "Code Action", { has = "codeAction" })
+        map(
+            { "n", "x" },
+            "<leader>ca",
+            require("tiny-code-action").code_action,
+            "Code Action",
+            { has = "codeAction", noremap = true, silent = true }
+        )
         map({ "n", "x" }, "<leader>cc", vim.lsp.codelens.run, "Run Codelens", { has = "codeLens" })
         map("n", "<leader>cC", vim.lsp.codelens.refresh, "Rerfesh & Display Codelens", { has = "codeLens" })
         map("n", "<leader>cd", vim.diagnostic.open_float, "Line Diagnostics")

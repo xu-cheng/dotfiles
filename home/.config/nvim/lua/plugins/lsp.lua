@@ -169,6 +169,17 @@ return {
         main = "inc_rename",
     },
     {
+        "rachartier/tiny-code-action.nvim",
+        enabled = not_vscode,
+        dependencies = {
+            "nvim-lua/plenary.nvim",
+            "nvim-telescope/telescope.nvim",
+        },
+        event = "LspAttach",
+        main = "tiny-code-action",
+        config = true,
+    },
+    {
         "folke/lazydev.nvim",
         enabled = not_vscode,
         ft = "lua",

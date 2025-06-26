@@ -282,15 +282,6 @@ return {
         end,
     },
 
-    -- code action
-    {
-        "aznhe21/actions-preview.nvim",
-        enabled = not_vscode,
-        event = "LspAttach",
-        main = "actions-preview",
-        config = true,
-    },
-
     -- trouble/quickfix
     {
         "folke/trouble.nvim",
