@@ -47,6 +47,7 @@ return {
                 "shfmt",
                 "stylua",
                 "taplo",
+                "typescript-language-server",
                 "yaml-language-server",
             },
             auto_update = true,
