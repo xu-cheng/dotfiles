@@ -189,7 +189,7 @@ return {
                 show_source = { enabled = true, if_many = true },
                 multilines = { enabled = true, always_show = true },
                 set_arrow_to_diag_color = true,
-                -- use_icons_from_diagnostic = true,
+                use_icons_from_diagnostic = true,
                 severity = {
                     vim.diagnostic.severity.ERROR,
                     vim.diagnostic.severity.WARN,
