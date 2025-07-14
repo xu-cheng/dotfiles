@@ -18,72 +18,84 @@
         "key": "ctrl+space",
         "command": "vscode-neovim.send",
         "when": "editorTextFocus && neovim.mode != insert",
-        "args": "<C-space>"
+        "args": "<C-space>",
     },
     {
         "key": "ctrl+k",
         "command": "vscode-neovim.send",
         "when": "editorTextFocus && neovim.mode == insert",
-        "args": "<C-k>"
+        "args": "<C-k>",
     },
     {
         "key": "ctrl+\\",
         "command": "workbench.action.terminal.toggleTerminal",
-        "when": "terminal.active"
+        "when": "terminal.active",
     },
     {
         "key": "ctrl+w shift+\\",
         "command": "workbench.action.splitEditorRight",
-        "when": "editorTextFocus && neovim.mode == 'normal' && !terminalFocus"
+        "when": "editorTextFocus && neovim.mode == 'normal' && !terminalFocus",
     },
     {
         "key": "ctrl+w -",
         "command": "workbench.action.splitEditorDown",
-        "when": "editorTextFocus && neovim.mode == 'normal' && !terminalFocus"
+        "when": "editorTextFocus && neovim.mode == 'normal' && !terminalFocus",
     },
     {
         "key": "ctrl+w q",
         "command": "workbench.action.closeActiveEditor",
-        "when": "editorTextFocus && neovim.mode == 'normal' && !terminalFocus && !filesExplorerFocus && !searchViewletFocus"
+        "when": "editorTextFocus && neovim.mode == 'normal' && !terminalFocus && !filesExplorerFocus && !searchViewletFocus",
     },
     {
         "key": "ctrl+h",
         "command": "workbench.action.navigateLeft",
-        "when": "editorTextFocus && neovim.mode == 'normal' && !terminalFocus"
+        "when": "editorTextFocus && neovim.mode == 'normal' && !terminalFocus",
     },
     {
         "key": "ctrl+w h",
         "command": "workbench.action.navigateLeft",
-        "when": "editorTextFocus && neovim.mode == 'normal' && !terminalFocus"
+        "when": "editorTextFocus && neovim.mode == 'normal' && !terminalFocus",
     },
     {
         "key": "ctrl+j",
         "command": "workbench.action.navigateDown",
-        "when": "editorTextFocus && neovim.mode == 'normal' && !terminalFocus"
+        "when": "editorTextFocus && neovim.mode == 'normal' && !terminalFocus",
     },
     {
         "key": "ctrl+w j",
         "command": "workbench.action.navigateDown",
-        "when": "editorTextFocus && neovim.mode == 'normal' && !terminalFocus"
+        "when": "editorTextFocus && neovim.mode == 'normal' && !terminalFocus",
     },
     {
         "key": "ctrl+k",
         "command": "workbench.action.navigateUp",
-        "when": "editorTextFocus && neovim.mode == 'normal' && !terminalFocus"
+        "when": "editorTextFocus && neovim.mode == 'normal' && !terminalFocus",
     },
     {
         "key": "ctrl+w k",
         "command": "workbench.action.navigateUp",
-        "when": "editorTextFocus && neovim.mode == 'normal' && !terminalFocus"
+        "when": "editorTextFocus && neovim.mode == 'normal' && !terminalFocus",
     },
     {
         "key": "ctrl+l",
         "command": "workbench.action.navigateRight",
-        "when": "editorTextFocus && neovim.mode == 'normal' && !terminalFocus"
+        "when": "editorTextFocus && neovim.mode == 'normal' && !terminalFocus",
     },
     {
         "key": "ctrl+w l",
         "command": "workbench.action.navigateRight",
-        "when": "editorTextFocus && neovim.mode == 'normal' && !terminalFocus"
+        "when": "editorTextFocus && neovim.mode == 'normal' && !terminalFocus",
+    },
+    {
+        "key": "alt+j",
+        "command": "vscode-neovim.send",
+        "when": "editorTextFocus",
+        "args": "<A-j>",
+    },
+    {
+        "key": "alt+k",
+        "command": "vscode-neovim.send",
+        "when": "editorTextFocus",
+        "args": "<A-k>",
     },
 ]
