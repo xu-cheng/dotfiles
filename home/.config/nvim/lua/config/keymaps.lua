@@ -216,8 +216,18 @@ else
     map("n", "<C-w>-", "<cmd>split<cr>", { desc = "Split window horizontally" })
 
     -- move to window using the <ctrl> hjkl keys
-    map("n", "<C-h>", "<C-w>h", { desc = "Go to Left Window", remap = true })
-    map("n", "<C-j>", "<C-w>j", { desc = "Go to Lower Window", remap = true })
-    map("n", "<C-k>", "<C-w>k", { desc = "Go to Upper Window", remap = true })
-    map("n", "<C-l>", "<C-w>l", { desc = "Go to Right Window", remap = true })
+    map("n", "<C-h>", "<C-w>h", { desc = "Go to left window", remap = true })
+    map("n", "<C-j>", "<C-w>j", { desc = "Go to lower window", remap = true })
+    map("n", "<C-k>", "<C-w>k", { desc = "Go to upper window", remap = true })
+    map("n", "<C-l>", "<C-w>l", { desc = "Go to right window", remap = true })
+
+    -- terminal keymaps
+    -- https://github.com/akinsho/toggleterm.nvim#terminal-window-mappings
+    map("t", "<esc>", [[<C-\><C-n>]], { desc = "Enter normal mode" })
+    map("t", "jk", [[<C-\><C-n>]], { desc = "Enter normal mode" })
+    map("t", "<C-h>", [[<cmd>wincmd h<cr>]], { desc = "Go to left window" })
+    map("t", "<C-j>", [[<cmd>wincmd j<cr>]], { desc = "Go to left window" })
+    map("t", "<C-k>", [[<cmd>wincmd k<cr>]], { desc = "Go to left window" })
+    map("t", "<C-l>", [[<cmd>wincmd l<cr>]], { desc = "Go to left window" })
+    map("t", "<C-w>", [[<C-\><C-n><C-w>]], { desc = "+window" })
 end
