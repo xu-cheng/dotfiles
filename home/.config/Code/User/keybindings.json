@@ -49,42 +49,42 @@
     {
         "key": "ctrl+h",
         "command": "workbench.action.navigateLeft",
-        "when": "editorTextFocus && neovim.mode == 'normal' && !terminalFocus",
+        "when": "(editorTextFocus && neovim.mode == 'normal' && !terminalFocus) || terminalFocus",
     },
     {
         "key": "ctrl+w h",
         "command": "workbench.action.navigateLeft",
-        "when": "editorTextFocus && neovim.mode == 'normal' && !terminalFocus",
+        "when": "(editorTextFocus && neovim.mode == 'normal' && !terminalFocus) || terminalFocus",
     },
     {
         "key": "ctrl+j",
         "command": "workbench.action.navigateDown",
-        "when": "editorTextFocus && neovim.mode == 'normal' && !terminalFocus",
+        "when": "(editorTextFocus && neovim.mode == 'normal' && !terminalFocus) || terminalFocus",
     },
     {
         "key": "ctrl+w j",
         "command": "workbench.action.navigateDown",
-        "when": "editorTextFocus && neovim.mode == 'normal' && !terminalFocus",
+        "when": "(editorTextFocus && neovim.mode == 'normal' && !terminalFocus) || terminalFocus",
     },
     {
         "key": "ctrl+k",
         "command": "workbench.action.navigateUp",
-        "when": "editorTextFocus && neovim.mode == 'normal' && !terminalFocus",
+        "when": "(editorTextFocus && neovim.mode == 'normal' && !terminalFocus) || terminalFocus",
     },
     {
         "key": "ctrl+w k",
         "command": "workbench.action.navigateUp",
-        "when": "editorTextFocus && neovim.mode == 'normal' && !terminalFocus",
+        "when": "(editorTextFocus && neovim.mode == 'normal' && !terminalFocus) || terminalFocus",
     },
     {
         "key": "ctrl+l",
         "command": "workbench.action.navigateRight",
-        "when": "editorTextFocus && neovim.mode == 'normal' && !terminalFocus",
+        "when": "(editorTextFocus && neovim.mode == 'normal' && !terminalFocus) || terminalFocus",
     },
     {
         "key": "ctrl+w l",
         "command": "workbench.action.navigateRight",
-        "when": "editorTextFocus && neovim.mode == 'normal' && !terminalFocus",
+        "when": "(editorTextFocus && neovim.mode == 'normal' && !terminalFocus) || terminalFocus",
     },
     {
         "key": "alt+j",
