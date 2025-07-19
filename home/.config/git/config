@@ -8,7 +8,7 @@ signingkey = 3FCDEDF75EF78E84584BFBCEB19F15830AB4E690
 [core]
 autocrlf = input
 editor = nvim
-pager = diff-highlight | less -F -X
+pager = delta --color-only
 
 [init]
 defaultBranch = main
@@ -36,10 +36,7 @@ status = auto
 ui = auto
 
 [interactive]
-diffFilter = diff-highlight
-
-[difftool]
-prompt = false
+diffFilter = delta --color-only
 
 [diff]
 tool = nvimdiff
@@ -49,14 +46,23 @@ wsErrorHighlight = all
 [merge]
 tool = nvimdiff
 
-[difftool "nvimdiff"]
-cmd = nvim -d \"$LOCAL\" \"$REMOTE\"
-
-[difftool "icdiff"]
-cmd = icdiff --line-numbers \"$LOCAL\" \"$REMOTE\" | less -F -X
+[delta]
+features = catppuccin-frappe
+wrap-max-lines = unlimited
+max-line-length = 0
+navigate = true
 
 [icdiff]
 pager = less -F -X
+
+[difftool]
+prompt = false
+
+[difftool "nvimdiff"]
+cmd = nvim -d "$LOCAL" "$REMOTE"
+
+[difftool "icdiff"]
+cmd = icdiff --line-numbers "$LOCAL" "$REMOTE" | less -F -X
 
 [alias]
 a = add
@@ -67,7 +73,7 @@ co = checkout
 cob = checkout -b
 current-branch = symbolic-ref --short HEAD
 d = difftool
-fix-previous = !git commit --amend --no-edit --date=\"$(date '+%Y-%m-%dT%H:%M:%S')\"
+fix-previous = !git commit --amend --no-edit --date="$(date '+%Y-%m-%dT%H:%M:%S')"
 fix-up = !git commit --fixup=$(git-sha)
 lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%C(bold blue)<%an>%Creset' --abbrev-commit
 push-current-branch = !git push --set-upstream origin $(git current-branch)
@@ -86,4 +92,5 @@ up = !git fetch origin && git rebase origin/$(git default-branch)
 wip = !git add -u && git commit -m "wip"
 
 [include]
+path = ~/.config/git/catppuccin.gitconfig
 path = ~/.config/git-overwrite
