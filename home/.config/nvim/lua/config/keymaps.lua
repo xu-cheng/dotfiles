@@ -166,7 +166,7 @@ else
     map("c", "<M-b>", "<S-Left>")
     map("c", "<M-f>", "<S-Right>")
 
-    -- command line abbreviation which only expands in the begining of the command line
+    -- command line abbreviation which only expands in the beginning of the command line
     -- ref: https://stackoverflow.com/a/30837427
     local function cmd_abbrev(abbrev, expansion)
         local expansion = "<c-r>=(getcmdtype()==#':' && getcmdpos()==1 ? '"
