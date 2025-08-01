@@ -123,7 +123,6 @@ else
     opt.splitright = true           -- vertical splits will be to the right
     opt.winminheight = 0            -- windows can be 0 line high
     opt.winminwidth = 3             -- minimum window width
-    opt.tabpagemax = 15             -- only show 15 tabs
     opt.switchbuf = "usetab,newtab" -- switching to the existing tab or creating new one
 
     -- Diagnostic
