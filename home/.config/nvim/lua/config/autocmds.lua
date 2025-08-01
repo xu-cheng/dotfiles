@@ -146,9 +146,38 @@ vim.api.nvim_create_autocmd("FileType", {
 
 -- make it easier to close man-files when opened inline
 vim.api.nvim_create_autocmd("FileType", {
+    desc = "Remove manpage from buffer list",
     group = augroup("man_unlisted"),
     pattern = { "man" },
     callback = function(event)
         vim.bo[event.buf].buflisted = false
+    end,
+})
+
+-- tree-sitter
+vim.api.nvim_create_autocmd("FileType", {
+    desc = "Enable tree-sitter highlight",
+    group = augroup("treesitter-highlight"),
+    callback = function(event)
+        local has_ts = pcall(vim.treesitter.start, event.buf)
+
+        if has_ts then
+            vim.wo.foldmethod = "expr"
+            vim.wo.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+            vim.bo[event.buf].indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+        end
+    end,
+})
+vim.api.nvim_create_autocmd("User", {
+    desc = "Add additional tree-sitter parsers",
+    group = augroup("treesitter-additional-parsers"),
+    pattern = { "TSUpdate" },
+    callback = function()
+        require("nvim-treesitter.parsers").ghostty = {
+            install_info = {
+                url = "https://github.com/bezhermoso/tree-sitter-ghostty",
+                queries = "queries/ghostty",
+            },
+        }
     end,
 })

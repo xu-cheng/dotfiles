@@ -41,10 +41,6 @@ opt.tabstop = 4            -- number of spaces tabs count for
 opt.softtabstop = 4        -- let backspace delete indent
 opt.virtualedit = "block"  -- allow going past the end of line in visual block mode
 
-opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
-opt.foldmethod = "expr"
-opt.foldtext = ""
-
 if vim.g.vscode then
     local vscode = require("vscode")
     vim.notify = vscode.notify
@@ -116,6 +112,7 @@ else
         eob = " ",
     }
     opt.foldlevel = 99
+    opt.foldtext = ""
 
     -- Window/Tab Management
     opt.splitbelow = true           -- horizontal splits will be below

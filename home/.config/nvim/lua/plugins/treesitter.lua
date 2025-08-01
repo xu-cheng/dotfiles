@@ -5,13 +5,11 @@ return {
     {
         "nvim-treesitter/nvim-treesitter",
         version = false,
+        branch = "main",
+        lazy = false,
         build = ":TSUpdate",
-        cmd = { "TSInstall", "TSUpdate", "TSBufEnable", "TSBufDisable", "TSBufToggle", "TSModuleInfo" },
-        event = { "BufReadPost", "BufNewFile" },
         keys = {
-            { "<C-space>",  desc = "Increment selection" },
-            { "<bs>",       desc = "Decrement selection", mode = "x" },
-            { "<leader>ui", vim.show_pos,                 desc = "Inspect Pos", mode = "n" },
+            { "<leader>ui", vim.show_pos, desc = "Inspect Pos", mode = "n" },
             {
                 "<leader>uI",
                 function()
@@ -22,75 +20,6 @@ return {
                 mode = "n",
             },
         },
-        dependencies = {
-            {
-                "nvim-treesitter/nvim-treesitter-textobjects",
-                init = function()
-                    -- PERF: no need to load the plugin, we only need its queries for mini.ai
-                    require("lazy.core.loader").disable_rtp_plugin("nvim-treesitter-textobjects")
-                end,
-            },
-        },
-        opts = {
-            highlight = {
-                enable = not_vscode,
-                additional_vim_regex_highlighting = false,
-            },
-            indent = { enable = true },
-            incremental_selection = {
-                enable = true,
-                keymaps = {
-                    init_selection = "<C-space>",
-                    node_incremental = "<C-space>",
-                    scope_incremental = false,
-                    node_decremental = "<bs>",
-                },
-            },
-            ensure_installed = {
-                "bash",
-                "bibtex",
-                "c",
-                "cmake",
-                "comment",
-                "cpp",
-                "css",
-                "diff",
-                "git_rebase",
-                "gitattributes",
-                "gitcommit",
-                "gitignore",
-                "html",
-                "javascript",
-                "json",
-                "jsonc",
-                "latex",
-                "lua",
-                "luadoc",
-                "luap",
-                "make",
-                "markdown",
-                "markdown_inline",
-                "python",
-                "query",
-                "regex",
-                "ruby",
-                "rust",
-                "sql",
-                "terraform",
-                "toml",
-                "vim",
-                "vimdoc",
-                "yaml",
-            },
-            auto_install = true,
-        },
-        main = "nvim-treesitter.configs",
-        config = true,
-    },
-    {
-        "bezhermoso/tree-sitter-ghostty",
-        ft = "ghostty",
-        build = "make nvim_install",
     },
 
     -- context_commentstring used by mini.comment
@@ -131,6 +60,11 @@ return {
     {
         "nvim-treesitter/nvim-treesitter-textobjects",
         version = false,
+        branch = "main",
         lazy = true,
+        init = function()
+            -- PERF: no need to load the plugin, we only need its queries for mini.ai
+            require("lazy.core.loader").disable_rtp_plugin("nvim-treesitter-textobjects")
+        end,
     },
 }
