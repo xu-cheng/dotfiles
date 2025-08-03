@@ -36,7 +36,6 @@ require("lazy").setup("plugins", {
 
 -- load config
 require("config/options")
-require("config/commands")
 require("config/autocmds")
 require("config/keymaps")
 require("config/lsp")
