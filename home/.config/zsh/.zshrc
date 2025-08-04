@@ -20,7 +20,6 @@ plugins=( \
     # NB: xdg-base-dir needs to be the first one to be loaded
     xdg-base-dir \
     asdf \
-    colored-man-pages \
     docker \
     docker-compose \
     git \
@@ -88,6 +87,7 @@ if (( ${+commands[direnv]} )); then
 fi
 if (( ${+commands[nvim]} )); then
     export EDITOR='nvim -p'
+    export MANPAGER='nvim +Man!'
     alias vim='nvim -p'
     alias vimdiff='nvim -d'
 fi
