@@ -57,7 +57,6 @@ return {
                     avante = {
                         name = "Avante",
                         module = "blink-cmp-avante",
-                        score_offset = 100,
                     },
                     dictionary = {
                         name = "Dict",
@@ -69,12 +68,14 @@ return {
                                 vim.fn.expand("~/.config/nvim/spell/en.utf-8.add"),
                             },
                         },
-                        score_offset = -100,
                     },
                     git = {
                         name = "Git",
                         module = "blink-cmp-git",
-                        score_offset = -50,
+                        -- only enable this source when filetype is gitcommit, markdown, or 'octo'
+                        enabled = function()
+                            return vim.tbl_contains({ "octo", "gitcommit", "markdown" }, vim.bo.filetype)
+                        end,
                     },
                     lazydev = {
                         name = "Lazydev",
