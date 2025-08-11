@@ -52,7 +52,16 @@ return {
                 },
             },
             sources = {
-                default = { "avante", "lsp", "lazydev", "path", "snippets", "buffer", "git", "dictionary" },
+                default = {
+                    "avante",
+                    "buffer",
+                    "dictionary",
+                    "git",
+                    "lazydev",
+                    "lsp",
+                    "path",
+                    "snippets",
+                },
                 providers = {
                     avante = {
                         name = "Avante",
