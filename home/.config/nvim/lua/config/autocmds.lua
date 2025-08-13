@@ -159,6 +159,10 @@ vim.api.nvim_create_autocmd("FileType", {
     desc = "Enable tree-sitter highlight",
     group = augroup("treesitter-highlight"),
     callback = function(event)
+        if vim.g.vscode then
+            return
+        end
+
         local has_ts = pcall(vim.treesitter.start, event.buf)
 
         if has_ts then
