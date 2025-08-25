@@ -237,7 +237,7 @@ return {
             },
         },
         config = function(_, opts)
-            opts.highlights = require("catppuccin.groups.integrations.bufferline").get()
+            opts.highlights = require("catppuccin.groups.integrations.bufferline").get_theme()
             require("bufferline").setup(opts)
         end,
     },
