@@ -29,7 +29,7 @@ return {
 
     -- buffer management
     {
-        "echasnovski/mini.bufremove",
+        "nvim-mini/mini.bufremove",
         version = false,
         enabled = not_vscode,
         event = "VeryLazy",

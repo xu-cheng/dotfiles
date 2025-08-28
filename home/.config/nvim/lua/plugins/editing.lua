@@ -1,7 +1,7 @@
 return {
     -- comments
     {
-        "echasnovski/mini.comment",
+        "nvim-mini/mini.comment",
         version = false,
         event = "VeryLazy",
         dependencies = { "JoosepAlviste/nvim-ts-context-commentstring" },
@@ -18,7 +18,7 @@ return {
 
     -- auto pairs
     {
-        "echasnovski/mini.pairs",
+        "nvim-mini/mini.pairs",
         version = false,
         event = "VeryLazy",
         main = "mini.pairs",
@@ -27,7 +27,7 @@ return {
 
     -- surrounding
     {
-        "echasnovski/mini.surround",
+        "nvim-mini/mini.surround",
         version = false,
         event = "VeryLazy",
         -- mimic tpope/vim-surround's keymap
@@ -54,7 +54,7 @@ return {
 
     -- splitjoin
     {
-        "echasnovski/mini.splitjoin",
+        "nvim-mini/mini.splitjoin",
         version = false,
         event = "VeryLazy",
         opts = {
@@ -70,7 +70,7 @@ return {
 
     -- align
     {
-        "echasnovski/mini.align",
+        "nvim-mini/mini.align",
         version = false,
         event = "VeryLazy",
         main = "mini.align",
@@ -79,12 +79,12 @@ return {
 
     -- a/i textobjects
     {
-        "echasnovski/mini.ai",
+        "nvim-mini/mini.ai",
         version = false,
         event = "VeryLazy",
         dependencies = {
             "nvim-treesitter/nvim-treesitter-textobjects",
-            "echasnovski/mini.extra",
+            "nvim-mini/mini.extra",
         },
         opts = function()
             local ai = require("mini.ai")
@@ -200,7 +200,7 @@ return {
 
     -- jump
     {
-        "echasnovski/mini.bracketed",
+        "nvim-mini/mini.bracketed",
         version = false,
         event = "VeryLazy",
         opts = {
@@ -230,7 +230,7 @@ return {
 
     -- mini.extra
     {
-        "echasnovski/mini.extra",
+        "nvim-mini/mini.extra",
         version = false,
         lazy = true,
         main = "mini.extra",

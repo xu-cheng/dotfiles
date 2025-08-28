@@ -32,7 +32,7 @@ return {
     },
     -- provide text object
     {
-        "echasnovski/mini.indentscope",
+        "nvim-mini/mini.indentscope",
         version = false,
         event = "VeryLazy",
         opts = {
