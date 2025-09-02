@@ -154,26 +154,30 @@ vim.api.nvim_create_autocmd("FileType", {
     end,
 })
 
--- tree-sitter
+-- treesitter
 vim.api.nvim_create_autocmd("FileType", {
-    desc = "Enable tree-sitter highlight",
-    group = augroup("treesitter-highlight"),
+    desc = "Enable treesitter",
+    group = augroup("treesitter-setup"),
     callback = function(event)
-        if vim.g.vscode then
+        local buf = event.buf
+        local filetype = event.match
+
+        local language = vim.treesitter.language.get_lang(filetype) or filetype
+        if not vim.treesitter.language.add(language) then
             return
         end
 
-        local has_ts = pcall(vim.treesitter.start, event.buf)
+        vim.wo.foldmethod = "expr"
+        vim.wo.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+        vim.bo[buf].indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
 
-        if has_ts then
-            vim.wo.foldmethod = "expr"
-            vim.wo.foldexpr = "v:lua.vim.treesitter.foldexpr()"
-            vim.bo[event.buf].indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+        if not vim.g.vscode then
+            vim.treesitter.start(buf, language)
         end
     end,
 })
 vim.api.nvim_create_autocmd("User", {
-    desc = "Add additional tree-sitter parsers",
+    desc = "Add additional treesitter parsers",
     group = augroup("treesitter-additional-parsers"),
     pattern = { "TSUpdate" },
     callback = function()
