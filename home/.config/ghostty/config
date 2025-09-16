@@ -4,7 +4,7 @@ font-family = "Monaco"
 font-family = "Symbols Nerd Font Mono"
 font-size = 13
 
-theme = catppuccin-frappe
+theme = "Catppuccin Frappe"
 
 macos-option-as-alt = true
 quit-after-last-window-closed = true
