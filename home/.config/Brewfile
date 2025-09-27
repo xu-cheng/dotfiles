@@ -1,4 +1,3 @@
-tap "homebrew/command-not-found"
 brew "sqlite"
 brew "aria2"
 brew "git"
