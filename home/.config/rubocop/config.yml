@@ -2,11 +2,48 @@ AllCops:
   NewCops: enable
   TargetRubyVersion: 3.4
 
+Layout/CaseIndentation:
+  EnforcedStyle: end
+
+Layout/EndAlignment:
+  EnforcedStyleAlignWith: start_of_line
+
+Layout/FirstArrayElementIndentation:
+  EnforcedStyle: consistent
+
+Layout/FirstHashElementIndentation:
+  EnforcedStyle: consistent
+
+Metrics:
+  Enabled: false
+
+Style/AndOr:
+  EnforcedStyle: always
+
+Style/AutoResourceCleanup:
+  Enabled: true
+
+Style/BarePercentLiterals:
+  EnforcedStyle: percent_q
+
+Style/BlockDelimiters:
+  BracesRequiredMethods:
+    - "sig"
+
+Style/CollectionMethods:
+  Enabled: true
+
 Style/Documentation:
   Enabled: false
 
 Style/RegexpLiteral:
   AllowInnerSlashes: true
+
+Style/RescueStandardError:
+  EnforcedStyle: implicit
+
+Style/ReturnNil:
+  Enabled: true
 
 Style/StringLiterals:
   EnforcedStyle: double_quotes
@@ -14,26 +51,24 @@ Style/StringLiterals:
 Style/StringLiteralsInInterpolation:
   EnforcedStyle: double_quotes
 
+Style/StringMethods:
+  Enabled: true
+
+Style/SymbolArray:
+  EnforcedStyle: brackets
+
+Style/TernaryParentheses:
+  EnforcedStyle: require_parentheses_when_complex
+
+Style/TrailingCommaInArguments:
+  EnforcedStyleForMultiline: comma
+
+Style/TrailingCommaInArrayLiteral:
+  EnforcedStyleForMultiline: comma
+
 Style/TrailingCommaInHashLiteral:
   EnforcedStyleForMultiline: comma
 
-Metrics/AbcSize:
-  Enabled: false
-
-Metrics/BlockLength:
-  Enabled: false
-
-Metrics/ClassLength:
-  Enabled: false
-
-Metrics/CyclomaticComplexity:
-  Enabled: false
-
-Metrics/MethodLength:
-  Enabled: false
-
-Metrics/ModuleLength:
-  Enabled: false
-
-Metrics/PerceivedComplexity:
-  Enabled: false
+Style/UnlessLogicalOperators:
+  Enabled: true
+  EnforcedStyle: forbid_logical_operators
