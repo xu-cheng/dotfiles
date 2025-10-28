@@ -27,7 +27,7 @@ tools:
   editorconfig-checker: &editorconfig-checker
     lint-source: editorconfig-checker
     lint-command: >-
-      editorconfig-checker -format gcc -no-color ${INPUT}
+      editorconfig-checker -format gcc -no-color -disable-indent-size ${INPUT}
     lint-on-save: true
     lint-ignore-exit-code: true
     lint-formats:
