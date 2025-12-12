@@ -11,6 +11,12 @@ return {
         opts = {
             bigfile = { enabled = true },
             input = { enabled = true },
+            explorer = { replace_netrw = true },
+            picker = {
+                -- show hidden/ignored files in explorer
+                hidden = true,
+                ignored = true,
+            },
         },
         config = true,
         main = "snacks",
