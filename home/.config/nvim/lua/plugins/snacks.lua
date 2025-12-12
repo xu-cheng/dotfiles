@@ -6,6 +6,15 @@ return {
         priority = 1000,
         lazy = false,
         enable = not_vscode,
+        keys = {
+            {
+                "<leader>fe",
+                function()
+                    Snacks.explorer()
+                end,
+                desc = "Open Explorer",
+            },
+        },
         ---@module "snacks"
         ---@type snacks.Config
         opts = {
