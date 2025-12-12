@@ -13,9 +13,9 @@ return {
             input = { enabled = true },
             explorer = { replace_netrw = true },
             picker = {
-                -- show hidden/ignored files in explorer
-                hidden = true,
-                ignored = true,
+                sources = {
+                    explorer = { hidden = true },
+                },
             },
         },
         config = true,
