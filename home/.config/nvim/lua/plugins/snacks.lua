@@ -1,4 +1,5 @@
 local not_vscode = not vim.g.vscode
+local Utils = require("utils");
 
 return {
     {
@@ -10,9 +11,16 @@ return {
             {
                 "<leader>fe",
                 function()
-                    Snacks.explorer()
+                    Snacks.explorer({ cwd = Utils.project_root() })
                 end,
                 desc = "Open Explorer",
+            },
+            {
+                "<leader>fE",
+                function()
+                    Snacks.explorer()
+                end,
+                desc = "Open Explorer (cwd)",
             },
         },
         ---@module "snacks"
