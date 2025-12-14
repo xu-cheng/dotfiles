@@ -20,6 +20,7 @@ return {
                     dim_context = false,
                 },
                 blink_cmp = true,
+                dashboard = true,
                 gitsigns = true,
                 indent_blankline = {
                     enabled = true,
@@ -53,10 +54,12 @@ return {
                     enabled = true,
                     custom_bg = "NONE",
                 },
-                neotree = true,
                 noice = true,
                 notify = true,
                 rainbow_delimiters = true,
+                snacks = {
+                    enabled = true,
+                },
                 telescope = {
                     enabled = true,
                 },
@@ -228,7 +231,7 @@ return {
                 end,
                 offsets = {
                     {
-                        filetype = "neo-tree",
+                        filetype = "snacks_picker_list",
                         text = "File Explorer",
                         highlight = "Directory",
                         text_align = "left",
@@ -386,10 +389,14 @@ return {
                     },
                 },
                 extensions = {
+                    "avante",
                     "fugitive",
                     "lazy",
-                    "neo-tree",
+                    "man",
+                    "mason",
+                    "nvim-dap-ui",
                     "quickfix",
+                    "toggleterm",
                     "trouble",
                 },
             }

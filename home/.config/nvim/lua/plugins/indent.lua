@@ -11,9 +11,9 @@ local excluded_filetypes = {
     "lspinfo",
     "man",
     "mason",
-    "neo-tree",
     "noice",
     "notify",
+    "snacks_picker_list",
     "toggleterm",
 }
 
