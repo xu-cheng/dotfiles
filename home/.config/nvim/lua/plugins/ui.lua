@@ -14,13 +14,12 @@ return {
             dim_inactive = { enable = true },
             integrations = {
                 alpha = true,
-                barbecue = {
-                    dim_dirname = true,
-                    bold_basename = true,
-                    dim_context = false,
-                },
                 blink_cmp = true,
                 dashboard = true,
+                dropbar = {
+                    enabled = true,
+                    color_mode = true,
+                },
                 gitsigns = true,
                 indent_blankline = {
                     enabled = true,
@@ -49,10 +48,6 @@ return {
                     inlay_hints = {
                         background = true,
                     },
-                },
-                navic = {
-                    enabled = true,
-                    custom_bg = "NONE",
                 },
                 noice = true,
                 notify = true,
@@ -247,48 +242,20 @@ return {
 
     -- winbar
     {
-        "SmiteshP/nvim-navic",
-        version = false,
-        enabled = not_vscode,
-        lazy = true,
-        opts = function()
-            return {
-                highlight = true,
-                depth_limit = 5,
-                depth_limit_indicator = "…",
-                separator = "",
-                icons = require("config/icons").kinds,
-                click = true,
-            }
-        end,
-        main = "nvim-navic",
-        config = true,
-    },
-    {
-        "utilyre/barbecue.nvim",
+        "Bekaboo/dropbar.nvim",
         enabled = not_vscode,
         dependencies = {
-            "SmiteshP/nvim-navic",
             "nvim-tree/nvim-web-devicons",
         },
         event = "VeryLazy",
-        opts = function()
-            local kinds = vim.deepcopy(require("config/icons").kinds)
-            for key, value in pairs(kinds) do
-                kinds[key] = value:sub(1, -2)
-            end
-            return {
-                attach_navic = false,
-                theme = "catppuccin",
-                symbols = {
-                    ellipsis = "…",
-                    separator = "",
-                },
-                kinds = kinds,
-            }
-        end,
+        opts = {
+            icons = {
+                enable = true,
+                kinds = { symbols = require("config/icons").kinds },
+            },
+        },
+        main = "dropbar",
         config = true,
-        main = "barbecue",
     },
 
     -- statusline
