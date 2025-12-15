@@ -89,11 +89,6 @@ tools:
         --case-indent
     format-stdin: true
 
-  sh-tldr: &sh-tldr
-    hover-command: >-
-      tldr --raw --quiet ${INPUT}
-    hover-type: markdown
-
   terraform-fmt: &terraform-fmt
     format-command: >-
       terraform fmt -
@@ -157,7 +152,6 @@ languages:
 
   sh:
     - <<: *sh-shfmt
-    - <<: *sh-tldr
 
   terraform:
     - <<: *terraform-fmt
