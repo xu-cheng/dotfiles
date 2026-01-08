@@ -1,3 +1,2 @@
-#! /bin/bash
-# alias: brew bundle-cleanup
-brew bundle cleanup --file=$HOME/.config/Brewfile $*
+#!/usr/bin/env bash
+exec brew bundle cleanup --file="$HOME/.config/Brewfile" "$@"

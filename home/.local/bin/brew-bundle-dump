@@ -1,3 +1,2 @@
-#! /bin/bash
-# alias: brew bundle-dump
-brew bundle dump --file=$HOME/.config/Brewfile --force $*
+#!/usr/bin/env bash
+exec brew bundle dump --file="$HOME/.config/Brewfile" --force --no-cargo "$@"
