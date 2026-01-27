@@ -1,22 +1,4 @@
 local settings = {
-    format = {
-        -- mimic prettier's behaviour
-        insertSpaceAfterCommaDelimiter = true,
-        insertSpaceAfterConstructor = false,
-        insertSpaceAfterFunctionKeywordForAnonymousFunctions = true,
-        insertSpaceAfterKeywordsInControlFlowStatements = true,
-        insertSpaceAfterOpeningAndBeforeClosingEmptyBraces = false,
-        insertSpaceAfterOpeningAndBeforeClosingJsxExpressionBraces = false,
-        insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces = true,
-        insertSpaceAfterOpeningAndBeforeClosingNonemptyBrackets = false,
-        insertSpaceAfterOpeningAndBeforeClosingNonemptyParenthesis = false,
-        insertSpaceAfterOpeningAndBeforeClosingTemplateStringBraces = false,
-        insertSpaceAfterSemicolonInForStatements = true,
-        insertSpaceAfterTypeAssertion = false,
-        insertSpaceBeforeAndAfterBinaryOperators = true,
-        insertSpaceBeforeFunctionParenthesis = false,
-        insertSpaceBeforeTypeAnnotation = false,
-    },
     inlayHints = {
         includeInlayEnumMemberValueHints = true,
         includeInlayFunctionLikeReturnTypeHints = true,
@@ -34,4 +16,11 @@ return {
         javascript = settings,
         typescript = settings,
     },
+    on_attach = function(client)
+        -- we use efm for formatting
+        if client.name == "ts_ls" then
+            client.server_capabilities.documentFormattingProvider = false
+            client.server_capabilities.documentRangeFormattingProvider = false
+        end
+    end,
 }
