@@ -50,21 +50,6 @@ tools:
       - stylua.toml
       - .stylua.toml
 
-  md-markdownlint: &md-markdownlint
-    lint-source: markdownlint
-    lint-command: >-
-      markdownlint --stdin
-    lint-stdin: true
-    lint-ignore-exit-code: true
-    lint-formats:
-      - "%f:%l:%c MD%n/%*[^ ] %m"
-      - "%f:%l MD%n/%*[^ ] %m"
-
-  md-mdformat: &md-mdformat
-    format-command: >
-      mdformat --number -
-    format-stdin: true
-
   sh-shfmt: &sh-shfmt
     format-command: >-
       shfmt \
@@ -115,10 +100,6 @@ languages:
 
   lua:
     - <<: *lua-stylua
-
-  markdown:
-    - <<: *md-markdownlint
-    - <<: *md-mdformat
 
   sh:
     - <<: *sh-shfmt

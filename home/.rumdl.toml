@@ -1,0 +1,13 @@
+[global]
+disable = [
+    "MD013", # line-length
+    "MD033", # no-inline-html
+    "MD040", # fenced-code-language
+    "MD041", # first-line-heading
+]
+
+[MD004]
+style = "dash"
+
+[MD050]
+style = "asterisk"
