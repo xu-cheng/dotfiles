@@ -65,21 +65,6 @@ tools:
       mdformat --number -
     format-stdin: true
 
-  prettier: &prettier
-    format-command: >-
-      prettier \
-        --stdin \
-        --stdin-filepath ${INPUT} \
-        ${--range-start=charStart} \
-        ${--range-end=charEnd} \
-        ${--use-tabs:!insertSpaces} \
-        ${--tab-width=tabSize}
-    format-stdin: true
-    format-can-range: true
-    root-markers:
-      - .prettierrc
-      - .prettierrc.json
-
   sh-shfmt: &sh-shfmt
     format-command: >-
       shfmt \
@@ -121,6 +106,17 @@ tools:
       - .latexindent.yaml
       - .latexmkrc
 
+  yamlfmt: &yamlfmt
+    format-command: >-
+      yamlfmt -in
+    format-stdin: true
+    root-markers:
+      - .yamlfmt
+      - yamlfmt.yml
+      - yamlfmt.yaml
+      - .yamlfmt.yaml
+      - .yamlfmt.yml
+
 languages:
   c:
     - <<: *clang-format
@@ -128,27 +124,12 @@ languages:
   cpp:
     - <<: *clang-format
 
-  css:
-    - <<: *prettier
-
-  html:
-    - <<: *prettier
-
-  javascript:
-    - <<: *prettier
-
-  json:
-    - <<: *prettier
-
   lua:
     - <<: *lua-stylua
 
   markdown:
     - <<: *md-markdownlint
     - <<: *md-mdformat
-
-  scss:
-    - <<: *prettier
 
   sh:
     - <<: *sh-shfmt
@@ -160,11 +141,8 @@ languages:
     - <<: *tex-chktex
     - <<: *tex-latexindent
 
-  typescript:
-    - <<: *prettier
-
-  yaml:
-    - <<: *prettier
+  # yaml:
+  #   - <<: *yamlfmt
 
   =:
     - <<: *cspell

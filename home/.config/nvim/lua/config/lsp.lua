@@ -85,11 +85,11 @@ vim.api.nvim_create_autocmd("LspAttach", {
 
 vim.lsp.enable("basedpyright")
 vim.lsp.enable("bashls")
+vim.lsp.enable("biome")
 vim.lsp.enable("clangd")
 vim.lsp.enable("cssls")
 vim.lsp.enable("docker_language_server")
 vim.lsp.enable("efm")
-vim.lsp.enable("eslint")
 vim.lsp.enable("gh_actions_ls")
 vim.lsp.enable("gitlab_ci_ls")
 vim.lsp.enable("html")

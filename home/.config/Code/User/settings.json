@@ -84,23 +84,23 @@
     },
     // Ruby
     "[ruby]": {
-        "editor.defaultFormatter": "Shopify.ruby-lsp"
+        "editor.defaultFormatter": "Shopify.ruby-lsp",
     },
     // Web
     "[html]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode",
+        "editor.defaultFormatter": "biomejs.biome",
     },
     "[javascript]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode",
+        "editor.defaultFormatter": "biomejs.biome",
     },
     "[typescript]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode",
+        "editor.defaultFormatter": "biomejs.biome",
     },
     "[css]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode",
+        "editor.defaultFormatter": "biomejs.biome",
     },
     "[scss]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode",
+        "editor.defaultFormatter": "biomejs.biome",
     },
     // LaTeX
     "latex-workshop.view.pdf.viewer": "tab",
