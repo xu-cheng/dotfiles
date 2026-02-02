@@ -106,17 +106,6 @@ tools:
       - .latexindent.yaml
       - .latexmkrc
 
-  yamlfmt: &yamlfmt
-    format-command: >-
-      yamlfmt -in
-    format-stdin: true
-    root-markers:
-      - .yamlfmt
-      - yamlfmt.yml
-      - yamlfmt.yaml
-      - .yamlfmt.yaml
-      - .yamlfmt.yml
-
 languages:
   c:
     - <<: *clang-format
@@ -140,9 +129,6 @@ languages:
   tex:
     - <<: *tex-chktex
     - <<: *tex-latexindent
-
-  # yaml:
-  #   - <<: *yamlfmt
 
   =:
     - <<: *cspell
