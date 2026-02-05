@@ -181,10 +181,17 @@ vim.api.nvim_create_autocmd("User", {
     group = augroup("treesitter-additional-parsers"),
     pattern = { "TSUpdate" },
     callback = function()
-        require("nvim-treesitter.parsers").ghostty = {
+        local parsers = require("nvim-treesitter.parsers")
+        parsers.ghostty = {
             install_info = {
                 url = "https://github.com/bezhermoso/tree-sitter-ghostty",
                 queries = "queries/ghostty",
+            },
+        }
+        parsers.gritql = {
+            install_info = {
+                url = "https://github.com/biomejs/tree-sitter-gritql",
+                queries = "queries",
             },
         }
     end,
