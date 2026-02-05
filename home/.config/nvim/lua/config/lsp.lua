@@ -37,6 +37,14 @@ vim.api.nvim_create_autocmd("LspAttach", {
             vim.keymap.set(m, lhs, rhs, opts)
         end
 
+        -- Remove some default LSP mappings
+        pcall(vim.keymap.del, "n", "grn")
+        pcall(vim.keymap.del, { "n", "x" }, "gra")
+        pcall(vim.keymap.del, "n", "grr")
+        pcall(vim.keymap.del, "n", "gri")
+        pcall(vim.keymap.del, "n", "grt")
+
+        -- Our mappings
         map("n", "<leader>cl", "<cmd>LspInfo<cr>", "Lsp Info")
         map(
             { "n", "x" },
@@ -72,6 +80,9 @@ vim.api.nvim_create_autocmd("LspAttach", {
         map("n", "gT", function()
             require("telescope.builtin").lsp_type_definitions({ reuse_win = true })
         end, "Goto Type Definition")
+        map("n", "gO", function()
+            require("telescope.builtin").lsp_document_symbols({ reuse_win = true })
+        end, "List symbols")
         map("n", "K", vim.lsp.buf.hover, "Hover")
         map("n", "gK", vim.lsp.buf.signature_help, "Signature Help", { has = "signatureHelp" })
         map("i", "<c-k>", vim.lsp.buf.signature_help, "Signature Help", { has = "signatureHelp" })
