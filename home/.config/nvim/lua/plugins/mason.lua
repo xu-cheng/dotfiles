@@ -42,7 +42,7 @@ return {
                 "html-lsp",
                 "json-lsp",
                 "lua-language-server",
-                "nil",
+                "nixfmt",
                 "ruby-lsp",
                 "ruff",
                 "rumdl",
