@@ -194,5 +194,11 @@ vim.api.nvim_create_autocmd("User", {
                 queries = "queries",
             },
         }
+        parsers.pest = {
+            install_info = {
+                url = "https://github.com/pest-parser/tree-sitter-pest",
+                queries = "queries",
+            },
+        }
     end,
 })
