@@ -281,7 +281,7 @@ return {
             end
             local opts = {
                 options = {
-                    theme = "catppuccin",
+                    theme = "catppuccin-nvim",
                     globalstatus = true,
                     disabled_filetypes = { statusline = { "alpha" } },
                 },
