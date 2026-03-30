@@ -345,8 +345,22 @@ return {
         "stevearc/quicker.nvim",
         enabled = not_vscode,
         event = "FileType qf",
-        opts = {},
+        opts = {
+            highlight = {
+                treesitter = true,
+                lsp = true,
+                load_buffers = true,
+            },
+        },
         main = "quicker",
+        config = true,
+    },
+    {
+        "kevinhwang91/nvim-bqf",
+        enabled = not_vscode,
+        event = "FileType qf",
+        opts = {},
+        main = "bqf",
         config = true,
     },
 
@@ -362,6 +376,5 @@ return {
         },
         main = "toggleterm",
         config = true,
-    }
-
+    },
 }

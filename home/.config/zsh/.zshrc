@@ -90,6 +90,10 @@ if (( ${+commands[nvim]} )); then
     export MANPAGER='nvim +Man!'
     alias vim='nvim -p'
     alias vimdiff='nvim -d'
+
+    function erg() {
+        nvim -q =(rg --vimgrep "$@") +'lua require("quicker").open({ height = math.floor(vim.o.lines * 0.5) })'
+    }
 fi
 if [[ -s "$ZSH_HIGHLIGHT_PATH" ]]; then
   # From https://github.com/catppuccin/zsh-syntax-highlighting/
