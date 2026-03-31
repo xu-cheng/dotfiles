@@ -17,6 +17,8 @@ local icons = {
         added = " ",
         modified = " ",
         removed = " ",
+        unstaged = "󰄱 ",
+        staged = "󰱒 ",
     },
     kinds = {
         Array = " ",

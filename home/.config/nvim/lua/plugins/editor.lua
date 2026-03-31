@@ -17,7 +17,7 @@ return {
                 "<leader>fe",
                 function()
                     require("neo-tree.command").execute({
-                        action = "show",
+                        action = "focus",
                         dir = Utils.project_root(),
                         reveal = true,
                         source = "filesystem",
@@ -30,7 +30,7 @@ return {
                 "<leader>fE",
                 function()
                     require("neo-tree.command").execute({
-                        action = "show",
+                        action = "focus",
                         dir = vim.loop.cwd(),
                         reveal = true,
                         source = "filesystem",
@@ -38,6 +38,30 @@ return {
                     })
                 end,
                 desc = "Open Explorer (cwd)",
+            },
+            {
+                "<leader>ge",
+                function()
+                    require("neo-tree.command").execute({
+                        action = "focus",
+                        reveal = true,
+                        source = "git_status",
+                        toggle = true,
+                    })
+                end,
+                desc = "Git Explorer",
+            },
+            {
+                "<leader>be",
+                function()
+                    require("neo-tree.command").execute({
+                        action = "focus",
+                        reveal = true,
+                        source = "buffers",
+                        toggle = true,
+                    })
+                end,
+                desc = "Buffer Explorer",
             },
         },
         init = function()
@@ -68,22 +92,46 @@ return {
                             added = icons.git.added,
                             modified = icons.git.modified,
                             deleted = icons.git.removed,
+                            unstaged = icons.git.unstaged,
+                            staged = icons.git.staged,
                         },
+                    },
+                    indent = {
+                        with_expanders = true,
+                        expander_collapsed = "",
+                        expander_expanded = "",
+                        expander_highlight = "NeoTreeExpander",
                     },
                 },
                 document_symbols = {
                     kinds = document_symbol_kinds,
                 },
                 filesystem = {
-                    hijack_netrw_behavior = "open_default",
+                    bind_to_cwd = false,
                     filtered_items = {
                         visible = true,
                         hide_dotfiles = false,
                         hide_gitignored = false,
                     },
+                    follow_current_file = { enabled = true },
+                    hijack_netrw_behavior = "open_default",
+                    use_libuv_file_watcher = true,
                 },
+                open_files_do_not_replace_types = { "terminal", "Trouble", "trouble", "qf", "Outline" },
                 source_selector = {
                     winbar = true,
+                },
+                window = {
+                    mappings = {
+                        ["Y"] = {
+                            function(state)
+                                local node = state.tree:get_node()
+                                local path = node:get_id()
+                                vim.fn.setreg("+", path, "c")
+                            end,
+                            desc = "Copy Path to Clipboard",
+                        },
+                    },
                 },
             }
         end,
