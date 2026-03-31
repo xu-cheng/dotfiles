@@ -19,6 +19,7 @@ return {
                     require("neo-tree.command").execute({
                         action = "show",
                         dir = Utils.project_root(),
+                        reveal = true,
                         source = "filesystem",
                         toggle = true,
                     })
@@ -31,6 +32,7 @@ return {
                     require("neo-tree.command").execute({
                         action = "show",
                         dir = vim.loop.cwd(),
+                        reveal = true,
                         source = "filesystem",
                         toggle = true,
                     })
