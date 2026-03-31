@@ -1,6 +1,94 @@
 local not_vscode = not vim.g.vscode
+local Utils = require("utils")
 
 return {
+    -- file explorer
+    {
+        "nvim-neo-tree/neo-tree.nvim",
+        enabled = not_vscode,
+        lazy = false,
+        dependencies = {
+            "MunifTanjim/nui.nvim",
+            "nvim-lua/plenary.nvim",
+            "nvim-tree/nvim-web-devicons",
+        },
+        keys = {
+            {
+                "<leader>fe",
+                function()
+                    require("neo-tree.command").execute({
+                        action = "show",
+                        dir = Utils.project_root(),
+                        source = "filesystem",
+                        toggle = true,
+                    })
+                end,
+                desc = "Open Explorer",
+            },
+            {
+                "<leader>fE",
+                function()
+                    require("neo-tree.command").execute({
+                        action = "show",
+                        dir = vim.loop.cwd(),
+                        source = "filesystem",
+                        toggle = true,
+                    })
+                end,
+                desc = "Open Explorer (cwd)",
+            },
+        },
+        init = function()
+            vim.g.loaded_netrw = 1
+            vim.g.loaded_netrwPlugin = 1
+        end,
+        opts = function()
+            local icons = require("config/icons")
+            local document_symbol_kinds = {}
+
+            for kind, icon in pairs(icons.kinds) do
+                document_symbol_kinds[kind] = { icon = icon }
+            end
+
+            return {
+                close_if_last_window = true,
+                default_component_configs = {
+                    diagnostics = {
+                        symbols = {
+                            hint = icons.diagnostics.Hint,
+                            info = icons.diagnostics.Info,
+                            warn = icons.diagnostics.Warn,
+                            error = icons.diagnostics.Error,
+                        },
+                    },
+                    git_status = {
+                        symbols = {
+                            added = icons.git.added,
+                            modified = icons.git.modified,
+                            deleted = icons.git.removed,
+                        },
+                    },
+                },
+                document_symbols = {
+                    kinds = document_symbol_kinds,
+                },
+                filesystem = {
+                    hijack_netrw_behavior = "open_default",
+                    filtered_items = {
+                        visible = true,
+                        hide_dotfiles = false,
+                        hide_gitignored = false,
+                    },
+                },
+                source_selector = {
+                    winbar = true,
+                },
+            }
+        end,
+        main = "neo-tree",
+        config = true,
+    },
+
     -- search/replacement
     {
         "MagicDuck/grug-far.nvim",

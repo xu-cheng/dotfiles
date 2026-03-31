@@ -49,6 +49,7 @@ return {
                         background = true,
                     },
                 },
+                neotree = true,
                 noice = true,
                 notify = true,
                 rainbow_delimiters = true,
@@ -231,7 +232,7 @@ return {
                 end,
                 offsets = {
                     {
-                        filetype = "snacks_picker_list",
+                        filetype = "neo-tree",
                         text = "File Explorer",
                         highlight = "Directory",
                         text_align = "left",
@@ -366,6 +367,7 @@ return {
                     "lazy",
                     "man",
                     "mason",
+                    "neo-tree",
                     "nvim-dap-ui",
                     "quickfix",
                     "toggleterm",
