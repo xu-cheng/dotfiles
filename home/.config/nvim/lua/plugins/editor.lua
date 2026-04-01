@@ -90,10 +90,14 @@ return {
                     git_status = {
                         symbols = {
                             added = icons.git.added,
-                            modified = icons.git.modified,
+                            conflict = icons.git.conflict,
                             deleted = icons.git.removed,
-                            unstaged = icons.git.unstaged,
+                            ignored = icons.git.ignored,
+                            modified = icons.git.modified,
+                            renamed = icons.git.renamed,
                             staged = icons.git.staged,
+                            unstaged = icons.git.unstaged,
+                            untracked = icons.git.untracked,
                         },
                     },
                     indent = {

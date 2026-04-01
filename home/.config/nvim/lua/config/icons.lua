@@ -15,10 +15,14 @@ local icons = {
     },
     git = {
         added = " ",
+        conflict = " ",
+        ignored = " ",
         modified = " ",
+        renamed = " ",
         removed = " ",
-        unstaged = "󰄱 ",
         staged = "󰱒 ",
+        unstaged = "󰄱 ",
+        untracked = "󰄱 ",
     },
     kinds = {
         Array = " ",
