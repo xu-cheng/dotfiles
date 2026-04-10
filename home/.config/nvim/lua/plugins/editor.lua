@@ -100,6 +100,9 @@ return {
                             untracked = icons.git.untracked,
                         },
                     },
+                    modified = {
+                        symbol = "󱙄 ",
+                    },
                     indent = {
                         with_expanders = true,
                         expander_collapsed = "",
