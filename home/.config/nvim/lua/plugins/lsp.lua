@@ -9,13 +9,10 @@ return {
         event = "InsertEnter",
         dependencies = {
             "Kaiser-Yang/blink-cmp-avante",
+            "Kaiser-Yang/blink-cmp-dictionary",
             "Kaiser-Yang/blink-cmp-git",
             "L3MON4D3/LuaSnip",
             "xzbdmw/colorful-menu.nvim",
-            {
-                "Kaiser-Yang/blink-cmp-dictionary",
-                dependencies = { "nvim-lua/plenary.nvim" },
-            },
         },
         ---@module "blink.cmp"
         ---@type blink.cmp.Config
@@ -185,7 +182,6 @@ return {
         "rachartier/tiny-code-action.nvim",
         enabled = not_vscode,
         dependencies = {
-            "nvim-lua/plenary.nvim",
             "nvim-telescope/telescope.nvim",
         },
         event = "LspAttach",
