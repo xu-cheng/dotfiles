@@ -16,11 +16,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
         end
 
         if client.server_capabilities.codeLensProvider then
-            vim.lsp.codelens.refresh()
-            vim.api.nvim_create_autocmd({ "BufEnter", "CursorHold", "InsertLeave" }, {
-                buffer = buffer,
-                callback = vim.lsp.codelens.refresh,
-            })
+            vim.lsp.codelens.enable(true, { bufnr = buffer })
         end
 
         local function map(m, lhs, rhs, desc, opts)
@@ -54,7 +50,6 @@ vim.api.nvim_create_autocmd("LspAttach", {
             { has = "codeAction", noremap = true, silent = true }
         )
         map({ "n", "x" }, "<leader>cc", vim.lsp.codelens.run, "Run Codelens", { has = "codeLens" })
-        map("n", "<leader>cC", vim.lsp.codelens.refresh, "Rerfesh & Display Codelens", { has = "codeLens" })
         map("n", "<leader>cd", vim.diagnostic.open_float, "Line Diagnostics")
         map(
             { "n", "x" },
