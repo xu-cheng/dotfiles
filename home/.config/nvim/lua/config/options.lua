@@ -2,20 +2,24 @@ local opt = vim.opt
 
 -- General
 opt.clipboard = { "unnamed", "unnamedplus" } -- sync with system clipboard
-if vim.fn.has("wsl") == 1 and not vim.env.TMUX then
-    -- https://github.com/neovim/neovim/wiki/FAQ#how-to-use-the-windows-clipboard-from-wsl
-    vim.g.clipboard = {
-        name = "WslClipboard",
-        copy = {
-            ["+"] = "clip.exe",
-            ["*"] = "clip.exe",
-        },
-        paste = {
-            ["+"] = 'powershell.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
-            ["*"] = 'powershell.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
-        },
-        cache_enabled = 0,
-    }
+if vim.fn.has("wsl") == 1 then
+    if vim.env.TMUX then
+        vim.g.clipboard = "tmux"
+    else
+        -- https://github.com/neovim/neovim/wiki/FAQ#how-to-use-the-windows-clipboard-from-wsl
+        vim.g.clipboard = {
+            name = "WslClipboard",
+            copy = {
+                ["+"] = "clip.exe",
+                ["*"] = "clip.exe",
+            },
+            paste = {
+                ["+"] = 'powershell.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
+                ["*"] = 'powershell.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
+            },
+            cache_enabled = 0,
+        }
+    end
 end
 
 opt.mouse = "a"        -- automatically enable mouse usage
