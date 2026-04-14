@@ -41,23 +41,19 @@ vim.api.nvim_create_autocmd("LspAttach", {
         pcall(vim.keymap.del, "n", "grt")
 
         -- Our mappings
-        map("n", "<leader>cl", "<cmd>LspInfo<cr>", "Lsp Info")
+        map("n", "<leader>cl", "<cmd>:checkhealth vim.lsp<cr>", "Lsp Info")
         map(
             { "n", "x" },
             "<leader>ca",
             require("tiny-code-action").code_action,
             "Code Action",
-            { has = "codeAction", noremap = true, silent = true }
+            { has = "codeAction", noremap = true }
         )
         map({ "n", "x" }, "<leader>cc", vim.lsp.codelens.run, "Run Codelens", { has = "codeLens" })
         map("n", "<leader>cd", vim.diagnostic.open_float, "Line Diagnostics")
-        map(
-            { "n", "x" },
-            "<leader>cf",
-            "<cmd>lua vim.lsp.buf.format({async = true})<cr>",
-            "Format",
-            { has = "documentFormatting" }
-        )
+        map({ "n", "x" }, "<leader>cf", function()
+            vim.lsp.buf.format({ async = true })
+        end, "Format", { has = "documentFormatting" })
         map("n", "<leader>cr", function()
             return ":IncRename " .. vim.fn.expand("<cword>")
         end, "Rename", { expr = true, has = "rename" })
