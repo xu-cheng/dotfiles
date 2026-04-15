@@ -216,13 +216,6 @@ return {
         main = "lazydev",
     },
     {
-        "folke/neoconf.nvim",
-        enabled = not_vscode,
-        event = { "BufReadPre", "BufNewFile" },
-        config = true,
-        main = "neoconf",
-    },
-    {
         "b0o/schemastore.nvim",
         version = false,
         enabled = not_vscode,
