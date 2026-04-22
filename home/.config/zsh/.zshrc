@@ -46,6 +46,10 @@ if [[ "$OSTYPE" == darwin* ]]; then # macOS
 else # Linux
     RUBY_API_VERSION="$(ruby -e 'print Gem.ruby_api_version')"
     export PATH="$XDG_BIN_HOME:$XDG_DATA_HOME/gem/ruby/$RUBY_API_VERSION/bin:$PATH"
+
+    if [[ -d "$XDG_STATE_HOME/home-manager/gcroots" ]]; then
+        export NIX_HOME_MANAGER_HOME_PATH="$XDG_STATE_HOME/home-manager/gcroots/current-home/home-path"
+    fi
 fi
 
 if [[ -n "$HOMEBREW_PREFIX" ]]; then
@@ -63,12 +67,16 @@ if [[ -n "$HOMEBREW_PREFIX" ]]; then
     alias bubu='brew update && brew upgrade --formulae && brew cleanup'
 
     fpath+="$HOMEBREW_PREFIX/share/zsh/site-functions"
+elif [[ -n "$NIX_HOME_MANAGER_HOME_PATH" ]]; then
+    FZF_SHELL_PATH="$NIX_HOME_MANAGER_HOME_PATH/share/fzf"
+    ZSH_HIGHLIGHT_PATH="$NIX_HOME_MANAGER_HOME_PATH/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
+    STARSHIP_PATH="$NIX_HOME_MANAGER_HOME_PATH/bin/starship"
 else
     ZSH_HIGHLIGHT_PATH="/usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
     STARSHIP_PATH="starship"
 
     if [[ -s "/etc/zsh_command_not_found" ]]; then
-        source "/etc/zsh_command_not_found"
+        . "/etc/zsh_command_not_found"
     fi
 
     if [[ -d "$HOME/.fzf" ]]; then
