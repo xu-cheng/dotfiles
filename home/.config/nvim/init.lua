@@ -31,7 +31,10 @@ require("lazy").setup("plugins", {
     },
     change_detection = {
         enabled = false,
-    }
+    },
+    git = {
+        timeout = 300,
+    },
 })
 
 -- load config
