@@ -24,48 +24,11 @@ return {
         version = false,
         enabled = not_vscode,
         opts = {
-            ensure_installed = {
-                "rubocop",
-            },
-            linux_ensure_installed = {
-                "basedpyright",
-                "bash-language-server",
-                "biome",
-                "clangd",
-                "cspell",
-                "css-lsp",
-                "docker-language-server",
-                "editorconfig-checker",
-                "efm",
-                "gh-actions-language-server",
-                "gitlab-ci-ls",
-                "html-lsp",
-                "json-lsp",
-                "lua-language-server",
-                "nixfmt",
-                "ruby-lsp",
-                "ruff",
-                "rumdl",
-                "shellcheck",
-                "shfmt",
-                "stylua",
-                "taplo",
-                "terraform-ls",
-                "typescript-language-server",
-                "yaml-language-server",
-            },
             auto_update = true,
             run_on_start = true,
             debounce_hours = 168,
         },
-        config = function(_, opts)
-            if vim.fn.has("mac") == 0 then
-                for _, entry in ipairs(opts["linux_ensure_installed"]) do
-                    table.insert(opts["ensure_installed"], entry)
-                end
-            end
-            opts["linux_ensure_installed"] = nil
-            require("mason-tool-installer").setup(opts)
-        end,
+        main = "mason-tool-installer",
+        config = true,
     },
 }
