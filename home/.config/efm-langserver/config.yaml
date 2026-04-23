@@ -37,6 +37,11 @@ tools:
     root-markers:
       - .editorconfig
 
+  hcl-hclfmt: &hcl-hclfmt
+    format-command: >-
+      hclfmt
+    format-stdin: true
+
   lua-stylua: &lua-stylua
     format-command: >-
       stylua \
@@ -97,6 +102,9 @@ languages:
 
   cpp:
     - <<: *clang-format
+
+  hcl:
+    - <<: *hcl-hclfmt
 
   lua:
     - <<: *lua-stylua
