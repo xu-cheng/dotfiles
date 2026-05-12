@@ -43,6 +43,7 @@ brew "luarocks"
 brew "mas"
 brew "mupdf-tools"
 brew "neovim"
+brew "nixfmt"
 brew "pandoc"
 brew "perl"
 brew "pinentry-mac"
@@ -109,6 +110,9 @@ mas "GarageBand", id: 682658836
 mas "Goodnotes", id: 1444383602
 mas "iMovie", id: 408981434
 mas "Keynote", id: 409183694
+mas "Microsoft Excel", id: 462058435
+mas "Microsoft PowerPoint", id: 462062816
+mas "Microsoft Word", id: 462054704
 mas "Noizio", id: 928871589
 mas "Numbers", id: 409203825
 mas "OpenCat", id: 6445999201
@@ -117,7 +121,6 @@ mas "Roadblock", id: 1037709284
 mas "ServerCat", id: 1501532023
 mas "Spark", id: 1176895641
 mas "Tailscale", id: 1475387142
-mas "Wallpaper Wizard", id: 1266674560
 mas "WeChat", id: 836500024
 mas "WhatsApp", id: 310633997
 mas "WireGuard", id: 1451685025
