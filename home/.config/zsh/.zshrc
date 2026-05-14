@@ -162,6 +162,10 @@ if [[ -d "$FZF_SHELL_PATH" ]]; then
     export FZF_TMUX=1
 fi
 
+if (( ${+commands[nix-your-shell]} )) then
+    nix-your-shell zsh | source /dev/stdin
+fi
+
 alias rake='noglob rake'
 alias ta='tmux attach -t'
 alias tl='tmux list-sessions'

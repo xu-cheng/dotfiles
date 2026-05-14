@@ -75,6 +75,8 @@ symbol = "󰍛 "
 
 [nix_shell]
 symbol = " "
+heuristic = true
+unknown_msg = "nix-shell"
 
 [nodejs]
 symbol = "󰎙 "
