@@ -56,6 +56,7 @@ else
     -- General
     vim.cmd("filetype plugin indent on")      -- automatically detect file types
 
+    opt.autoread = true                       -- enable auto read
     opt.autowrite = true                      -- enable auto write
     opt.backup = true                         -- enable backup
     opt.backupdir:remove(".")                 -- don't create filename~ backup file in the same directory
