@@ -64,7 +64,7 @@ if [[ -n "$HOMEBREW_PREFIX" ]]; then
     STARSHIP_PATH="$HOMEBREW_PREFIX/opt/starship/bin/starship"
 
     alias bubo='brew update && brew outdated'
-    alias bubu='brew update && brew upgrade --formulae && brew cleanup'
+    alias bubu='brew update && brew upgrade --yes --formulae && brew cleanup'
 
     fpath+="$HOMEBREW_PREFIX/share/zsh/site-functions"
 elif [[ -n "$NIX_HOME_MANAGER_HOME_PATH" ]]; then
