@@ -144,4 +144,6 @@ else
         update_in_insert = false,
         virtual_text = false, -- we use tiny-inline-diagnostic instead
     })
+    -- customize unused code highlight using dim instead of { link = "Comment" }
+    vim.api.nvim_set_hl(0, "DiagnosticUnnecessary", { dim = true })
 end
