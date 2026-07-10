@@ -6,7 +6,7 @@ return {
         "catppuccin/nvim",
         name = "catppuccin",
         enabled = not_vscode,
-        lazy = false,    -- make sure we load this during startup
+        lazy = false, -- make sure we load this during startup
         priority = 1000, -- make sure to load this before all the other start plugins
         opts = {
             flavour = "frappe",
@@ -124,11 +124,11 @@ return {
                 },
             },
             presets = {
-                bottom_search = true,         -- use a classic bottom cmdline for search
-                command_palette = true,       -- position the cmdline and popupmenu together
+                bottom_search = true, -- use a classic bottom cmdline for search
+                command_palette = true, -- position the cmdline and popupmenu together
                 long_message_to_split = true, -- long messages will be sent to a split
-                inc_rename = true,            -- enables an input dialog for inc-rename.nvim
-                lsp_doc_border = false,       -- add a border to hover docs and signature help
+                inc_rename = true, -- enables an input dialog for inc-rename.nvim
+                lsp_doc_border = false, -- add a border to hover docs and signature help
             },
             cmdline = {
                 format = {
@@ -149,6 +149,20 @@ return {
                 },
             },
         },
+        config = function(_, opts)
+            -- https://github.com/folke/noice.nvim/issues/1195
+            local state = require("noice.ui.state")
+            local skip = state.skip
+            state.skip = function(event, kind, ...)
+                if event == "msg_show" then
+                    state.set(event, kind, ...)
+                    return false
+                end
+
+                return skip(event, kind, ...)
+            end
+            require("noice").setup(opts)
+        end,
         keys = {
             {
                 "<S-Enter>",
