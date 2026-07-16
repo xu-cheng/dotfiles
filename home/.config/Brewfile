@@ -1,108 +1,211 @@
+# Command-line interface for SQLite
 brew "sqlite"
+# Download with resuming and segmented downloading
 brew "aria2"
+# Extendable version manager with support for Ruby, Node.js, Erlang & more
 brew "asdf"
+# Code searching, linting, rewriting
 brew "ast-grep"
+# Archival front-end
 brew "atool"
+# Open-source, cross-platform JavaScript runtime environment
 brew "node"
+# Pyright fork with various improvements and built-in pylance features
 brew "basedpyright"
+# Language Server for Bash
 brew "bash-language-server"
+# Clone of cat(1) with syntax highlighting and Git integration
 brew "bat"
+# Toolchain of the web
 brew "biome"
+# XML-based font configuration API for X Windows
 brew "fontconfig"
+# Formatting tools for C, C++, Obj-C, Java, JavaScript, TypeScript
 brew "clang-format"
+# Cross-platform make
 brew "cmake"
+# GNU File, Shell, and Text utilities
 brew "coreutils"
+# Get, unpack, build, and install modules from CPAN
 brew "cpanminus"
+# Spell checker for code
 brew "cspell"
+# Reimplementation of ctags(1)
 brew "ctags"
+# Load/unload environment variables based on $PWD
 brew "direnv"
+# Tool to verify that your files are in harmony with your .editorconfig
 brew "editorconfig-checker"
+# General purpose Language Server
 brew "efm-langserver"
+# Perl lib for reading and writing EXIF metadata
 brew "exiftool"
+# Modern, maintained replacement for ls
 brew "eza"
+# Fast, partial replacement for codemod (find/replace tool for programmers)
 brew "fastmod"
+# Simple, fast and user-friendly alternative to find
 brew "fd"
+# Play, record, convert, and stream select audio and video codecs
 brew "ffmpeg"
+# Command-line fuzzy finder written in Go
 brew "fzf"
+# GitHub command-line tool
 brew "gh"
+# Interpreter for PostScript and PDF
 brew "ghostscript"
+# Distributed revision control system
 brew "git"
+# Syntax-highlighting pager for git and diff output
 brew "git-delta"
+# GNU Privacy Guard (OpenPGP)
 brew "gnupg"
+# Command-driven, interactive function plotting
 brew "gnuplot"
+# Library to render SVG files using Cairo
 brew "librsvg"
+# Graph visualization software from AT&T and Bell Labs
 brew "graphviz"
+# Command-line hex viewer
 brew "hexyl"
+# Improved top (interactive process viewer)
 brew "htop"
+# Improved colored diff
 brew "icdiff"
+# Tools and libraries to manipulate images in select formats
 brew "imagemagick"
+# Lightweight and flexible command-line JSON processor
 brew "jq"
+# Pager program similar to more
 brew "less"
+# Language Server for the Lua language
 brew "lua-language-server"
+# Package manager for the Lua programming language
 brew "luarocks"
+# Mac App Store command-line interface
 brew "mas"
+# Lightweight PDF and XPS viewer
 brew "mupdf-tools"
+# Ambitious Vim-fork focused on extensibility and agility
 brew "neovim"
+# Command-line tool to format Nix language code
 brew "nixfmt"
+# Swiss-army knife of markup format conversion
 brew "pandoc"
+# Highly capable, feature-rich programming language
 brew "perl"
+# Pinentry for GPG on Mac
 brew "pinentry-mac"
+# Generic syntax highlighter
 brew "pygments"
+# Search tool like grep and The Silver Searcher
 brew "ripgrep"
+# Powerful, clean, object-oriented scripting language
 brew "ruby"
+# Opinionated language server for Ruby
 brew "ruby-lsp"
+# Extremely fast Python linter, written in Rust
 brew "ruff"
+# Markdown Linter and Formatter written in Rust
 brew "rumdl"
+# Wraps rm to prevent dangerous deletion of files
 brew "safe-rm"
+# Intuitive find & replace CLI
 brew "sd"
+# Static analysis and lint tool, for (ba)sh scripts
 brew "shellcheck"
+# Autoformat shell script source code
 brew "shfmt"
+# Cross-shell prompt for astronauts
 brew "starship"
+# Opinionated Lua code formatter
 brew "stylua"
+# TOML toolkit written in Rust
 brew "taplo"
+# Very fast implementation of tldr in Rust
 brew "tealdeer"
+# Terminal multiplexer
 brew "tmux"
+# Manage complex tmux sessions easily
 brew "tmuxinator"
+# Program that allows you to count code, quickly
 brew "tokei"
+# Parser generator tool
 brew "tree-sitter-cli"
+# Language for application scale JavaScript development
 brew "typescript"
+# Language Server Protocol implementation for TypeScript wrapping tsserver
 brew "typescript-language-server"
+# Command-line unarchiving tools supporting multiple formats
 brew "unar"
+# Extremely fast Python package installer and resolver, written in Rust
 brew "uv"
+# Language servers for HTML, CSS, JavaScript, and JSON extracted from vscode
 brew "vscode-langservers-extracted"
+# Lexical database for the English language
 brew "wordnet"
+# Friendly and fast tool for sending HTTP requests
 brew "xh"
+# Language Server for Yaml Files
 brew "yaml-language-server"
-brew "you-get"
+# Feature-rich command-line audio/video downloader
+brew "yt-dlp"
+# Shell extension to navigate your filesystem faster
 brew "zoxide"
+# Fish shell like syntax highlighting for zsh
 brew "zsh-syntax-highlighting"
+# Password manager that keeps all passwords secure behind one password
 cask "1password"
+# View, print, and comment on PDF documents
 cask "adobe-acrobat-reader"
+# Application launcher and productivity software
 cask "alfred"
+# Menu bar icon organiser
 cask "bartender"
+# OpenAI's official ChatGPT desktop app
 cask "chatgpt"
+# OpenAI's coding agent that runs in your terminal
 cask "codex"
+# Voice and text chat software
 cask "discord"
+# App to build and share containerised applications and microservices
 cask "docker-desktop"
 cask "font-noto-sans-cjk"
 cask "font-noto-serif-cjk"
 cask "font-symbols-only-nerd-font"
+# Terminal emulator that uses platform-native UI and GPU acceleration
 cask "ghostty"
+# Free and open-source media player
 cask "iina"
+# System monitoring app
 cask "istat-menus"
+# Host-based application firewall
 cask "little-snitch"
+# Full TeX Live distribution without GUI applications
 cask "mactex-no-gui"
+# App to write, plan, collaborate, and get organised
 cask "notion"
+# Calculator and converter application
 cask "numi"
+# PDF reader, editor and annotator
 cask "pdf-expert"
+# Home media server
 cask "plex-media-server"
+# Used to access context-specific actions when text is selected
 cask "popclip"
+# Tool for pdf slides
 cask "presentation"
+# Print driver for printing documents directly to a pdf file
 cask "rwts-pdfwriter"
+# Video game digital distribution service
 cask "steam"
+# JDK from the Eclipse Foundation (Adoptium)
 cask "temurin"
+# Semantic lexical reference for Apple Dictionary
 cask "terminology"
+# Open-source code editor
 cask "visual-studio-code"
+# Video communication and virtual meeting platform
 cask "zoom"
 mas "1Password for Safari", id: 1569813296
 mas "Amphetamine", id: 937984704
@@ -135,7 +238,6 @@ vscode "chrislajoie.vscode-modelines"
 vscode "drblury.protobuf-vsc"
 vscode "eamodio.gitlens"
 vscode "editorconfig.editorconfig"
-vscode "github.copilot-chat"
 vscode "hediet.debug-visualizer"
 vscode "ionutvmi.path-autocomplete"
 vscode "james-yu.latex-workshop"
