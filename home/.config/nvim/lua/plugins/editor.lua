@@ -266,6 +266,7 @@ return {
         dependencies = {
             "tpope/vim-rhubarb",
         },
+        cmd = { "G", "Git", "Gedit", "Gsplit", "Gvsplit", "Gtabedit", "GBrowse" },
         event = { "BufReadPre", "BufNewFile" },
         init = function()
             local function map(l, r, desc)
