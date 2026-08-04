@@ -22,8 +22,8 @@ plugins=( \
     asdf \
     docker \
     docker-compose \
+    gi \
     git \
-    gitignore \
     helm \
     kubectl \
     podman \
