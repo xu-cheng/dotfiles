@@ -1,0 +1,12 @@
+; vim: set ft=gitconfig:
+
+[user]
+name = Cheng Xu
+email = git@xuc.me
+signingkey = 3FCDEDF75EF78E84584BFBCEB19F15830AB4E690
+
+[commit]
+gpgsign = true
+
+[include]
+path = ~/.config/git/shared.gitconfig

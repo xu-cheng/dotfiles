@@ -1,83 +1,155 @@
 #!/usr/bin/env ruby
-# rubocop:disable Layout/SpaceAroundOperators, Style/MixinUsage, Style/NumericLiteralPrefix, Lint/MissingCopEnableDirective
+# rubocop:disable Layout/SpaceAroundOperators, Style/GlobalVars, Style/MixinUsage, Lint/MissingCopEnableDirective
 # frozen_string_literal: true
 
 require "fileutils"
+require "optparse"
 require "pathname"
 
-def dry_run?
-  @dry_run = (ARGV.include?("-d") || ARGV.include?("--dry-run")) if @dry_run.nil?
-  @dry_run
-end
+OS = `uname`.chomp
+ROOT = Pathname.new(__dir__).expand_path
+HOME = Pathname.new(Dir.home)
+DOTFILES_HOME = ROOT/"home"
+HOSTS_DIR = ROOT/"hosts"
 
-if dry_run?
+$opt = {
+  dry_run: false,
+  host: nil,
+}
+OptionParser.new do |parser|
+  parser.banner = "Usage: setup [options]"
+  parser.on("-H", "--host HOST", "Host to be setup") do |host|
+    $opt[:host] = host
+  end
+  parser.on("-d", "--dry-run", "Dry run") do |dry_run|
+    $opt[:dry_run] = dry_run
+  end
+  parser.on_tail("-h", "--help", "Show this message") do
+    puts parser.help
+    exit
+  end
+end.parse!
+
+if $opt[:dry_run]
   warn "==> Dry run mode."
   include FileUtils::DryRun
 else
   include FileUtils::Verbose
 end
 
-OS = `uname`.chomp
-HOSTNAME = `hostname`.chomp
-ROOT = Pathname.new(__dir__).expand_path
-DOTFILES_HOME = ROOT/"home"
-DOTFILES_OVERWRITE = ROOT/"overwrite"
-HOME = Pathname.new(Dir.home)
+$opt[:host] = "mac" if $opt[:host].nil? && OS == "Darwin"
 
-def overwrite_path(src)
-  Pathname.new(src.to_s.sub(DOTFILES_HOME.to_s, DOTFILES_OVERWRITE.to_s))
+def symlink_target(path)
+  target = path.readlink
+  target = (path.dirname/target).cleanpath unless target.absolute?
+  target.cleanpath
 end
 
-def link_file(src, dst_dir)
-  mkdir_p dst_dir unless dst_dir.directory?
-  return if src.basename.to_s == ".DS_Store"
-  return if src.to_s.start_with?(DOTFILES_HOME.to_s) && overwrite_path(src).exist?
-
-  ln_sf src, dst_dir
+def inside?(path, directory)
+  path == directory || path.to_s.start_with?("#{directory}/")
 end
 
-def link_dir(src_dir, dst_dir, skip_directory: false)
-  overwrite_dir = overwrite_path(src_dir)
-  files = []
-  files += src_dir.children
-  files += overwrite_dir.children if overwrite_dir.exist?
-  files.sort.each do |file|
-    next if skip_directory && file.directory?
+def managed_symlink?(path)
+  path.symlink? && inside?(symlink_target(path), ROOT)
+end
 
-    link_file file, dst_dir
+def host_root
+  HOSTS_DIR/$opt[:host] if $opt[:host]
+end
+
+def link_entry(source_path, destination_dir)
+  mkdir_p destination_dir unless destination_dir.directory?
+  return if source_path.basename.to_s == ".DS_Store"
+
+  ln_sf source_path, destination_dir
+end
+
+def link_host_override(shared_path, host_path, destination_dir)
+  if shared_path.directory? && host_path.directory? && !managed_symlink?(shared_path)
+    host_path.children.sort.each do |child|
+      link_host_override shared_path/child.basename, child, destination_dir/host_path.basename
+    end
+  else
+    link_entry host_path, destination_dir
   end
 end
 
-def clean(dir)
-  dir.children.sort.each do |file|
-    next if file.exist?
-    next unless file.symlink?
+def link_tree(name, skip_child_dir: false)
+  destination_dir = HOME/name
 
-    rm file if file.readlink.to_s.start_with? ROOT.to_s
+  # Link shared files
+  shared_path = DOTFILES_HOME/name
+  if shared_path.file?
+    link_entry shared_path, destination_dir
+  elsif shared_path.directory?
+    shared_path.children.sort.each do |child|
+      next if skip_child_dir && child.directory?
+
+      link_entry child, destination_dir
+    end
+  end
+
+  # Link host override
+  return unless $opt[:host]
+
+  host_path = host_root/name
+  if host_path.file?
+    link_entry host_path, destination_dir
+  elsif host_path.directory?
+    host_path.children.sort.each do |child|
+      next if skip_child_dir && child.directory?
+
+      link_host_override shared_path/child.basename, child, destination_dir
+    end
   end
 end
 
-# Link files
-link_dir DOTFILES_HOME, HOME, skip_directory: true
-link_dir DOTFILES_HOME/".config", HOME/".config"
-link_dir DOTFILES_HOME/".local/bin", HOME/".local/bin"
-link_dir DOTFILES_HOME/".local/share/cargo", HOME/".local/share/cargo"
-link_dir DOTFILES_HOME/".ssh", HOME/".ssh"
+def remove_stale_links(path)
+  if path.directory?
+    path.children.sort.each { |child| remove_stale_links child }
+    return
+  end
 
-if OS == "Darwin"
-  link_dir DOTFILES_HOME/".gnupg", HOME/".gnupg"
-  link_file DOTFILES_HOME/".config/Code/User", HOME/"Library/Application Support/Code"
+  return unless managed_symlink?(path)
+
+  if path.exist?
+    target = symlink_target(path)
+    return unless inside?(target, HOSTS_DIR)
+
+    rm path if $opt[:host].nil? || !inside?(target, host_root)
+  else
+    rm path
+  end
 end
+
+def clean_tree(name)
+  directory = HOME/name
+  return unless directory.exist?
+
+  directory.children.sort.each do |child|
+    next unless managed_symlink? child
+
+    remove_stale_links child
+  end
+end
+
+# Link
+link_tree ".", skip_child_dir: true
+link_tree ".config"
+link_tree ".gnupg"
+link_tree ".ssh"
+link_tree ".local/bin"
+link_tree ".local/share/cargo"
 
 # Cleanup broken symlinks
-clean HOME
-clean HOME/".config"
-clean HOME/".gnupg"
-clean HOME/".local/bin"
-clean HOME/".local/share/cargo"
-clean HOME/".ssh"
+clean_tree "."
+clean_tree ".config"
+clean_tree ".gnupg"
+clean_tree ".ssh"
+clean_tree ".local/bin"
+clean_tree ".local/share/cargo"
 
 # Post linking
-chmod 0700, HOME/".ssh"
-chmod 0600, (HOME/".ssh/config").realpath
-chmod 0700, HOME/".gnupg"
+chmod 0o700, HOME/".ssh"
+chmod 0o600, (HOME/".ssh/config").realpath if (HOME/".ssh/config").exist?
+chmod 0o700, HOME/".gnupg"
