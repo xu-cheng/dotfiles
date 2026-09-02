@@ -37,7 +37,9 @@ else
   include FileUtils::Verbose
 end
 
-$opt[:host] = "mac" if $opt[:host].nil? && OS == "Darwin"
+def mac?
+  OS == "Darwin"
+end
 
 def symlink_target(path)
   target = path.readlink
@@ -133,6 +135,8 @@ def clean_tree(name)
   end
 end
 
+$opt[:host] = "mac" if $opt[:host].nil? && mac?
+
 # Link
 link_tree ".", skip_child_dir: true
 link_tree ".config"
@@ -140,6 +144,7 @@ link_tree ".gnupg"
 link_tree ".ssh"
 link_tree ".local/bin"
 link_tree ".local/share/cargo"
+link_entry HOME/".config/Code/User", HOME/"Library/Application Support/Code" if mac?
 
 # Cleanup broken symlinks
 clean_tree "."
