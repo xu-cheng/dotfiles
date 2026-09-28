@@ -8,9 +8,9 @@ return {
         build = "make",
         event = "VeryLazy",
         dependencies = {
-            "nvim-treesitter/nvim-treesitter",
             "nvim-lua/plenary.nvim",
             "MunifTanjim/nui.nvim",
+            { "ColinKennedy/mega.cmdparse", dependencies = { "ColinKennedy/mega.logging" } },
             "nvim-tree/nvim-web-devicons",
             "MeanderingProgrammer/render-markdown.nvim",
         },
