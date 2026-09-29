@@ -70,7 +70,6 @@ return {
                         min_keyword_length = 3,
                         opts = {
                             dictionary_files = {
-                                "/usr/share/dict/words",
                                 vim.fn.expand("~/.config/nvim/spell/en.utf-8.add"),
                             },
                         },
