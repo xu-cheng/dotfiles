@@ -91,7 +91,6 @@ if (( ${+commands[safe-rm]} )); then alias rm='safe-rm'; fi
 if (( ${+commands[bat]} )); then alias cat=bat; fi
 if (( ${+commands[direnv]} )); then
     eval "$(direnv hook zsh)";
-    [[ -n "$TMUX" && -f "$PWD/.envrc" ]] && direnv reload
 fi
 if (( ${+commands[nvim]} )); then
     export EDITOR='nvim -p'
