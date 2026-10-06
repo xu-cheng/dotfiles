@@ -1,7 +1,3 @@
-if vim.uv.fs_stat("/etc/NIXOS") then
-    return
-end
-
 local is_mac = vim.fn.has("mac") == 1
 
 local function executable(prog)
@@ -9,7 +5,7 @@ local function executable(prog)
 end
 
 -- set python interpreter
-if not vim.g.python3_host_prog then
+if vim.g.loaded_python3_provider ~= 0 and vim.g.python3_host_prog == nil then
     local pyenv_path = vim.fn.stdpath("data") .. "/pynvim"
     local pyenv_bin = pyenv_path .. "/bin/python"
     if not executable(pyenv_bin) then
@@ -28,7 +24,7 @@ if not vim.g.python3_host_prog then
 end
 
 -- set ruby interpreter
-if not vim.g.ruby_host_prog then
+if vim.g.loaded_ruby_provider ~= 0 and vim.g.ruby_host_prog == nil then
     if is_mac then
         local brew_ruby_host = vim.fn.glob("/opt/homebrew/lib/ruby/gems/*/bin/neovim-ruby-host", true, true)
         if brew_ruby_host[1] and executable(brew_ruby_host[1]) then
