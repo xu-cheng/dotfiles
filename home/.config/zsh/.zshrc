@@ -43,7 +43,7 @@ else # Linux
     export PATH="$XDG_BIN_HOME:$XDG_DATA_HOME/gem/ruby/$RUBY_API_VERSION/bin:$PATH"
 
     if [[ -d "$XDG_STATE_HOME/home-manager/gcroots" ]]; then
-        export NIX_HOME_MANAGER_HOME_PATH="$XDG_STATE_HOME/home-manager/gcroots/current-home/home-path"
+        NIX_HOME_MANAGER_HOME_PATH="$XDG_STATE_HOME/home-manager/gcroots/current-home/home-path"
     fi
 fi
 
