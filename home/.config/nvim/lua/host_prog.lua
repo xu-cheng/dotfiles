@@ -1,3 +1,7 @@
+if vim.uv.fs_stat("/etc/NIXOS") then
+    return
+end
+
 local is_mac = vim.fn.has("mac") == 1
 local function executable(prog)
     return vim.fn.executable(prog) == 1
