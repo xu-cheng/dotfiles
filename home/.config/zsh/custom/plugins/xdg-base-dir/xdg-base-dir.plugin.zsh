@@ -31,10 +31,10 @@ export SOLARGRAPH_CACHE="$XDG_CACHE_HOME/solargraph"
 # https://doc.rust-lang.org/cargo/reference/environment-variables.html
 # https://github.com/rust-lang-nursery/rustup.rs#choosing-where-to-install
 if [[ ! -e /etc/NIXOS ]]; then
-    export CARGO_HOME="$XDG_DATA_HOME/cargo"
     export RUSTUP_HOME="$XDG_DATA_HOME/rustup"
-    export PATH="$CARGO_HOME/bin:$PATH"
 fi
+export CARGO_HOME="$XDG_DATA_HOME/cargo"
+export PATH="$CARGO_HOME/bin:$PATH"
 
 # cocoapods
 # https://github.com/CocoaPods/CocoaPods/blob/master/lib/cocoapods/config.rb
