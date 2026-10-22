@@ -120,8 +120,6 @@ brew "shfmt"
 brew "starship"
 # Opinionated Lua code formatter
 brew "stylua"
-# TOML toolkit written in Rust
-brew "taplo"
 # Very fast implementation of tldr in Rust
 brew "tealdeer"
 # Terminal multiplexer
@@ -130,6 +128,8 @@ brew "tmux"
 brew "tmuxinator"
 # Program that allows you to count code, quickly
 brew "tokei"
+# TOML formatter, linter and language server
+brew "tombi"
 # Parser generator tool
 brew "tree-sitter-cli"
 # Language for application scale JavaScript development
@@ -269,7 +269,7 @@ vscode "saoudrizwan.claude-dev"
 vscode "shopify.ruby-lsp"
 vscode "streetsidesoftware.code-spell-checker"
 vscode "sumneko.lua"
-vscode "tamasfe.even-better-toml"
+vscode "tombi-toml.tombi"
 vscode "usernamehw.errorlens"
 vscode "vadimcn.vscode-lldb"
 vscode "wayou.vscode-todo-highlight"
