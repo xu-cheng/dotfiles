@@ -14,8 +14,9 @@ proxy = nil
 internal_nets = []
 
 opt_parser = OptionParser.new do |opts|
-  opts.banner = "Usage: ssh-proxy-helper [options]"
+  opts.banner = "Usage: #{$PROGRAM_NAME} [options]"
   opts.version = VERSION
+
   opts.on("-H", "--host HOST", "Host name to connect") do |h|
     host = h
   end

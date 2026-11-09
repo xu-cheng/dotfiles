@@ -6,7 +6,7 @@ git_sha() {
   local commits commit
   commits=$(git log --color=always --pretty=oneline --abbrev-commit --reverse "$@") &&
   commit=$(echo "$commits" | fzf --tac +s +m -e --ansi --reverse) &&
-  echo -n $(echo "$commit" | sed "s/ .*//")
+  echo -n "$(echo "$commit" | cut -d' ' -f1)"
 }
 
 git_sha "$@"

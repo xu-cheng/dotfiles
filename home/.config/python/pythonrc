@@ -6,8 +6,8 @@ try:
 except NameError:
 
     def register_readline():
-        import os
         import atexit
+        import os
 
         try:
             import readline

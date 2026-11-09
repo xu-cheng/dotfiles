@@ -1,4 +1,5 @@
 #!/usr/bin/env ruby
+# frozen_string_literal: true
 
 require "open3"
 
@@ -12,12 +13,12 @@ servers = %w[
   portal
   bot
 ]
-hosts += servers.map { |s| "#{s}.server.xuc.me" }
+hosts += servers.map { |s| "#{s}.srv.xuc.me" }
 
-hashes = hosts.map do |host|
+hashes = hosts.map do |host| # rubocop:disable Style/StringConcatenation
   hash, = Open3.capture2("ssh-keyscan", "-H", host)
   hash.strip!
   hash unless hash.empty?
 end.compact.join("\n") + "\n"
 
-File.write("#{ENV["HOME"]}/.ssh/known_hosts", hashes)
+File.write("#{Dir.home}/.ssh/known_hosts", hashes)

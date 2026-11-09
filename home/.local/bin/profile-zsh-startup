@@ -1,22 +1,22 @@
 #!/usr/bin/env ruby
+# frozen_string_literal: true
 
 # Ref: https://kev.inburke.com/kevin/profiling-zsh-startup-time/
 
 require "fileutils"
-require "pathname"
 require "tmpdir"
 require "table_print"
-include FileUtils
+
+include FileUtils # rubocop:disable Style/MixinUsage
 
 class LogParser
   class LogEntry
-    attr_reader :start_time, :file, :line, :command
-    attr_reader :time
+    attr_reader :start_time, :file, :line, :command, :time
 
     def initialize(log)
       time, log = log.strip.split(" ", 2)
       min, sec = time.split(":", 2)
-      @start_time = min.to_i * 60 + sec.to_f
+      @start_time = (min.to_i * 60) + sec.to_f
       code, log = log.split(">", 2)
       @file, line = code.split(":", 2)
       @line = line.to_i
@@ -25,6 +25,7 @@ class LogParser
 
     def update_time!(next_entry)
       return unless next_entry
+
       @time = next_entry.start_time - start_time
     end
   end
@@ -34,8 +35,8 @@ class LogParser
   def initialize(logfile)
     @logfile = logfile
     @entries = @logfile.read.gsub(logfile.dirname.to_s, "$ZDOTDIR").gsub(Dir.home, "~")
-      .lines.select { |log| log =~ /^\d{2}:\d{2}.\d{6}/ }.map { |log| LogEntry.new log }
-    @entries.each_with_index { |entry, idx| entry.update_time!(@entries[idx+1]) }
+                       .lines.grep(/^\d{2}:\d{2}.\d{6}/).map { |log| LogEntry.new log }
+    @entries.each_with_index { |entry, idx| entry.update_time!(@entries[idx + 1]) }
   end
 
   def total_time
@@ -47,26 +48,26 @@ class LogParser
     puts "Total Time: #{total_time.round(3)}s"
     puts "Total Time (Top 20): #{top_entries.map(&:time).reduce(&:+).round(3)}s"
     tp top_entries,
-      { :time => { display_method: lambda { |e| e.time.round(5) } } },
-      :file,
-      :line,
-      { :command => { width: 50 } }
+       { time: { display_method: ->(e) { e.time.round(5) } } },
+       :file,
+       :line,
+       { command: { width: 50 } }
   end
 end
 
 Dir.mktmpdir("profile-zsh-starup") do |dir|
   Dir.chdir(dir)
-  zdotdir = ENV["ZDOTDIR"] || ENV["HOME"]
+  zdotdir = ENV["ZDOTDIR"] || Dir.home
   ENV["ZDOTDIR"] = dir
   dir = Pathname.new(dir)
-  logfile = dir/"startup.log"
-  (dir/".zshenv").write <<~EOS
+  logfile = dir / "startup.log"
+  (dir / ".zshenv").write <<~SH
     PS4=$'%D{%M:%S.%6.} %N:%i> '
     exec 3>&2 2>"#{logfile}"
     setopt xtrace prompt_subst
     export ZDOTDIR="#{zdotdir}"
     [[ -s "$ZDOTDIR/.zshenv" ]] || source "$ZDOTDIR/.zshenv"
-  EOS
+  SH
   system "zsh", "--login", "-i", "-c", "logout"
   log = LogParser.new logfile
   log.report!

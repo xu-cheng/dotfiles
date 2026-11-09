@@ -47,9 +47,7 @@ def path_similarity(file_a, file_b):
     file_a = file_a.split("/")
     file_b = file_b.split("/")
     idx = 0
-    while len(file_a) > idx and \
-          len(file_b) > idx and \
-          file_a[idx] == file_b[idx]:
+    while len(file_a) > idx and len(file_b) > idx and file_a[idx] == file_b[idx]:
         idx += 1
     return len(file_a) + len(file_b) - 2 * idx
 

@@ -1,4 +1,5 @@
 #!/usr/bin/env ruby
+# frozen_string_literal: true
 
 require "optparse"
 
@@ -7,7 +8,7 @@ options = {
   use_tabs: false,
 }
 OptionParser.new do |opts|
-  opts.banner = "Usage: #{$0} [options]"
+  opts.banner = "Usage: #{$PROGRAM_NAME} [options]"
 
   opts.on("--indent-size=SIZE", "The size of the indent") do |size|
     options[:indent_size] = size.to_i
