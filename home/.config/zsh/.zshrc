@@ -142,7 +142,7 @@ if [[ -d "$FZF_SHELL_PATH" ]]; then
     fi
     export FZF_CTRL_T_OPTS="--preview-window wrap --preview '
     if [[ -f {} ]]; then
-        file --mime {} | grep -q \"text\/.*;\" && $FZF_CAT_CMD {} || (tput setaf 1; file --mime {})
+        file --mime {} | grep -q \"text/.*;\" && $FZF_CAT_CMD {} || (tput setaf 1; file --mime {})
     elif [[ -d {} ]]; then
         $FZF_LS_CMD {}
     else
