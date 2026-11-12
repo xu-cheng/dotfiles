@@ -3,3 +3,6 @@ b = "build"
 t = "test"
 r = "run"
 rr = "run --release"
+
+[registry]
+global-min-publish-age = "7 days"
