@@ -107,6 +107,9 @@ if [[ -s "$ZSH_HIGHLIGHT_PATH" ]]; then
   . "$ZSH_HIGHLIGHT_PATH"
 fi
 
+zstyle ':omz:update' mode auto
+zstyle ':omz:update' frequency 7
+zstyle ':omz:update' cooldown 3
 . "$ZSH/oh-my-zsh.sh"
 
 eval "$("$STARSHIP_PATH" init zsh)"
