@@ -44,9 +44,6 @@ wrap-max-lines = unlimited
 max-line-length = 0
 navigate = true
 
-[icdiff]
-pager = less -F -X
-
 [difftool]
 prompt = false
 
