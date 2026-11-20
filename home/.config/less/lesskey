@@ -4,3 +4,4 @@ l right-scroll
 i toggle-option i
 #env
 LESS= -i -R --mouse --wheel-lines=3
+LESS_SHELL_LINES=3
